@@ -1,0 +1,22 @@
+{
+  "title": {
+    "message": "HUST Mirror",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "HUST Mirror",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.帮助": {
+    "message": "Help",
+    "description": "Navbar item with label 帮助"
+  },
+  "item.label.动态": {
+    "message": "News",
+    "description": "Navbar item with label 动态"
+  },
+  "item.label.Gitee": {
+    "message": "Gitee",
+    "description": "Navbar item with label Gitee"
+  }
+}
