@@ -1,4 +1,6 @@
 const modifyChildren = require("unist-util-modify-children");
+const nid = require('nanoid');
+const nanoid = nid.customAlphabet('_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890', 15);
 
 /** @type {import("unified").Plugin} */
 const plugin = (_) => {
@@ -25,6 +27,9 @@ const plugin = (_) => {
         const newAsts = [];
         const options = [];
 
+        const idOption = nanoid();
+        const idCode = nanoid();
+
         if (optionBlock) {
           const strs = optionBlock.split('\n');
 
@@ -48,7 +53,7 @@ const plugin = (_) => {
 
           newAsts.push({
             type: 'export',
-            value: 'export const options =' + JSON.stringify(options),
+            value: `export const options_${idOption} =` + JSON.stringify(options),
             position: node.position
           });
         }
@@ -56,7 +61,7 @@ const plugin = (_) => {
         if (codeBlock) {
           newAsts.push({
             type: 'export',
-            value: 'export const code = ({' +
+            value: `export const code_${idCode} = ({` +
               options.map(u => u.key).join(",") +
               '}) => {\n' +
               (transformBlock || "") +
@@ -70,7 +75,7 @@ const plugin = (_) => {
 
         newAsts.push({
           type: "jsx",
-          value: '<CodeBlockWithVariables code={code} options={options} />',
+          value: `<CodeBlockWithVariables code={code_${idCode}} options={options_${idOption}} />`,
           position: node.position
         })
 
