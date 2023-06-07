@@ -1,0 +1,36 @@
+
+.container{
+  display: table;
+  width: 100%;
+  max-width: 800px;
+}
+
+.container tr{
+  display: flex;
+  border: none;
+  text-align: left;
+}
+
+.container th{
+  border: none;
+}
+
+.tbody th{
+  font-weight: normal;
+  padding: 4px 12px;
+}
+
+.last-update {
+  width: 300px;
+}
+
+
+.name {
+  flex-grow: 1;
+
+}
+
+.help {
+  width: 80px;
+}
+

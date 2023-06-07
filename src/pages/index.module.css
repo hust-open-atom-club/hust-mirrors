@@ -21,3 +21,15 @@
   align-items: center;
   justify-content: center;
 }
+
+.list-container{
+  display: flex;
+  justify-content: center;
+}
+
+.table-container{
+  margin-top: 32px;
+  flex-grow:1;
+  display: flex;
+  justify-content: center;
+}
