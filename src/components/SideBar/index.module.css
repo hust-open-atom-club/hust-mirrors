@@ -3,7 +3,7 @@
 }
 
 .side a {
-  color: black;
+  color: var(--ifm-color-content);
 }
 
 .side a:hover {
@@ -31,7 +31,7 @@
 
 .button:hover {
   background: var(--ifm-color-primary);
-  color: white;
+  color: var(--ifm-color-content-inverse);
 }
 
 .domain-row>a {
