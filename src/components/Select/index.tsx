@@ -1,10 +1,8 @@
 import React from 'react'
-import Select from 'react-select'
+import RcSelect from 'rc-select'
+import { DefaultOptionType } from 'rc-select/lib/Select'
 
-export type SelectItem = {
-  label: string,
-  value: string
-}
+export type SelectItem = DefaultOptionType;
 
 type Props = {
   label: string,
@@ -17,7 +15,8 @@ export default ({ label, value, onChange, items }: Props) => {
   return (
     <div>
       <span>{label}</span>
-      <Select value={value} onChange={onChange} options={items}></Select>
+      <RcSelect value={value} onChange={onChange} options={items}>
+      </RcSelect>
     </div>
   )
 }

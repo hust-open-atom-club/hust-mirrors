@@ -6,7 +6,7 @@ import Select from '../Select';
 import Switch from '../Switch';
 
 
-type DefaultValue = boolean | string;
+type DefaultValue = boolean | string | number;
 
 type OptionType = 'switch' | 'select';
 
@@ -39,6 +39,9 @@ export default function CodeBlockWithVariables({ code, options, blockProps }: Pr
       def = option.default;
     else if (option.type == 'switch')
       def = false;
+    else if (option.type == 'select') {
+      def = option.items?.[0].value;
+    }
     states[option.key] = useState(def);
   }
 

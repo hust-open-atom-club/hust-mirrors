@@ -1,35 +1,31 @@
 # Ubuntu
 
+本镜像仅包含32/64位 x86 架构处理器的软件包，
+在ARM(arm64, armhf)、PowerPC(ppc64el)、RISC - V(riscv64) 和
+S390x等架构的设备上（对应官方源为 ports.ubuntu.com）
+请使用 `ubuntu-ports` 镜像。
 
-本镜像仅包含 32 / 64 位 x86 架构处理器的软件包，
-在 ARM(arm64, armhf)、PowerPC(ppc64el)、RISC - V(riscv64) 和
-S390x 等架构的设备上（对应官方源为 ports.ubuntu.com）
-请使用 ubuntu - ports 镜像。
+Ubuntu 的软件源配置文件是 `/etc/apt/sources.list`。
+为避免替换后出现问题，可以先将系统自带的该文件做个备份。
+```
+sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+```
 
-Ubuntu 的软件源配置文件是 / etc / apt / sources.list。
-将系统自带的该文件做个备份，将该文件替换为下面内容，即可使用选择的软件源镜像。
+然后将该文件替换为下面内容，即可使用选择的软件源镜像。
 
+:::caution
 因镜像站同步有延迟，可能会导致生产环境系统不能及时检查、安装上最新的安全更新，不建议替换 security 源。
+:::
 
-export const code = ({ version,https,secure,proposed,source }) => {
-  const HTTP = https ? "https" : "http";
-  return (`# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+```bash varcode
+[22.04] (version) { jammy:22.04 } Ubuntu版本
+[x] (https) 是否使用HTTPS
+---
+const HTTP = https ? "https" : "http";
+---
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
 deb ${HTTP}://hustmirror.cn/ubuntu/ jammy main restricted universe multiverse
 # deb-src ${HTTP}://hustmirror.cn/ubuntu/ jammy main restricted universe multiverse
 deb ${HTTP}://hustmirror.cn/ubuntu/ jammy-updates main restricted universe multiverse
 # deb-src ${HTTP}://hustmirror.cn/ubuntu/ jammy-updates main restricted universe multiverse
-`);
-}
-
-export const options = [
-  { key: 'version', label: 'Ubuntu 版本', type: 'select', default: true, items: [
-      { value:'jammy', label:'22.04' }
-  ]},
-  { key: 'https', label: '是否使用HTTPS', type: 'switch', default: true },
-  { key: 'secure', label: '使用官方安全更新软件源', type: 'switch', default: false },
-  { key: 'proposed', label: '启用 proposed', type: 'switch', default: false },
-  { key: 'source', label: '启用源码镜像', type: 'switch', default: false }
-]
-
-<CodeBlockWithVariables code={code} options={options} />
-
+```
