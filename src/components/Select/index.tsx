@@ -15,8 +15,6 @@ type Props = {
 }
 
 export default ({ label, value, onChange, items }: Props) => {
-  console.log(items)
-
   return (
     <div>
       <span className={styles.label}>{label}</span>
