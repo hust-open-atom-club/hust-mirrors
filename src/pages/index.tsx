@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
 import styles from './index.module.css';
 import Table from '../components/Table';
@@ -13,15 +12,23 @@ function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/cli-tool">
-            通过命令行使用
-          </Link>
+      <div className={styles['header-container']}>
+        <div className={styles['main-part']}>
+          <h1 className={`hero__title ${styles.left}`}>{siteConfig.title}</h1>
+          <p className={`hero__subtitle ${styles.left}`}>{siteConfig.tagline}</p>
+          <input className={`${styles.left} ${styles.search}`} placeholder={"按下 / 开始搜索"} />
+        </div>
+        <div className={styles['cli-ad-container']}>
+          <img className={styles['banner-img']} src='/img/cli.png' />
+
+          <div className={styles.buttons}>
+            <Link
+              className="button button--secondary button--lg"
+              to="/docs/cli-tool">
+              通过命令行使用
+            </Link>
+          </div>
+
         </div>
       </div>
     </header>
@@ -65,7 +72,7 @@ export default function Home(): JSX.Element {
             <Table items={items}></Table>
           }
         </div>
-        <SideBar className={styles['sidebar-container']}/>
+        <SideBar className={styles['sidebar-container']} />
       </div>
     </Layout>
   );

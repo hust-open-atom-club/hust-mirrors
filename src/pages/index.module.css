@@ -4,10 +4,9 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
+  padding: 2rem 0;
   text-align: center;
   position: relative;
-  overflow: hidden;
 }
 
 @media screen and (max-width: 996px) {
@@ -16,10 +15,17 @@
   }
 }
 
+.cli-ad-container{
+  position: relative;
+}
+
 .buttons {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  bottom: 8px;
+  right: 30px;
 }
 
 .list-container {
@@ -39,6 +45,52 @@
   margin: 32px;
   width: 400px;
 }
+
+.banner-img {
+  width: 480px;
+  box-shadow: 5px 5px 20px 0px var(--ifm-color-content);
+  margin-right: 32px;
+}
+
+.header-container {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  width: 100%;
+  max-width: 1530px;
+}
+
+.header-container .main-part {
+  margin: 32px;
+  flex-grow: 1;
+}
+
+.header-container .left {
+  text-align: left;
+}
+
+.search {
+  display: block;
+  margin: 32px 0;
+  font-size: 1.5em;
+  padding: 16px;
+  background: transparent;
+  border: var(--ifm-color-content-inverse) solid 2px;
+  border-radius: 8px;
+  transition: all 0.3s;
+  outline: none;
+  caret-color: var(--ifm-color-content-inverse);
+}
+
+.search::placeholder{
+  color: var(--ifm-color-content-inverse)
+}
+
+.search:not(:placeholder-shown) {
+  background: var(--ifm-color-content-inverse);
+  caret-color: var(--ifm-color-content);
+}
+
 
 @media screen and (max-width:996px) {
   .sidebar-container {

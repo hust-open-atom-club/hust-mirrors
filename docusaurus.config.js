@@ -6,12 +6,14 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 const mirrorConfig = {
   title: "华中科技大学开源镜像站",
+  desc: "欢迎来到华中科技大学开源镜像站，该站点由华中科技大学为你呈现。",
   url: "https://hustmirror.cn"
 }
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: mirrorConfig.title,
+  tagline: mirrorConfig.desc,
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -34,7 +36,7 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          remarkPlugins: [ require('./plugin/varcode') ],
+          remarkPlugins: [require('./plugin/varcode')],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
