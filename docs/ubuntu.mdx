@@ -17,15 +17,28 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 因镜像站同步有延迟，可能会导致生产环境系统不能及时检查、安装上最新的安全更新，不建议替换 security 源。
 :::
 
+
 ```bash varcode
-[22.04] (version) { jammy:22.04 } Ubuntu版本
+[ ] (version) { jammy:22.04 LTS, lunar:23.04, kinetic:22.10, focal:20.04 LTS, bionic:18.04 LTS, xenial:16.04 LTS, trusty:14.04 LTS } Ubuntu版本
 [x] (https) 是否使用HTTPS
+[x] (secure) 使用官方安全更新软件源： 
+[-] (proposed) 启用预发布软件源
+[-] (src) 启用源码镜像
 ---
 const HTTP = https ? "https" : "http";
+const SRC_PREFIX = src ? "" : "# ";
+const PROPOSED_PREFIX = proposed ? "" : "# ";
+const SECURE_URL = secure ? '://security.ubuntu.com/ubuntu/' : '://hustmirror.cn/ubuntu/';
 ---
-# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-deb ${HTTP}://hustmirror.cn/ubuntu/ jammy main restricted universe multiverse
-# deb-src ${HTTP}://hustmirror.cn/ubuntu/ jammy main restricted universe multiverse
-deb ${HTTP}://hustmirror.cn/ubuntu/ jammy-updates main restricted universe multiverse
-# deb-src ${HTTP}://hustmirror.cn/ubuntu/ jammy-updates main restricted universe multiverse
+deb ${HTTP}://hustmirror.cn/ubuntu/ ${version} main restricted universe multiverse
+${SRC_PREFIX}deb-src ${HTTP}://hustmirror.cn/ubuntu/ ${version} main restricted universe multiverse
+deb ${HTTP}://hustmirror.cn/ubuntu/ ${version}-updates main restricted universe multiverse
+${SRC_PREFIX}deb-src ${HTTP}://hustmirror.cn/ubuntu/ ${version}-updates main restricted universe multiverse
+deb ${HTTP}${SECURE_URL} focal-security main restricted universe multiverse
+${SRC_PREFIX}deb-src ${HTTP}${SECURE_URL} focal-security main restricted universe multiverse
+
+${PROPOSED_PREFIX}deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+${PROPOSED_PREFIX || SRC_PREFIX}deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
 ```
+
+保存该文件至`/etc/apt/sources.list`。
