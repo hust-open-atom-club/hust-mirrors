@@ -28,9 +28,9 @@
 }
 
 .table-container {
-  margin-top: 32px;
+  margin: 32px;
   flex-grow: 1;
-  max-width: 800px;
+  max-width: 996px;
   display: flex;
   justify-content: center;
 }
@@ -38,4 +38,16 @@
 .sidebar-container {
   margin: 32px;
   width: 400px;
+}
+
+@media screen and (max-width:996px) {
+  .sidebar-container {
+    flex-grow: 1;
+  }
+  .list-container {
+    flex-wrap: wrap;
+  }
+  .table-container {
+    margin: 0;
+  }
 }

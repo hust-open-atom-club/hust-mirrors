@@ -2,7 +2,6 @@
 .container{
   display: table;
   width: 100%;
-  max-width: 800px;
 }
 
 .container tr{
@@ -34,3 +33,9 @@
   width: 80px;
 }
 
+
+@media screen and (max-width:640px) {
+  .last-update {
+    display: none;
+  }
+}
