@@ -19,9 +19,14 @@ type Status = {
 
 type Props = {
   items: Status[],
+  search?: string
 }
 
-export default function Table({ items }: Props) {
+export default function Table({ items: srcItems, search }: Props) {
+  let items = srcItems.sort((a, b) => (a.name > b.name) ? 1 : -1);
+  if (search) {
+    items = items.filter(u => u.name.toLowerCase().indexOf(search.toLowerCase()) != -1)
+  }
   return (
     <table className={styles['container']}>
       <thead>
@@ -39,7 +44,7 @@ export default function Table({ items }: Props) {
 
       </thead>
       <tbody className={styles.tbody}>
-        {items.sort((a, b) => (a.name > b.name) ? 1 : -1).map(u => (
+        {items.map(u => (
           <tr key={u.name}>
             <th className={styles['name']}>{u.name}</th>
             <th className={styles['last-update']}>{u.last_update}</th>

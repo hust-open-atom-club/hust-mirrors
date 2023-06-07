@@ -91,6 +91,11 @@
   caret-color: var(--ifm-color-content);
 }
 
+.search:focus {
+  background: var(--ifm-color-content-inverse);
+  caret-color: var(--ifm-color-content);
+}
+
 
 @media screen and (max-width:996px) {
   .sidebar-container {

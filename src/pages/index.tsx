@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -8,15 +8,39 @@ import styles from './index.module.css';
 import Table from '../components/Table';
 import SideBar from '../components/SideBar';
 
-function HomepageHeader() {
+function HomepageHeader({
+  searchValue, onSearchValueChange
+}: {
+  searchValue: string, onSearchValueChange: (value: string) => void
+}) {
   const { siteConfig } = useDocusaurusContext();
+
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleKeyPress = (event: KeyboardEvent) => {
+      if (event.key === '/') {
+        event.preventDefault();
+        inputRef.current?.focus();
+      }
+    };
+
+    document.addEventListener('keypress', handleKeyPress);
+
+    return () => {
+      document.removeEventListener('keypress', handleKeyPress);
+    };
+  }, []);
+
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className={styles['header-container']}>
         <div className={styles['main-part']}>
           <h1 className={`hero__title ${styles.left}`}>{siteConfig.title}</h1>
           <p className={`hero__subtitle ${styles.left}`}>{siteConfig.tagline}</p>
-          <input className={`${styles.left} ${styles.search}`} placeholder={"按下 / 开始搜索"} />
+          <input ref={inputRef} value={searchValue} onChange={(e) => { onSearchValueChange(e.target.value) }}
+            className={`${styles.left} ${styles.search}`} placeholder={"按下 / 开始搜索"} />
         </div>
         <div className={styles['cli-ad-container']}>
           <img className={styles['banner-img']} src='/img/cli.png' />
@@ -40,6 +64,7 @@ export default function Home(): JSX.Element {
   const [loading, setLoading] = useState(false);
   const [items, setItems] = useState([]);
   const [err, setErr] = useState(false);
+  const [search, setSearch] = useState("");
 
   const getItems = async () => {
     setLoading(true);
@@ -62,14 +87,14 @@ export default function Home(): JSX.Element {
     <Layout
       title={`Hello from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">
-      <HomepageHeader />
+      <HomepageHeader searchValue={search} onSearchValueChange={setSearch} />
       <div className={styles['list-container']}>
         <div className={styles['table-container']}>
           {loading ?
             <div>
               正在加载...
             </div> :
-            <Table items={items}></Table>
+            <Table search={search} items={items}></Table>
           }
         </div>
         <SideBar className={styles['sidebar-container']} />
