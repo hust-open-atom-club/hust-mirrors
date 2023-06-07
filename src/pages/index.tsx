@@ -7,6 +7,7 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
 import styles from './index.module.css';
 import Table from '../components/Table';
+import SideBar from '../components/SideBar';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -64,6 +65,7 @@ export default function Home(): JSX.Element {
             <Table items={items}></Table>
           }
         </div>
+        <SideBar className={styles['sidebar-container']}/>
       </div>
     </Layout>
   );

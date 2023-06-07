@@ -1,0 +1,40 @@
+.side p {
+  margin: 0;
+}
+
+.side a {
+  color: black;
+}
+
+.side a:hover {
+  color: var(--ifm-color-primary); 
+}
+
+.side h3 {
+  margin-top: 32px;
+  color: var(--ifm-color-primary); 
+}
+
+.side a:first-child>h3 {
+  margin-top: 0;
+}
+
+.button {
+  border: var(--ifm-color-primary) 2px solid;
+  border-radius: 8px;
+  background: none;
+  padding: 8px 32px;
+  margin: 8px 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+
+.button:hover {
+  background: var(--ifm-color-primary);
+  color: white;
+}
+
+.domain-row>a {
+  display: inline-block;
+  width: 180px;
+}

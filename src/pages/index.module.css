@@ -22,14 +22,20 @@
   justify-content: center;
 }
 
-.list-container{
+.list-container {
   display: flex;
   justify-content: center;
 }
 
-.table-container{
+.table-container {
   margin-top: 32px;
-  flex-grow:1;
+  flex-grow: 1;
+  max-width: 800px;
   display: flex;
   justify-content: center;
+}
+
+.sidebar-container {
+  margin: 32px;
+  width: 400px;
 }
