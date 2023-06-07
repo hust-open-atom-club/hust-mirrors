@@ -1,23 +1,44 @@
 import React from 'react'
-import RcSelect from 'rc-select'
-import { DefaultOptionType } from 'rc-select/lib/Select'
+import Select from 'react-select'
+import styles from './index.module.css'
 
-export type SelectItem = DefaultOptionType;
+export type SelectItem = {
+  value: string,
+  label: string
+};
 
 type Props = {
   label: string,
   items: SelectItem[],
-  value: boolean,
-  onChange: (value: boolean) => void
+  value: string,
+  onChange: (value: string) => void
 }
 
 export default ({ label, value, onChange, items }: Props) => {
+  console.log(items)
+
   return (
     <div>
-      <span>{label}</span>
-      <RcSelect value={value} onChange={onChange} options={items}>
-      </RcSelect>
-    </div>
+      <span className={styles.label}>{label}</span>
+      <Select<SelectItem>
+        value={items.find(u => u.value == value)}
+        classNames={{
+          container: () => styles.container,
+
+        }}
+        onChange={(value) => { onChange(value.value); }}
+        options={items}
+        theme={(theme) => ({
+          ...theme,
+          colors: {
+            ...theme.colors,
+            primary: 'var(--ifm-color-primary)',
+          }
+
+        })}
+      >
+      </Select>
+    </div >
   )
 }
 

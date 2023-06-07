@@ -1,0 +1,9 @@
+.container {
+  display: inline-block;
+  width: 200px;
+}
+
+.label{
+  margin: 16px 24px 16px 0;
+  display: inline-block;
+}

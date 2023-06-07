@@ -1,0 +1,35 @@
+.container {
+  display: inline-block;
+  width: 61px;
+  height: 24px;
+  border: var(--ifm-color-primary) 2px solid;
+  border-radius: 12px;
+  transition: background 0.6s;
+  vertical-align: middle;
+}
+
+
+.container-open {
+  background: var(--ifm-color-primary);
+}
+
+.slider {
+  background: var(--ifm-color-primary);
+  width: 20px;
+  height: 18px;
+  border-radius: 9px;
+  margin-top: 1px;
+  margin-left: 2px;
+  transition: all 0.6s;
+  vertical-align: middle;
+}
+
+.slider-open {
+  background: white;
+  margin-left: 36px;
+}
+
+.label{
+  margin: 16px 24px 16px 0;
+  display: inline-block;
+}
