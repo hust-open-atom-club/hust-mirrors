@@ -9,7 +9,8 @@ import clsx from 'clsx';
 type MirrorStatus = {
   name: string,
   is_master: boolean,
-  status: string,
+  // https://github.com/tuna/tunasync/blob/755c87761daecf590b1192501a652b582d3eda6d/internal/status.go#LL21C15-L21C15
+  status: 'none' | 'failed' | 'success' | 'syncing' | 'pre-syncing' | 'paused' | 'disabled',
   last_update: string,
   last_update_ts: number,
   last_started: string,
@@ -201,7 +202,14 @@ export default function Table({ items: srcItems, search, detail }: Props) {
       </thead>
       <tbody className={styles.tbody}>
         {items.map(u => (
-          <tr key={u.name}>
+          <tr key={u.name} className={clsx({
+            [styles['row-none']]: u.status == 'none',
+            [styles['row-failed']]: u.status == 'failed',
+            [styles['row-syncing']]: u.status == 'syncing',
+            [styles['row-presyncing']]: u.status == 'pre-syncing',
+            [styles['row-paused']]: u.status == 'paused',
+            [styles['row-disabled']]: u.status == 'disabled'
+          })}>
             <th className={styles['name']}>
               <MirrorName item={u} docsMeta={alldocs} mirrorMeta={mirrorMeta} />
             </th>

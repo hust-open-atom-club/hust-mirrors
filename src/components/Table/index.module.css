@@ -108,6 +108,30 @@
   width: 220px;
 }
 
+.row-none {
+  background: var(--ifm-color-warning-contrast-background) !important;
+}
+
+.row-failed {
+  background: var(--ifm-color-danger-contrast-background) !important;
+}
+
+.row-syncing {
+  background-color: var(--ifm-color-success-contrast-background) !important;
+}
+
+.row-presyncing {
+  background: var(--ifm-color-success-contrast-background) !important;
+}
+
+.row-paused {
+  background: var(--ifm-color-warning-contrast-background) !important;
+}
+
+.row-disabled {
+  background: var(--ifm-color-info-contrast-background) !important;
+}
+
 @media screen and (max-width:996px) {
   .help {
     width: 130px;
