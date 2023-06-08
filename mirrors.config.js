@@ -9,9 +9,10 @@
  * helpID?: string;
  * }}[] */
 const mirrors = [
-  { id: 'linux.git', type: 'git', description: 'Linux 内核源代码的Git仓库', helpID: 'linux.git' },
-  { id: 'linux-stable.git', type: 'git', description: 'Linux 内核源代码的Git仓库，稳定版分支', helpID: 'linux.git' },
-  { id: 'linux-next.git', type: 'git', description: 'Linux 内核源代码的Git仓库，开发分支', helpID: 'linux-next.git' },
+  { id: 'linux.git', type: 'git', description: 'Linux 内核主线仓库', helpID: 'linux.git' },
+  { id: 'linux-stable.git', type: 'git', description: 'Linux 内核稳定分支仓库', helpID: 'linux.git' },
+  { id: 'linux-next.git', type: 'git', description: 'Linux 内核源开发分支仓库', helpID: 'linux-next.git' },
+  { id: 'qemu.git', type: 'git', description: 'QEMU 主线仓库', helpID: 'qemu.git' },
 ]
 
 
