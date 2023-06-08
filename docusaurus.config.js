@@ -14,7 +14,7 @@ const mirrorConfig = {
 const config = {
   title: mirrorConfig.title,
   tagline: mirrorConfig.desc,
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
 
   // Set the production url of your site here
   url: mirrorConfig.url,
