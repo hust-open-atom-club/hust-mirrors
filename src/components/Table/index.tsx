@@ -125,7 +125,7 @@ export default function Table({ items: srcItems, search }: Props) {
               {
                 u.name.endsWith(".git") &&
                 <Link to={`/docs/about-git`}>
-                  [ <Translate>Git镜像</Translate> ]
+                  [ <Translate>Git 镜像</Translate> ]
                 </Link>
               }
             </th>
