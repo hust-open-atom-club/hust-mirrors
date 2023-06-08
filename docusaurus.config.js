@@ -11,7 +11,7 @@ const { config: mirrorConfig, mirrors } = require('./mirrors.config')
 const config = {
   title: mirrorConfig.title,
   tagline: mirrorConfig.desc,
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
   customFields: {
     mirrors
   },
