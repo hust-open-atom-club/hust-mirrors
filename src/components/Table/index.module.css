@@ -28,6 +28,51 @@
   width: 200px;
 }
 
+.mirror-name {
+  position: relative;
+}
+
+.mirror-name:hover .desc-container {
+  opacity: 1;
+}
+
+.desc-container {
+  position: absolute;
+  display: block;
+  opacity: 0;
+  top: -8px;
+  left: calc(100% + 16px);
+  padding: 2px 8px;
+  z-index: 999;
+  min-width: 256px;
+  background: var(--ifm-color-content-inverse);
+  border: var(--ifm-color-primary) 2px solid;
+  border-radius: 8px;
+  transition: opacity 0.3s;
+}
+
+
+.desc-container::before {
+  content: ' ';
+  position: absolute;
+  left: -10px;
+  top: 8px;
+  width: 10px;
+  height: 16px;
+  display: block;
+  clip-path: polygon(0 50%, 100% 100%, 100% 0);
+  background: var(--ifm-color-primary) ;
+}
+
+.desc-container p {
+  padding: 0px;
+  margin: 0;
+}
+
+.git-desc {
+  font-size: 0.5rem;
+}
+
 
 .name {
   flex-grow: 1;
