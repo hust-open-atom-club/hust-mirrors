@@ -59,7 +59,7 @@ export default function DocItemLayout({ children }: Props): JSX.Element {
       </div>
       {windowSize == 'desktop' &&
         <div className="col col--3">
-          <GlobalOptions />
+          <GlobalOptions className={styles['global-option']}/>
           {docTOC.desktop}
         </div>}
     </div>

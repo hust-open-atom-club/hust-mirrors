@@ -3,6 +3,20 @@
   margin-top: 0;
 }
 
+.global-option {
+  position: sticky;
+  top: calc(var(--ifm-navbar-height) + 1rem);
+  background: var(--ifm-background-color);
+  z-index: 999;
+}
+
+
+.global-option + * {
+  position: sticky;
+  top: calc(var(--ifm-navbar-height) + 1rem + 240px) !important;
+  max-height: calc(100vh - (var(--ifm-navbar-height) + 2rem + 280px )) !important;
+}
+
 @media (min-width: 997px) {
   .docItemCol {
     max-width: 75% !important;
