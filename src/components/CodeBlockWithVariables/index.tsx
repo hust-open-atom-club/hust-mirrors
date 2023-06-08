@@ -1,9 +1,10 @@
-import React, { useMemo, useState } from 'react'
+import React, { useContext, useMemo, useState } from 'react'
 import CodeBlock from '@theme/CodeBlock'
 import { Props as CBProps } from '@theme/CodeBlock'
 import { SelectItem } from '../Select';
 import Select from '../Select';
 import Switch from '../Switch';
+import SharedContext from '@site/src/utils/SharedContext';
 
 
 type DefaultValue = boolean | string | number;
@@ -47,12 +48,17 @@ export default function CodeBlockWithVariables({ code, options, blockProps }: Pr
 
   const vars: Variables = {};
 
+  const ctx = useContext(SharedContext);
+
   for (const key in states) {
     if (states.hasOwnProperty(key)) {
       const element = states[key][0];
       vars[key] = element;
     }
   }
+
+  vars['_http'] = ctx.https ? "https": "http";
+  vars['_domain'] = ctx.domain;
 
   return (
     <div>

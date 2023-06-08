@@ -62,7 +62,7 @@ const plugin = (_) => {
           newAsts.push({
             type: 'export',
             value: `export const code_${idCode} = ({` +
-              options.map(u => u.key).join(",") +
+              options.map(u => u.key).concat(['_http', '_domain']).join(",") + // destructure vars
               '}) => {\n' +
               (transformBlock || "") +
               'return (\n' +

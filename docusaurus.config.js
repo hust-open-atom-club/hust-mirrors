@@ -4,7 +4,7 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-const { config: mirrorConfig, mirrors } = require('./mirrors.config')
+const { config: mirrorConfig, fields } = require('./mirrors.config')
 
 
 /** @type {import('@docusaurus/types').Config} */
@@ -12,9 +12,7 @@ const config = {
   title: mirrorConfig.title,
   tagline: mirrorConfig.desc,
   favicon: 'img/favicon.png',
-  customFields: {
-    mirrors
-  },
+  customFields: fields,
 
   // Set the production url of your site here
   url: mirrorConfig.url,

@@ -17,6 +17,12 @@ export type DocMeta = {
   sidebar: string;
 }
 
+
+export type DomainMeta = {
+  domain: string;
+  desc: string;
+}
+
 /**
  * Hook function, to get mirror metas.
  * @returns mirror metas.
@@ -29,6 +35,21 @@ export function useMirrorMetas(): MirrorMeta[] {
   } = useDocusaurusContext();
   return fields.mirrors as MirrorMeta[];
 }
+
+
+/**
+ * Hook function, to get domain metas.
+ * @returns domain metas.
+ */
+export function useDomainMetas(): DomainMeta[] {
+  const {
+    siteConfig: {
+      customFields: fields
+    }
+  } = useDocusaurusContext();
+  return fields.domains as DomainMeta[];
+}
+
 
 /**
  * Hook function, to get all docs.

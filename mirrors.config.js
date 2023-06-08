@@ -1,12 +1,14 @@
 
-/** @type{{
- * id: string; 
- * type?: 'normal' | 'git';
- * description?: string;
- * displayName?: string;
- * forceShown?: boolean;
- * link?: string;
- * helpID?: string;
+/**
+ * Meta data of mirrors
+ * @type{{
+ *   id: string; 
+ *   type?: 'normal' | 'git';
+ *   description?: string;
+ *   displayName?: string;
+ *   forceShown?: boolean;
+ *   link?: string;
+ *   helpID?: string;
  * }}[] */
 const mirrors = [
   { id: 'linux.git', type: 'git', description: 'Linux 内核主线仓库', helpID: 'linux.git' },
@@ -28,7 +30,22 @@ const config = {
   url: "https://hustmirror.cn"
 }
 
+/** 
+ * Domain list
+ * @type {{
+ *   domain: string;
+ *   desc: string;
+ * }}[]
+ */
+const domains = [
+  { domain: 'hustmirror.cn', desc: '' },
+  { domain: 'mirrors.hust.edu.cn', desc: '' },
+]
+
 module.exports = {
   config,
-  mirrors
+  fields: {
+    mirrors,
+    domains
+  }
 };
