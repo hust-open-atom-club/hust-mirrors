@@ -37,13 +37,20 @@ export default function Home(): JSX.Element {
       title={translate({
         message: "服务器状态"
       })}
+
       description="all mirror status on server">
       <div className={styles['container']}>
         {loading ?
-          <div>
+          <div style={{
+            textAlign: 'center'
+          }}>
             正在加载...
           </div> :
-          <Table detail={true} search={search} items={items}></Table>
+          <div style={{
+            overflow: 'auto',
+          }}>
+            <Table detail={true} search={search} items={items}></Table>
+          </div>
         }
       </div>
     </Layout>
