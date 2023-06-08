@@ -87,7 +87,6 @@ export default function Home(): JSX.Element {
 
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">
       <HomepageHeader searchValue={search} onSearchValueChange={setSearch} />
       <div className={styles['list-container']}>

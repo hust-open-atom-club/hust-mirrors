@@ -23,7 +23,8 @@ type MirrorStatus = {
 
 type Props = {
   items: MirrorStatus[],
-  search?: string
+  search?: string,
+  detail?: boolean,
 }
 
 function tsToStr(ts: number) {
@@ -150,7 +151,7 @@ function MirrorHelp({ item, mirrorMeta: mirrors, docsMeta: docs }: MirrorHelpPro
   </>
 }
 
-export default function Table({ items: srcItems, search }: Props) {
+export default function Table({ items: srcItems, search, detail }: Props) {
 
   const alldocs = useDocMetas();
   const mirrorMeta = useMirrorMetas();
@@ -173,12 +174,27 @@ export default function Table({ items: srcItems, search }: Props) {
           <th className={styles['name']}>
             <Translate>镜像名称</Translate>
           </th>
-          <th className={styles['last-update']}>
+          <th className={styles['date']}>
             <Translate>上次更新</Translate> (UTC{timezone > 0 && '+'}{timezone})
           </th>
-          <th className={styles['help']}>
+          {detail && <th className={styles['date']}>
+            <Translate>上次开始</Translate> (UTC{timezone > 0 && '+'}{timezone})
+          </th>}
+          {detail && <th className={styles['date']}>
+            <Translate>上次结束</Translate> (UTC{timezone > 0 && '+'}{timezone})
+          </th>}
+          {detail && <th className={styles['status']}>
+            <Translate>同步状态</Translate>
+          </th>}
+          {detail && <th className={styles['upstream']}>
+            <Translate>上游链接</Translate>
+          </th>}
+          {detail && <th className={styles['size']}>
+            <Translate>镜像大小</Translate>
+          </th>}
+          {!detail && <th className={styles['help']}>
             <Translate>帮助</Translate>
-          </th>
+          </th>}
         </tr>
 
       </thead>
@@ -188,10 +204,15 @@ export default function Table({ items: srcItems, search }: Props) {
             <th className={styles['name']}>
               <MirrorName item={u} docsMeta={alldocs} mirrorMeta={mirrorMeta} />
             </th>
-            <th className={styles['last-update']}>{tsToStr(u.last_update_ts)}</th>
-            <th className={styles['help']}>
+            <th className={styles['date']}>{tsToStr(u.last_update_ts)}</th>
+            {detail && <th className={styles['date']}>{tsToStr(u.last_started_ts)}</th>}
+            {detail && <th className={styles['date']}>{tsToStr(u.last_ended_ts)}</th>}
+            {detail && <th className={styles['status']}>{u.status}</th>}
+            {detail && <th className={styles['upstream']}>{u.upstream}</th>}
+            {detail && <th className={styles['size']}>{u.size}</th>}
+            {!detail && <th className={styles['help']}>
               <MirrorHelp item={u} docsMeta={alldocs} mirrorMeta={mirrorMeta} />
-            </th>
+            </th>}
           </tr>
         ))}
       </tbody>

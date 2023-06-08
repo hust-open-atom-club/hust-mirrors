@@ -24,8 +24,20 @@
   padding: 4px 12px;
 }
 
-.last-update {
+.date {
   width: 200px;
+}
+
+.upstream {
+  width: 500px;
+}
+
+.size {
+  width: 100px;
+}
+
+.status {
+  width: 100px;
 }
 
 .mirror-name {
