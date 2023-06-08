@@ -7,14 +7,18 @@
   position: sticky;
   top: calc(var(--ifm-navbar-height) + 1rem);
   background: var(--ifm-background-color);
-  z-index: 999;
+  z-index: 15;
 }
 
 
 .global-option + * {
   position: sticky;
-  top: calc(var(--ifm-navbar-height) + 1rem + 240px) !important;
-  max-height: calc(100vh - (var(--ifm-navbar-height) + 2rem + 280px )) !important;
+  top: calc(var(--ifm-navbar-height) + 1rem + 200px) !important;
+  max-height: calc(100vh - (var(--ifm-navbar-height) + 2rem + 240px )) !important;
+}
+
+.global-option-mobile {
+  margin: 32px 0;
 }
 
 @media (min-width: 997px) {

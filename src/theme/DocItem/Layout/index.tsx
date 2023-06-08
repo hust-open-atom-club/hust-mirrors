@@ -51,15 +51,16 @@ export default function DocItemLayout({ children }: Props): JSX.Element {
             <DocBreadcrumbs />
             <DocVersionBadge />
             {docTOC.mobile}
+            {windowSize == 'mobile' && <GlobalOptions className={styles['global-option-mobile']}/>}
             <DocItemContent>{children}</DocItemContent>
             <DocItemFooter />
           </article>
           <DocItemPaginator />
         </div>
       </div>
-      {windowSize == 'desktop' &&
+      {(windowSize == 'desktop' || windowSize == 'ssr') &&
         <div className="col col--3">
-          <GlobalOptions className={styles['global-option']}/>
+          <GlobalOptions className={styles['global-option']} />
           {docTOC.desktop}
         </div>}
     </div>
