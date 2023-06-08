@@ -40,7 +40,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://gitee.com/dzm91_hust/hust-mirrors/'
+            'https://gitee.com/dzm91_hust/hust-mirrors/blob/master/'
         },
         blog: {
           showReadingTime: true,
@@ -84,7 +84,7 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://gitee.com/dzm91_hust/hust-mirrors/',
+            href: 'https://gitee.com/dzm91_hust/hust-mirrors/blob/master/',
             label: 'Gitee',
             position: 'right',
           },
