@@ -55,7 +55,7 @@ export default function SideBar(props: Props) {
 
         <a><h3><Translate>常用链接</Translate></h3></a>
         <p>
-          <a href='mailto:dzm91@hust.edu.cn'><Translate>联系我们：dzm91@hust.edu.cn</Translate></a>
+          <a href='mailto:mirror_support@hust.edu.cn'><Translate>联系我们: mirror_support@hust.edu.cn</Translate></a>
         </p>
         <p>
           <a href='https://mirrors.cernet.edu.cn/list'><Translate>教育网联合镜像站</Translate></a>
