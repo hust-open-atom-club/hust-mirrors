@@ -1,5 +1,7 @@
 import React from 'react'
 import styles from './index.module.css'
+import { usePluginData } from '@docusaurus/useGlobalData'
+import Link from '@docusaurus/Link';
 
 type Status = {
   name: string,
@@ -38,6 +40,15 @@ function tsToStr(ts: number) {
 
 
 export default function Table({ items: srcItems, search }: Props) {
+
+  const docPluginData = usePluginData("docusaurus-plugin-content-docs") as any;
+  const alldocs: {
+    id: string,
+    path: string,
+    sidebar: string
+  }[] = docPluginData.versions[0].docs;
+
+
   let items = srcItems.sort((a, b) => (a.name > b.name) ? 1 : -1);
   if (search) {
     items = items.filter(u => u.name.toLowerCase().indexOf(search.toLowerCase()) != -1)
@@ -65,9 +76,29 @@ export default function Table({ items: srcItems, search }: Props) {
       <tbody className={styles.tbody}>
         {items.map(u => (
           <tr key={u.name}>
-            <th className={styles['name']}>{u.name}</th>
+            <th className={styles['name']}>
+              {u.name.endsWith(".git") ?
+                <span>{u.name}</span>
+                : <Link to={`/${u.name}`}>
+                  {u.name}
+                </Link>}
+            </th>
             <th className={styles['last-update']}>{tsToStr(u.last_update_ts)}</th>
-            <th className={styles['help']}></th>
+            <th className={styles['help']}>
+              {alldocs.find(v => v.id == u.name) &&
+                <Link to={`/docs/${u.name}`}>
+                  [ 文档 ]
+                </Link>
+              }
+              {
+                u.name.endsWith(".git") &&
+                <Link to={`/docs/about-git`}>
+                  [ Git镜像 ]
+                </Link>
+              }
+
+
+            </th>
           </tr>
         ))}
       </tbody>

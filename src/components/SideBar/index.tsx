@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './index.module.css'
+import Link from '@docusaurus/Link'
 
 interface Props extends React.HTMLProps<HTMLDivElement> { }
 
@@ -34,9 +35,9 @@ export default function SideBar(props: Props) {
         <a><h3>镜像站帮助</h3></a>
         如果你不了解如何配置替换软件镜像源，
         这里提供了主流软件源的配置帮助：<br />
-        <a href='/docs'>
+        <Link to='/docs'>
           <button className={styles.button}>查看文档</button>
-        </a>
+        </Link>
         <p>
           也可以通过左边的文件列表中相应源的帮助链接跳转到帮助文档。
         </p>
