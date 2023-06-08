@@ -115,8 +115,11 @@
 }
 
 @media screen and (max-width:480px) {
-  .last-update {
+  .date {
     display: none;
+  }
+  .detail .date {
+    display: block;
   }
   .help {
     width: 200px;
