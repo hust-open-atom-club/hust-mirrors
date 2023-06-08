@@ -17,6 +17,7 @@
 
 .cli-ad-container{
   position: relative;
+  min-width: 500px;
 }
 
 .buttons {
@@ -42,7 +43,7 @@
 }
 
 .sidebar-container {
-  margin: 32px;
+  margin: 32px 32px 32px 0;
   width: 400px;
 }
 
@@ -97,14 +98,30 @@
 }
 
 
+@media screen and (max-width:1200px) {
+  .sidebar-container {
+    width: 300px;
+  }
+}
+
 @media screen and (max-width:996px) {
   .sidebar-container {
     flex-grow: 1;
+    margin: 8px;
   }
   .list-container {
     flex-wrap: wrap;
   }
   .table-container {
     margin: 0;
+  }
+  .cli-ad-container {
+    display:none;
+  }
+}
+
+@media screen and (max-width:480px){
+  .sidebar-container {
+    width: 100%;
   }
 }

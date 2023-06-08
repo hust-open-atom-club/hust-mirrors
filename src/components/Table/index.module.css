@@ -10,6 +10,11 @@
   text-align: left;
 }
 
+
+.container tr:hover{
+  background: var(--list-hover);;
+}
+
 .container th{
   border: none;
 }
@@ -20,22 +25,33 @@
 }
 
 .last-update {
-  width: 240px;
+  width: 200px;
 }
 
 
 .name {
   flex-grow: 1;
-
+  flex-basis: 0;
+  line-break: anywhere;
 }
 
 .help {
-  width: 180px;
+  width: 220px;
 }
 
+@media screen and (max-width:996px) {
+  .help {
+    width: 130px;
+  }
+}
 
-@media screen and (max-width:640px) {
+@media screen and (max-width:480px) {
   .last-update {
     display: none;
   }
+  .help {
+    width: 200px;
+  }
 }
+
+
