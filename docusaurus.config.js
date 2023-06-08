@@ -4,17 +4,17 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-const mirrorConfig = {
-  title: "华中科技大学开源镜像站",
-  desc: "欢迎来到华中科技大学开源镜像站，该站点由华中科技大学为你呈现。",
-  url: "https://hustmirror.cn"
-}
+const { config: mirrorConfig, mirrors } = require('./mirrors.config')
+
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: mirrorConfig.title,
   tagline: mirrorConfig.desc,
-  favicon: 'img/favicon.png',
+  favicon: 'img/favicon.ico',
+  customFields: {
+    mirrors
+  },
 
   // Set the production url of your site here
   url: mirrorConfig.url,
@@ -92,7 +92,7 @@ const config = {
       },
       footer: {
         style: 'light',
-        copyright: `HUSTMirror Team`,
+        copyright: `华中科技大学开源镜像站由 华中科技大学网络中心 提供支持。`
       },
       prism: {
         theme: lightCodeTheme,
