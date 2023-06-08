@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import styles from './index.module.css'
 import Link from '@docusaurus/Link';
 import Translate from '@docusaurus/Translate'
 import { DocMeta, MirrorMeta, useDocMetas, useMirrorMetas } from '@site/src/utils/mirrorUtils';
+import copy from 'copy-to-clipboard';
 
 type MirrorStatus = {
   name: string,
@@ -48,10 +49,13 @@ type MirrorNameProps = {
 
 function MirrorName({ item, docsMeta: docs, mirrorMeta: mirrors }: MirrorNameProps) {
 
+  const [copied, setCopied] = useState(false);
+  const timeoutRef = useRef<number | undefined>(undefined);
+
   const m = mirrors.find(u => u.id == item.name);
 
-  const isGit = m ? m.type == 'git' : item.name.endsWith(".git");
-  const link = m ? m.link : (
+  const isGit = (m && m.type) ? m.type == 'git' : item.name.endsWith(".git");
+  const link = (m && m.link) ? m.link : (
     isGit ? "#" : `/${item.name}`
   );
 
@@ -68,11 +72,37 @@ function MirrorName({ item, docsMeta: docs, mirrorMeta: mirrors }: MirrorNamePro
 
   const descShown = (!!m && !!m.description) || isGit;
 
+  const onLinkClick: React.MouseEventHandler = (e) => {
+    if (isGit) {
+      const gitUrl = "https://hustmirror.cn/git/" + item.name;
+      copy(gitUrl);
+      if (timeoutRef.current) {
+        window.clearTimeout(timeoutRef.current);
+      }
+      setCopied(true);
+      timeoutRef.current = window.setTimeout(
+        () => {
+          setCopied(false);
+        },
+        3000
+      );
+      e.preventDefault();
+    }
+    e.stopPropagation();
+  }
+
   return (
     <span className={styles['mirror-name']}>
-      <a onClick={e => { if (!!link) e.stopPropagation(); }} href={link}>
+      <a onClick={onLinkClick} href={link}>
         {dname}
       </a>
+      {
+        copied &&
+        <span className={styles.copied}>
+          <Translate>( 已复制 )</Translate>
+
+        </span>
+      }
       {descShown &&
         <div className={styles['desc-container']}>
           {desc}
