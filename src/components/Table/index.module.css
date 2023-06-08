@@ -29,11 +29,11 @@
 }
 
 .upstream {
-  width: 500px;
+  width: 600px;
 }
 
 .size {
-  width: 100px;
+  width: 120px;
 }
 
 .status {
@@ -98,6 +98,10 @@
   flex-grow: 1;
   flex-basis: 0;
   line-break: anywhere;
+}
+
+.detail .name {
+  min-width: 240px;
 }
 
 .help {

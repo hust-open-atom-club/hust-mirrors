@@ -4,6 +4,7 @@ import Link from '@docusaurus/Link';
 import Translate from '@docusaurus/Translate'
 import { DocMeta, MirrorMeta, useDocMetas, useMirrorMetas } from '@site/src/utils/mirrorUtils';
 import copy from 'copy-to-clipboard';
+import clsx from 'clsx';
 
 type MirrorStatus = {
   name: string,
@@ -168,7 +169,7 @@ export default function Table({ items: srcItems, search, detail }: Props) {
   const timezone = new Date().getTimezoneOffset() / -60;
 
   return (
-    <table className={styles['container']}>
+    <table className={clsx(styles['container'], detail && styles["detail"])}>
       <thead>
         <tr>
           <th className={styles['name']}>
