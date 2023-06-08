@@ -2,31 +2,23 @@ import React from 'react'
 import styles from './index.module.css'
 import Link from '@docusaurus/Link'
 import Translate from '@docusaurus/Translate'
+import { DomainMeta } from '@site/meta.config'
+import { useDomainMetas } from '@site/src/utils/mirrorUtils'
 
 interface Props extends React.HTMLProps<HTMLDivElement> { }
-
-type DomainMeta = {
-  url: string,
-  link: string,
-  desc: string
-}
-
-const domains: DomainMeta[] = [
-  { url: 'mirrors.hust.edu.cn', link: 'https://mirrors.hust.edu.cn', desc: '双栈线路' },
-  { url: 'hustmirror.cn', link: 'https://hustmirror.cn', desc: 'IPv6线路' },
-]
 
 
 function Domains({ domains }: { domains: DomainMeta[] }) {
   return <>
-    {domains.map(u => <p key={u.url} className={styles['domain-row']}><a href={u.link}>
-      {u.url}
+    {domains.map(u => <p key={u.domain} className={styles['domain-row']}><a href={u.link}>
+      {u.domain}
     </a> {u.desc} </p>
     )}
   </>
 }
 
 export default function SideBar(props: Props) {
+  const domains = useDomainMetas();
   return (
     <div {...props}>
       <div className={styles.side}>
