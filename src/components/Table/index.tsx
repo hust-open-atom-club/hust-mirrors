@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './index.module.css'
-import { usePluginData } from '@docusaurus/useGlobalData'
 import Link from '@docusaurus/Link';
 import Translate from '@docusaurus/Translate'
+import { useDocMetas } from '@site/src/utils/mirrorUtils';
 
 type Status = {
   name: string,
@@ -42,13 +42,7 @@ function tsToStr(ts: number) {
 
 export default function Table({ items: srcItems, search }: Props) {
 
-  const docPluginData = usePluginData("docusaurus-plugin-content-docs") as any;
-  const alldocs: {
-    id: string,
-    path: string,
-    sidebar: string
-  }[] = docPluginData.versions[0].docs;
-
+  const alldocs = useDocMetas();
 
   let items = srcItems.sort((a, b) => (a.name > b.name) ? 1 : -1);
   if (search) {
@@ -97,8 +91,6 @@ export default function Table({ items: srcItems, search }: Props) {
                   [ <Translate>Git镜像</Translate> ]
                 </Link>
               }
-
-
             </th>
           </tr>
         ))}
