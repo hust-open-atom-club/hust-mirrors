@@ -34,11 +34,11 @@ deb ${HTTP}://hustmirror.cn/ubuntu/ ${version} main restricted universe multiver
 ${SRC_PREFIX}deb-src ${HTTP}://hustmirror.cn/ubuntu/ ${version} main restricted universe multiverse
 deb ${HTTP}://hustmirror.cn/ubuntu/ ${version}-updates main restricted universe multiverse
 ${SRC_PREFIX}deb-src ${HTTP}://hustmirror.cn/ubuntu/ ${version}-updates main restricted universe multiverse
-deb ${HTTP}${SECURE_URL} focal-security main restricted universe multiverse
-${SRC_PREFIX}deb-src ${HTTP}${SECURE_URL} focal-security main restricted universe multiverse
+deb ${HTTP}${SECURE_URL} ${version}-security main restricted universe multiverse
+${SRC_PREFIX}deb-src ${HTTP}${SECURE_URL} ${version}-security main restricted universe multiverse
 
-${PROPOSED_PREFIX}deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
-${PROPOSED_PREFIX || SRC_PREFIX}deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+${PROPOSED_PREFIX}deb ${HTTP}://hustmirror.cn/ubuntu/ ${version}-proposed main restricted universe multiverse
+${PROPOSED_PREFIX || SRC_PREFIX}deb-src ${HTTP}://hustmirror.cn/ubuntu/ ${version}-proposed main restricted universe multiverse
 ```
 
 保存该文件至`/etc/apt/sources.list`。
