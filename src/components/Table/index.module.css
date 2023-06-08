@@ -36,6 +36,12 @@
   opacity: 1;
 }
 
+.copied {
+  font-style: italic;
+  font-size: 0.8rem;
+  margin-left: 8px;
+}
+
 .desc-container {
   position: absolute;
   display: block;
