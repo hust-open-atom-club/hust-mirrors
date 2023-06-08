@@ -35,5 +35,7 @@
 }
 
 .label-top {
+  margin: 8px 0;
   display: block;
+  font-weight: bold;
 }

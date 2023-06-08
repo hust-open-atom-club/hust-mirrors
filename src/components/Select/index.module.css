@@ -7,3 +7,9 @@
   margin: 16px 24px 16px 0;
   display: inline-block;
 }
+
+.label-top {
+  margin: 8px 0;
+  display: block;
+  font-weight: bold;
+}
