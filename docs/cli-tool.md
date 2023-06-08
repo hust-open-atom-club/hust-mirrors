@@ -1,5 +1,7 @@
 ---
 title: 命令行工具
+slug: /
+sidebar_position: 1
 ---
 
 :::danger
