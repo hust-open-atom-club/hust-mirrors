@@ -16,6 +16,6 @@ sidebar_position: 1
 可以执行下面的命令开始换源。
 
 ```bash
-curl -s https://mirrors.hust.edu.cn/get | sh
+curl -s https://hustmirror.cn/get | sh
 ```
 
