@@ -7,7 +7,7 @@ import copy from 'copy-to-clipboard';
 
 type MirrorStatus = {
   name: string,
-  is_master: string,
+  is_master: boolean,
   status: string,
   last_update: string,
   last_update_ts: number,
@@ -27,6 +27,7 @@ type Props = {
 }
 
 function tsToStr(ts: number) {
+  if (ts == 0) return "";
   const date = new Date(ts * 1000);
   const year = String(date.getFullYear()).padStart(4, '0');
   const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -39,7 +40,23 @@ function tsToStr(ts: number) {
   return formattedDate;
 }
 
-
+function metaToStatus(v: MirrorMeta): MirrorStatus {
+  return {
+    name: v.id,
+    is_master: true,
+    status: "success",
+    last_update: "",
+    last_update_ts: 0,
+    last_started: "",
+    last_started_ts: 0,
+    last_ended: "",
+    last_ended_ts: 0,
+    next_schedule: "",
+    next_schedule_ts: 0,
+    upstream: "N/A",
+    size: "N/A"
+  };
+}
 
 type MirrorNameProps = {
   item: MirrorStatus,
@@ -111,12 +128,38 @@ function MirrorName({ item, docsMeta: docs, mirrorMeta: mirrors }: MirrorNamePro
   )
 }
 
+type MirrorHelpProps = MirrorNameProps;
+
+function MirrorHelp({ item, mirrorMeta: mirrors, docsMeta: docs }: MirrorHelpProps) {
+  const m = mirrors.find(u => u.id == item.name);
+  const isGit = (m && m.type) ? m.type == 'git' : item.name.endsWith(".git");
+  const helpid = (m && m.helpID) ? m.helpID : item.name;
+
+  return <>
+    {docs.find(v => v.id == helpid) &&
+      <Link to={`/docs/${item.name}`}>
+        [ <Translate>帮助文档</Translate> ]
+      </Link>
+    }
+    {
+      isGit &&
+      <Link to={`/docs/about-git`}>
+        [ <Translate>Git 镜像</Translate> ]
+      </Link>
+    }
+  </>
+}
+
 export default function Table({ items: srcItems, search }: Props) {
 
   const alldocs = useDocMetas();
   const mirrorMeta = useMirrorMetas();
 
-  let items = srcItems.sort((a, b) => (a.name > b.name) ? 1 : -1);
+  let items = srcItems.concat( // combine force to shown meta data.
+    mirrorMeta.filter(u => u.forceShown && srcItems.find(v => v.name == u.id) == undefined)
+      .map(u => metaToStatus(u))
+  ).sort((a, b) => (a.name > b.name) ? 1 : -1);
+
   if (search) {
     items = items.filter(u => u.name.toLowerCase().indexOf(search.toLowerCase()) != -1)
   }
@@ -147,17 +190,7 @@ export default function Table({ items: srcItems, search }: Props) {
             </th>
             <th className={styles['last-update']}>{tsToStr(u.last_update_ts)}</th>
             <th className={styles['help']}>
-              {alldocs.find(v => v.id == u.name) &&
-                <Link to={`/docs/${u.name}`}>
-                  [ <Translate>帮助文档</Translate> ]
-                </Link>
-              }
-              {
-                u.name.endsWith(".git") &&
-                <Link to={`/docs/about-git`}>
-                  [ <Translate>Git 镜像</Translate> ]
-                </Link>
-              }
+              <MirrorHelp item={u} docsMeta={alldocs} mirrorMeta={mirrorMeta} />
             </th>
           </tr>
         ))}
