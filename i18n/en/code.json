@@ -291,11 +291,17 @@
   "也可以通过左边的文件列表中相应源的帮助链接跳转到帮助文档。": {
     "message": "You can also jump to the help document through the help link of the corresponding source in the file list on the left."
   },
-  "常用链接": {
-    "message": "Links"
+  "友情链接": {
+    "message": "Link exchange"
   },
-  "联系我们：dzm91@hust.edu.cn": {
-    "message": "Contact us：dzm91@hust.edu.cn"
+  "发送邮件": {
+    "message": "Send Email"
+  },
+  "提交问题": {
+    "message": "Submit issue"
+  },
+  "联系我们": {
+    "message": "Contact us"
   },
   "教育网联合镜像站": {
     "message": "Mirrorz-org"

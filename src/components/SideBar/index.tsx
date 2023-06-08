@@ -53,10 +53,15 @@ export default function SideBar(props: Props) {
           </Translate>
         </p>
 
-        <a><h3><Translate>常用链接</Translate></h3></a>
+        <a><h3><Translate>联系我们</Translate></h3></a>
         <p>
-          <a href='mailto:mirror_support@hust.edu.cn'><Translate>联系我们: mirror_support@hust.edu.cn</Translate></a>
+	  <a href="https://gitee.com/dzm91_hust/hust-mirrors/issues"><Translate>提交问题</Translate></a>
         </p>
+        <p>
+          <a href='mailto:mirror_support@hust.edu.cn'><Translate>发送邮件</Translate></a>
+        </p>
+
+        <a><h3><Translate>友情链接</Translate></h3></a>
         <p>
           <a href='https://mirrors.cernet.edu.cn/list'><Translate>教育网联合镜像站</Translate></a>
         </p>
