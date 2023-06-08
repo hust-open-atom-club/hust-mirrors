@@ -2,9 +2,9 @@ import React from 'react'
 import styles from './index.module.css'
 import Link from '@docusaurus/Link';
 import Translate from '@docusaurus/Translate'
-import { useDocMetas } from '@site/src/utils/mirrorUtils';
+import { DocMeta, MirrorMeta, useDocMetas, useMirrorMetas } from '@site/src/utils/mirrorUtils';
 
-type Status = {
+type MirrorStatus = {
   name: string,
   is_master: string,
   status: string,
@@ -21,7 +21,7 @@ type Status = {
 }
 
 type Props = {
-  items: Status[],
+  items: MirrorStatus[],
   search?: string
 }
 
@@ -40,15 +40,56 @@ function tsToStr(ts: number) {
 
 
 
+type MirrorNameProps = {
+  item: MirrorStatus,
+  docsMeta: DocMeta[],
+  mirrorMeta: MirrorMeta[]
+}
+
+function MirrorName({ item, docsMeta: docs, mirrorMeta: mirrors }: MirrorNameProps) {
+
+  const m = mirrors.find(u => u.id == item.name);
+
+  const isGit = m ? m.type == 'git' : item.name.endsWith(".git");
+  const link = m ? m.link : (
+    isGit ? "#" : `/${item.name}`
+  );
+
+  const dname = (m && m.displayName) ? m.displayName : item.name;
+
+  let desc = <div>
+    {m && m.description &&
+      <p>{m.description}</p>}
+
+    {isGit &&
+      <p className={styles['git-desc']}> <Translate>该仓库为Git仓库，点击链接复制clone url。</Translate></p>
+    }
+  </div>;
+
+  const descShown = (!!m && !!m.description) || isGit;
+
+  return (
+    <span className={styles['mirror-name']}>
+      <a onClick={e => { if (!!link) e.stopPropagation(); }} href={link}>
+        {dname}
+      </a>
+      {descShown &&
+        <div className={styles['desc-container']}>
+          {desc}
+        </div>}
+    </span>
+  )
+}
+
 export default function Table({ items: srcItems, search }: Props) {
 
   const alldocs = useDocMetas();
+  const mirrorMeta = useMirrorMetas();
 
   let items = srcItems.sort((a, b) => (a.name > b.name) ? 1 : -1);
   if (search) {
     items = items.filter(u => u.name.toLowerCase().indexOf(search.toLowerCase()) != -1)
   }
-
 
   const timezone = new Date().getTimezoneOffset() / -60;
 
@@ -72,11 +113,7 @@ export default function Table({ items: srcItems, search }: Props) {
         {items.map(u => (
           <tr key={u.name}>
             <th className={styles['name']}>
-              {u.name.endsWith(".git") ?
-                <span>{u.name}</span>
-                : <a onClick={e => e.stopPropagation()} href={`/${u.name}`}>
-                  {u.name}
-                </a>}
+              <MirrorName item={u} docsMeta={alldocs} mirrorMeta={mirrorMeta} />
             </th>
             <th className={styles['last-update']}>{tsToStr(u.last_update_ts)}</th>
             <th className={styles['help']}>

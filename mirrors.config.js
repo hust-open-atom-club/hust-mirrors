@@ -3,6 +3,7 @@
  * id: string; 
  * type?: 'normal' | 'git';
  * description?: string;
+ * displayName?: string;
  * forceShown?: boolean;
  * link?: string;
  * helpID?: string;

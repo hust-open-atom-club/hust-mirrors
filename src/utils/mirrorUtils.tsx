@@ -4,6 +4,7 @@ import { usePluginData } from '@docusaurus/useGlobalData';
 export type MirrorMeta = {
   id: string;
   type?: 'normal' | 'git';
+  displayName?: string;
   description?: string;
   forceShown?: boolean;
   link?: string;
