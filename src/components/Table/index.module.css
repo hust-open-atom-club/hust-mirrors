@@ -48,6 +48,10 @@
   opacity: 1;
 }
 
+.detail .desc-container {
+  display: none;
+}
+
 .copied {
   font-style: italic;
   font-size: 0.8rem;
