@@ -20,25 +20,23 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
 ```bash varcode
 [ ] (version) { jammy:22.04 LTS, lunar:23.04, kinetic:22.10, focal:20.04 LTS, bionic:18.04 LTS, xenial:16.04 LTS, trusty:14.04 LTS } Ubuntu版本
-[x] (https) 是否使用HTTPS
 [x] (secure) 使用官方安全更新软件源： 
 [-] (proposed) 启用预发布软件源
 [-] (src) 启用源码镜像
 ---
-const HTTP = https ? "https" : "http";
 const SRC_PREFIX = src ? "" : "# ";
 const PROPOSED_PREFIX = proposed ? "" : "# ";
 const SECURE_URL = secure ? '://security.ubuntu.com/ubuntu/' : '://hustmirror.cn/ubuntu/';
 ---
-deb ${HTTP}://hustmirror.cn/ubuntu/ ${version} main restricted universe multiverse
-${SRC_PREFIX}deb-src ${HTTP}://hustmirror.cn/ubuntu/ ${version} main restricted universe multiverse
-deb ${HTTP}://hustmirror.cn/ubuntu/ ${version}-updates main restricted universe multiverse
-${SRC_PREFIX}deb-src ${HTTP}://hustmirror.cn/ubuntu/ ${version}-updates main restricted universe multiverse
-deb ${HTTP}${SECURE_URL} ${version}-security main restricted universe multiverse
-${SRC_PREFIX}deb-src ${HTTP}${SECURE_URL} ${version}-security main restricted universe multiverse
+deb ${_http}://${_domain}/ubuntu/ ${version} main restricted universe multiverse
+${SRC_PREFIX}deb-src ${_http}://${_domain}/ubuntu/ ${version} main restricted universe multiverse
+deb ${_http}://${_domain}/ubuntu/ ${version}-updates main restricted universe multiverse
+${SRC_PREFIX}deb-src ${_http}://${_domain}/ubuntu/ ${version}-updates main restricted universe multiverse
+deb ${_http}${SECURE_URL} ${version}-security main restricted universe multiverse
+${SRC_PREFIX}deb-src ${_http}${SECURE_URL} ${version}-security main restricted universe multiverse
 
-${PROPOSED_PREFIX}deb ${HTTP}://hustmirror.cn/ubuntu/ ${version}-proposed main restricted universe multiverse
-${PROPOSED_PREFIX || SRC_PREFIX}deb-src ${HTTP}://hustmirror.cn/ubuntu/ ${version}-proposed main restricted universe multiverse
+${PROPOSED_PREFIX}deb ${_http}://${_domain}/ubuntu/ ${version}-proposed main restricted universe multiverse
+${PROPOSED_PREFIX || SRC_PREFIX}deb-src ${_http}://${_domain}/ubuntu/ ${version}-proposed main restricted universe multiverse
 ```
 
 保存该文件至`/etc/apt/sources.list`。
