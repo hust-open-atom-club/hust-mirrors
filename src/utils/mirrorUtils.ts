@@ -1,15 +1,6 @@
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { usePluginData } from '@docusaurus/useGlobalData';
-
-export type MirrorMeta = {
-  id: string;
-  type?: 'normal' | 'git';
-  displayName?: string;
-  description?: string;
-  forceShown?: boolean;
-  link?: string;
-  helpID?: string;
-};
+import type { DomainMeta, MirrorMeta } from '@site/meta.config';
+import meta from '@site/meta.config';
 
 export type DocMeta = {
   id: string;
@@ -17,39 +8,22 @@ export type DocMeta = {
   sidebar: string;
 }
 
-
-export type DomainMeta = {
-  domain: string;
-  desc: string;
-}
-
 /**
- * Hook function, to get mirror metas.
+ * Get mirror metas.
  * @returns mirror metas.
  */
 export function useMirrorMetas(): MirrorMeta[] {
-  const {
-    siteConfig: {
-      customFields: fields
-    }
-  } = useDocusaurusContext();
-  return fields.mirrors as MirrorMeta[];
+  return meta.mirrors;
 }
 
-
 /**
- * Hook function, to get domain metas.
+ * Get domain metas.
  * @returns domain metas.
  */
 export function useDomainMetas(): DomainMeta[] {
-  const {
-    siteConfig: {
-      customFields: fields
-    }
-  } = useDocusaurusContext();
-  return fields.domains as DomainMeta[];
+  console.log(meta);
+  return meta.domains;
 }
-
 
 /**
  * Hook function, to get all docs.
