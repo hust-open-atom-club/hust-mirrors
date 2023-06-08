@@ -87,7 +87,7 @@ export default function Table({ items: srcItems, search }: Props) {
             <th className={styles['help']}>
               {alldocs.find(v => v.id == u.name) &&
                 <Link to={`/docs/${u.name}`}>
-                  [ 文档 ]
+                  [ 帮助文档 ]
                 </Link>
               }
               {
