@@ -12,17 +12,17 @@ type Props = {
   items: SelectItem[],
   value: string,
   onChange: (value: string) => void
+  labelTop?: boolean;
 }
 
-export default ({ label, value, onChange, items }: Props) => {
+export default ({ label, value, onChange, items, labelTop }: Props) => {
   return (
     <div>
       <span className={styles.label}>{label}</span>
       <Select<SelectItem>
         value={items.find(u => u.value == value)}
         classNames={{
-          container: () => styles.container,
-
+          container: () => labelTop ? "" : styles.container,
         }}
         onChange={(value) => { onChange(value.value); }}
         options={items}
@@ -32,7 +32,6 @@ export default ({ label, value, onChange, items }: Props) => {
             ...theme.colors,
             primary: 'var(--ifm-color-primary)',
           }
-
         })}
       >
       </Select>
