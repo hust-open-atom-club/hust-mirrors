@@ -43,7 +43,7 @@ export default function SideBar(props: Props) {
         <Link to='/docs'>
           <button className={styles.button}>
             <Translate>
-              查看文档
+              查看帮助文档
             </Translate>
           </button>
         </Link>
