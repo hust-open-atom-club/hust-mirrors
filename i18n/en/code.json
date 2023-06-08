@@ -269,5 +269,50 @@
   "theme.tags.tagsPageTitle": {
     "message": "Tags",
     "description": "The title of the tag list page"
+  },
+  "按下 / 开始搜索": {
+    "message": "Press / to search"
+  },
+  "通过命令行使用": {
+    "message": "Use cli tool"
+  },
+  "域名选择": {
+    "message": "Choose domain"
+  },
+  "镜像站帮助": {
+    "message": "Mirror help"
+  },
+  "如果你不了解如何配置替换软件镜像源， 这里提供了主流软件源的配置帮助：": {
+    "message": "If you don't know how to configure an alternative software mirror source, here is configuration help for mainstream software sources"
+  },
+  "查看文档": {
+    "message": "Show docs"
+  },
+  "也可以通过左边的文件列表中相应源的帮助链接跳转到帮助文档。": {
+    "message": "You can also jump to the help document through the help link of the corresponding source in the file list on the left."
+  },
+  "常用链接": {
+    "message": "Links"
+  },
+  "联系我们：dzm91@hust.edu.cn": {
+    "message": "Contact us：dzm91@hust.edu.cn"
+  },
+  "教育网联合镜像站": {
+    "message": "Mirrorz-org"
+  },
+  "镜像名称": {
+    "message": "Mirror"
+  },
+  "上次更新": {
+    "message": "Last update"
+  },
+  "帮助": {
+    "message": "Help"
+  },
+  "文档": {
+    "message": "Docs"
+  },
+  "Git镜像": {
+    "message": "Git mirror"
   }
 }

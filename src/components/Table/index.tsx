@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './index.module.css'
 import { usePluginData } from '@docusaurus/useGlobalData'
 import Link from '@docusaurus/Link';
+import Translate from '@docusaurus/Translate'
 
 type Status = {
   name: string,
@@ -62,13 +63,13 @@ export default function Table({ items: srcItems, search }: Props) {
       <thead>
         <tr>
           <th className={styles['name']}>
-            镜像名称
+            <Translate>镜像名称</Translate>
           </th>
           <th className={styles['last-update']}>
-            上次更新 (UTC{timezone > 0 && '+'}{timezone})
+            <Translate>上次更新</Translate> (UTC{timezone > 0 && '+'}{timezone})
           </th>
           <th className={styles['help']}>
-            帮助
+            <Translate>帮助</Translate>
           </th>
         </tr>
 
@@ -79,21 +80,21 @@ export default function Table({ items: srcItems, search }: Props) {
             <th className={styles['name']}>
               {u.name.endsWith(".git") ?
                 <span>{u.name}</span>
-                : <Link to={`/${u.name}`}>
+                : <a onClick={e => e.stopPropagation()} href={`/${u.name}`}>
                   {u.name}
-                </Link>}
+                </a>}
             </th>
             <th className={styles['last-update']}>{tsToStr(u.last_update_ts)}</th>
             <th className={styles['help']}>
               {alldocs.find(v => v.id == u.name) &&
                 <Link to={`/docs/${u.name}`}>
-                  [ 帮助文档 ]
+                  [ <Translate>帮助文档</Translate> ]
                 </Link>
               }
               {
                 u.name.endsWith(".git") &&
                 <Link to={`/docs/about-git`}>
-                  [ Git镜像 ]
+                  [ <Translate>Git镜像</Translate> ]
                 </Link>
               }
 

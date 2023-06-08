@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-
+import Translate, { translate } from '@docusaurus/Translate'
 import styles from './index.module.css';
 import Table from '../components/Table';
 import SideBar from '../components/SideBar';
@@ -40,7 +40,9 @@ function HomepageHeader({
           <h1 className={`hero__title ${styles.left}`}>{siteConfig.title}</h1>
           <p className={`hero__subtitle ${styles.left}`}>{siteConfig.tagline}</p>
           <input ref={inputRef} value={searchValue} onChange={(e) => { onSearchValueChange(e.target.value) }}
-            className={`${styles.left} ${styles.search}`} placeholder={"按下 / 开始搜索"} />
+            className={`${styles.left} ${styles.search}`} placeholder={translate({
+              message: "按下 / 开始搜索"
+            })} />
         </div>
         <div className={styles['cli-ad-container']}>
           <img className={styles['banner-img']} src='/img/cli.png' />
@@ -48,8 +50,8 @@ function HomepageHeader({
           <div className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
-              to="/docs/cli-tool">
-              通过命令行使用
+              to="/docs">
+              <Translate>通过命令行使用</Translate>
             </Link>
           </div>
 
