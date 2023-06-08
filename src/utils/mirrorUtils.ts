@@ -21,7 +21,6 @@ export function useMirrorMetas(): MirrorMeta[] {
  * @returns domain metas.
  */
 export function useDomainMetas(): DomainMeta[] {
-  console.log(meta);
   return meta.domains;
 }
 
