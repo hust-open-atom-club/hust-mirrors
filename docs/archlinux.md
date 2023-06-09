@@ -13,7 +13,7 @@ Pacman 以 `mirrorlist` 中 Server 的顺序作为优先级，因此添加镜像
 编辑 `/etc/pacman.d/mirrorlist`，在文件的最顶端添加：
 
 ```bash varcode
-Server = ${_http}://${_domain}.cn/archlinux/$repo/os/$arch
+Server = ${_http}://${_domain}/archlinux/$repo/os/$arch
 ```
 
 更新软件包缓存：
