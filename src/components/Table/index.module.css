@@ -136,6 +136,10 @@
   background: var(--ifm-color-info-contrast-background) !important;
 }
 
+.help-link {
+  white-space: nowrap;
+}
+
 @media screen and (max-width:996px) {
   .help {
     width: 130px;

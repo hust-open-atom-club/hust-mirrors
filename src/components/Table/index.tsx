@@ -139,13 +139,13 @@ function MirrorHelp({ item, mirrorMeta: mirrors, docsMeta: docs }: MirrorHelpPro
 
   return <>
     {docs.find(v => v.id == helpid) &&
-      <Link to={`/docs/${item.name}`}>
+      <Link className={styles['help-link']} to={`/docs/${item.name}`}>
         [ <Translate id='mirror.table.help'>帮助文档</Translate> ]
       </Link>
     }
     {
       isGit &&
-      <Link to={`/docs/about-git`}>
+      <Link className={styles['help-link']} to={`/docs/about-git`}>
         [ <Translate id='mirror.table.git'>关于Git</Translate> ]
       </Link>
     }
