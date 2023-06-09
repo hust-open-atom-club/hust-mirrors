@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import { translate } from '@docusaurus/Translate'
+import Translate, { translate } from '@docusaurus/Translate'
 import styles from './release.module.css';
 import GlobalOptions from '../components/DocGlobalOptions/index';
 import Tabs from '@theme/Tabs'
@@ -160,7 +160,7 @@ export default function Home(): JSX.Element {
             </Tabs>
             <a target="_blank" href={link}>
               <button className='button button-lg button--primary'>
-                使用浏览器下载
+                <Translate id='mirror.release.browserDownload'>通过浏览器下载</Translate>
               </button>
             </a>
           </div>

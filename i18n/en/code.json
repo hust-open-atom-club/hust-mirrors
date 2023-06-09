@@ -401,5 +401,8 @@
   },
   "mirror.server.status": {
     "message": "Status"
+  },
+  "mirror.release.browserDownload": {
+    "message": "Browser Download"
   }
 }
