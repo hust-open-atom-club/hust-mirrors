@@ -30,7 +30,7 @@ git remote set-url origin ${_http}://${_domain}/git/linux.git
 
 以树莓派为例，具体操作为
 
-```bash
+```bash varcode
 git clone ${_http}://${_domain}/git/linux.git
 git remote add rasp https://github.com/raspberrypi/linux.git
 git fetch rasp

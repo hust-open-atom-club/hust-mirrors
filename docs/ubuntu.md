@@ -26,7 +26,7 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 ---
 const SRC_PREFIX = src ? "" : "# ";
 const PROPOSED_PREFIX = proposed ? "" : "# ";
-const SECURE_URL = secure ? '://security.ubuntu.com/ubuntu/' : '://hustmirror.cn/ubuntu/';
+const SECURE_URL = secure ? '://security.ubuntu.com/ubuntu/' : `://${_domain}/ubuntu/`;
 ---
 deb ${_http}://${_domain}/ubuntu/ ${version} main restricted universe multiverse
 ${SRC_PREFIX}deb-src ${_http}://${_domain}/ubuntu/ ${version} main restricted universe multiverse
