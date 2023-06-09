@@ -143,12 +143,6 @@ function MirrorHelp({ item, mirrorMeta: mirrors, docsMeta: docs }: MirrorHelpPro
         [ <Translate id='mirror.table.help'>帮助文档</Translate> ]
       </Link>
     }
-    {
-      isGit &&
-      <Link className={styles['help-link']} to={`/docs/about-git`}>
-        [ <Translate id='mirror.table.git'>关于Git</Translate> ]
-      </Link>
-    }
   </>
 }
 
