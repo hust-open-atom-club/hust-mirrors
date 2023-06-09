@@ -1,4 +1,10 @@
+---
+title: Ubuntu 镜像使用帮助
+sidebar_label: Ubuntu
+---
 # Ubuntu
+
+## 替换文件
 
 本镜像仅包含32/64位 x86 架构处理器的软件包，
 在ARM(arm64, armhf)、PowerPC(ppc64el)、RISC - V(riscv64) 和
@@ -7,8 +13,12 @@ S390x等架构的设备上（对应官方源为 ports.ubuntu.com）
 
 Ubuntu 的软件源配置文件是 `/etc/apt/sources.list`。
 为避免替换后出现问题，可以先将系统自带的该文件做个备份。
-```
-sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+```bash varcode
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}cp /etc/apt/sources.list /etc/apt/sources.list.bak
 ```
 
 然后将该文件替换为下面内容，即可使用选择的软件源镜像。
@@ -19,8 +29,8 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
 
 ```bash varcode
-[ ] (version) { jammy:22.04 LTS, lunar:23.04, kinetic:22.10, focal:20.04 LTS, bionic:18.04 LTS, xenial:16.04 LTS, trusty:14.04 LTS } Ubuntu版本
-[x] (secure) 使用官方安全更新软件源： 
+[ ] (version) { jammy:22.04 LTS, lunar:23.04, kinetic:22.10, focal:20.04 LTS, bionic:18.04 LTS, xenial:16.04 LTS, trusty:14.04 LTS } Ubuntu 版本
+[x] (secure) 使用官方安全更新软件源 
 [ ] (proposed) 启用预发布软件源
 [ ] (src) 启用源码镜像
 ---
@@ -52,14 +62,21 @@ ${PROPOSED_PREFIX || SRC_PREFIX}deb-src ${_http}://${_domain}/ubuntu/ ${version}
 
 可以使用如下命令：
 
-```bash varcode
-sudo sed -i 's@//.*archive.ubuntu.com@//${_domain}@g' /etc/apt/sources.list
+```shell varcode
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}sed -i.bak 's|//.*archive.ubuntu.com|//${_domain}|g' /etc/apt/sources.list
 ```
 
 本方法没有替换 security 源，如果想要替换 security 源可以执行以下命令：
-
-```bash varcode
-sudo sed -i 's/security.ubuntu.com/${_domain}/g' /etc/apt/sources.list
+```shell varcode
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}sed -i.bak 's/security.ubuntu.com/${_domain}/g' /etc/apt/sources.list
 ```
 
 > 本方法借鉴了[中科大镜像源使用帮助](https://mirrors.ustc.edu.cn/help/ubuntu.html)

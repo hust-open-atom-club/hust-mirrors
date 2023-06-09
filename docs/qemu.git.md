@@ -1,6 +1,7 @@
 ---
 title: QEMU Git 镜像使用帮助
 cname: 'qemu.git'
+sidebar_label: QEMU
 ---
 
 ## 实验性脚本（仅 TUNA 提供）
