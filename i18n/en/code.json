@@ -365,5 +365,41 @@
   },
   "mirror.index.cli": {
     "message": "Get CLI tool"
+  },
+  "mirror.release": {
+    "message": "Get Release ISO"
+  },
+  "mirror.release.select": {
+    "message": "Select..."
+  },
+  "mirror.release.chooseRelease": {
+    "message": "Choose release"
+  },
+  "mirror.release.chooseVersion": {
+    "message": "Choose version"
+  },
+  "mirror.release.chooseVariable": {
+    "message": "Choose variant"
+  },
+  "mirror.release.useCurl": {
+    "message": "Download by curl"
+  },
+  "mirror.release.useWget": {
+    "message": "Download by wget"
+  },
+  "mirror.release.link": {
+    "message": "Copy address only"
+  },
+  "mirror.sidebar.release": {
+    "message": "Image download"
+  },
+  "mirror.sidebar.releaseDesc": {
+    "message": "Here are the installation images/ISO files of some distributions, please choose according to your distribution and its detailed version:"
+  },
+  "mirror.sidebar.goRelease": {
+    "message": "Download release"
+  },
+  "mirror.server.status": {
+    "message": "Status"
   }
 }
