@@ -34,9 +34,12 @@ export default function Home(): JSX.Element {
 
   return (
     <Layout
-      title={translate({
-        message: "服务器状态"
-      })}
+      title={translate(
+        {
+          id: 'mirror.server.status',
+          message: "服务器状态"
+        })
+      }
 
       description="all mirror status on server">
       <div className={styles['container']}>

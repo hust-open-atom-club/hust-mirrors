@@ -7,13 +7,14 @@ import Translate, { translate } from '@docusaurus/Translate'
 import styles from './index.module.css';
 import Table from '../components/Table';
 import SideBar from '../components/SideBar';
+import mirrorConfig from '@site/mirrors.config';
 
 function HomepageHeader({
   searchValue, onSearchValueChange
 }: {
   searchValue: string, onSearchValueChange: (value: string) => void
 }) {
-  const { siteConfig } = useDocusaurusContext();
+
 
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -37,21 +38,37 @@ function HomepageHeader({
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className={styles['header-container']}>
         <div className={styles['main-part']}>
-          <h1 className={`hero__title ${styles.left}`}>{siteConfig.title}</h1>
-          <p className={`hero__subtitle ${styles.left}`}>{siteConfig.tagline}</p>
+          <h1 className={`hero__title ${styles.left}`}>
+            {translate({
+              id: 'mirror.title',
+              message: mirrorConfig.mainTitle
+            })}
+          </h1>
+          <p className={`hero__subtitle ${styles.left}`}>
+            {translate({
+              id: 'mirror.welcome',
+              message: mirrorConfig.welcome
+            })}
+          </p>
           <input ref={inputRef} value={searchValue} onChange={(e) => { onSearchValueChange(e.target.value) }}
+            onKeyDown={(e) => {
+              if (e.key == 'Escape') {
+                inputRef.current?.blur();
+                onSearchValueChange("");
+              }
+            }}
             className={`${styles.left} ${styles.search}`} placeholder={translate({
+              id: 'mirror.index.searchHint',
               message: "按下 / 开始搜索"
             })} />
         </div>
         <div className={styles['cli-ad-container']}>
           <img className={styles['banner-img']} src='/img/cli.png' />
-
           <div className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
               to="/docs">
-              <Translate>通过命令行使用</Translate>
+              <Translate id='mirror.index.cli'>通过命令行使用</Translate>
             </Link>
           </div>
 

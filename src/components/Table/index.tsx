@@ -86,7 +86,7 @@ function MirrorName({ item, docsMeta: docs, mirrorMeta: mirrors }: MirrorNamePro
       <p>{m.description}</p>}
 
     {isGit &&
-      <p className={styles['git-desc']}> <Translate>该仓库为Git仓库，点击链接复制clone url。</Translate></p>
+      <p className={styles['git-desc']}> <Translate id='mirror.table.gitHint'>该仓库为Git仓库，点击链接复制clone url。</Translate></p>
     }
   </div>;
 
@@ -119,8 +119,7 @@ function MirrorName({ item, docsMeta: docs, mirrorMeta: mirrors }: MirrorNamePro
       {
         copied &&
         <span className={styles.copied}>
-          <Translate>( 已复制 )</Translate>
-
+          <Translate id='mirror.table.copied'>( 已复制 )</Translate>
         </span>
       }
       {descShown &&
@@ -141,13 +140,13 @@ function MirrorHelp({ item, mirrorMeta: mirrors, docsMeta: docs }: MirrorHelpPro
   return <>
     {docs.find(v => v.id == helpid) &&
       <Link to={`/docs/${item.name}`}>
-        [ <Translate>帮助文档</Translate> ]
+        [ <Translate id='mirror.table.help'>帮助文档</Translate> ]
       </Link>
     }
     {
       isGit &&
       <Link to={`/docs/about-git`}>
-        [ <Translate>Git 镜像</Translate> ]
+        [ <Translate id='mirror.table.git'>Git 镜像</Translate> ]
       </Link>
     }
   </>
@@ -174,28 +173,28 @@ export default function Table({ items: srcItems, search, detail }: Props) {
       <thead>
         <tr>
           <th className={styles['name']}>
-            <Translate>镜像名称</Translate>
+            <Translate id='mirror.tableMeta.name'>镜像名称</Translate>
           </th>
           <th className={styles['date']}>
-            <Translate>上次更新</Translate> (UTC{timezone > 0 && '+'}{timezone})
+            <Translate id='mirror.tableMeta.lastUpdate'>上次更新</Translate> (UTC{timezone > 0 && '+'}{timezone})
           </th>
           {detail && <th className={styles['date']}>
-            <Translate>上次开始</Translate> (UTC{timezone > 0 && '+'}{timezone})
+            <Translate id='mirror.tableMeta.lastStart'>上次开始</Translate> (UTC{timezone > 0 && '+'}{timezone})
           </th>}
           {detail && <th className={styles['date']}>
-            <Translate>上次结束</Translate> (UTC{timezone > 0 && '+'}{timezone})
+            <Translate id='mirror.tableMeta.lastEnd'>上次结束</Translate> (UTC{timezone > 0 && '+'}{timezone})
           </th>}
           {detail && <th className={styles['status']}>
-            <Translate>同步状态</Translate>
+            <Translate id='mirror.tableMeta.status'>同步状态</Translate>
           </th>}
           {detail && <th className={styles['upstream']}>
-            <Translate>上游链接</Translate>
+            <Translate id='mirror.tableMeta.upstream'>上游链接</Translate>
           </th>}
           {detail && <th className={styles['size']}>
-            <Translate>镜像大小</Translate>
+            <Translate id='mirror.tableMeta.size'>镜像大小</Translate>
           </th>}
           {!detail && <th className={styles['help']}>
-            <Translate>帮助</Translate>
+            <Translate id='mirror.tableMeta.help'>帮助</Translate>
           </th>}
         </tr>
 

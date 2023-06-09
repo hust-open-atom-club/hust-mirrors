@@ -270,55 +270,100 @@
     "message": "Tags",
     "description": "The title of the tag list page"
   },
-  "按下 / 开始搜索": {
+  "mirror.index.searchHint": {
     "message": "Press / to search"
   },
-  "通过命令行使用": {
-    "message": "Use cli tool"
+  "mirror.globalOption.selectDomain": {
+    "message": "Choose your prefered domain"
   },
-  "域名选择": {
-    "message": "Choose domain"
+  "mirror.globalOption.domainDescPrefix": {
+    "message": "This domain is"
   },
-  "镜像站帮助": {
+  "mirror.globalOption.selectHttp": {
+    "message": "Enable HTTPS"
+  },
+  "mirror.sidebar.chooseDomain": {
+    "message": "Choose Domain"
+  },
+  "mirror.sidebar.help": {
     "message": "Mirror help"
   },
-  "如果你不了解如何配置替换软件镜像源， 这里提供了主流软件源的配置帮助：": {
+  "mirror.sidebar.helpDesc": {
     "message": "If you don't know how to configure an alternative software mirror source, here is configuration help for mainstream software sources"
   },
-  "查看帮助文档": {
+  "mirror.sidebar.docs": {
     "message": "Show help docs"
   },
-  "也可以通过左边的文件列表中相应源的帮助链接跳转到帮助文档。": {
+  "mirror.sidebar.docsDesc": {
     "message": "You can also jump to the help document through the help link of the corresponding source in the file list on the left."
   },
-  "友情链接": {
-    "message": "Link exchange"
-  },
-  "发送邮件": {
-    "message": "Send Email"
-  },
-  "提交问题": {
-    "message": "Submit issue"
-  },
-  "联系我们": {
+  "mirror.sidebar.contactus": {
     "message": "Contact us"
   },
-  "教育网联合镜像站": {
+  "mirror.sidebar.submit": {
+    "message": "Submit issue"
+  },
+  "mirror.sidebar.sendemail": {
+    "message": "Send Email"
+  },
+  "mirror.sidebar.links": {
+    "message": "Link exchange"
+  },
+  "mirror.sidebar.status": {
+    "message": "Server Status"
+  },
+  "mirror.sidebar.mirrorz": {
     "message": "Mirrorz-org"
   },
-  "镜像名称": {
-    "message": "Mirror"
+  "mirror.table.gitHint": {
+    "message": "This is a git repo, click to copy URL."
   },
-  "上次更新": {
-    "message": "Last update"
+  "mirror.table.copied": {
+    "message": "( Copied )"
   },
-  "帮助": {
+  "mirror.table.help": {
     "message": "Help"
   },
-  "文档": {
-    "message": "Docs"
-  },
-  "Git 镜像": {
+  "mirror.table.git": {
     "message": "Git mirror"
+  },
+  "mirror.tableMeta.name": {
+    "message": "Name"
+  },
+  "mirror.tableMeta.status": {
+    "message": "Status"
+  },
+  "mirror.tableMeta.lastUpdate": {
+    "message": "Last update"
+  },
+  "mirror.tableMeta.lastStart": {
+    "message": "Last start"
+  },
+  "mirror.tableMeta.lastEnd": {
+    "message": "Last end"
+  },
+  "mirror.tableMeta.upstream": {
+    "message": "Upstream"
+  },
+  "mirror.tableMeta.size": {
+    "message": "Size"
+  },
+  "mirror.tableMeta.help": {
+    "message": "Help"
+  },
+  "mirror.welcome": {
+    "message": "Welcome to HUST open source software mirror. Brought to you by Huazhong University of Science and Technology."
+  },
+  "mirror.title": {
+    "message": "HUST Mirror"
+  },
+  "mirror.domain.1": {
+    "message": "Dual stack"
+  },
+  "mirror.domain.2": {
+    "message": "IPv4 Only"
+  },
+  "mirror.index.cli": {
+    "message": "Get CLI tool"
   }
 }
