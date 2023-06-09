@@ -9,6 +9,7 @@ const plugin = (_) => {
       if (node.type == "code" && node.meta == 'varcode') {
         /** @type {string} */
         const code = node.value;
+        const lang = node.lang;
         const blocks = code.split("---\n")
         let optionBlock, transformBlock, codeBlock;
         if (blocks.length == 2) {
@@ -82,7 +83,7 @@ const plugin = (_) => {
 
         newAsts.push({
           type: "jsx",
-          value: `<CodeBlockWithVariables code={code_${idCode}} options={options_${idOption}} />`,
+          value: `<CodeBlockWithVariables code={code_${idCode}} options={options_${idOption}} blockProps={{language: '${lang}'}}/>`,
           position: node.position
         })
 
