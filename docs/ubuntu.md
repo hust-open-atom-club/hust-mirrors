@@ -21,8 +21,8 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 ```bash varcode
 [ ] (version) { jammy:22.04 LTS, lunar:23.04, kinetic:22.10, focal:20.04 LTS, bionic:18.04 LTS, xenial:16.04 LTS, trusty:14.04 LTS } Ubuntu版本
 [x] (secure) 使用官方安全更新软件源： 
-[-] (proposed) 启用预发布软件源
-[-] (src) 启用源码镜像
+[ ] (proposed) 启用预发布软件源
+[ ] (src) 启用源码镜像
 ---
 const SRC_PREFIX = src ? "" : "# ";
 const PROPOSED_PREFIX = proposed ? "" : "# ";
