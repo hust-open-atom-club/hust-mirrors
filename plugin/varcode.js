@@ -57,6 +57,13 @@ const plugin = (_) => {
             position: node.position
           });
         }
+        else{
+          newAsts.push({
+            type: 'export',
+            value: `export const options_${idOption} = []`,
+            position: node.position
+          });
+        }
 
         if (codeBlock) {
           newAsts.push({
