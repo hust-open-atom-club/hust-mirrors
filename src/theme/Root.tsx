@@ -16,6 +16,6 @@ export default function Root({ children }) {
     domain,
     setDomain
   }}>
-    {children};
+    {children}
   </RootContext.Provider>
 }
