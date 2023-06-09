@@ -40,3 +40,26 @@ ${PROPOSED_PREFIX || SRC_PREFIX}deb-src ${_http}://${_domain}/ubuntu/ ${version}
 ```
 
 保存该文件至`/etc/apt/sources.list`。
+
+
+## 一键换源
+
+:::caution
+本方法仅适用于从官方源更换到本站源，如果你已经换过了源，请不要使用下面的命令。
+:::
+
+一般情况下，可以将 /etc/apt/sources.list 文件中 Ubuntu 默认的源地址 http://archive.ubuntu.com/ 使用sed命令直接替换。
+
+可以使用如下命令：
+
+```bash varcode
+sudo sed -i 's@//.*archive.ubuntu.com@//${_domain}@g' /etc/apt/sources.list
+```
+
+本方法没有替换 security 源，如果想要替换 security 源可以执行以下命令：
+
+```bash varcode
+sudo sed -i 's/security.ubuntu.com/${_domain}/g' /etc/apt/sources.list
+```
+
+> 本方法借鉴了[中科大镜像源使用帮助](https://mirrors.ustc.edu.cn/help/ubuntu.html)
