@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
@@ -9,6 +9,8 @@ import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
 import CodeBlock from '@theme/CodeBlock'
 import Select from '../components/Select/index';
+import { useReleaseMetas } from '../utils/mirrorUtils';
+import SharedContext from '../utils/SharedContext';
 
 function HomepageHeader() {
   return (
@@ -27,9 +29,51 @@ function HomepageHeader() {
 
 export default function Home(): JSX.Element {
 
+  const releases = useReleaseMetas();
+  const { https, domain } = useContext(SharedContext);
+
   const [release, setRelease] = useState("");
   const [version, setVersion] = useState("");
-  const [variable, setVariable] = useState("");
+  const [variant, setVariant] = useState("");
+
+  function unique<T>(list: T[]): T[] {
+    const set = new Set(list);
+    return Array.from(set);
+  }
+
+
+  const releaseItems = unique(releases.map(u => u.release)).map(u => ({
+    value: u,
+    label: u
+  }));
+
+  const versionItems = unique(releases.filter(u => u.release === release)
+    .map(u => u.version)).filter(u => !!u).map(u => ({
+      value: u,
+      label: u
+    }));
+
+  const variantItems = unique(releases.filter(u => u.release === release && u.version === version)
+    .map(u => u.variant)).filter(u => !!u).map(u => ({
+      value: u,
+      label: u
+    }));
+
+  [versionItems, releaseItems, variantItems].forEach(u => u.unshift({
+    value: '', label: translate({
+      id: 'mirror.release.select',
+      message: '请选择...'
+    })
+  }));
+
+  const current = releases.find(u => u.release == release
+    && u.version == (version || undefined)
+    && u.variant == (variant || undefined)
+  );
+
+  const link = current ? (
+    current.link ? current.link : `${https ? 'https' : 'http'}://${domain}${current.path}`
+  ) : undefined;
 
   return (
     <Layout
@@ -42,69 +86,86 @@ export default function Home(): JSX.Element {
             id: 'mirror.release.chooseRelease',
             message: '选择发行'
           })
-        } items={[]}
+        } items={releaseItems}
           value={release}
-          onChange={setRelease}
+          onChange={(v) => {
+            setRelease(v);
+            setVersion("");
+            setVariant("");
+          }}
         ></Select>
 
-        {release &&
+        {release && versionItems.length > 1 &&
           <Select labelTop label={
             translate({
               id: 'mirror.release.chooseVersion',
               message: '选择版本'
             })
-          } items={[]}
+          } items={versionItems}
             value={version}
-            onChange={setVersion}
+            onChange={(v) => {
+              setVersion(v);
+              setVariant("");
+            }}
           ></Select>}
 
-
-        {version && <Select labelTop label={
-          translate({
-            id: 'mirror.release.chooseVariable',
-            message: '选择变体'
-          })
-        } items={[]}
-          value={variable}
-          onChange={setVariable}
-        ></Select>}
-
-
-        <Tabs>
-          <TabItem label={
+        {version && variantItems.length > 1 &&
+          <Select labelTop label={
             translate({
-              id: 'mirror.release.useCurl',
-              message: '使用curl下载'
+              id: 'mirror.release.chooseVariable',
+              message: '选择变体'
             })
-          } value='curl'>
-            <CodeBlock language='shell'>
-              curl -s &gt;
-            </CodeBlock>
-          </TabItem>
+          } items={variantItems}
+            value={variant}
+            onChange={setVariant}
+          ></Select>}
 
-          <TabItem label={
-            translate({
-              id: 'mirror.release.useWget',
-              message: '使用wget下载'
-            })
-          } value='wget'>
-            <CodeBlock language='shell'>
-              wget
-            </CodeBlock>
-          </TabItem>
+        {
+          link &&
+          <div className={styles.result}>
+            <Tabs>
+              <TabItem label={
+                translate({
+                  id: 'mirror.release.useCurl',
+                  message: '使用curl下载'
+                })
+              } value='curl'>
+                <CodeBlock language='shell'>
+                  curl -o &gt; {link}
+                </CodeBlock>
+              </TabItem>
 
-          <TabItem label={
-            translate({
-              id: 'mirror.release.link',
-              message: '仅显示地址'
-            })
-          } value='link'>
-            <CodeBlock>
-              wget
-            </CodeBlock>
-          </TabItem>
+              <TabItem label={
+                translate({
+                  id: 'mirror.release.useWget',
+                  message: '使用wget下载'
+                })
+              } value='wget'>
+                <CodeBlock language='shell'>
+                  wget {link}
+                </CodeBlock>
+              </TabItem>
 
-        </Tabs>
+              <TabItem label={
+                translate({
+                  id: 'mirror.release.link',
+                  message: '仅复制地址'
+                })
+              } value='link'>
+                <CodeBlock>
+                  {link}
+                </CodeBlock>
+              </TabItem>
+
+            </Tabs>
+            <a target="_blank" href={link}>
+              <button className='button button-lg button--primary'>
+                使用浏览器下载
+              </button>
+            </a>
+          </div>
+        }
+
       </div>
 
 

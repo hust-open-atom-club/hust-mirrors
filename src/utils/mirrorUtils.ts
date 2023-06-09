@@ -1,5 +1,5 @@
 import { usePluginData } from '@docusaurus/useGlobalData';
-import type { DomainMeta, MirrorMeta } from '@site/meta.config';
+import type { DomainMeta, MirrorMeta, ReleaseMeta } from '@site/meta.config';
 import meta from '@site/meta.config';
 
 export type DocMeta = {
@@ -22,6 +22,14 @@ export function useMirrorMetas(): MirrorMeta[] {
  */
 export function useDomainMetas(): DomainMeta[] {
   return meta.domains;
+}
+
+/**
+ * Get release metas.
+ * @returns release metas.
+ */
+export function useReleaseMetas(): ReleaseMeta[] {
+  return meta.releases;
 }
 
 /**

@@ -13,3 +13,7 @@
 .header-container h1 {
   font-size: 3em;
 }
+
+.result {
+  margin: 32px 0;
+}
