@@ -1,12 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import React, { useEffect, useState } from 'react';
 import Layout from '@theme/Layout';
-import Translate, { translate } from '@docusaurus/Translate'
-import styles from './index.module.css';
-import Table from '../components/Table';
-import SideBar from '../components/SideBar';
+import { translate } from '@docusaurus/Translate'
+import Table from '@site/src/components/Table';
 
 
 export default function Home(): JSX.Element {
@@ -42,7 +37,7 @@ export default function Home(): JSX.Element {
       }
 
       description="all mirror status on server">
-      <div className={styles['container']}>
+      <div>
         {loading ?
           <div style={{
             textAlign: 'center'

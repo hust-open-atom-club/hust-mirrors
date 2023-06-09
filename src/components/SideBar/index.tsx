@@ -55,7 +55,7 @@ export default function SideBar(props: Props) {
 
         <a><h3><Translate id="mirror.sidebar.links">友情链接</Translate></h3></a>
         <p>
-          <Link to='/server'><Translate id="mirror.sidebar.status">系统状态</Translate></Link>
+          <Link to='/syncing-status'><Translate id="mirror.sidebar.status">系统状态</Translate></Link>
         </p>
         <p>
           <a href='https://mirrors.cernet.edu.cn/list'><Translate id="mirror.sidebar.mirrorz">教育网联合镜像站</Translate></a>
