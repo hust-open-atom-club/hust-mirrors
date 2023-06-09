@@ -25,6 +25,22 @@ export default function SideBar(props: Props) {
         <a><h3><Translate id='mirror.sidebar.chooseDomain'>域名选择</Translate></h3></a>
         <Domains domains={domains}></Domains>
 
+        <a><h3><Translate id='mirror.sidebar.release'>发行版下载</Translate></h3></a>
+        <p>
+          <Translate id='mirror.sidebar.releaseDesc'>
+            这里为您提供各大主流 Linux 发行版的安装镜像 / ISO 文件，
+            请根据您的发行版及其详细版本进行选择：
+          </Translate>
+        </p>
+        <Link to='/release'>
+          <button className={styles.button}>
+            <Translate id='mirror.sidebar.goRelease'>
+              发行版下载
+            </Translate>
+          </button>
+        </Link>
+
+
         <a><h3><Translate id='mirror.sidebar.help'>镜像站帮助</Translate></h3></a>
         <p>
           <Translate id='mirror.sidebar.helpDesc'>

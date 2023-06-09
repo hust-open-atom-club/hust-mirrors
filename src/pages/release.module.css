@@ -1,0 +1,15 @@
+.container {
+  margin: 0px auto;
+  padding: 32px;
+  width: 100%;
+  max-width: 640px;
+}
+
+
+.header-container {
+  margin: 0 auto;
+}
+
+.header-container h1 {
+  font-size: 3em;
+}
