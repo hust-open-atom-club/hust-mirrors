@@ -4,6 +4,8 @@ sidebar_label: Linux
 cname: 'linux.git'
 ---
 
+本镜像站中，所有以.git结尾的为git仓库镜像。 在镜像站首页点击相应的链接，即可复制clone链接。
+
 如需克隆 Linux 代码，使用
 
 ```bash varcode
@@ -24,16 +26,8 @@ git remote set-url origin ${_http}://${_domain}/git/linux.git
 
 将默认上游设置为镜像站
 
-### 增量下载
 
-如果需要其它 linux 分支的代码（如树莓派内核代码），可以在 clone 本项目基础上增量下载分支的代码，从而加速下载
+## References
 
-以树莓派为例，具体操作为
-
-```bash varcode
-git clone ${_http}://${_domain}/git/linux.git
-git remote add rasp https://github.com/raspberrypi/linux.git
-git fetch rasp
-```
-
-> 注：本页面帮助内容摘自[校园网联合镜像站](https://mirrors.cernet.edu.cn/about)的[帮助仓库](https://github.com/mirrorz-org/mirrorz-help)
+[1] [校园网联合镜像站](https://mirrors.cernet.edu.cn/about)
+[2] [帮助仓库](https://github.com/mirrorz-org/mirrorz-help)
