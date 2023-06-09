@@ -60,7 +60,7 @@ const config = {
         title: mirrorConfig.mainTitle,
         logo: {
           alt: mirrorConfig.mainTitle,
-          src: 'img/logo.png',
+          src: 'img/logo.svg',
         },
         items: [
           {
