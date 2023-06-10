@@ -63,7 +63,7 @@ function HomepageHeader({
             })} />
         </div>
         <div className={styles['cli-ad-container']}>
-          <img className={styles['banner-img']} src='/img/cli.png' />
+          <img className={styles['banner-img']} src='/img/cli.svg' />
           <div className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
