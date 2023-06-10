@@ -337,7 +337,7 @@
     "message": "Last update"
   },
   "mirror.tableMeta.lastStart": {
-    "message": "Last start"
+    "message": "Last start - last end"
   },
   "mirror.tableMeta.lastEnd": {
     "message": "Last end"

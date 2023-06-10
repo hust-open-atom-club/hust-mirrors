@@ -43,6 +43,20 @@ function tsToStr(ts: number) {
   return formattedDate;
 }
 
+function tsPeriodToStr(tsStart: number, tsEnd: number) {
+  if (tsStart == 0) return "N/A";
+
+  const startStr = tsToStr(tsStart);
+  const date = new Date(tsEnd * 1000);
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+
+  const formattedDate = `${startStr} - ${hours}:${minutes}:${seconds}`;
+  return formattedDate;
+}
+
+
 function metaToStatus(v: MirrorMeta): MirrorStatus {
   return {
     name: v.id,
@@ -172,20 +186,17 @@ export default function Table({ items: srcItems, search, detail }: Props) {
           <th className={styles['date']}>
             <Translate id='mirror.tableMeta.lastUpdate'>上次更新</Translate> (UTC{timezone > 0 && '+'}{timezone})
           </th>
-          {detail && <th className={styles['date']}>
-            <Translate id='mirror.tableMeta.lastStart'>上次开始</Translate> (UTC{timezone > 0 && '+'}{timezone})
-          </th>}
-          {detail && <th className={styles['date']}>
-            <Translate id='mirror.tableMeta.lastEnd'>上次结束</Translate> (UTC{timezone > 0 && '+'}{timezone})
+          {detail && <th className={styles['date-long']}>
+            <Translate id='mirror.tableMeta.lastStart'>上次开始 - 上次结束</Translate> (UTC{timezone > 0 && '+'}{timezone})
           </th>}
           {detail && <th className={styles['status']}>
             <Translate id='mirror.tableMeta.status'>同步状态</Translate>
           </th>}
-          {detail && <th className={styles['upstream']}>
-            <Translate id='mirror.tableMeta.upstream'>上游链接</Translate>
-          </th>}
           {detail && <th className={styles['size']}>
             <Translate id='mirror.tableMeta.size'>镜像大小</Translate>
+          </th>}
+          {detail && <th className={styles['upstream']}>
+            <Translate id='mirror.tableMeta.upstream'>上游链接</Translate>
           </th>}
           {!detail && <th className={styles['help']}>
             <Translate id='mirror.tableMeta.help'>帮助</Translate>
@@ -207,11 +218,10 @@ export default function Table({ items: srcItems, search, detail }: Props) {
               <MirrorName item={u} docsMeta={alldocs} mirrorMeta={mirrorMeta} />
             </th>
             <th className={styles['date']}>{tsToStr(u.last_update_ts)}</th>
-            {detail && <th className={styles['date']}>{tsToStr(u.last_started_ts)}</th>}
-            {detail && <th className={styles['date']}>{tsToStr(u.last_ended_ts)}</th>}
+            {detail && <th className={styles['date-long']}>{tsPeriodToStr(u.last_started_ts, u.last_ended_ts)}</th>}
             {detail && <th className={styles['status']}>{u.status}</th>}
-            {detail && <th className={styles['upstream']}>{u.upstream}</th>}
             {detail && <th className={styles['size']}>{u.size}</th>}
+            {detail && <th className={styles['upstream']}>{u.upstream}</th>}
             {!detail && <th className={styles['help']}>
               <MirrorHelp item={u} docsMeta={alldocs} mirrorMeta={mirrorMeta} />
             </th>}
