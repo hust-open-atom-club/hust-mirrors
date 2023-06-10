@@ -404,5 +404,29 @@
   },
   "mirror.release.browserDownload": {
     "message": "Browser Download"
+  },
+  "mirror.table.status.none": {
+    "message": "None"
+  },
+  "mirror.table.status.paused": {
+    "message": "Paused"
+  },
+  "mirror.table.status.presyncing": {
+    "message": "Pre-syncing"
+  },
+  "mirror.table.status.syncing": {
+    "message": "Syncing"
+  },
+  "mirror.table.status.success": {
+    "message": "Success"
+  },
+  "mirror.table.status.failed": {
+    "message": "Failed"
+  },
+  "mirror.table.status.disabled": {
+    "message": "Disabled"
+  },
+  "mirror.table.supportCli": {
+    "message": "Support CLI deploy."
   }
 }
