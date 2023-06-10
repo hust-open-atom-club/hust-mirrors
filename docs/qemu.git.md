@@ -6,7 +6,7 @@ sidebar_label: QEMU
 
 ## 实验性脚本（仅 TUNA 提供）
 
-如需克隆 QEMU 代码及其子模块，使用以下脚本
+如需克隆`QEMU`完整源代码（包含其子模块），运行
 
 ```bash varcode
 curl ${_http}://${_domain}/qemu/qemu.sh | bash
@@ -14,24 +14,30 @@ curl ${_http}://${_domain}/qemu/qemu.sh | bash
 
 ## 手动克隆
 
-如仅需克隆 QEMU 代码，使用
+1. 克隆`QEMU`代码，运行
 
 ```bash varcode
 git clone ${_http}://${_domain}/git/qemu.git
 ```
 
-若要将 mirror 加入已有代码库，可在已有仓库中运行
+2. 将`mirror`加入已有代码库，在已有仓库中运行
 
 ```bash varcode
 git remote add mirror ${_http}://${_domain}/git/qemu.git
 ```
 
-或运行
+或
 
 ```bash varcode
 git remote set-url origin ${_http}://${_domain}/git/qemu.git
 ```
 
-将默认上游设置为镜像站
+将默认上游设置为镜像站。
 
-> 注：本页面帮助内容摘自[校园网联合镜像站](https://mirrors.cernet.edu.cn/about)的[帮助仓库](https://github.com/mirrorz-org/mirrorz-help)
+## References
+
+[1] [校园网联合镜像站](https://mirrors.cernet.edu.cn/about)
+
+[2] [帮助仓库](https://github.com/mirrorz-org/mirrorz-help)
+
+[3] [关于Git镜像](${_http}://${_domain}/docs/about-git)
