@@ -56,6 +56,7 @@ const domains: DomainMeta[] = [
     }),
     link: 'https://hustmirror.cn'
   },
+  /*
   {
     domain: 'mirrors.hust.edu.cn', desc: translate({
       id: 'mirror.domain.2',
@@ -63,6 +64,7 @@ const domains: DomainMeta[] = [
     }),
     link: 'https://mirrors.hust.edu.cn'
   },
+ */
 ]
 
 const releases: ReleaseMeta[] = [
