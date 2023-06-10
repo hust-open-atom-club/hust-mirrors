@@ -214,17 +214,17 @@ export default function Table({ items: srcItems, search, detail }: Props) {
             [styles['row-paused']]: u.status == 'paused',
             [styles['row-disabled']]: u.status == 'disabled'
           })}>
-            <th className={styles['name']}>
+            <td className={styles['name']}>
               <MirrorName item={u} docsMeta={alldocs} mirrorMeta={mirrorMeta} />
-            </th>
-            <th className={styles['date']}>{tsToStr(u.last_update_ts)}</th>
-            {detail && <th className={styles['date-long']}>{tsPeriodToStr(u.last_started_ts, u.last_ended_ts)}</th>}
-            {detail && <th className={styles['status']}>{u.status}</th>}
-            {detail && <th className={styles['size']}>{u.size}</th>}
-            {detail && <th className={styles['upstream']}>{u.upstream}</th>}
-            {!detail && <th className={styles['help']}>
+            </td>
+            <td className={styles['date']}>{tsToStr(u.last_update_ts)}</td>
+            {detail && <td className={styles['date-long']}>{tsPeriodToStr(u.last_started_ts, u.last_ended_ts)}</td>}
+            {detail && <td className={styles['status']}>{u.status}</td>}
+            {detail && <td className={styles['size']}>{u.size}</td>}
+            {detail && <td className={styles['upstream']}>{u.upstream}</td>}
+            {!detail && <td className={styles['help']}>
               <MirrorHelp item={u} docsMeta={alldocs} mirrorMeta={mirrorMeta} />
-            </th>}
+            </td>}
           </tr>
         ))}
       </tbody>

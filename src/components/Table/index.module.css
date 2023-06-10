@@ -2,24 +2,29 @@
 .container{
   display: table;
   width: 100%;
+  table-layout: fixed;
+}
+
+.container.detail {
+  min-width: 1600px;
 }
 
 .container tr{
-  display: flex;
   border: none;
   text-align: left;
 }
-
 
 .container tr:hover{
   background: var(--list-hover);;
 }
 
-.container th{
+.container th,
+.container td {
   border: none;
 }
 
-.tbody th{
+.tbody th,
+.tbody td {
   font-weight: normal;
   padding: 4px 12px;
 }
@@ -28,8 +33,12 @@
   width: 200px;
 }
 
+.date-long {
+  width: 280px;
+}
+
 .upstream {
-  width: 600px;
+  width: 500px;
 }
 
 .size {
@@ -45,6 +54,7 @@
 }
 
 .mirror-name:hover .desc-container {
+  visibility: visible;
   opacity: 1;
 }
 
@@ -61,6 +71,7 @@
 .desc-container {
   position: absolute;
   display: block;
+  visibility: hidden;
   opacity: 0;
   top: -8px;
   left: calc(100% + 16px);
@@ -97,11 +108,9 @@
   padding: 0.2rem 0 !important;
 }
 
-
 .name {
-  flex-grow: 1;
-  flex-basis: 0;
   line-break: anywhere;
+  min-width: 300px;
 }
 
 .detail .name {
