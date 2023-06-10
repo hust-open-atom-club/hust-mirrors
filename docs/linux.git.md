@@ -30,4 +30,4 @@ git remote set-url origin ${_http}://${_domain}/git/linux.git
 
 [2] [帮助仓库](https://github.com/mirrorz-org/mirrorz-help)
 
-[3] [关于Git镜像](${_http}://${_domain}/docs/about-git)
+[3] [关于Git镜像](https://hustmirror.cn/docs/about-git)
