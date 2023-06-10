@@ -1,10 +1,21 @@
 import React, { useRef, useState } from 'react'
 import styles from './index.module.css'
 import Link from '@docusaurus/Link';
-import Translate from '@docusaurus/Translate'
+import Translate, { translate } from '@docusaurus/Translate'
 import { DocMeta, MirrorMeta, useDocMetas, useMirrorMetas } from '@site/src/utils/mirrorUtils';
 import copy from 'copy-to-clipboard';
 import clsx from 'clsx';
+
+// svg import
+import NoneIcon from '@site/static/icons/none.svg';
+import PausedIcon from '@site/static/icons/paused.svg';
+import PreSyncingIcon from '@site/static/icons/presyncing.svg';
+import SyncingIcon from '@site/static/icons/syncing.svg';
+import SuccessIcon from '@site/static/icons/success.svg';
+import FailedIcon from '@site/static/icons/failed.svg';
+import DisabledIcon from '@site/static/icons/disabled.svg';
+import TerminalIcon from '@site/static/icons/terminal.svg';
+
 
 type MirrorStatus = {
   name: string,
@@ -81,6 +92,33 @@ type MirrorNameProps = {
   mirrorMeta: MirrorMeta[]
 }
 
+
+function SyncingStatus({ status }: { status: MirrorStatus['status'] }) {
+  let label;
+  if (status == 'none') label = translate({ id: 'mirror.table.status.none', message: '未同步' });
+  else if (status == 'paused') label = translate({ id: 'mirror.table.status.paused', message: '暂停' });
+  else if (status == 'pre-syncing') label = translate({ id: 'mirror.table.status.presyncing', message: '预同步' });
+  else if (status == 'syncing') label = translate({ id: 'mirror.table.status.syncing', message: '同步中' });
+  else if (status == 'success') label = translate({ id: 'mirror.table.status.success', message: '成功' });
+  else if (status == 'failed') label = translate({ id: 'mirror.table.status.failed', message: '失败' });
+  else if (status == 'disabled') label = translate({ id: 'mirror.table.status.disabled', message: '禁用' });
+  else label = status;
+
+  return <span className={clsx(styles['status-label'])}>
+    {status == 'none' && <NoneIcon />}
+    {status == 'paused' && <PausedIcon />}
+    {status == 'pre-syncing' && <PreSyncingIcon />}
+    {status == 'syncing' && <SyncingIcon />}
+    {status == 'success' && <SuccessIcon />}
+    {status == 'failed' && <FailedIcon />}
+    {status == 'disabled' && <DisabledIcon />}
+
+    <span>
+      {label}
+    </span>
+  </span>
+}
+
 function MirrorName({ item, docsMeta: docs, mirrorMeta: mirrors }: MirrorNameProps) {
 
   const [copied, setCopied] = useState(false);
@@ -155,8 +193,19 @@ function MirrorHelp({ item, mirrorMeta: mirrors, docsMeta: docs }: MirrorHelpPro
     {docs.find(v => v.id == helpid) &&
       <Link className={styles['help-link']} to={`/docs/${item.name}`}>
         [ <Translate id='mirror.table.help'>帮助文档</Translate> ]
+      </Link>}
+
+    { m && m.supportCli &&
+      <Link className={styles['help-link']} to="/docs" title={translate({
+        id: 'mirror.table.supportCli',
+        message: '该镜像支持CLI部署'
+      })}>
+        [
+        <TerminalIcon />
+        ]
       </Link>
     }
+
   </>
 }
 
@@ -219,7 +268,9 @@ export default function Table({ items: srcItems, search, detail }: Props) {
             </td>
             <td className={styles['date']}>{tsToStr(u.last_update_ts)}</td>
             {detail && <td className={styles['date-long']}>{tsPeriodToStr(u.last_started_ts, u.last_ended_ts)}</td>}
-            {detail && <td className={styles['status']}>{u.status}</td>}
+            {detail && <td className={styles['status']}>
+              <SyncingStatus status={u.status} />
+            </td>}
             {detail && <td className={styles['size']}>{u.size}</td>}
             {detail && <td className={styles['upstream']}>{u.upstream}</td>}
             {!detail && <td className={styles['help']}>
