@@ -26,8 +26,7 @@ git remote set-url origin ${_http}://${_domain}/git/linux-next.git
 
 ## References
 
-[1] [校园网联合镜像站](https://mirrors.cernet.edu.cn/about)
+[^1] [校园网联合镜像站](https://mirrors.cernet.edu.cn/about)  
+[^2] [帮助仓库](https://github.com/mirrorz-org/mirrorz-help)  
+[^3] [关于Git镜像](about-git)
 
-[2] [帮助仓库](https://github.com/mirrorz-org/mirrorz-help)
-
-[3] [关于Git镜像](https://hustmirror.cn/docs/about-git)
