@@ -1,0 +1,79 @@
+<svg width="773px" height="566px" xmlns="http://www.w3.org/2000/svg">
+
+    <style>
+        tspan {
+            font-family: Hack, consolas, Menlo, monaco, roboto, monospace;
+            font-size: 14px;
+            fill: #d2d2d2;
+            /*white-space: pre-wrap;*/
+        }
+
+        /* breeze */
+        .code-blue {
+            fill: #1d99f3;
+        }
+
+        .code-green {
+            fill: #11d116;
+        }
+
+        .code-red {
+            fill: #ed1515;
+        }
+
+        .code-yellow {
+            fill: #f67400;
+        }
+
+        .code-bold {
+            font-weight: bold;
+        }
+
+        .window {
+            border-radius: 10px;
+            width: 773px;
+            height: 566px;
+        }
+    </style>
+
+    <rect class="window" rx="5px" fill="rgb(21, 23, 24)">
+    </rect>
+
+    <svg x="14px" y="9px" xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14">
+        <g fill="none" fill-rule="evenodd">
+            xmlns="http://www.w3.org/2000/svg">
+            <circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".5"
+                xmlns="http://www.w3.org/2000/svg" />
+            <circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".5"
+                xmlns="http://www.w3.org/2000/svg" />
+            <circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".5"
+                xmlns="http://www.w3.org/2000/svg" />
+        </g>
+    </svg>
+
+    <text x="14px" y="44px">
+        <tspan x="14px" dy="20px" class="code-blue">$ curl </tspan><tspan class="code-green">-s</tspan><tspan> https://mirrors.hust.edu.cn/get |</tspan><tspan class="code-green"> sh</tspan>
+        <tspan x="14px" dy="20px"> _   _ _   _ ____ _____ __  __ ___ ____  ____   ___  ____  </tspan>
+        <tspan x="14px" dy="20px">| | | | | | / ___|_   _|  \/  |_ _|  _ \|  _ \ / _ \|  _ \ </tspan>
+        <tspan x="14px" dy="20px">| |_| | | | \___ \ | | | |\/| || || |_) | |_) | | | | |_) |</tspan>
+        <tspan x="14px" dy="20px">|  _  | |_| |___) || | | |  | || ||  _ &lt;|  _ &lt;| |_| |  _ &lt; </tspan>
+        <tspan x="14px" dy="20px">|_| |_|\___/|____/ |_| |_|  |_|___|_| \_\_| \_\\___/|_| \_\</tspan>
+        <tspan x="14px" dy="40px" class="code-yellow">[*] Checking the environment and mirrors to install...</tspan>
+        <tspan x="14px" dy="20px" class="code-green">[!] The following software(s) are ready to install:</tspan>
+        <tspan x="14px" dy="20px">    arch</tspan>
+        <tspan x="14px" dy="20px" class="code-green">[!] The following software(s) are unsure to install:</tspan>
+        <tspan x="14px" dy="20px">    linux_git</tspan>
+        <tspan x="14px" dy="20px" class="code-yellow">[?] What do you want to install? [all]</tspan>
+        <tspan x="14px" dy="20px" class="code-yellow">    (a)ll for ready, all! (a!) for all software(s), including unsure ones.</tspan>
+        <tspan x="14px" dy="20px" class="code-yellow">    &lt;softwares&gt; for specific softwares, use space to separate multiple softwares.</tspan>
+        <tspan x="14px" dy="20px" class="code-yellow">    (l)ist for forcely list all softwares, even is not supported here.</tspan>
+        <tspan x="14px" dy="40px" class="code-yellow">    Other options:</tspan>
+        <tspan x="14px" dy="20px" class="code-yellow">    (r)ecover for uninstall software mirror.</tspan>
+        <tspan x="14px" dy="20px" class="code-yellow">    (i)nstall or update hust-mirror locally</tspan>
+        <tspan x="14px" dy="20px" class="code-yellow">    (q)uit for exit.</tspan>
+        <tspan x="14px" dy="20px">[&gt;]</tspan>
+        <tspan x="14px" dy="20px" class="code-yellow">[*] Deploying arch...</tspan>
+        <tspan x="14px" dy="20px" class="code-yellow">[WARN] You are not root, trying to use sudo...</tspan>
+        <tspan x="14px" dy="20px" class="code-green">[+] Successfully deployed arch.</tspan>
+    </text>
+</svg>
