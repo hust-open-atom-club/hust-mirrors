@@ -1,11 +1,10 @@
 #!/bin/env bash
-# Usage: update-pages.sh <src_dir> <obj_dir> <mirror_dir>
+# Usage: update-pages.sh <src_dir> <obj_dir>
 
 set -e
 
 src_dir="$1"
 obj_dir="$2"
-mirror_dir="$3"
 
 cd "$src_dir" || exit
 
@@ -17,5 +16,3 @@ if [[ "$last_commit" != "$current_commit" ]]; then
   make
   cp ./build/* "$obj_dir"
 fi
-
-${src_dir}/ci/gen-releases.py "${mirror_dir}" "${obj_dir}/releases.json"

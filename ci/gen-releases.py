@@ -1,4 +1,6 @@
 #!/bin/env python3
+# Usage: gen-releases.py <mirror_dir> <output_file>
+
 from configparser import ConfigParser
 from glob import glob
 import re, sys, os, json
