@@ -68,17 +68,7 @@ const domains: DomainMeta[] = [
  */
 ]
 
-const releases: ReleaseMeta[] = [
-  { release: 'Arch Linux', version: 'Latest', path: '/archlinux/iso/latest/archlinux-x86_64.iso' },
-  { release: 'Arch Linux', version: '2023.06.01', path: '/archlinux/iso/2023.06.01/archlinux-x86_64.iso' },
-  { release: 'Arch Linux', version: '2023.05.03', path: '/archlinux/iso/2023.05.03/archlinux-x86_64.iso' },
-  { release: 'Arch Linux', version: '2023.04.01', path: '/archlinux/iso/2023.04.01/archlinux-x86_64.iso' },
-  // { release: 'Ubuntu', version: '22.04 LTS', variant: 'amd64, desktop', path: '/ubuntu-releases/jammy/ubuntu-22.04.2-desktop-amd64.iso' },
-  // { release: 'Ubuntu', version: '22.04 LTS', variant: 'amd64, server', path: '/ubuntu-releases/jammy/ubuntu-22.04.2-desktop-amd64.iso' },
-];
-
 export default {
   mirrors,
   domains,
-  releases
 }

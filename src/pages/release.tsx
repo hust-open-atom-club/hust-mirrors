@@ -9,7 +9,6 @@ import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
 import CodeBlock from '@theme/CodeBlock'
 import Select from '../components/Select/index';
-import { useReleaseMetas } from '../utils/mirrorUtils';
 import SharedContext from '../utils/SharedContext';
 
 function HomepageHeader() {
@@ -29,18 +28,36 @@ function HomepageHeader() {
 
 export default function Home(): JSX.Element {
 
-  const releases = useReleaseMetas();
+  const [releases, setReleases] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const { https, domain } = useContext(SharedContext);
 
   const [release, setRelease] = useState("");
   const [version, setVersion] = useState("");
   const [variant, setVariant] = useState("");
 
+  const updateReleases = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(`/releases.json`);
+      const data = await res.json();
+      setReleases(data);
+    }
+    catch {
+      console.error("Loading release metas failed.")
+    }
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    updateReleases();
+  }, []);
+
   function unique<T>(list: T[]): T[] {
     const set = new Set(list);
     return Array.from(set);
   }
-
 
   const releaseItems = unique(releases.map(u => u.release)).map(u => ({
     value: u,
@@ -80,6 +97,9 @@ export default function Home(): JSX.Element {
       description="OS release iso image downloads">
       <HomepageHeader />
       <div className={styles.container}>
+        {loading && <div>
+          <Translate id='mirror.release.loading'>正在加载发行版列表...</Translate>
+        </div>}
         <GlobalOptions />
         <Select labelTop label={
           translate({

@@ -25,14 +25,6 @@ export function useDomainMetas(): DomainMeta[] {
 }
 
 /**
- * Get release metas.
- * @returns release metas.
- */
-export function useReleaseMetas(): ReleaseMeta[] {
-  return meta.releases;
-}
-
-/**
  * Hook function, to get all docs.
  */
 export function useDocMetas() {
