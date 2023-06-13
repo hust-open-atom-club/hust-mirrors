@@ -77,7 +77,9 @@
   left: calc(100% + 16px);
   padding: 2px 8px;
   z-index: 999;
-  min-width: 256px;
+  width: max-content;
+  max-width: 256px;
+  box-shadow: #aeaeae 4px 4px 16px 0px;
   background: var(--ifm-color-content-inverse);
   border: var(--ifm-color-primary) 2px solid;
   border-radius: 8px;
