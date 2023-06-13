@@ -13,6 +13,6 @@ git pull origin stable:stable
 current_commit=$(git rev-parse stable)
 
 if [[ "$last_commit" != "$current_commit" ]]; then
-  make
+  yarn && yarn build
   cp ./build/* "$obj_dir"
 fi
