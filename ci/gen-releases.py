@@ -10,7 +10,7 @@ config.read(script_path + '/releases.conf',encoding="utf-8")
 mirror_dir = sys.argv[1]
 output_file = sys.argv[2]
 
-list = []
+result = []
 
 for sec in config.sections():
     release_sec = sec
@@ -20,7 +20,7 @@ for sec in config.sections():
     variant_pos = int(config[sec]["variant"])
     # get all directories and files under mirror_dir
     # and filter out the ones that match the regex
-    files = filter(lambda x: re.match(exp, x), glob(mirror_dir + config[sec]["path"]))
+    files = list(glob(config[sec]["path"], root_dir=mirror_dir, recursive=True))
     for file in files:
         release = release_sec
         version = ""
@@ -28,14 +28,13 @@ for sec in config.sections():
         matches = re.match(exp, file)
         if matches:
             release = matches.group(release_pos) if release_pos != -1 else release_sec
-            version = matches.group(version_pos) if version_pos != -1 else None
-            variant = matches.group(variant_pos) if variant_pos != -1 else None
-        list.append({
-            release: release,
-            version: version,
-            variant: variant,
-            file: file
-        })
+            version = matches.group(version_pos) if version_pos != -1 else ""
+            variant = matches.group(variant_pos) if variant_pos != -1 else ""
+            result.append({
+                "release": release,
+                "version": version,
+                "variant": variant,
+                "file": file
+            })
     with open(output_file, 'w') as f:
-        for item in list:
-            f.write(json.dumps(list))
+        f.write(json.dumps(result))
