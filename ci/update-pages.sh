@@ -8,12 +8,12 @@ obj_dir="$2"
 
 cd "$src_dir" || exit
 
-last_commit=$(git rev-parse stable)
+last_commit=$(git rev-parse stable) || last_commit=""
 git pull origin --tags --force stable
 current_commit=$(git rev-parse stable)
 
 if [[ "$last_commit" != "$current_commit" ]]; then
   git checkout stable
   yarn && yarn build
-  cp ./build/* "$obj_dir"
+  cp -rf ./build/* "$obj_dir"
 fi
