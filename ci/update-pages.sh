@@ -9,7 +9,7 @@ obj_dir="$2"
 cd "$src_dir" || exit
 
 last_commit=$(git rev-parse stable)
-git pull origin stable:stable
+git pull origin --tags --force stable
 current_commit=$(git rev-parse stable)
 
 if [[ "$last_commit" != "$current_commit" ]]; then
