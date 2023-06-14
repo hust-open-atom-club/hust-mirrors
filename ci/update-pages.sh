@@ -13,6 +13,7 @@ git pull origin --tags --force stable
 current_commit=$(git rev-parse stable)
 
 if [[ "$last_commit" != "$current_commit" ]]; then
+  git checkout stable
   yarn && yarn build
   cp ./build/* "$obj_dir"
 fi
