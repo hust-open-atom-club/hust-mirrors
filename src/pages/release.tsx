@@ -89,7 +89,7 @@ export default function Home(): JSX.Element {
   );
 
   const link = current ? (
-    current.link ? current.link : `${https ? 'https' : 'http'}://${domain}${current.path}`
+    current.link ? current.link : `${https ? 'https' : 'http'}://${domain}/${current.path}`
   ) : undefined;
 
   return (

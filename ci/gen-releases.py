@@ -15,7 +15,7 @@ output_file = sys.argv[2]
 result = []
 
 for sec in config.sections():
-    release_sec = sec
+    release_sec = config[sec]["name"] if config[sec]["name"] else sec
     exp = config[sec]["exp"]
     release_pos = int(config[sec]["release"])
     version_pos = int(config[sec]["version"])
