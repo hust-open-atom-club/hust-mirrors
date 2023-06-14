@@ -30,13 +30,15 @@ for sec in config.sections():
         matches = re.match(exp, file)
         if matches:
             release = matches.group(release_pos) if release_pos != -1 else release_sec
-            version = matches.group(version_pos) if version_pos != -1 else ""
-            variant = matches.group(variant_pos) if variant_pos != -1 else ""
-            result.append({
+            version = matches.group(version_pos) if version_pos != -1 else None
+            variant = matches.group(variant_pos) if variant_pos != -1 else None
+            d = {
                 "release": release,
                 "version": version,
                 "variant": variant,
                 "path": file
-            })
+            }
+            d = {k: v for k, v in d.items() if v is not None}
+            result.append(d) 
     with open(output_file, 'w') as f:
         f.write(json.dumps(result))
