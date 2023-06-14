@@ -36,7 +36,7 @@ for sec in config.sections():
                 "release": release,
                 "version": version,
                 "variant": variant,
-                "file": file
+                "path": file
             })
     with open(output_file, 'w') as f:
         f.write(json.dumps(result))
