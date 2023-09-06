@@ -3,15 +3,120 @@ title: 命令行工具
 slug: /
 sidebar_position: 1
 ---
+import TOCInline from '@theme/TOCInline';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
+import TerminalIcon from '@site/static/icons/terminal.svg';
+import { useLocation } from '@docusaurus/router';
+
+
+export const CliCodeBlock = ({children}) => {
+ return (
+    <Tabs groupId="shell" queryString>
+        <TabItem value="bash" label="在线使用(Bash)">
+            <CodeBlockWithVariables
+                code={({_http,_domain})=>`sh <(curl ${_http}://${_domain}/get) ${children}`}
+                options={[]}
+                blockProps={{ language: 'bash' }} />
+        </TabItem>
+        <TabItem value="sh" label="在线使用(POSIX Shell)">
+            <CodeBlockWithVariables
+                code={({_http,_domain})=>`curl ${_http}://${_domain}/get | sh -s -- ${children}`}
+                options={[]}
+                blockProps={{ language: 'bash' }} />
+        </TabItem>
+        <TabItem value="offline" label="已安装">
+            <CodeBlockWithVariables
+                code={({_http,_domain})=>`hustmirror ${children}`}
+                options={[]}
+                blockProps={{ language: 'bash' }} />
+        </TabItem>
+    </Tabs>
+    );
+}
+
+export const SoftwareGuide = () => {
+    const {search} = useLocation();
+    const d = new URLSearchParams(search).get('d')
+    if(!d) return <></>
+    return <Admonition type="tip" icon="💡" title={
+    <>
+        <span>{d}使用向导，请</span>
+        <a href="#安装工具--更新工具">确保已安装工具</a>
+    </>}>
+        <Tabs>
+            <TabItem value="deploy" label="部署">
+                <CodeBlockWithVariables
+                    code={({_http,_domain})=>`hustmirror deploy ${d}`}
+                    options={[]}
+                    blockProps={{ language: 'bash' }} />
+            </TabItem>
+            <TabItem value="recover" label="恢复">
+                <CodeBlockWithVariables
+                    code={({_http,_domain})=>`hustmirror recover ${d}`}
+                    options={[]}
+                    blockProps={{ language: 'bash' }} />
+            </TabItem>
+        </Tabs>
+    </Admonition>
+}
 
 命令行工具([hustmirror-cli](https://gitee.com/dzm91_hust/hustmirror-cli.git))是一个可以帮助你快速换源的小工具。
 
+<SoftwareGuide/>
+
+其具有以下功能：
+
+- 一键替换软件源
+- 恢复替换的软件源
+- 在线更新
+
+其支持的软件/系统在主页列表中使用<TerminalIcon height='1em' width='1em' style={{verticalAlign: 'middle', margin: '0 4px'}}/>
+进行标注。
+
+可以从下面的超链接列表中选择你的需求，以快速开始
+
+<TOCInline toc={toc} />
+
+:::info 关于Bash和POSIX Shell
+该命令行工具是采用POSIX shell兼容语法编写的。
+其声明的解释器为`PATH`中的`sh`，在dash和bash解释器中测试通过。 
+
+此文档中的Bash和POSIX Shell为在线使用时执行下载并运行的shell环境。
+
+在线使用时，由于POSIX Shell方式采用管道占用stdin，无法接收用户输入，推荐使用
+Bash方式。
+:::
+
+## 安装工具 / 更新工具
+
+通过命令安装工具后，你可以使用`hustmirror`命令随时替换/恢复镜像源。  
+该命令还可以对已安装的工具进行手动在线更新。
+
+<CliCodeBlock>install</CliCodeBlock>
+
+
+## 交互模式运行
+
 ![cli工具](/img/cli.svg)
 
-```bash
-curl -s https://hustmirror.cn/get | sh
-```
+<CliCodeBlock>-i</CliCodeBlock>
 
-**该命令行工具仅在同级目录下生成软件源配置文件。目前需要用户根据给出的命令自行替换配置文件。**
 
-注：因为该工具处于测试阶段，因此并未进行软件源配置文件的替换操作。
+## 自动部署
+
+工具检测当前是否存在可被部署的系统/软件源，如发现可部署，进行自动部署。
+
+<CliCodeBlock>autodeploy #或者采用ad</CliCodeBlock>
+
+
+## 获取详细帮助
+
+查看工具的基础帮助，可以
+
+<CliCodeBlock>help #查看基础帮助</CliCodeBlock>
+
+对子命令或者一些源，例如deploy命令，可以
+
+<CliCodeBlock>help deploy #查看具体主题的帮助</CliCodeBlock>
