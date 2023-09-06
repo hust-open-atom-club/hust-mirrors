@@ -217,7 +217,16 @@ export default function Table({ items: srcItems, search, detail }: Props) {
   let items = srcItems.concat( // combine force to shown meta data.
     mirrorMeta.filter(u => u.forceShown && srcItems.find(v => v.name == u.id) == undefined)
       .map(u => metaToStatus(u))
-  ).sort((a, b) => (a.name > b.name) ? 1 : -1);
+  ).sort((a, b) => {
+    if (a.name.endsWith(".git") && !b.name.endsWith(".git")) {
+      console.log(a.name, ">", b.name);
+      return 1;
+    } else if (!a.name.endsWith(".git") && b.name.endsWith(".git")) {
+      console.log(a.name, "<", b.name);
+      return -1;
+    }
+    return a.name.localeCompare(b.name);
+  });
 
   if (search) {
     items = items.filter(u => u.name.toLowerCase().indexOf(search.toLowerCase()) != -1)
