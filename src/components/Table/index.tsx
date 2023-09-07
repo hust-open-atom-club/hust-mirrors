@@ -219,10 +219,8 @@ export default function Table({ items: srcItems, search, detail }: Props) {
       .map(u => metaToStatus(u))
   ).sort((a, b) => {
     if (a.name.endsWith(".git") && !b.name.endsWith(".git")) {
-      console.log(a.name, ">", b.name);
       return 1;
     } else if (!a.name.endsWith(".git") && b.name.endsWith(".git")) {
-      console.log(a.name, "<", b.name);
       return -1;
     }
     return a.name.localeCompare(b.name);
