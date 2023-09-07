@@ -271,7 +271,7 @@ CliAnimation.UbuntuSample = (props: Omit<CliAnimateProps, 'blocks'>) => {
   const [current, setCurrent] = React.useState(0);
 
   const blocks = [
-    ubuntuBlock,
+    // ubuntuBlock,
     installBlock,
     ubuntuADBlock,
   ]
