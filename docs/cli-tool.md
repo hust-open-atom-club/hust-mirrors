@@ -9,27 +9,33 @@ import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 import TerminalIcon from '@site/static/icons/terminal.svg';
 import { useLocation } from '@docusaurus/router';
+import CliAnimation from '@site/src/components/CliAnimation';
 
 
 export const CliCodeBlock = ({children}) => {
+const option = [{
+  key: 'sudo',
+  label: '使用Root权限执行脚本（不推荐）',
+  type: 'switch',
+}]
  return (
     <Tabs groupId="shell" queryString>
         <TabItem value="bash" label="在线使用(Bash)">
             <CodeBlockWithVariables
-                code={({_http,_domain})=>`sh <(curl ${_http}://${_domain}/get) ${children}`}
-                options={[]}
+                code={({sudo,_http,_domain})=>`${sudo ? 'sudo ' : ''}sh <(curl ${_http}://${_domain}/get) ${children}`}
+                options={option}
                 blockProps={{ language: 'bash' }} />
         </TabItem>
         <TabItem value="sh" label="在线使用(POSIX Shell)">
             <CodeBlockWithVariables
-                code={({_http,_domain})=>`curl ${_http}://${_domain}/get | sh -s -- ${children}`}
-                options={[]}
+                code={({sudo,_http,_domain})=>`curl ${_http}://${_domain}/get | ${sudo ? 'sudo ' : ''}sh -s -- ${children}`}
+                options={option}
                 blockProps={{ language: 'bash' }} />
         </TabItem>
         <TabItem value="offline" label="已安装">
             <CodeBlockWithVariables
-                code={({_http,_domain})=>`hustmirror ${children}`}
-                options={[]}
+                code={({sudo,_http,_domain})=>`${sudo ? 'sudo ' : ''}hustmirror ${children}`}
+                options={option}
                 blockProps={{ language: 'bash' }} />
         </TabItem>
     </Tabs>
@@ -95,13 +101,15 @@ Bash方式。
 该命令还可以对已安装的工具进行手动在线更新。
 
 <CliCodeBlock>install</CliCodeBlock>
+<CliAnimation.InstallSample windowStyle={{ height: 250 }}/>
 
 
 ## 交互模式运行
 
-![cli工具](/img/cli.svg)
+<!-- ![cli工具](/img/cli.svg) -->
 
 <CliCodeBlock>-i</CliCodeBlock>
+<CliAnimation.UbuntuInteractiveSample windowStyle={{ height: 400 }}/>
 
 
 ## 自动部署
@@ -109,6 +117,7 @@ Bash方式。
 工具检测当前是否存在可被部署的系统/软件源，如发现可部署，进行自动部署。
 
 <CliCodeBlock>autodeploy #或者采用ad</CliCodeBlock>
+<CliAnimation.UbuntuAutoDeploySample windowStyle={{ height: 400 }}/>
 
 
 ## 获取详细帮助
