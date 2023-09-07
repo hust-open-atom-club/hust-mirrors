@@ -11,13 +11,8 @@
 
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 2rem;
+    padding: 4px;
   }
-}
-
-.cli-ad-container{
-  position: relative;
-  min-width: 500px;
 }
 
 .buttons {
@@ -25,8 +20,8 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  bottom: 8px;
-  right: 30px;
+  bottom: 0;
+  right: 0;
 }
 
 .list-container {
@@ -38,7 +33,7 @@
 .table-container {
   margin: 32px;
   flex-grow: 1;
-  max-width: 996px;
+  max-width: 1034px;
   display: flex;
   justify-content: center;
 }
@@ -64,8 +59,19 @@
 
 .header-container .main-part {
   margin: 32px;
-  flex-grow: 1;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
+.header-container .cli-ad-container{
+  margin: 32px;
+  flex: 1 1 0;
+  min-width: 0;
+  position: relative;
+}
+
 
 .header-container .left {
   text-align: left;
@@ -73,7 +79,6 @@
 
 .search {
   display: block;
-  margin: 32px 0;
   font-size: 1.5em;
   padding: 16px;
   background: transparent;
@@ -82,6 +87,7 @@
   transition: all 0.3s;
   outline: none;
   caret-color: var(--ifm-color-content-inverse);
+  max-width: 480px;
 }
 
 .search::placeholder{
@@ -116,8 +122,13 @@
   .table-container {
     margin: 0;
   }
-  .cli-ad-container {
-    display:none;
+  .header-container {
+    flex-direction: column-reverse;
+  }
+
+  .header-container .main-part,
+  .header-container .cli-ad-container {
+    margin: 24px;
   }
 }
 

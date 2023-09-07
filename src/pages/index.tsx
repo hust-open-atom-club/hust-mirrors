@@ -8,6 +8,7 @@ import styles from './index.module.css';
 import Table from '../components/Table';
 import SideBar from '../components/SideBar';
 import mirrorConfig from '@site/mirrors.config';
+import CliAnimation from '../components/CliAnimation'
 
 function HomepageHeader({
   searchValue, onSearchValueChange
@@ -38,18 +39,20 @@ function HomepageHeader({
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className={styles['header-container']}>
         <div className={styles['main-part']}>
-          <h1 className={`hero__title ${styles.left}`}>
-            {translate({
-              id: 'mirror.title',
-              message: mirrorConfig.mainTitle
-            })}
-          </h1>
-          <p className={`hero__subtitle ${styles.left}`}>
-            {translate({
-              id: 'mirror.welcome',
-              message: mirrorConfig.welcome
-            })}
-          </p>
+          <div>
+            <h1 className={`hero__title ${styles.left}`}>
+              {translate({
+                id: 'mirror.title',
+                message: mirrorConfig.mainTitle
+              })}
+            </h1>
+            <p className={`hero__subtitle ${styles.left}`}>
+              {translate({
+                id: 'mirror.welcome',
+                message: mirrorConfig.welcome
+              })}
+            </p>
+          </div>
           <input ref={inputRef} value={searchValue} onChange={(e) => { onSearchValueChange(e.target.value) }}
             onKeyDown={(e) => {
               if (e.key == 'Escape') {
@@ -63,12 +66,16 @@ function HomepageHeader({
             })} />
         </div>
         <div className={styles['cli-ad-container']}>
-          <img className={styles['banner-img']} src='/img/cli.svg' />
+          <CliAnimation.UbuntuSample windowStyle={{
+            height: 300,
+            width: '100%'
+          }} />
+
           <div className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
               to="/docs">
-              <Translate id='mirror.index.cli'>通过命令行使用</Translate>
+              <Translate id='mirror.index.cli'>命令行快速开始</Translate>
             </Link>
           </div>
 
