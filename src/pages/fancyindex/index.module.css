@@ -1,0 +1,58 @@
+.header {
+    padding: 28px 2rem;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.title-container {
+    max-width: 1530px;
+    margin: auto;
+    width: 100%;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.blist {
+    display: flex;
+    flex-direction: row;
+}
+
+.blist button {
+    margin-right: 16px;
+}
+
+.breadcrumbs {
+    margin: 24px;
+}
+
+.table table {
+    display: table;
+    width: 100%;
+}
+
+.table tr,
+.table th {
+    border: none;
+}
+
+.table {
+    margin: 0 24px;
+}
+
+.content {
+    max-width: 1530px;
+    width: 100%;
+    margin: 0px auto;
+
+}
+
+.cliBlock {
+    border: solid 1.5px var(--ifm-color-content-inverse);
+    padding: 4px  20px;
+    vertical-align: middle;
+    border-radius: 4px;
+}

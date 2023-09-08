@@ -94,6 +94,9 @@ const config = {
         darkTheme: darkCodeTheme,
       },
     }),
+  plugins: [
+    require('./plugin/fancyindex')
+  ]
 };
 
 module.exports = config;
