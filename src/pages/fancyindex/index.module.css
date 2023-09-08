@@ -4,6 +4,12 @@
     align-items: stretch;
 }
 
+@media (max-width: 996px) {
+    .header {
+        padding: 32px 16px;
+    }
+}
+
 .title-container {
     max-width: 1530px;
     margin: auto;
@@ -21,12 +27,12 @@
     flex-direction: row;
 }
 
-.blist button {
+.blist a {
     margin-right: 16px;
 }
 
 .breadcrumbs {
-    margin: 24px;
+    margin: 16px 0;
 }
 
 .table table {
@@ -35,12 +41,14 @@
 }
 
 .table tr,
-.table th {
+.table th,
+.table td {
     border: none;
+    text-align: start;
 }
 
-.table {
-    margin: 0 24px;
+.table td {
+    padding: 4px 12px;
 }
 
 .content {
@@ -52,7 +60,7 @@
 
 .cliBlock {
     border: solid 1.5px var(--ifm-color-content-inverse);
-    padding: 4px  20px;
+    padding: 4px 20px;
     vertical-align: middle;
     border-radius: 4px;
 }
