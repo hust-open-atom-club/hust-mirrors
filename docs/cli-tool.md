@@ -19,22 +19,22 @@ const option = [{
   type: 'switch',
 }]
  return (
-    <Tabs groupId="shell" queryString>
-        <TabItem value="bash" label="在线使用(Bash)">
+    <Tabs groupId="mode" queryString>
+        {/*<TabItem value="bash" label="在线使用(Bash)">
             <CodeBlockWithVariables
                 code={({sudo,_http,_domain})=>`${sudo ? 'sudo ' : ''}sh <(curl ${_http}://${_domain}/get) ${children}`}
                 options={option}
                 blockProps={{ language: 'bash' }} />
-        </TabItem>
-        <TabItem value="sh" label="在线使用(POSIX Shell)">
+        </TabItem>*/}
+        <TabItem value="online" label="在线使用">
             <CodeBlockWithVariables
-                code={({sudo,_http,_domain})=>`curl ${_http}://${_domain}/get | ${sudo ? 'sudo ' : ''}sh -s -- ${children}`}
+                code={({sudo,_http,_domain})=>`curl -sSfL ${_http}://${_domain}/get | ${sudo ? 'sudo ' : ''}sh -s -- ${children}`}
                 options={option}
                 blockProps={{ language: 'bash' }} />
         </TabItem>
         <TabItem value="offline" label="已安装">
             <CodeBlockWithVariables
-                code={({sudo,_http,_domain})=>`${sudo ? 'sudo ' : ''}hustmirror ${children}`}
+                code={({sudo,_http,_domain})=>`${sudo ? 'sudo ~/.local/bin/' : ''}hustmirror ${children}`}
                 options={option}
                 blockProps={{ language: 'bash' }} />
         </TabItem>
@@ -101,7 +101,7 @@ Bash方式。
 该命令还可以对已安装的工具进行手动在线更新。
 
 <CliCodeBlock>install</CliCodeBlock>
-<CliAnimation.InstallSample windowStyle={{ height: 250 }}/>
+<CliAnimation.InstallSample windowStyle={{ height: 400 }}/>
 
 
 ## 交互模式运行

@@ -45,7 +45,7 @@ export default function CliAnimation({ blocks, onDone, windowStyle, autoReplay }
         if (current >= blocks.length) {
           await delay(FINISH_DELAY);
           onDone?.();
-          if(!autoReplay) return;
+          if (!autoReplay) return;
           else {
             current = 0;
             currentChar = 0;
@@ -161,12 +161,12 @@ type BlockGen = (_http: string, _domain: string) => CliBlock[];
 
 const ubuntuBlock: BlockGen = (_http, _domain) => [
   { text: '$ ', type: 'output', color: 'green' },
-  { text: 'sh ', color: 'green' },
-  { text: '<(', color: 'blue' },
   { text: 'curl ', color: 'green' },
+  { text: '-sSfL ' },
   { text: `${_http}://${_domain}/get`, underline: true },
-  { text: ')', color: 'blue' },
-  { text: ' -i ' },
+  { text: ' | ', color: 'blue' },
+  { text: 'sh ', color: 'green' },
+  { text: '-s -- -i' },
   { type: 'linefeed' },
   ...logoBlock,
   ...makeOutputLine('[*] Reading configuration file...', 100),
@@ -210,12 +210,12 @@ const ubuntuBlock: BlockGen = (_http, _domain) => [
 
 const installBlock: BlockGen = (_http, _domain) => [
   { text: '$ ', type: 'output', color: 'green' },
-  { text: 'sh ', color: 'green' },
-  { text: '<(', color: 'blue' },
   { text: 'curl ', color: 'green' },
+  { text: '-sSfL ' },
   { text: `${_http}://${_domain}/get`, underline: true },
-  { text: ')', color: 'blue' },
-  { text: ' install ' },
+  { text: ' | ', color: 'blue' },
+  { text: 'sh ', color: 'green' },
+  { text: '-s -- install' },
   { type: 'linefeed' },
   ...makeOutputLine('[*] Reading configuration file...'),
   ...makeOutputLine('[*] Downloading latest hust-mirror...', 3000),
@@ -225,6 +225,10 @@ const installBlock: BlockGen = (_http, _domain) => [
   { text: '$ ', type: 'output', color: 'green' },
   { text: 'hustmirror', color: 'green' },
   { text: ' -V' },
+  { type: 'linefeed' },
+  ...logoBlock,
+  { type: 'linefeed' },
+  { text: '$ ', type: 'output', color: 'green' },
 ]
 
 
@@ -289,7 +293,7 @@ CliAnimation.UbuntuInteractiveSample = (props: Omit<CliAnimateProps, 'blocks'>) 
   const _http = ctx.https ? "https" : "http";
   const _domain = ctx.domain;
   const block = ubuntuBlock(_http, _domain);
-  return (<CliAnimation blocks={block} windowStyle={props.windowStyle} autoReplay/>)
+  return (<CliAnimation blocks={block} windowStyle={props.windowStyle} autoReplay />)
 }
 
 
@@ -298,7 +302,7 @@ CliAnimation.InstallSample = (props: Omit<CliAnimateProps, 'blocks'>) => {
   const _http = ctx.https ? "https" : "http";
   const _domain = ctx.domain;
   const block = installBlock(_http, _domain);
-  return (<CliAnimation blocks={block} windowStyle={props.windowStyle} autoReplay/>)
+  return (<CliAnimation blocks={block} windowStyle={props.windowStyle} autoReplay />)
 }
 
 CliAnimation.UbuntuAutoDeploySample = (props: Omit<CliAnimateProps, 'blocks'>) => {
@@ -306,5 +310,5 @@ CliAnimation.UbuntuAutoDeploySample = (props: Omit<CliAnimateProps, 'blocks'>) =
   const _http = ctx.https ? "https" : "http";
   const _domain = ctx.domain;
   const block = ubuntuADBlock(_http, _domain);
-  return (<CliAnimation blocks={block} windowStyle={props.windowStyle} autoReplay/>)
+  return (<CliAnimation blocks={block} windowStyle={props.windowStyle} autoReplay />)
 }
