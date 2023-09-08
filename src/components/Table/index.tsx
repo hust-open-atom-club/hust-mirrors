@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import styles from './index.module.css'
 import Link from '@docusaurus/Link';
 import Translate, { translate } from '@docusaurus/Translate'
-import { DocMeta, MirrorMeta, useDocMetas, useMirrorMetas } from '@site/src/utils/mirrorUtils';
+import { DocMeta, useDocMetas, useMirrorMetas } from '@site/src/utils/mirrorUtils';
 import copy from 'copy-to-clipboard';
 import clsx from 'clsx';
 
@@ -15,6 +15,7 @@ import SuccessIcon from '@site/static/icons/success.svg';
 import FailedIcon from '@site/static/icons/failed.svg';
 import DisabledIcon from '@site/static/icons/disabled.svg';
 import TerminalIcon from '@site/static/icons/terminal.svg';
+import { MirrorMeta } from '@site/meta.config';
 
 
 type MirrorStatus = {
