@@ -13,8 +13,14 @@ cname: 'debian'
 ### Debian 软件源替换
 
 :::caution
-**为了及时地获得安全更新，防止因软件源更新而导致的软件补丁滞后问题，我们推荐直接使用官方安全更新软件源。**
+**为了及时地获得安全更新，防止因软件源更新而导致的安全补丁滞后问题，我们推荐直接使用官方安全更新软件源。**
 :::
+
+:::caution
+**为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
+:::
+
+1. 根据个人喜欢做出选择，并将如下软件源配置内容拷贝至 `/etc/apt/sources.list`，并进行保存。
 
 ```shell varcode
 [ ] (version) { bullseye:Debian 11, bookworm:Debian 12, sid:Unstable - SID, testing:Testing, buster:Debian 10 } Debian 版本
@@ -38,9 +44,35 @@ ${SID_PREFIX}${BACKPORTS_PREFIX}deb ${_http}://${_domain}/debian ${version}-back
 ${SID_PREFIX}${BACKPORTS_PREFIX}${SRC_PREFIX}deb-src ${_http}://${_domain}/debian ${version}-backports main contrib non-free${NFW}
 ```
 
+2. 通过如下命令更新软件。
+
+```shell varcode
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}apt update
+```
+
+### 一键换源
+
+:::caution
+本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
+:::
+
+使用 `sed` 命令将软件源配置文件中的默认源地址 <http://deb.debian.org/> 直接替换为当前镜像源站。
+
+```shell varcode
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}sed -i.bak 's|http://deb.debian.org|${_http}://${_domain}|g' /etc/apt/sources.list
+```
+
 ### 注意事项
 
-1. Debian Buster 以上版本默认支持 HTTPS 源。如果遇到无法拉取 HTTPS 源的情况，请使用 HTTP 源安装如下软件。
+- Debian Buster 以上版本默认支持 HTTPS 源。如果遇到无法拉取 HTTPS 源的情况，请使用 HTTP 源安装如下软件。
 
 ```shell varcode
 [ ] (root) 是否为 root 用户
@@ -48,6 +80,7 @@ ${SID_PREFIX}${BACKPORTS_PREFIX}${SRC_PREFIX}deb-src ${_http}://${_domain}/debia
 const SUDO = !root ? 'sudo ' : '';
 ---
 ${SUDO}apt install apt-transport-https ca-certificates
+${SUDO}apt update
 ```
 
 <!-- 2. Connection reset by peer 问题
