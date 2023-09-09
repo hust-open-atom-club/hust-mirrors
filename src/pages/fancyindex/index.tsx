@@ -51,7 +51,7 @@ const clientScript = `
 (function () {
   var pathname = window.location.pathname;
   var mirrorid = pathname.split("/")[1];
-  var metas = ${ mirrorMeta } /** Inject Meta Here */
+  var metas = ${mirrorMeta} /** Inject Meta Here */
   var meta = metas.find(u => u.id == mirrorid);
   var displayName = meta ? (meta.displayName || meta.id) : mirrorid;
 
@@ -105,7 +105,7 @@ const clientScript = `
 `;
 
 function FancyIndexInjectionContainer() {
-  return <div className='mirror__table' dangerouslySetInnerHTML={
+  return <div className={clsx('mirror__table', styles.table)} dangerouslySetInnerHTML={
     {
       __html: `<h1 style="display:none"/><!-- fancyindex -->`
     }
