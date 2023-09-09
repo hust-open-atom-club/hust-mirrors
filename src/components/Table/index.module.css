@@ -113,6 +113,7 @@
 .name {
   line-break: anywhere;
   min-width: 300px;
+  overflow: hidden;
 }
 
 .detail .name {
@@ -172,6 +173,16 @@
 @media screen and (max-width:996px) {
   .help {
     width: 130px;
+  }
+  
+  tr td:first-child,
+  tr th:first-child {
+    padding-left: 16px;
+  }
+
+  tr td:last-child,
+  tr th:last-child {
+    padding-right: 16px;
   }
 }
 

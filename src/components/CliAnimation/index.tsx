@@ -114,7 +114,7 @@ export default function CliAnimation({ blocks, onDone, windowStyle, autoReplay }
       {lines.map((line, i) => (<div key={i} className={styles.line}>
         {line.map((block, j) => (<React.Fragment key={`${i}-${j}`}>
           <span className={clsx(styles.block, block.bold && styles['code-bold'], block.underline && styles['code-underline'], block.color && styles['code-' + block.color])}>{block.text || ""}</span>
-          {j === line.length - 1 && i === lines.length - 1 && <span className={styles.cursor}>█</span>}
+          {j === line.length - 1 && i === lines.length - 1 && <span className={styles.cursor}/>}
         </React.Fragment>
         ))}
       </div>))}

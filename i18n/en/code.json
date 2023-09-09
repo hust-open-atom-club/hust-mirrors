@@ -428,5 +428,20 @@
   },
   "mirror.table.supportCli": {
     "message": "Support CLI deploy."
+  },
+  "mirror.release.loading": {
+    "message": "Loading releases..."
+  },
+  "mirror.footer.desc0_0": {
+    "message": "HUST Mirror is made possible due to suport and sponsorship from "
+  },
+  "mirror.footer.desc0_1": {
+    "message": "NCC of HUST"
+  },
+  "mirror.footer.desc0_2": {
+    "message": "."
+  },
+  "mirror.footer.desc1": {
+    "message": "This mirror site contains software sources for OS, installation images, package manager registries, and source code of commonly used OSS. Besides, it also provides distribution ISO download, full usage help documentation and convinient CLI tool support."
   }
 }
