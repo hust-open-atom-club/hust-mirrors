@@ -196,7 +196,7 @@ function MirrorHelp({ item, mirrorMeta: mirrors, docsMeta: docs }: MirrorHelpPro
         [ <Translate id='mirror.table.help'>帮助文档</Translate> ]
       </Link>}
 
-    { m && m.supportCli &&
+    {m && m.supportCli &&
       <Link className={styles['help-link']} to={`/docs?d=${m.id}`} title={translate({
         id: 'mirror.table.supportCli',
         message: '该镜像支持CLI部署'
@@ -234,7 +234,7 @@ export default function Table({ items: srcItems, search, detail }: Props) {
   const timezone = new Date().getTimezoneOffset() / -60;
 
   return (
-    <table className={clsx(styles['container'], detail && styles["detail"])}>
+    <table className={clsx('mirror__table', styles['container'], detail && styles["detail"])}>
       <thead>
         <tr>
           <th className={styles['name']}>
@@ -261,7 +261,7 @@ export default function Table({ items: srcItems, search, detail }: Props) {
         </tr>
 
       </thead>
-      <tbody className={styles.tbody}>
+      <tbody>
         {items.map(u => (
           <tr key={u.name} className={clsx({
             [styles['row-none']]: u.status == 'none',

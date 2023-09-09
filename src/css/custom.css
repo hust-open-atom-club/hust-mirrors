@@ -30,3 +30,44 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
   --list-hover: rgb(69, 69, 69);
 }
+
+/* mirror table */
+.mirror__table table,
+table.mirror__table {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.mirror__table tr {
+  border: none;
+  text-align: left;
+}
+
+.mirror__table tr:hover {
+  background: var(--list-hover);
+  ;
+}
+
+.mirror__table th,
+.mirror__table td {
+  border: none;
+}
+
+.mirror__table tbody th,
+.mirror__table tbody td {
+  font-weight: normal;
+  padding: 4px 12px;
+}
+
+@media screen and (max-width:996px) {
+  .mirror__table tr td:first-child,
+  .mirror__table tr th:first-child {
+    padding-left: 16px;
+  }
+
+  .mirror__table tr td:last-child,
+  .mirror__table tr th:last-child {
+    padding-right: 16px;
+  }
+}

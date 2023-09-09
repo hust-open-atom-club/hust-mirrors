@@ -41,7 +41,7 @@ const clientScript = `
     ele.ariaLabel = "Link to " + item.label;
     ele.className = "breadcrumbs__link";
     // cautious about XSS
-    ele.innerText = item.label;
+    ele.textContent = item.label;
     li.appendChild(ele)
     breadcrumbsContainr.appendChild(li);
   }
@@ -51,7 +51,7 @@ const clientScript = `
 (function () {
   var pathname = window.location.pathname;
   var mirrorid = pathname.split("/")[1];
-  var metas = ${ mirrorMeta } /** Inject Meta Here */
+  var metas = ${mirrorMeta} /** Inject Meta Here */
   var meta = metas.find(u => u.id == mirrorid);
   var displayName = meta ? (meta.displayName || meta.id) : mirrorid;
 
@@ -61,7 +61,7 @@ const clientScript = `
 
   for (var i = 0; i < titleDoms.length; i++) {
     var title = titleDoms[i];
-    title.innerText = mirrorid;
+    title.textContent = mirrorid;
   }
   if (meta) helpBtn.href = "/docs/" + meta.helpID || meta.id;
 })();
@@ -69,10 +69,10 @@ const clientScript = `
 /** set date string */
 (function () {
   document.querySelectorAll("#list tbody tr td:nth-child(3)").forEach((e) => {
-    var s = new Date(e.innerText);
+    var s = new Date(e.textContent);
     if (!isNaN(s.getTime())) {
       var u = ("000" + s.getFullYear()).substr(-4) + "-" + ("0" + (s.getMonth() + 1)).substr(-2) + "-" + ("0" + s.getDate()).substr(-2) + " " + ("0" + s.getHours()).substr(-2) + ":" + ("0" + s.getMinutes()).substr(-2);
-      e.innerText = u;
+      e.textContent = u;
     }
   })
 })();
@@ -101,11 +101,13 @@ const clientScript = `
   btn.addEventListener('click', () => {
     setTheme(theme == 'dark' ? 'light' : 'dark')
   })
+  /** remove nav toggle button */
+  document.querySelector(".navbar__toggle").remove()
 })()
 `;
 
 function FancyIndexInjectionContainer() {
-  return <div className={styles.table} dangerouslySetInnerHTML={
+  return <div className={clsx('mirror__table', styles.table)} dangerouslySetInnerHTML={
     {
       __html: `<h1 style="display:none"/><!-- fancyindex -->`
     }
@@ -145,7 +147,7 @@ export default function FileIndexPage() {
       <Breadcrumb />
       <FancyIndexInjectionContainer />
     </div>
-    <script dangerouslySetInnerHTML={{
+    <script defer dangerouslySetInnerHTML={{
       __html: clientScript
     }}></script>
   </Layout>

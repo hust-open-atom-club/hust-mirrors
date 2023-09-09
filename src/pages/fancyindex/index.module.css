@@ -11,7 +11,7 @@
 }
 
 .title-container {
-    max-width: 1530px;
+    max-width: 1446px;
     margin: auto;
     width: 100%;
 }
@@ -35,22 +35,6 @@
     margin: 16px 0;
 }
 
-.table table {
-    display: table;
-    width: 100%;
-}
-
-.table tr,
-.table th,
-.table td {
-    border: none;
-    text-align: start;
-}
-
-.table td {
-    padding: 4px 12px;
-}
-
 .content {
     max-width: 1530px;
     width: 100%;
@@ -63,4 +47,19 @@
     padding: 4px 20px;
     vertical-align: middle;
     border-radius: 4px;
+}
+
+@media screen and (min-width:996px) {
+    .table {
+        margin: 32px;
+    }
+    .breadcrumbs {
+        margin: 16px 32px;
+    }
+}
+
+@media screen and (max-width:720px) {
+    .table tr>*:last-child {
+        display: none;
+    }
 }
