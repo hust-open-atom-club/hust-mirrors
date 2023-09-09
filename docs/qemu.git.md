@@ -35,7 +35,7 @@ git remote set-url origin ${_http}://${_domain}/git/qemu.git
 curl ${_http}://${_domain}/qemu/qemu.sh | bash
 ``` -->
 
-## References
+## 引用
 
 [^1] [校园网联合镜像站](https://mirrors.cernet.edu.cn/about)
 
