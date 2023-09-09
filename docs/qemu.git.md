@@ -4,17 +4,7 @@ cname: 'qemu.git'
 sidebar_label: QEMU
 ---
 
-## 实验性脚本（仅 TUNA 提供）
-
-如需克隆`QEMU`完整源代码（包含其子模块），运行
-
-```bash varcode
-curl ${_http}://${_domain}/qemu/qemu.sh | bash
-```
-
-## 手动克隆
-
-1. 克隆`QEMU`代码，运行
+1. 克隆 `QEMU` 代码，运行
 
 ```bash varcode
 git clone ${_http}://${_domain}/git/qemu.git
@@ -32,12 +22,23 @@ git remote add mirror ${_http}://${_domain}/git/qemu.git
 git remote set-url origin ${_http}://${_domain}/git/qemu.git
 ```
 
-将默认上游设置为镜像站。
+将默认上游设置为当前软件镜像站。
+
+<!-- 
+### 注意事项
+
+实验性脚本（仅 TUNA 提供）
+
+如需克隆 `QEMU` 完整源代码（包含其子模块），运行
+
+```bash varcode
+curl ${_http}://${_domain}/qemu/qemu.sh | bash
+``` -->
 
 ## References
 
-[1] [校园网联合镜像站](https://mirrors.cernet.edu.cn/about)
+[^1] [校园网联合镜像站](https://mirrors.cernet.edu.cn/about)
 
-[2] [帮助仓库](https://github.com/mirrorz-org/mirrorz-help)
+[^2] [帮助仓库](https://github.com/mirrorz-org/mirrorz-help)
 
-[3] [关于Git镜像](https://hustmirror.cn/docs/about-git)
+[^3] [关于Git镜像](https://hustmirror.cn/docs/about-git)
