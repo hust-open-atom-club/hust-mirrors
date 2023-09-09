@@ -1,32 +1,5 @@
-
-.container{
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-}
-
-.container.detail {
+.detail {
   min-width: 1600px;
-}
-
-.container tr{
-  border: none;
-  text-align: left;
-}
-
-.container tr:hover{
-  background: var(--list-hover);;
-}
-
-.container th,
-.container td {
-  border: none;
-}
-
-.tbody th,
-.tbody td {
-  font-weight: normal;
-  padding: 4px 12px;
 }
 
 .date {
@@ -86,6 +59,11 @@
   transition: opacity 0.3s;
 }
 
+@media screen and (max-width: 480px) {
+  .desc-container {
+    display: none;
+  }
+}
 
 .desc-container::before {
   content: ' ';
@@ -96,7 +74,7 @@
   height: 16px;
   display: block;
   clip-path: polygon(0 50%, 100% 100%, 100% 0);
-  background: var(--ifm-color-primary) ;
+  background: var(--ifm-color-primary);
 }
 
 .desc-container p {
@@ -113,7 +91,6 @@
 .name {
   line-break: anywhere;
   min-width: 300px;
-  overflow: hidden;
 }
 
 .detail .name {
@@ -163,7 +140,7 @@
   fill: var(--ifm-color-primary);
 }
 
-.status-label svg{
+.status-label svg {
   width: 1rem;
   height: 1rem;
   vertical-align: middle;
@@ -174,28 +151,18 @@
   .help {
     width: 130px;
   }
-  
-  tr td:first-child,
-  tr th:first-child {
-    padding-left: 16px;
-  }
-
-  tr td:last-child,
-  tr th:last-child {
-    padding-right: 16px;
-  }
 }
 
 @media screen and (max-width:480px) {
   .date {
     display: none;
   }
+
   .detail .date {
     display: block;
   }
+
   .help {
     width: 200px;
   }
 }
-
-

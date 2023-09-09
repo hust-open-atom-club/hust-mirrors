@@ -105,7 +105,7 @@ const clientScript = `
 `;
 
 function FancyIndexInjectionContainer() {
-  return <div className={styles.table} dangerouslySetInnerHTML={
+  return <div className='mirror__table' dangerouslySetInnerHTML={
     {
       __html: `<h1 style="display:none"/><!-- fancyindex -->`
     }
