@@ -17,12 +17,19 @@ cname: 'deepin'
 [ ] (version) { apricot:Deepin 20, beige:Deepin 23 } Deepin 版本
 ---
 const SUDO = !root ? 'sudo ' : '';
-let COMMAND = "";
-if (version == 'apricot') 
-  COMMAND = 'sed -E -e "s|https?://([^/]+)/deepin|${_http}://hustmirror.cn/deepin|" /etc/apt/sources.list'
-if (version == 'beige') 
-  COMMAND = 'sed -E -e "s|https?://([^/]+)/${codename}|${http}://hustmirror.cn/deepin/${version}|" /etc/apt/sources.list'
+let COMMAND = '';
+let STR_TO_REPLACE = '';
+let STR_REPLACED = '';
+
+if (version == 'apricot') {
+  STR_TO_REPLACE = '([^/]+)/deepin';
+  STR_REPLACED = 'hustmirror.cn/deepin';
+}
+if (version == 'beige') {
+  STR_TO_REPLACE = '([^/]+)/' + version;
+  STR_REPLACED = 'hustmirror.cn/deepin/' + version;
+}
 ---
 ${SUDO}cp /etc/apt/sources.list /etc/apt/sources.list.bak
-${SUDO}${COMMAND}
+${SUDO}sed -E -e "s|https?://${STR_TO_REPLACE}|${_http}://${STR_REPLACED}|" /etc/apt/sources.list
 ```
