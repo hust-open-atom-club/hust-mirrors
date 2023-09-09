@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 0;
-    max-width: 1466px; /* calc(1530px - 64px);  */
+    max-width: 1466px !important; /* calc(1530px - 64px);  */
 }
 
 @media screen and (max-width: 996px) {

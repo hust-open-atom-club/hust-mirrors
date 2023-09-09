@@ -28,14 +28,15 @@ function Footer() {
             <div>
               <Translate id='mirror.footer.desc1'>
                 该镜像站收录了主流开源操作系统的软件源、安装镜像，包管理器的仓库，以及常用开源软件源代码，
-                是 deepin, openEuler, openKylin 等多个国产操作系统的官方源。
+                除此以外，提供了发行版ISO下载、完整的使用帮助文档和CLI工具的支持。
               </Translate>
             </div>
-            <div>
+            {/* <div>
               <Translate id='mirror.footer.desc2'>
                 该镜像站目前是华中地区规模最大，速度最快，收录最全的开源软件镜像站。除此以外，提供了发行版ISO下载、完整的使用帮助文档和CLI工具的支持。
+                是 deepin, openEuler, openKylin 等多个国产操作系统的官方源
               </Translate>
-            </div>
+            </div> */}
           </div>
         )}
         <div className={styles.logos}>

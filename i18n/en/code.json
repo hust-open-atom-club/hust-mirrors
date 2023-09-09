@@ -442,9 +442,6 @@
     "message": "."
   },
   "mirror.footer.desc1": {
-    "message": "This mirror site contains software sources for OS, installation images, package manager registries, and source code of commonly used OSS. It is the official source of many china-made operating systems such as deepin, openEuler, and openKylin."
-  },
-  "mirror.footer.desc2": {
-    "message": "The site is the largest, fastest, and most comprehensive mirror site in Central China. Besides, it also provides distribution ISO download, full usage help documentation and convinient CLI tool support."
+    "message": "This mirror site contains software sources for OS, installation images, package manager registries, and source code of commonly used OSS. Besides, it also provides distribution ISO download, full usage help documentation and convinient CLI tool support."
   }
 }
