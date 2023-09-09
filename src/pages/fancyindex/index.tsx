@@ -101,6 +101,8 @@ const clientScript = `
   btn.addEventListener('click', () => {
     setTheme(theme == 'dark' ? 'light' : 'dark')
   })
+  /** remove nav toggle button */
+  document.querySelector(".navbar__toggle").remove()
 })()
 `;
 
