@@ -15,7 +15,7 @@ git clone ${_http}://${_domain}/git/linux.git
 ```
 
 
-### 注意事项
+## 注意事项
 
 `Git` 仓库镜像和普通软件镜像之间的区别：
 
