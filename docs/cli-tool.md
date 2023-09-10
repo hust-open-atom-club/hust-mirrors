@@ -95,6 +95,14 @@ export const SoftwareGuide = () => {
 Bash方式。
 :::
 
+## 自动部署
+
+工具检测当前是否存在可被部署的系统/软件源，如发现可部署，进行自动部署。
+
+<CliCodeBlock>autodeploy #或者采用ad</CliCodeBlock>
+<CliAnimation.UbuntuAutoDeploySample windowStyle={{ height: 400 }}/>
+
+
 ## 安装工具 / 更新工具
 
 通过命令安装工具后，你可以使用`hustmirror`命令随时替换/恢复镜像源。  
@@ -110,14 +118,6 @@ Bash方式。
 
 <CliCodeBlock>-i</CliCodeBlock>
 <CliAnimation.UbuntuInteractiveSample windowStyle={{ height: 400 }}/>
-
-
-## 自动部署
-
-工具检测当前是否存在可被部署的系统/软件源，如发现可部署，进行自动部署。
-
-<CliCodeBlock>autodeploy #或者采用ad</CliCodeBlock>
-<CliAnimation.UbuntuAutoDeploySample windowStyle={{ height: 400 }}/>
 
 
 ## 获取详细帮助
