@@ -51,21 +51,19 @@ const mirrors: MirrorMeta[] = [
 
 const domains: DomainMeta[] = [
   {
+    domain: 'mirrors.hust.college', desc: translate({
+      id: 'mirror.domain.2',
+      message: '双栈线路'
+    }),
+    link: 'https://mirrors.hust.colleage'
+  },
+  {
     domain: 'hustmirror.cn', desc: translate({
       id: 'mirror.domain.1',
-      message: '双栈线路'
+      message: '将弃用⚠️'
     }),
     link: 'https://hustmirror.cn'
   },
-  /*
-  {
-    domain: 'mirrors.hust.edu.cn', desc: translate({
-      id: 'mirror.domain.2',
-      message: 'IPV4线路'
-    }),
-    link: 'https://mirrors.hust.edu.cn'
-  },
- */
 ]
 
 export default {

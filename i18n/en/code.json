@@ -358,10 +358,10 @@
     "message": "HUST Mirror"
   },
   "mirror.domain.1": {
-    "message": "Dual stack"
+    "message": "Deprecated soon ⚠"
   },
   "mirror.domain.2": {
-    "message": "IPv4 Only"
+    "message": "Dual Stack"
   },
   "mirror.index.cli": {
     "message": "Get CLI tool"
