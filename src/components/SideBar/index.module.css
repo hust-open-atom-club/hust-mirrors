@@ -7,12 +7,12 @@
 }
 
 .side a:hover {
-  color: var(--ifm-color-primary); 
+  color: var(--ifm-color-primary);
 }
 
 .side h3 {
   margin-top: 32px;
-  color: var(--ifm-color-primary); 
+  color: var(--ifm-color-primary);
 }
 
 .side a:first-child>h3 {
@@ -37,4 +37,15 @@
 .domain-row>a {
   display: inline-block;
   width: 180px;
+}
+
+.side h3 svg {
+  height: 1em;
+  width: 1em;
+  vertical-align: middle;
+  margin: 0 8px 0 0;
+}
+
+.side h3 svg path {
+  fill: var(--ifm-color-primary);
 }
