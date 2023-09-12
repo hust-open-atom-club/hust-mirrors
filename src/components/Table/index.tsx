@@ -16,6 +16,7 @@ import FailedIcon from '@site/static/icons/failed.svg';
 import DisabledIcon from '@site/static/icons/disabled.svg';
 import TerminalIcon from '@site/static/icons/terminal.svg';
 import { MirrorMeta } from '@site/meta.config';
+import SharedContext from '@site/src/utils/SharedContext';
 
 
 type MirrorStatus = {
@@ -145,9 +146,11 @@ function MirrorName({ item, docsMeta: docs, mirrorMeta: mirrors }: MirrorNamePro
 
   const descShown = (!!m && !!m.description) || isGit;
 
+  const ctx = React.useContext(SharedContext);
+
   const onLinkClick: React.MouseEventHandler = (e) => {
     if (isGit) {
-      const gitUrl = "https://hustmirror.cn/git/" + item.name;
+      const gitUrl = `${ctx.https ? 'https' : 'http'}://${ctx.domain}/git/` + item.name;
       copy(gitUrl);
       if (timeoutRef.current) {
         window.clearTimeout(timeoutRef.current);
