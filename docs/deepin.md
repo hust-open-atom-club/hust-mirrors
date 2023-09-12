@@ -26,10 +26,10 @@ const SUDO = !root ? 'sudo ' : '';
 let COMMAND = '';
 
 if (version == 'apricot') {
-  COMMAND = '://hustmirror.cn/deepin apricot main contrib non-free';
+  COMMAND = `://${_domain}/deepin apricot main contrib non-free`;
 }
 if (version == 'beige') {
-  COMMAND = '://hustmirror.cn/deepin/beige beige main community commercial';
+  COMMAND = `://${_domain}/deepin/beige beige main community commercial`;
 }
 ---
 deb ${_http}${COMMAND}
@@ -64,11 +64,11 @@ let STR_REPLACED = '';
 
 if (version == 'apricot') {
   STR_TO_REPLACE = '([^/]+)/deepin';
-  STR_REPLACED = 'hustmirror.cn/deepin';
+  STR_REPLACED = `${_domain}/deepin`;
 }
 if (version == 'beige') {
   STR_TO_REPLACE = '([^/]+)/' + version;
-  STR_REPLACED = 'hustmirror.cn/deepin/' + version;
+  STR_REPLACED = `${_domain}/deepin/` + version;
 }
 ---
 ${SUDO}sed -E -e "s|https?://${STR_TO_REPLACE}|${_http}://${STR_REPLACED}|" /etc/apt/sources.list
