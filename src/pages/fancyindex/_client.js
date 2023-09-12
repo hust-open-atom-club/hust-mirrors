@@ -40,14 +40,17 @@
   var displayName = meta ? (meta.displayName || meta.id) : mirrorid;
 
   var titleDoms = document.getElementsByClassName('fancyindex__mirrorname');
-  var lastUpdate = document.getElementById('fancyindex__lastUpdate');
+  // var lastUpdate = document.getElementById('fancyindex__lastUpdate');
   var helpBtn = document.getElementById('fancyindex__helpbutton');
+  var cliBlock = document.getElementById('fancyindex__cliblock');
 
   for (var i = 0; i < titleDoms.length; i++) {
     var title = titleDoms[i];
     title.textContent = mirrorid;
   }
-  if (meta) helpBtn.href = "/docs/" + meta.helpID || meta.id;
+  if (meta) { helpBtn.href = "/docs/" + meta.helpID || meta.id; }
+  else { helpBtn.remove(); }
+  if (!meta || !meta.supportCli) cliBlock.remove();
 })();
 
 /** set date string */
@@ -62,20 +65,20 @@
 })();
 
 /** add script for change theme button */
-(function() {
+(function () {
   var defaultMode = 'light';
   function setTheme(th) {
     document.documentElement.setAttribute('data-theme', th);
     theme = th;
     try {
       localStorage.setItem('theme', th);
-    } catch (err) {}
+    } catch (err) { }
   }
   function getStoredTheme() {
     var theme = null;
     try {
       theme = localStorage.getItem('theme');
-    } catch (err) {}
+    } catch (err) { }
     return theme;
   }
   var theme = getStoredTheme() || defaultMode;
@@ -87,4 +90,63 @@
   })
   /** remove nav toggle button */
   document.querySelector(".navbar__toggle").remove()
-})()
+})();
+
+/** render HEADER.html and FOOTER.html */
+(function () {
+  var filenames = [];
+  document.querySelectorAll("#list tbody tr td:first-child a")
+    .forEach((e) => { filenames.push(e.textContent); });
+
+  const list = document.getElementById("list");
+
+  var header = filenames.find(u => /^header.html?$/.test(u.toLocaleLowerCase()));
+  var footer = filenames.find(u => /^footer.html?$/.test(u.toLocaleLowerCase()));
+  var readme = filenames.find(u => /^readme.html?$/.test(u.toLocaleLowerCase()));
+
+  function generateIframe(src) {
+    var iframe = document.createElement("iframe");
+    function resizeIFrameToFitContent() {
+      iframe.height = 0; // avoid not shrink
+      iframe.width = iframe.contentWindow.document.body.scrollWidth;
+      iframe.height = iframe.contentWindow.document.body.scrollHeight;
+    }
+    function transformDocument() {
+      iframe.contentDocument.querySelectorAll('a').forEach((e) => {
+        e.target = "_top";
+      });
+    }
+    iframe.src = src;
+    iframe.sandbox = "allow-top-navigation allow-same-origin";
+    iframe.addEventListener('load', resizeIFrameToFitContent);
+    iframe.addEventListener('load', transformDocument);
+    iframe.style.width = "100%";
+    iframe.style.background = "white";
+    window.addEventListener('resize', resizeIFrameToFitContent);
+    return iframe;
+  }
+
+  if (readme) {
+    var iframe = generateIframe(readme);
+    list.parentElement.prepend(iframe);
+  }
+
+  if (header) {
+    var iframe = generateIframe(header);
+    list.parentElement.prepend(iframe);
+  }
+
+  if (footer) {
+    var iframe = generateIframe(footer);
+    list.parentElement.append(iframe);
+  }
+
+  var template = '<div class="theme-admonition theme-admonition-caution alert alert--warning" style="margin-bottom:16px">' +
+    '以下页面由上游站点提供，本站不对内容负责。' +
+    '</div>';
+
+  if (readme || header || footer)
+    list.parentElement.insertAdjacentHTML('afterbegin', template);
+
+
+})();

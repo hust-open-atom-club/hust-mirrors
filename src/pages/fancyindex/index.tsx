@@ -2,7 +2,7 @@ import Layout from "@theme/Layout";
 import clsx from "clsx";
 import React, { useEffect } from "react";
 import styles from './index.module.css'
-import { useMirrorMetas } from "@site/src/utils/mirrorUtils";
+import { useDocMetas, useMirrorMetas } from "@site/src/utils/mirrorUtils";
 
 function Breadcrumb() {
   return <nav className={clsx("theme-doc-breadcrumbs", styles.breadcrumbs)} aria-label="Breadcrumbs">
@@ -11,11 +11,6 @@ function Breadcrumb() {
   </nav>
 }
 
-const mirrorMeta = JSON.stringify(useMirrorMetas());
-
-const clientScript = `
-window.MIRROR_METAS = ${mirrorMeta} /** Inject Meta Here */
-`;
 
 function FancyIndexInjectionContainer() {
   return <div className={clsx('mirror__table', styles.table)} dangerouslySetInnerHTML={
@@ -36,13 +31,15 @@ function Header() {
           <span className='fancyindex__mirrorname'></span>
           <span>的文件索引</span>
         </h1>
-        <p id='fancyindex__lastUpdate'>上次同步时间：N/A</p>
+        <p id='fancyindex__lastUpdate'>
+          {/* 上次同步时间：N/A */}
+        </p>
       </div>
       <div className={styles.blist}>
         <a className="button button--secondary" id="fancyindex__helpbutton">
           查看帮助
         </a>
-        <div className={styles.cliBlock}>
+        <div className={styles.cliBlock} id="fancyindex__cliblock">
           hustmirror deploy <span className="fancyindex__mirrorname"></span>
         </div>
       </div>
@@ -51,6 +48,14 @@ function Header() {
 }
 
 export default function FileIndexPage() {
+  const mirrorMeta = JSON.stringify(useMirrorMetas());
+  const helpMeta = JSON.stringify(useDocMetas());
+
+  const clientScript = `
+  window.MIRROR_METAS = ${mirrorMeta};
+  window.HELP_METAS = ${helpMeta};
+  `;
+
   return <Layout
     description="Index of /">
     <Header />
