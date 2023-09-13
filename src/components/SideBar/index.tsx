@@ -5,11 +5,15 @@ import Translate from '@docusaurus/Translate'
 import { DomainMeta } from '@site/meta.config'
 import { useDomainMetas } from '@site/src/utils/mirrorUtils'
 
+import clsx from 'clsx'
+
 import DomainIcon from '@site/static/icons/domain.svg'
 import ContactIcon from '@site/static/icons/contact.svg'
 import HelpIcon from '@site/static/icons/help.svg'
 import ImageIcon from '@site/static/icons/image.svg'
 import LinkIcon from '@site/static/icons/link.svg'
+import IssueIcon from '@site/static/icons/issue.svg'
+import MailIcon from '@site/static/icons/mail.svg'
 
 interface Props extends React.HTMLProps<HTMLDivElement> { }
 
@@ -39,7 +43,7 @@ export default function SideBar(props: Props) {
           </Translate>
         </p>
         <Link to='/release'>
-          <button className={styles.button}>
+          <button className={clsx("button", "button--primary", "button--lg", styles.button)}>
             <Translate id='mirror.sidebar.goRelease'>
               发行版下载
             </Translate>
@@ -55,24 +59,31 @@ export default function SideBar(props: Props) {
           </Translate>
         </p>
         <Link to='/docs'>
-          <button className={styles.button}>
+          <button className={clsx("button", "button--primary", "button--lg", styles.button)}>
             <Translate id='mirror.sidebar.docs'>
               查看帮助文档
             </Translate>
           </button>
         </Link>
-        <p>
+        {/* <p>
           <Translate id="mirror.sidebar.docsDesc">
             也可以通过左边的文件列表中相应源的帮助链接跳转到帮助文档。
           </Translate>
-        </p>
+        </p> */}
 
         <a><h3><ContactIcon /><Translate id="mirror.sidebar.contactus">联系我们</Translate></h3></a>
         <p>
-          <a href="https://gitee.com/dzm91_hust/hust-mirrors/issues"><Translate id='mirror.sidebar.submit'>提交问题</Translate></a>
+          <a href="https://gitee.com/dzm91_hust/hust-mirrors/issues">
+            <IssueIcon /><Translate id='mirror.sidebar.submit'>提交问题</Translate>
+          </a>
         </p>
         <p>
-          <a href='mailto:mirror_support@hust.edu.cn'><Translate id='mirror.sidebar.sendemail'>发送邮件</Translate></a>
+          <a href='mailto:mirror_support@hust.edu.cn'>
+            <span style={{ marginRight: 48 }}>
+              <MailIcon /><Translate id='mirror.sidebar.sendemail'>发送邮件</Translate>
+            </span>
+            <span>mirror_support@hust.edu.cn</span>
+          </a>
         </p>
 
         <a><h3><LinkIcon /><Translate id="mirror.sidebar.links">友情链接</Translate></h3></a>

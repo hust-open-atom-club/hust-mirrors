@@ -21,11 +21,10 @@
 
 .button {
   border: var(--ifm-color-primary) 2px solid;
-  border-radius: 8px;
   background: none;
-  padding: 8px 32px;
-  margin: 8px 0;
+  margin: 16px 0;
   transition: background-color 0.3s, color 0.3s;
+  color: var(--ifm-color-primary);
 }
 
 
@@ -39,7 +38,8 @@
   width: 180px;
 }
 
-.side h3 svg {
+.side h3 svg,
+.side a svg {
   height: 1em;
   width: 1em;
   vertical-align: middle;
