@@ -14,6 +14,8 @@ import ImageIcon from '@site/static/icons/image.svg'
 import LinkIcon from '@site/static/icons/link.svg'
 import IssueIcon from '@site/static/icons/issue.svg'
 import MailIcon from '@site/static/icons/mail.svg'
+import MirrorZIcon from '@site/static/icons/mirrorz.svg'
+import SettingsIcon from '@site/static/icons/settings.svg'
 
 interface Props extends React.HTMLProps<HTMLDivElement> { }
 
@@ -79,19 +81,19 @@ export default function SideBar(props: Props) {
         </p>
         <p>
           <a href='mailto:mirror_support@hust.edu.cn'>
-            <span style={{ marginRight: 48 }}>
+            <span>
               <MailIcon /><Translate id='mirror.sidebar.sendemail'>发送邮件</Translate>
             </span>
-            <span>mirror_support@hust.edu.cn</span>
+            <span>(mirror_support@hust.edu.cn)</span>
           </a>
         </p>
 
         <a><h3><LinkIcon /><Translate id="mirror.sidebar.links">友情链接</Translate></h3></a>
         <p>
-          <Link to='/syncing-status'><Translate id="mirror.sidebar.status">系统状态</Translate></Link>
+          <Link to='/syncing-status'><SettingsIcon /><Translate id="mirror.sidebar.status">系统状态</Translate></Link>
         </p>
         <p>
-          <a href='https://mirrors.cernet.edu.cn/list'><Translate id="mirror.sidebar.mirrorz">教育网联合镜像站</Translate></a>
+          <a href='https://mirrors.cernet.edu.cn/list'><MirrorZIcon /><Translate id="mirror.sidebar.mirrorz">教育网联合镜像站</Translate></a>
         </p>
       </div>
     </div >
