@@ -21,7 +21,7 @@ function Footer() {
             <div>
               <Translate id='mirror.footer.desc0_0'> 华中科技大学开源镜像站由</Translate>
               <a href='https://ncc.hust.edu.cn'>
-                <Translate id='mirror.footer.desc0_1'>华中科技大学网络中心</Translate>
+                <Translate id='mirror.footer.desc0_1'>华中科技大学网络中心与华科网安开放原子开源俱乐部</Translate>
               </a>
               <Translate id='mirror.footer.desc0_2'>提供支持。</Translate>
             </div>
