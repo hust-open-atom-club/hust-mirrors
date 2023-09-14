@@ -2,6 +2,8 @@ import styles from './index.module.css'
 import React, { useEffect } from 'react'
 import clsx from 'clsx'
 import SharedContext from '@site/src/utils/SharedContext'
+import useIsBrowser from '@docusaurus/useIsBrowser'
+import { useLocation } from '@docusaurus/router'
 
 export type CliBlock = {
   text?: string,
@@ -114,7 +116,7 @@ export default function CliAnimation({ blocks, onDone, windowStyle, autoReplay }
       {lines.map((line, i) => (<div key={i} className={styles.line}>
         {line.map((block, j) => (<React.Fragment key={`${i}-${j}`}>
           <span className={clsx(styles.block, block.bold && styles['code-bold'], block.underline && styles['code-underline'], block.color && styles['code-' + block.color])}>{block.text || ""}</span>
-          {j === line.length - 1 && i === lines.length - 1 && <span className={styles.cursor}/>}
+          {j === line.length - 1 && i === lines.length - 1 && <span className={styles.cursor} />}
         </React.Fragment>
         ))}
       </div>))}
@@ -123,7 +125,7 @@ export default function CliAnimation({ blocks, onDone, windowStyle, autoReplay }
 }
 
 
-export function makeOutputLine(text: string, wait?: number,
+function makeOutputLine(text: string, wait?: number,
   color?: 'yellow' | 'green' | 'blue' | 'red',
   bold?: boolean,
   underline?: boolean,): CliBlock[] {
@@ -137,13 +139,34 @@ export function makeOutputLine(text: string, wait?: number,
   ]
 }
 
-export function makeCliInput(text: string = ""): CliBlock[] {
+function makeCliInput(text: string = ""): CliBlock[] {
   return [
     { text: '[>] ', type: 'output' },
     { text: text, type: 'input', wait: 800 },
     { type: 'linefeed' },
   ]
+}
 
+type PromptType = 'online' | 'offline';
+
+function makePrompt(http: string, domain: string, instruction: string, type: PromptType): CliBlock[] {
+  if (type === 'offline') return [
+    { text: '$ ', type: 'output', color: 'green' },
+    { text: 'hustmirror ', color: 'green' },
+    { text: instruction },
+    { type: 'linefeed' },
+  ];
+  return [
+    { text: '$ ', type: 'output', color: 'green' },
+    { text: 'curl ', color: 'green' },
+    { text: '-sSfL ' },
+    { text: `${http}://${domain}/get`, underline: true },
+    { text: ' | ', color: 'blue' },
+    { text: 'sh ', color: 'green' },
+    { text: '-s -- ' },
+    { text: instruction },
+    { type: 'linefeed' },
+  ]
 }
 
 const logoBlock: CliBlock[] = [
@@ -153,21 +176,14 @@ const logoBlock: CliBlock[] = [
   ...makeOutputLine('|  _  | |_| |___) || | | |  | || ||  _ <|  _ <| |_| |  _ < '),
   ...makeOutputLine('|_| |_|\\___/|____/ |_| |_|  |_|___|_| \\_\\_| \\_\\\\___/|_| \\_\\'),
   ...makeOutputLine(''),
-  ...makeOutputLine('hustmirror-cli v0.2.0-rc build 2023-09-06 16:19:46 UTC'),
+  ...makeOutputLine('hustmirror-cli v0.2.0-rc build 2023-09-13 12:00:58 UTC'),
 ]
 
-type BlockGen = (_http: string, _domain: string) => CliBlock[];
+type BlockGen = (_http: string, _domain: string, _type?: PromptType) => CliBlock[];
 
 
-const ubuntuBlock: BlockGen = (_http, _domain) => [
-  { text: '$ ', type: 'output', color: 'green' },
-  { text: 'curl ', color: 'green' },
-  { text: '-sSfL ' },
-  { text: `${_http}://${_domain}/get`, underline: true },
-  { text: ' | ', color: 'blue' },
-  { text: 'sh ', color: 'green' },
-  { text: '-s -- -i' },
-  { type: 'linefeed' },
+const ubuntuBlock: BlockGen = (_http, _domain, _type) => [
+  ...makePrompt(_http, _domain, '-i', _type),
   ...logoBlock,
   ...makeOutputLine('[*] Reading configuration file...', 100),
   ...makeOutputLine('[*] Checking the environment and mirrors to install...', 1000),
@@ -189,7 +205,7 @@ const ubuntuBlock: BlockGen = (_http, _domain) => [
   { text: '***********' },
   { type: 'linefeed' },
   ...makeOutputLine('[?] Use official secure source? [Y/n]'),
-  ...makeCliInput('n'),
+  ...makeCliInput('yes'),
   ...makeOutputLine('[?] Use proposed source? [y/N]'),
   ...makeCliInput(),
   ...makeOutputLine('[?] Use source code? [y/N]'),
@@ -208,15 +224,8 @@ const ubuntuBlock: BlockGen = (_http, _domain) => [
   { text: '$ ', type: 'output', color: 'green' },
 ];
 
-const installBlock: BlockGen = (_http, _domain) => [
-  { text: '$ ', type: 'output', color: 'green' },
-  { text: 'curl ', color: 'green' },
-  { text: '-sSfL ' },
-  { text: `${_http}://${_domain}/get`, underline: true },
-  { text: ' | ', color: 'blue' },
-  { text: 'sh ', color: 'green' },
-  { text: '-s -- install' },
-  { type: 'linefeed' },
+const installBlock: BlockGen = (http, domain, type) => [
+  ...makePrompt(http, domain, "install", type),
   ...makeOutputLine('[*] Reading configuration file...'),
   ...makeOutputLine('[*] Downloading latest hust-mirror...', 3000),
   ...makeOutputLine('[+] Successfully install hust-mirror.'),
@@ -249,11 +258,8 @@ const ubuntuUpdateBlock: BlockGen = (_http, _domain) => [
   ...makeOutputLine('96 packages can be upgraded. Run \'apt list--upgradable\' to see them.'),
 ]
 
-const ubuntuADBlock: (_http: string, _domain: string) => CliBlock[] = (_http, _domain) => [
-  { text: '$ ', type: 'output', color: 'green' },
-  { text: 'hustmirror ', color: 'green' },
-  { text: 'autodeploy ' },
-  { type: 'linefeed' },
+const ubuntuADBlock: BlockGen = (_http, _domain, type) => [
+  ...makePrompt(_http, _domain, 'autodeploy -y', type),
   ...logoBlock,
   ...makeOutputLine('[*] Reading configuration file...'),
   ...makeOutputLine('[WARN] No configuration file found.'),
@@ -263,9 +269,38 @@ const ubuntuADBlock: (_http: string, _domain: string) => CliBlock[] = (_http, _d
   ...makeOutputLine('[+] Successfully deployed ubuntu.'),
   { type: 'linefeed' },
   { text: '$ ', type: 'output', color: 'green' },
+]
+
+const ubuntuARBlock: BlockGen = (_http, _domain, _type) => [
+  ...makePrompt(_http, _domain, 'autorecover', _type),
+  ...logoBlock,
+  ...makeOutputLine('[*] Reading configuration file...'),
+  ...makeOutputLine('[+] ubuntu can be recoverd.'),
+  ...makeOutputLine('[*] recover ubuntu...'),
+  ...makeOutputLine('[WARN] You are not root, trying to use sudo...'),
+  { text: '[sudo] password for user: ', type: 'output' },
+  { text: '***********' },
+  { type: 'linefeed' },
+  ...makeOutputLine('[+] Successfully uninstalled ubuntu...'),
+  { type: 'linefeed' },
+  { text: '$ ', type: 'output', color: 'green' },
 
 ]
 
+const helpBlock: BlockGen = (_http, _domain, _type) => [
+  ...makePrompt(_http, _domain, 'help ad', _type),
+  ...logoBlock,
+  { type: 'linefeed' },
+  ...makeOutputLine('Check the system and deploy suggested configuration file.'),
+  ...makeOutputLine(''),
+  ...makeOutputLine('Usage: hustmirror autodeploy'),
+  ...makeOutputLine('       hustmirror ad (alias)'),
+  ...makeOutputLine(''),
+  ...makeOutputLine('Options: (optional)'),
+  ...makeOutputLine('   -y                         Answer default option to all questions'),
+  { type: 'linefeed' },
+  { text: '$ ', type: 'output', color: 'green' },
+]
 
 CliAnimation.UbuntuSample = (props: Omit<CliAnimateProps, 'blocks'>) => {
   const ctx = React.useContext(SharedContext);
@@ -288,27 +323,25 @@ CliAnimation.UbuntuSample = (props: Omit<CliAnimateProps, 'blocks'>) => {
   return (<CliAnimation blocks={block} windowStyle={props.windowStyle} onDone={onDone} />)
 }
 
-CliAnimation.UbuntuInteractiveSample = (props: Omit<CliAnimateProps, 'blocks'>) => {
+function genSample(props: Omit<CliAnimateProps, 'blocks'>, blockGen: BlockGen) {
   const ctx = React.useContext(SharedContext);
   const _http = ctx.https ? "https" : "http";
   const _domain = ctx.domain;
-  const block = ubuntuBlock(_http, _domain);
-  return (<CliAnimation blocks={block} windowStyle={props.windowStyle} autoReplay />)
+  let type = 'online';
+  if (useIsBrowser()) {
+    type = new URLSearchParams(useLocation().search).get('mode');
+  }
+  const block = blockGen(_http, _domain, type as PromptType);
+  if (props.autoReplay === undefined) props.autoReplay = true;
+  if (props.windowStyle?.height === undefined) {
+    if (props.windowStyle) props.windowStyle.height = 400;
+    else props.windowStyle = { height: 400 };
+  }
+  return (<CliAnimation blocks={block} {...props} />)
 }
 
-
-CliAnimation.InstallSample = (props: Omit<CliAnimateProps, 'blocks'>) => {
-  const ctx = React.useContext(SharedContext);
-  const _http = ctx.https ? "https" : "http";
-  const _domain = ctx.domain;
-  const block = installBlock(_http, _domain);
-  return (<CliAnimation blocks={block} windowStyle={props.windowStyle} autoReplay />)
-}
-
-CliAnimation.UbuntuAutoDeploySample = (props: Omit<CliAnimateProps, 'blocks'>) => {
-  const ctx = React.useContext(SharedContext);
-  const _http = ctx.https ? "https" : "http";
-  const _domain = ctx.domain;
-  const block = ubuntuADBlock(_http, _domain);
-  return (<CliAnimation blocks={block} windowStyle={props.windowStyle} autoReplay />)
-}
+CliAnimation.UbuntuInteractiveSample = (props: Omit<CliAnimateProps, 'blocks'>) => genSample(props, ubuntuBlock);
+CliAnimation.InstallSample = (props: Omit<CliAnimateProps, 'blocks'>) => genSample(props, installBlock);
+CliAnimation.UbuntuAutoDeploySample = (props: Omit<CliAnimateProps, 'blocks'>) => genSample(props, ubuntuADBlock);
+CliAnimation.HelpSample = (props: Omit<CliAnimateProps, 'blocks'>) => genSample(props, helpBlock);
+CliAnimation.UbuntuAutoRecoverSample = (props: Omit<CliAnimateProps, 'blocks'>) => genSample(props, ubuntuARBlock);

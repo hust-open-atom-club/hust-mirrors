@@ -13,33 +13,27 @@ import CliAnimation from '@site/src/components/CliAnimation';
 
 
 export const CliCodeBlock = ({children}) => {
-const option = [{
-  key: 'sudo',
-  label: '使用Root权限执行脚本（不推荐）',
-  type: 'switch',
-}]
- return (
-    <Tabs groupId="mode" queryString>
+    const option = []
+    return <Tabs groupId="mode" queryString>
         {/*<TabItem value="bash" label="在线使用(Bash)">
             <CodeBlockWithVariables
-                code={({sudo,_http,_domain})=>`${sudo ? 'sudo ' : ''}sh <(curl ${_http}://${_domain}/get) ${children}`}
+                code={({_http,_domain})=>`sh <(curl ${_http}://${_domain}/get) ${children}`}
                 options={option}
                 blockProps={{ language: 'bash' }} />
         </TabItem>*/}
         <TabItem value="online" label="在线使用">
             <CodeBlockWithVariables
-                code={({sudo,_http,_domain})=>`curl -sSfL ${_http}://${_domain}/get | ${sudo ? 'sudo ' : ''}sh -s -- ${children}`}
+                code={({_http,_domain})=>`curl -sSfL ${_http}://${_domain}/get | sh -s -- ${children}`}
                 options={option}
                 blockProps={{ language: 'bash' }} />
         </TabItem>
         <TabItem value="offline" label="已安装">
             <CodeBlockWithVariables
-                code={({sudo,_http,_domain})=>`${sudo ? 'sudo ~/.local/bin/' : ''}hustmirror ${children}`}
+                code={({_http,_domain})=>`hustmirror ${children}`}
                 options={option}
                 blockProps={{ language: 'bash' }} />
         </TabItem>
-    </Tabs>
-    );
+    </Tabs>;
 }
 
 export const SoftwareGuide = () => {
@@ -99,9 +93,20 @@ Bash方式。
 
 工具检测当前是否存在可被部署的系统/软件源，如发现可部署，进行自动部署。
 
-<CliCodeBlock>autodeploy #或者采用ad</CliCodeBlock>
-<CliAnimation.UbuntuAutoDeploySample windowStyle={{ height: 400 }}/>
+可以加上`-y`选项，跳过选择使用默认设置。
 
+<CliCodeBlock>autodeploy #或者采用ad</CliCodeBlock>
+<CliAnimation.UbuntuAutoDeploySample/>
+
+## 交互模式运行
+
+<CliCodeBlock>-i</CliCodeBlock>
+<CliAnimation.UbuntuInteractiveSample/>
+
+## 恢复原配置文件
+
+<CliCodeBlock>recover</CliCodeBlock>
+<CliAnimation.UbuntuAutoRecoverSample/>
 
 ## 安装工具 / 更新工具
 
@@ -109,18 +114,11 @@ Bash方式。
 该命令还可以对已安装的工具进行手动在线更新。
 
 <CliCodeBlock>install</CliCodeBlock>
-<CliAnimation.InstallSample windowStyle={{ height: 400 }}/>
-
-
-## 交互模式运行
-
-<!-- ![cli工具](/img/cli.svg) -->
-
-<CliCodeBlock>-i</CliCodeBlock>
-<CliAnimation.UbuntuInteractiveSample windowStyle={{ height: 400 }}/>
-
+<CliAnimation.InstallSample/>
 
 ## 获取详细帮助
+
+除了上述命令以外，命令行工具还支持制定软件进行deploy/recover，不同软件还有各自的参数和环境变量设置。
 
 查看工具的基础帮助，可以
 
@@ -129,3 +127,5 @@ Bash方式。
 对子命令或者一些源，例如deploy命令，可以
 
 <CliCodeBlock>help deploy #查看具体主题的帮助</CliCodeBlock>
+
+<CliAnimation.HelpSample/>
