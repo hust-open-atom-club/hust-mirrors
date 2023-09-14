@@ -21,7 +21,7 @@ function Footer() {
             <div>
               <Translate id='mirror.footer.desc0_0'> 华中科技大学开源镜像站由</Translate>
               <a href='https://ncc.hust.edu.cn'>
-                <Translate id='mirror.footer.desc0_1'>华中科技大学网络中心与华科网安开放原子开源俱乐部</Translate>
+                <Translate id='mirror.footer.desc0_1'>华中科技大学网络中心</Translate>
               </a>
               <Translate id='mirror.footer.desc0_2'>提供支持。</Translate>
             </div>
@@ -37,6 +37,9 @@ function Footer() {
                 是 deepin, openEuler, openKylin 等多个国产操作系统的官方源
               </Translate>
             </div> */}
+            <div>
+              <Translate id='mirror.footer.desc3'>华科网安开放原子开源俱乐部是践行开放、共享、协同、贡献的理念，专注于通用Linux和物联网操作系统领域的活跃社区，我们促进跨学科合作，提升技能，分享知识，为开源社区贡献力量，为国内开源生态系统打造可持续的开源之路。</Translate>
+            </div>
           </div>
         )}
         <div className={styles.logos}>

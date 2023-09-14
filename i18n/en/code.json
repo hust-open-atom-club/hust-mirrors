@@ -436,12 +436,24 @@
     "message": "HUST Mirror is made possible due to suport and sponsorship from "
   },
   "mirror.footer.desc0_1": {
-    "message": "Network and Computing Center of HUST and HUST CSE OpenAtom Open Source Club"
+    "message": "Network and Computing Center of HUST"
   },
   "mirror.footer.desc0_2": {
     "message": "."
   },
   "mirror.footer.desc1": {
     "message": "This mirror site contains software sources for OS, installation images, package manager registries, and source code of commonly used OSS. Besides, it also provides distribution ISO download, full usage help documentation and convinient CLI tool support."
+  },
+  "mirror.supportCli.title": {
+    "message": "Support cli deploy"
+  },
+  "mirror.supportCli": {
+    "message": "This software can be deployed using CLI，"
+  },
+  "mirror.supportCli.goto": {
+    "message": "see details."
+  },
+  "mirror.footer.desc3": {
+    "message": "HUST CSE OpenAtom Open Source Club is an active community that practices the concepts of openness, sharing, collaboration, and contribution, focusing on the field of general Linux and IoT operating systems. We promote interdisciplinary cooperation, improve skills, share knowledge, and contribute to the open source community Strength to create a sustainable open source path for the domestic open source ecosystem."
   }
 }
