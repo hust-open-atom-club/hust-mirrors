@@ -204,7 +204,7 @@ const ubuntuBlock: BlockGen = (_http, _domain, _type) => [
   { text: '[sudo] password for user: ', type: 'output' },
   { text: '***********' },
   { type: 'linefeed' },
-  ...makeOutputLine('[?] Use official secure source? [Y/n]'),
+  ...makeOutputLine('[?] Use official secure source? (Strongly recommended) [Y/n]'),
   ...makeCliInput('yes'),
   ...makeOutputLine('[?] Use proposed source? [y/N]'),
   ...makeCliInput(),
