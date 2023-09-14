@@ -7,7 +7,7 @@ authors:
     image_url: https://github.com/mudongliang.png
 ---
 
-On September 13th, after more than three months of internal testing, the Huazhong University of Science and Technology (HUST) Open Source Mirror Site has officially launched for internal testing, available at the temporary URL (https://mirrors.hust.college).
+On September 13th, after more than three months of internal testing, the Huazhong University of Science and Technology (HUST) Open Source Mirror Site has officially launched for internal testing, available at the temporary URL <https://mirrors.hust.college>. Currently, the open source mirror station has synchronized 27 mirror sources with a data volume of 13TB, and provides three access methods: HTTP, HTTPS and RSYNC.
 
 The servers of the open source mirror site use Kunpeng 920 processors with 2*48 cores and 20TB of hard disk space. Currently, the mirror site has synchronized 27 mirror sources with a total data size of 13TB, providing three access methods: HTTP, HTTPS, and RSYNC.
 
