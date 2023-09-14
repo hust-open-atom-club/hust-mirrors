@@ -310,9 +310,11 @@ CliAnimation.UbuntuSample = (props: Omit<CliAnimateProps, 'blocks'>) => {
   const [current, setCurrent] = React.useState(0);
 
   const blocks = [
-    // ubuntuBlock,
-    installBlock,
     ubuntuADBlock,
+    installBlock,
+    ubuntuBlock,
+    ubuntuARBlock,
+    helpBlock,
   ]
 
   const block = blocks[current](_http, _domain);
