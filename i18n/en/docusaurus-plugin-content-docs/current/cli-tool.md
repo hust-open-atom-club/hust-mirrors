@@ -13,27 +13,27 @@ import CliAnimation from '@site/src/components/CliAnimation';
 
 
 export const CliCodeBlock = ({children}) => {
-const option = [{
-  key: 'sudo',
-  label: 'Use root (Unrecommended)',
-  type: 'switch',
-}]
- return (
-    <Tabs groupId="mode" queryString>
-        <TabItem value="online" label="Live">
+    const option = []
+    return <Tabs groupId="mode" queryString>
+        {/*<TabItem value="bash" label="在线使用(Bash)">
             <CodeBlockWithVariables
-                code={({sudo,_http,_domain})=>`curl -sSfL ${_http}://${_domain}/get | ${sudo ? 'sudo ' : ''}sh -s -- ${children}`}
+                code={({_http,_domain})=>`sh <(curl ${_http}://${_domain}/get) ${children}`}
+                options={option}
+                blockProps={{ language: 'bash' }} />
+        </TabItem>*/}
+        <TabItem value="online" label="Online">
+            <CodeBlockWithVariables
+                code={({_http,_domain})=>`curl -sSfL ${_http}://${_domain}/get | sh -s -- ${children}`}
                 options={option}
                 blockProps={{ language: 'bash' }} />
         </TabItem>
         <TabItem value="offline" label="Installed">
             <CodeBlockWithVariables
-                code={({sudo,_http,_domain})=>`${sudo ? 'sudo ~/.local/bin/' : ''}hustmirror ${children}`}
+                code={({_http,_domain})=>`hustmirror ${children}`}
                 options={option}
                 blockProps={{ language: 'bash' }} />
         </TabItem>
-    </Tabs>
-    );
+    </Tabs>;
 }
 
 export const SoftwareGuide = () => {
@@ -71,7 +71,9 @@ It has the following features:
 
 The supported software/systems are indicated using <TerminalIcon height='1em' width='1em' style={{ verticalAlign: 'middle', margin: '0 4px' }} /> in the main page list.
 
-You can select your requirements from the hyperlinks below to get started quickly.<TOCInline toc={toc} />
+You can select your requirements from the hyperlinks below to get started quickly.
+
+<TOCInline toc={toc} />
 
 :::info About Bash and POSIX Shell
 This command-line tool is written in POSIX shell-compatible syntax.
@@ -85,8 +87,21 @@ When using it online, since the POSIX Shell method uses pipes that occupy stdin 
 
 The tool detects whether there are deployable systems/software sources. If deployable sources are found, it proceeds with automatic deployment.
 
+Add `-y` option to skip confirmation, using default settings.
+
 <CliCodeBlock>autodeploy # or use 'ad'</CliCodeBlock>
 <CliAnimation.UbuntuAutoDeploySample windowStyle={{ height: 400 }} />
+
+## Running in Interactive Mode
+
+<CliCodeBlock>-i</CliCodeBlock>
+<CliAnimation.UbuntuInteractiveSample windowStyle={{ height: 400 }} />
+
+## Restore origin configurations
+
+<CliCodeBlock>recover</CliCodeBlock>
+<CliAnimation.UbuntuAutoRecoverSample/>
+
 
 ## Installing / Updating
 
@@ -96,12 +111,10 @@ This command can also be used for manual online updates of the installed tool.
 <CliCodeBlock>install</CliCodeBlock>
 <CliAnimation.InstallSample windowStyle={{ height: 400 }} />
 
-## Running in Interactive Mode
-
-<CliCodeBlock>-i</CliCodeBlock>
-<CliAnimation.UbuntuInteractiveSample windowStyle={{ height: 400 }} />
-
 ## Getting Detailed Help
+
+Besides above, this cli tool support other features
+such as deploy/recover specific softwares.
 
 To view the basic help for the tool, you can use:
 
@@ -110,3 +123,5 @@ To view the basic help for the tool, you can use:
 For subcommands or specific topics like the `deploy` command, you can use:
 
 <CliCodeBlock>help deploy # View help for a specific topic</CliCodeBlock>
+
+<CliAnimation.HelpSample/>
