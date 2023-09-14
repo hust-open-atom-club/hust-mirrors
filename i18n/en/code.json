@@ -454,6 +454,9 @@
     "message": "see details."
   },
   "mirror.footer.desc3": {
-    "message": "HUST CSE OpenAtom Open Source Club is an active community that practices the concepts of openness, sharing, collaboration, and contribution, focusing on the field of general Linux and IoT operating systems. We promote interdisciplinary cooperation, improve skills, share knowledge, and contribute to the open source community Strength to create a sustainable open source path for the domestic open source ecosystem."
+    "message": "HUST CSE OpenAtom Open Source Club practices the concepts of openness, sharing, collaboration, and contribution, focusing on the fields of general Linux and IoT operating systems, and promotes interdisciplinary cooperation, improves skills, shares knowledge, and creates a sustainable open source ecosystem for the country The road to open source."
+  },
+  "mirror.footer.desc4": {
+    "message": "The OpenHarmany Technology Club of HUST uses the OpenHarmony community platform to promote open source technology and industry-university-research cooperation. Through the deep integration of on-campus teaching and club practice, it encourages and promotes open source community technology research and innovative exploration, and prospers the open source community ecology."
   }
 }
