@@ -52,7 +52,7 @@ const mirrors: MirrorMeta[] = [
   { id: 'debian-nonfree', description: 'Debian GNU/Linux 非自由软件仓库' },
   { id: 'debian-security', description: 'Debian GNU/Linux 安全更新仓库' },
   { id: 'git-repo', type: 'git', description: 'Google开发的多git仓库管理工具git-repo代码仓库' },
-  { id: 'kali', description: 'Kali Linux 软件仓库' },
+  { id: 'kali', description: 'Kali Linux 软件仓库', supportCli: true },
   { id: 'kali-images', description: 'Kali Linux 镜像仓库' },
   { id: 'raspbian', description: '为树莓派编译的Debian GNU/Linux软件仓库' },
   { id: 'raspbian-addons', description: 'Raspbian 非官方软件源' },
