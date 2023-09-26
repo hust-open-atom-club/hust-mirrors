@@ -1,6 +1,6 @@
 ---
-sidebar_label: oh-my-zsh
-title: oh my zsh Git 镜像使用帮助
+sidebar_label: Oh My Zsh
+title: Oh My Zsh Git 镜像使用帮助
 ---
 
 ## Oh My Zsh 简介
