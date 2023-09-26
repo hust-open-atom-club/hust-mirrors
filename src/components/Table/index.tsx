@@ -249,6 +249,9 @@ export default function Table({ items: srcItems, search, detail }: Props) {
           {detail && <th className={styles['date-long']}>
             <Translate id='mirror.tableMeta.lastStart'>上次开始 - 上次结束</Translate> (UTC{timezone > 0 && '+'}{timezone})
           </th>}
+          {detail && <th className={styles['date']}>
+            <Translate id='mirror.tableMeta.nextUpdate'>下次更新</Translate> (UTC{timezone > 0 && '+'}{timezone})
+          </th>}
           {detail && <th className={styles['status']}>
             <Translate id='mirror.tableMeta.status'>同步状态</Translate>
           </th>}
@@ -279,6 +282,7 @@ export default function Table({ items: srcItems, search, detail }: Props) {
             </td>
             <td className={styles['date']}>{tsToStr(u.last_update_ts)}</td>
             {detail && <td className={styles['date-long']}>{tsPeriodToStr(u.last_started_ts, u.last_ended_ts)}</td>}
+            {detail && <td className={styles['date']}>{tsToStr(u.next_schedule_ts)}</td>}
             {detail && <td className={styles['status']}>
               <SyncingStatus status={u.status} />
             </td>}

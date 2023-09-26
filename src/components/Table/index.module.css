@@ -1,5 +1,18 @@
+/* styles for detail */
 .detail {
   min-width: 1600px;
+}
+
+.detail .name {
+  width: 220px;
+}
+
+.detail .desc-container {
+  display: none;
+}
+
+.detail .upstream {
+  width: auto;
 }
 
 .date {
@@ -29,10 +42,6 @@
 .mirror-name:hover .desc-container {
   visibility: visible;
   opacity: 1;
-}
-
-.detail .desc-container {
-  display: none;
 }
 
 .copied {
@@ -91,10 +100,6 @@
 .name {
   line-break: anywhere;
   min-width: 300px;
-}
-
-.detail .name {
-  min-width: 240px;
 }
 
 .help {
