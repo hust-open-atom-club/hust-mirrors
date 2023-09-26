@@ -333,13 +333,14 @@ function genSample(props: Omit<CliAnimateProps, 'blocks'>, blockGen: BlockGen) {
   if (useIsBrowser()) {
     type = new URLSearchParams(useLocation().search).get('mode');
   }
+  const nprops = JSON.parse(JSON.stringify(props));
   const block = blockGen(_http, _domain, type as PromptType);
-  if (props.autoReplay === undefined) props.autoReplay = true;
-  if (props.windowStyle?.height === undefined) {
-    if (props.windowStyle) props.windowStyle.height = 400;
-    else props.windowStyle = { height: 400 };
+  if (nprops.autoReplay === undefined) nprops.autoReplay = true;
+  if (nprops.windowStyle?.height === undefined) {
+    if (nprops.windowStyle) nprops.windowStyle.height = 400;
+    else nprops.windowStyle = { height: 400 };
   }
-  return (<CliAnimation blocks={block} {...props} />)
+  return (<CliAnimation blocks={block} {...nprops} />)
 }
 
 CliAnimation.UbuntuInteractiveSample = (props: Omit<CliAnimateProps, 'blocks'>) => genSample(props, ubuntuBlock);
