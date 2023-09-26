@@ -46,6 +46,18 @@ const mirrors: MirrorMeta[] = [
   { id: 'openeuler', type: 'normal', description: 'OpenEuler 软件仓库', helpID: 'openeuler', supportCli: true },
   { id: 'openkylin', type: 'normal', description: 'OpenKylin 软件仓库', helpID: 'openkylin', supportCli: true },
   { id: 'ubuntu', type: 'normal', description: 'Ubuntu 软件仓库', helpID: 'ubuntu', supportCli: true },
+  { id: 'anolis', description: '阿里龙蜥软件仓库' },
+  { id: 'AOSP', description: 'Android 源代码仓库' },
+  { id: 'debian-cd', description: 'Debian GNU/Linux 最新版镜像仓库' },
+  { id: 'debian-nonfree', description: 'Debian GNU/Linux 非自由软件仓库' },
+  { id: 'debian-security', description: 'Debian GNU/Linux 安全更新仓库' },
+  { id: 'git-repo', type: 'git', description: 'Google开发的多git仓库管理工具git-repo代码仓库' },
+  { id: 'kali', description: 'Kali Linux 软件仓库' },
+  { id: 'kali-images', description: 'Kali Linux 镜像仓库' },
+  { id: 'raspbian', description: '为树莓派编译的Debian GNU/Linux软件仓库' },
+  { id: 'raspbian-addons', description: 'Raspbian 非官方软件源' },
+  { id: 'ubuntu-releases', description: 'Ubuntu 发行版镜像仓库' },
+  { id: 'ohmyzsh.git', type: 'git', description: 'zsh配置管理框架 oh-my-zsh 代码仓库' },
 ]
 
 
