@@ -458,5 +458,8 @@
   },
   "mirror.footer.desc4": {
     "message": "The OpenHarmany Technology Club of HUST uses the OpenHarmony community platform to promote open source technology and industry-university-research cooperation. Through the deep integration of on-campus teaching and club practice, it encourages and promotes open source community technology research and innovative exploration, and prospers the open source community ecology."
+  },
+  "mirror.tableMeta.nextUpdate": {
+    "message": "Next Sync"
   }
 }
