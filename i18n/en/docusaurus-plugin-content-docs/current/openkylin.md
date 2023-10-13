@@ -19,7 +19,7 @@ openKylin uses the APT package management tool to manage DEB software packages. 
 ```shell varcode
 [ ] (version) { yangtze:1.0 } openKylin version
 ---
-deb ${_http}://hustmirror.cn/openkylin ${version} main
+deb ${_http}://${_domain}/openkylin ${version} main
 ```
 
 
@@ -47,7 +47,7 @@ Use the `sed` command to directly replace the default source address [http://arc
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
-${SUDO}sed -i.bak 's|https?://([^/]+)/openkylin|${_http}://hustmirror.cn/openkylin|' /etc/apt/sources.list
+${SUDO}sed -i.bak 's|https?://([^/]+)/openkylin|${_http}://${_domain}/openkylin|' /etc/apt/sources.list
 ```
 
 
