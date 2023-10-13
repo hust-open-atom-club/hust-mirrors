@@ -21,7 +21,7 @@ cname: 'openkylin'
 ```shell varcode
 [ ] (version) { yangtze:1.0 } openKylin 版本
 ---
-deb ${_http}://hustmirror.cn/openkylin ${version} main
+deb ${_http}://${_domain}/openkylin ${version} main
 ```
 
 2. 通过如下命令更新软件。
@@ -47,7 +47,7 @@ ${SUDO}apt update
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
-${SUDO}sed -i.bak 's|https?://([^/]+)/openkylin|${_http}://hustmirror.cn/openkylin|' /etc/apt/sources.list
+${SUDO}sed -i.bak 's|https?://([^/]+)/openkylin|${_http}://${_domain}/openkylin|' /etc/apt/sources.list
 ```
 
 ## 注意事项
