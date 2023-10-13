@@ -164,7 +164,7 @@
   }
 
   .detail .date {
-    display: block;
+    display: table-cell;
   }
 
   .help {
