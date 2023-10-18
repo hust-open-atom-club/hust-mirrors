@@ -46,7 +46,7 @@ const mirrors: MirrorMeta[] = [
   { id: 'openeuler', type: 'normal', description: 'OpenEuler 软件仓库', helpID: 'openeuler', supportCli: true },
   { id: 'openkylin', type: 'normal', description: 'OpenKylin 软件仓库', helpID: 'openkylin', supportCli: true },
   { id: 'ubuntu', type: 'normal', description: 'Ubuntu 软件仓库', helpID: 'ubuntu', supportCli: true },
-  { id: 'anolis', description: '阿里龙蜥软件仓库' },
+  { id: 'anolis', description: '阿里龙蜥软件仓库', supportCli: true },
   { id: 'AOSP', description: 'Android 源代码仓库' },
   { id: 'debian-cd', description: 'Debian GNU/Linux 最新版镜像仓库' },
   { id: 'debian-nonfree', description: 'Debian GNU/Linux 非自由软件仓库' },
