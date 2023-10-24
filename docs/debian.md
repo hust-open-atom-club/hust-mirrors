@@ -6,9 +6,9 @@ cname: 'debian'
 
 ## Debian 简介与软件管理
 
-`Debian` 是一个由自由和开源软件组成的 `Linux` 发行版。本项目创建于1993年，是最古老的 `Linux` 发行版之一。`Debian` 使用 `Linux` 内核，但大多数的基本操作系统工具都来自于 `GNU` 项目。因此，`Debian` 也常被称为 `Debian GNU/Linux` 操作系统。该项目由一组志愿者通过互联网协作进行协调，他们遵循着 `Debian` 社会契约、`Debian` 宪法和 `Debian` 自由软件准则这三个基本文件的指导。
+Debian 是一个由自由和开源软件组成的 Linux 发行版。本项目创建于 1993 年，是最古老的 Linux 发行版之一。Debian 使用 Linux 内核，但大多数的基本操作系统工具都来自于 GNU 项目。因此，Debian 也常被称为 Debian GNU/Linux 操作系统。该项目由一组志愿者通过互联网协作进行协调，他们遵循着 Debian 社会契约、Debian 宪法和 Debian 自由软件准则这三个基本文件的指导。
 
-`Debian` 使用软件包管理工具 `APT` 来管理 `DEB` 软件包。具体来说，`Debian` 通过修改 `/etc/apt/sources.list` 配置文件来管理系统软件源。一般情况下，用户可直接将该配置文件中的默认源地址（即，`http://deb.debian.org/`）替换为本软件镜像站。
+Debian使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说，Debian 通过修改 `/etc/apt/sources.list` 配置文件来管理系统软件源。一般情况下，用户可直接将该配置文件中的默认源地址 <http://deb.debian.org/> 替换为本软件镜像站。
 
 ## Debian 软件源替换
 
