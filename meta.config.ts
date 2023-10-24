@@ -69,13 +69,6 @@ const domains: DomainMeta[] = [
     }),
     link: 'https://mirrors.hust.college'
   },
-  {
-    domain: 'hustmirror.cn', desc: translate({
-      id: 'mirror.domain.1',
-      message: '将弃用⚠️'
-    }),
-    link: 'https://hustmirror.cn'
-  },
 ]
 
 export default {
