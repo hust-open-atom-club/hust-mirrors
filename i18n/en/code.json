@@ -358,7 +358,7 @@
     "message": "HUST Mirror"
   },
   "mirror.domain.1": {
-    "message": "Deprecated soon ⚠"
+    "message": "IPv4 Only"
   },
   "mirror.domain.2": {
     "message": "Dual Stack"
