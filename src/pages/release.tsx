@@ -151,7 +151,7 @@ export default function Home(): JSX.Element {
                 })
               } value='curl'>
                 <CodeBlock language='shell'>
-                  curl -o {link}
+                  curl -O {link}
                 </CodeBlock>
               </TabItem>
 
