@@ -15,6 +15,6 @@ current_commit=$(git rev-parse stable)
 if [[ "$last_commit" != "$current_commit" ]]; then
   git checkout stable
   make
-  cp -f ./output/hust-mirror.sh "$obj_dir"/get
+  cp -f ./output/hustmirror-cli "$obj_dir"/get
 fi
 
