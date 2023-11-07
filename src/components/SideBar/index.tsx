@@ -16,6 +16,7 @@ import IssueIcon from '@site/static/icons/issue.svg'
 import MailIcon from '@site/static/icons/mail.svg'
 import MirrorZIcon from '@site/static/icons/mirrorz.svg'
 import SettingsIcon from '@site/static/icons/settings.svg'
+import NewMirrorIcon from '@site/static/icons/newmirror.svg'
 
 interface Props extends React.HTMLProps<HTMLDivElement> { }
 
@@ -84,7 +85,13 @@ export default function SideBar(props: Props) {
             <span>
               <MailIcon /><Translate id='mirror.sidebar.sendemail'>发送邮件</Translate>
             </span>
-            <span>(mirror_support@hust.edu.cn)</span>
+          </a>
+        </p>
+        <p>
+          <a href='https://gitee.com/dzm91_hust/mirrorrequest/issues/new/choose'>
+            <span>
+              <NewMirrorIcon /><Translate id='mirror.sidebar.sendemail'>新增镜像</Translate>
+            </span>
           </a>
         </p>
 
