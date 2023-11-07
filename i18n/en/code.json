@@ -306,6 +306,9 @@
   "mirror.sidebar.sendemail": {
     "message": "Send Email"
   },
+  "mirror.sidebar.newmirror": {
+    "message": "New Mirror"
+  },
   "mirror.sidebar.links": {
     "message": "Link exchange"
   },

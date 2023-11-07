@@ -90,7 +90,7 @@ export default function SideBar(props: Props) {
         <p>
           <a href='https://gitee.com/dzm91_hust/mirrorrequest/issues/new/choose'>
             <span>
-              <NewMirrorIcon /><Translate id='mirror.sidebar.sendemail'>新增镜像</Translate>
+              <NewMirrorIcon /><Translate id='mirror.sidebar.newmiror'>新增镜像</Translate>
             </span>
           </a>
         </p>
