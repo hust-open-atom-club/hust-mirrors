@@ -58,23 +58,24 @@ const mirrors: MirrorMeta[] = [
   { id: 'raspbian-addons', description: 'Raspbian 非官方软件源' },
   { id: 'ubuntu-releases', description: 'Ubuntu 发行版镜像仓库' },
   { id: 'ohmyzsh.git', type: 'git', description: 'zsh配置管理框架 oh-my-zsh 代码仓库' },
+  { id: 'pypi', description: 'Python软件包仓库' },
 ]
 
 
 const domains: DomainMeta[] = [
-  {
-    domain: 'mirrors.hust.college', desc: translate({
-      id: 'mirror.domain.2',
-      message: '双栈线路'
-    }),
-    link: 'https://mirrors.hust.college'
-  },
   {
     domain: 'mirrors.hust.edu.cn', desc: translate({
       id: 'mirror.domain.2',
       message: '双栈线路'
     }),
     link: 'https://mirrors.hust.edu.cn'
+  },
+  {
+    domain: 'mirrors.hust.college', desc: translate({
+      id: 'mirror.domain.2',
+      message: '双栈线路'
+    }),
+    link: 'https://mirrors.hust.college'
   },
 ]
 
