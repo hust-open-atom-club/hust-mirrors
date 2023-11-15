@@ -432,6 +432,9 @@
   "mirror.table.supportCli": {
     "message": "Support CLI deploy."
   },
+  "mirror.table.gitview": {
+    "message": "Browse"
+  },
   "mirror.release.loading": {
     "message": "Loading releases..."
   },

@@ -199,6 +199,11 @@ function MirrorHelp({ item, mirrorMeta: mirrors, docsMeta: docs }: MirrorHelpPro
         [ <Translate id='mirror.table.help'>帮助文档</Translate> ]
       </Link>}
 
+    {isGit &&
+      <a onClick={(e) => { e.stopPropagation(); }} className={styles['help-link']} href={`/git/${item.name}`}>
+        [ <Translate id='mirror.table.gitview'>浏览仓库</Translate> ]
+      </a>}
+
     {m && m.supportCli &&
       <Link className={styles['help-link']} to={`/docs?d=${m.id}`} title={translate({
         id: 'mirror.table.supportCli',
