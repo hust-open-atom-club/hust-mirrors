@@ -29,7 +29,7 @@ export const CliCodeBlock = ({children}) => {
         </TabItem>
         <TabItem value="offline" label="已安装">
             <CodeBlockWithVariables
-                code={({_http,_domain})=>`hustmirror ${children}`}
+                code={({_http,_domain})=>`hustmirror-cli ${children}`}
                 options={option}
                 blockProps={{ language: 'bash' }} />
         </TabItem>
@@ -42,19 +42,25 @@ export const SoftwareGuide = () => {
     if(!d) return <></>
     return <Admonition type="tip" icon="💡" title={
     <>
-        <span>{d}使用向导，请</span>
-        <a href="#安装工具--更新工具">确保已安装工具</a>
+        <span>{d}使用向导</span>
     </>}>
         <Tabs>
             <TabItem value="deploy" label="部署">
+                <p>如果没有<a href="#安装工具--更新工具">安装工具</a>，请执行：</p>
                 <CodeBlockWithVariables
-                    code={({_http,_domain})=>`hustmirror deploy ${d}`}
+                    code={({_http,_domain})=>`curl -sSfL ${_http}://${_domain}/get | sh -s -- deploy ${d}`}
+                    options={[]}
+                    blockProps={{ language: 'bash' }} />
+                <p>如果已经<a href="#安装工具--更新工具">安装工具</a>，请执行：</p>
+                <CodeBlockWithVariables
+                    code={({_http,_domain})=>`hustmirror-cli deploy ${d}`}
                     options={[]}
                     blockProps={{ language: 'bash' }} />
             </TabItem>
             <TabItem value="recover" label="恢复">
+                <p>在恢复前，请<a href="#安装工具--更新工具">确保已安装工具</a></p>
                 <CodeBlockWithVariables
-                    code={({_http,_domain})=>`hustmirror recover ${d}`}
+                    code={({_http,_domain})=>`hustmirror-cli recover ${d}`}
                     options={[]}
                     blockProps={{ language: 'bash' }} />
             </TabItem>
@@ -79,14 +85,9 @@ export const SoftwareGuide = () => {
 
 <TOCInline toc={toc} />
 
-:::info 关于Bash和POSIX Shell
+:::info 关于POSIX Shell
 该命令行工具是采用POSIX shell兼容语法编写的。
-其声明的解释器为`PATH`中的`sh`，在dash和bash解释器中测试通过。 
-
-此文档中的Bash和POSIX Shell为在线使用时执行下载并运行的shell环境。
-
-在线使用时，由于POSIX Shell方式采用管道占用stdin，无法接收用户输入，推荐使用
-Bash方式。
+其声明的解释器为`PATH`中的`sh`，在dash和bash解释器中测试通过。不要使用fish，pwsh等不兼容POSIX Shell脚本解释器运行。
 :::
 
 ## 自动部署
@@ -110,7 +111,7 @@ Bash方式。
 
 ## 安装工具 / 更新工具
 
-通过命令安装工具后，你可以使用`hustmirror`命令随时替换/恢复镜像源。  
+通过命令安装工具后，你可以使用`hustmirror-cli`命令随时替换/恢复镜像源。  
 该命令还可以对已安装的工具进行手动在线更新。
 
 <CliCodeBlock>install</CliCodeBlock>
