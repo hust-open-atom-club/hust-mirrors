@@ -1,5 +1,5 @@
 #!/bin/env python3
-# Usage: gen-releases.py <mirror_dir> <output_file>
+# Usage: gen-releases.py <mirror_dir1> <mirror_dir2> ... <output_file>
 
 from configparser import ConfigParser
 from glob import glob
@@ -9,8 +9,8 @@ config = ConfigParser()
 
 script_path = os.path.dirname(os.path.realpath(__file__))
 config.read(script_path + "/releases.conf", encoding="utf-8")
-mirror_dir = sys.argv[1]
-output_file = sys.argv[2]
+mirror_dirs = sys.argv[1:-1]
+output_file = sys.argv[-1]
 
 result = []
 
@@ -27,7 +27,11 @@ for sec in config.sections():
 
     # get all directories and files under mirror_dir
     # and filter out the ones that match the regex
-    files = list(glob(config[sec]["path"], root_dir=mirror_dir, recursive=True))
+    files = []
+    for mirror_dir in mirror_dirs:
+        files.extend(
+            list(glob(config[sec]["path"], root_dir=mirror_dir, recursive=True))
+        )
 
     if take_count != -1:
         # order files by date
