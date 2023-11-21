@@ -17,3 +17,18 @@
 .result {
   margin: 32px 0;
 }
+
+.result h4 svg {
+  height: 1em;
+  width: 1em;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.result h4 {
+  display: flex;
+  font-size: 1.2em;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}

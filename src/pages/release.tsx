@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import clsx from 'clsx';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import DownloadIcon from '@site/static/icons/download.svg';
 import Layout from '@theme/Layout';
 import Translate, { translate } from '@docusaurus/Translate'
 import styles from './release.module.css';
@@ -83,14 +83,11 @@ export default function Home(): JSX.Element {
     })
   }));
 
-  const current = releases.find(u => u.release == release
+  const current = releases.filter(u => u.release == release
     && u.version == (version || undefined)
     && u.variant == (variant || undefined)
   );
 
-  const link = current ? (
-    current.link ? current.link : `${https ? 'https' : 'http'}://${domain}/${current.path}`
-  ) : undefined;
 
   return (
     <Layout
@@ -140,50 +137,65 @@ export default function Home(): JSX.Element {
             onChange={setVariant}
           ></Select>}
 
-        {
-          link &&
-          <div className={styles.result}>
-            <Tabs>
-              <TabItem label={
-                translate({
-                  id: 'mirror.release.useCurl',
-                  message: '使用curl下载'
-                })
-              } value='curl'>
-                <CodeBlock language='shell'>
-                  curl -O {link}
-                </CodeBlock>
-              </TabItem>
+        {current.map(c => {
 
-              <TabItem label={
-                translate({
-                  id: 'mirror.release.useWget',
-                  message: '使用wget下载'
-                })
-              } value='wget'>
-                <CodeBlock language='shell'>
-                  wget {link}
-                </CodeBlock>
-              </TabItem>
+          const link = c ? (
+            c.link ? c.link : `${https ? 'https' : 'http'}://${domain}/${c.path}`
+          ) : undefined;
 
-              <TabItem label={
-                translate({
-                  id: 'mirror.release.link',
-                  message: '仅复制地址'
-                })
-              } value='link'>
-                <CodeBlock>
-                  {link}
-                </CodeBlock>
-              </TabItem>
+          const filename = link ? link.split('/').pop() : undefined;
 
-            </Tabs>
-            <a target="_blank" href={link}>
-              <button className='button button-lg button--primary'>
-                <Translate id='mirror.release.browserDownload'>通过浏览器下载</Translate>
-              </button>
-            </a>
-          </div>
+          return link &&
+            <div className={styles.result}>
+              <h4>
+                <span>
+                  <DownloadIcon />
+                  <span>{filename}</span>
+                </span>
+                <a target="_blank" href={link}>
+                  <button className='button button-lg button--primary'>
+                    <Translate id='mirror.release.browserDownload'>通过浏览器下载</Translate>
+                  </button>
+                </a>
+
+              </h4>
+              <Tabs>
+                <TabItem label={
+                  translate({
+                    id: 'mirror.release.useCurl',
+                    message: '使用curl下载'
+                  })
+                } value='curl'>
+                  <CodeBlock language='shell'>
+                    curl -O {link}
+                  </CodeBlock>
+                </TabItem>
+
+                <TabItem label={
+                  translate({
+                    id: 'mirror.release.useWget',
+                    message: '使用wget下载'
+                  })
+                } value='wget'>
+                  <CodeBlock language='shell'>
+                    wget {link}
+                  </CodeBlock>
+                </TabItem>
+
+                <TabItem label={
+                  translate({
+                    id: 'mirror.release.link',
+                    message: '仅复制地址'
+                  })
+                } value='link'>
+                  <CodeBlock>
+                    {link}
+                  </CodeBlock>
+                </TabItem>
+
+              </Tabs>
+            </div>
+        })
         }
 
       </div>
