@@ -14,6 +14,16 @@ output_file = sys.argv[-1]
 
 result = []
 
+
+def get_compare_file_key(f: str):
+    for mirror_dir in mirror_dirs:
+        _f = os.path.join(mirror_dir, f)
+        f = _f if os.path.exists(_f) else f
+    if not os.path.exists(f):
+        return 0
+    return os.path.getmtime(f)
+
+
 for sec in config.sections():
     release_sec = config[sec]["name"] if "name" in config[sec] else sec
     exp = config[sec]["exp"]
@@ -35,7 +45,7 @@ for sec in config.sections():
 
     if take_count != -1:
         # order files by date
-        files.sort(key=os.path.getmtime, reverse=True)
+        files.sort(key=get_compare_file_key, reverse=True)
         files = files[:take_count]
 
     for file in files:
