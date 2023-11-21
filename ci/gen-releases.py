@@ -8,20 +8,22 @@ import re, sys, os, json
 config = ConfigParser()
 
 script_path = os.path.dirname(os.path.realpath(__file__))
-config.read(script_path + '/releases.conf',encoding="utf-8")
+config.read(script_path + "/releases.conf", encoding="utf-8")
 mirror_dir = sys.argv[1]
 output_file = sys.argv[2]
 
 result = []
 
 for sec in config.sections():
-    release_sec = config[sec]["name"] if config[sec]["name"] else sec
+    release_sec = config[sec]["name"] if "name" in config[sec] else sec
     exp = config[sec]["exp"]
-    release_pos = int(config[sec]["release"]) if config[sec]["release"] else -1
-    version_pos = int(config[sec]["version"]) if config[sec]["version"] else -1
-    variant_pos = int(config[sec]["variant"]) if config[sec]["variant"] else -1
-    take_count = int(config[sec]["take"]) if config[sec]["take"] else -1
-    description = config[sec]["description"] if config[sec]["description"] else None
+    release_pos = int(config[sec]["release"]) if "release" in config[sec] else -1
+    version_pos = int(config[sec]["version"]) if "version" in config[sec] else -1
+    variant_pos = int(config[sec]["variant"]) if "variant" in config[sec] else -1
+    take_count = int(config[sec]["take"]) if "take" in config[sec] else -1
+    description = config[sec]["description"] if "description" in config[sec] else None
+
+    print("Generating " + release_sec + " with " + exp, file=sys.stderr)
 
     # get all directories and files under mirror_dir
     # and filter out the ones that match the regex
@@ -46,9 +48,9 @@ for sec in config.sections():
                 "version": version,
                 "variant": variant,
                 "path": file,
-                "description": description
+                "description": description,
             }
             d = {k: v for k, v in d.items() if v is not None}
-            result.append(d) 
-    with open(output_file, 'w') as f:
+            result.append(d)
+    with open(output_file, "w") as f:
         f.write(json.dumps(result))
