@@ -46,8 +46,8 @@ for sec in config.sections():
     if take_count != -1:
         # order files by date
         files.sort(key=get_compare_file_key, reverse=True)
-        files = files[:take_count]
 
+    count = 0
     for file in files:
         release = release_sec
         version = ""
@@ -66,5 +66,9 @@ for sec in config.sections():
             }
             d = {k: v for k, v in d.items() if v is not None}
             result.append(d)
+            count += 1
+            if take_count != -1 and count >= take_count:
+                break
+
     with open(output_file, "w") as f:
         f.write(json.dumps(result))
