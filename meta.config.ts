@@ -59,6 +59,21 @@ const mirrors: MirrorMeta[] = [
   { id: 'ubuntu-releases', description: 'Ubuntu 发行版镜像仓库' },
   { id: 'ohmyzsh.git', type: 'git', description: 'zsh配置管理框架 oh-my-zsh 代码仓库' },
   { id: 'pypi', description: 'Python软件包仓库' },
+  { id: 'buildroot', description: '嵌入式Linux系统制作工具' },
+  { id: 'CPAN', description: 'Perl语言软件库' },
+  { id: 'CTAN', description: 'TeX发行版和宏包' },
+  { id: 'CRAN', description: 'R语言的可执行文件、源代码和说明文件' },
+  { id: 'crates', description: '面向Rust语言的软件包仓库文件' },
+  { id: 'crates.io-index', description: '面向Rust语言的软件包索引列表，支持git索引和稀疏索引', helpID: 'crates' },
+  { id: 'deepin-cd', description: 'Deepin 镜像文件' },
+  { id: 'gnu', description: 'GNU软件的源码包和文档仓库' },
+  { id: 'golang', description: 'Go语言工具链' },
+  { id: 'openkylin-cdimage', description: 'openKylin 镜像文件' },
+  { id: 'rustup', description: 'Rust语言工具链' },
+  { id: 'virtualbox', description: '开源的x86架构虚拟机安装文件' },
+  { id: 'gcc.git', description: 'GNU编译工具代码仓库' },
+  { id: 'ubuntukylin', description: 'Ubuntu Kylin 软件仓库' },
+  { id: 'ubuntukylin-cdimage', description: 'Ubuntu Kylin 安装镜像' },
 ]
 
 
