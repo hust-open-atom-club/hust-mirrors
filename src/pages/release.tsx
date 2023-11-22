@@ -18,7 +18,7 @@ function HomepageHeader() {
         <h1>
           {translate({
             id: 'mirror.release',
-            message: "发行版ISO下载"
+            message: "系统镜像与应用软件下载"
           })}
         </h1>
       </div>
@@ -101,7 +101,7 @@ export default function Home(): JSX.Element {
         <Select labelTop label={
           translate({
             id: 'mirror.release.chooseRelease',
-            message: '选择发行'
+            message: '选择软件'
           })
         } items={releaseItems}
           value={release}
