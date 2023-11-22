@@ -195,7 +195,7 @@ function MirrorHelp({ item, mirrorMeta: mirrors, docsMeta: docs }: MirrorHelpPro
 
   return <>
     {docs.find(v => v.id == helpid) &&
-      <Link className={styles['help-link']} to={`/docs/${item.name}`}>
+      <Link className={styles['help-link']} to={`/docs/${helpid}`}>
         [ <Translate id='mirror.table.help'>帮助文档</Translate> ]
       </Link>}
 
