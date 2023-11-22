@@ -40,7 +40,7 @@ function Header() {
           查看帮助
         </a>
         <div className={styles.cliBlock} id="fancyindex__cliblock">
-          hustmirror deploy <span className="fancyindex__mirrorname"></span>
+          hustmirror-cli deploy <span className="fancyindex__mirrorname"></span>
         </div>
       </div>
     </div>

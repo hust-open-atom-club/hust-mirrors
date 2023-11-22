@@ -29,7 +29,7 @@ export const CliCodeBlock = ({children}) => {
         </TabItem>
         <TabItem value="offline" label="Installed">
             <CodeBlockWithVariables
-                code={({_http,_domain})=>`hustmirror ${children}`}
+                code={({_http,_domain})=>`hustmirror-cli ${children}`}
                 options={option}
                 blockProps={{ language: 'bash' }} />
         </TabItem>
@@ -48,13 +48,13 @@ export const SoftwareGuide = () => {
         <Tabs>
             <TabItem value="deploy" label="Deploy">
                 <CodeBlockWithVariables
-                    code={({_http,_domain})=>`hustmirror deploy ${d}`}
+                    code={({_http,_domain})=>`hustmirror-cli deploy ${d}`}
                     options={[]}
                     blockProps={{ language: 'bash' }} />
             </TabItem>
             <TabItem value="recover" label="Recover">
                 <CodeBlockWithVariables
-                    code={({_http,_domain})=>`hustmirror recover ${d}`}
+                    code={({_http,_domain})=>`hustmirror-cli recover ${d}`}
                     options={[]}
                     blockProps={{ language: 'bash' }} />
             </TabItem>
@@ -105,7 +105,7 @@ Add `-y` option to skip confirmation, using default settings.
 
 ## Installing / Updating
 
-After installing the tool via a command, you can use the 'hustmirror' command to replace/restore mirror sources at any time.
+After installing the tool via a command, you can use the 'hustmirror-cli' command to replace/restore mirror sources at any time.
 This command can also be used for manual online updates of the installed tool.
 
 <CliCodeBlock>install</CliCodeBlock>

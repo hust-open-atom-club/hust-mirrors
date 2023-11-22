@@ -152,7 +152,7 @@ type PromptType = 'online' | 'offline';
 function makePrompt(http: string, domain: string, instruction: string, type: PromptType): CliBlock[] {
   if (type === 'offline') return [
     { text: '$ ', type: 'output', color: 'green' },
-    { text: 'hustmirror ', color: 'green' },
+    { text: 'hustmirror-cli ', color: 'green' },
     { text: instruction },
     { type: 'linefeed' },
   ];
@@ -229,10 +229,10 @@ const installBlock: BlockGen = (http, domain, type) => [
   ...makeOutputLine('[*] Reading configuration file...'),
   ...makeOutputLine('[*] Downloading latest hust-mirror...', 3000),
   ...makeOutputLine('[+] Successfully install hust-mirror.'),
-  ...makeOutputLine('[+] Now, you can use `hustmirror` in your command line'),
+  ...makeOutputLine('[+] Now, you can use `hustmirror-cli` in your command line'),
   { type: 'linefeed' },
   { text: '$ ', type: 'output', color: 'green' },
-  { text: 'hustmirror', color: 'green' },
+  { text: 'hustmirror-cli', color: 'green' },
   { text: ' -V' },
   { type: 'linefeed' },
   ...logoBlock,
@@ -293,8 +293,8 @@ const helpBlock: BlockGen = (_http, _domain, _type) => [
   { type: 'linefeed' },
   ...makeOutputLine('Check the system and deploy suggested configuration file.'),
   ...makeOutputLine(''),
-  ...makeOutputLine('Usage: hustmirror autodeploy'),
-  ...makeOutputLine('       hustmirror ad (alias)'),
+  ...makeOutputLine('Usage: hustmirror-cli autodeploy'),
+  ...makeOutputLine('       hustmirror-cli ad (alias)'),
   ...makeOutputLine(''),
   ...makeOutputLine('Options: (optional)'),
   ...makeOutputLine('   -y                         Answer default option to all questions'),
