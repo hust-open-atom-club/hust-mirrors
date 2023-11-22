@@ -13,18 +13,22 @@ title: crates.io 镜像使用帮助
 :::
 
 ```toml varcode
+[x] (sparse) 是否使用稀疏索引 (cargo >= 1.68)
+---
+const registry = sparse ? `sparse+${_http}://${_domain}/crates.io-index/` : `${_http}://${_domain}/git/crates.io-index`
+---
 [source.crates-io]
 replace-with = 'hustmirror'
 
 [source.hustmirror]
-registry = "sparse+${_http}://${_domain}/crates.io-index/"
+registry = "${registry}"
 ```
+
 
 :::info
 
-cargo 从 1.68 版本开始默认使用稀疏索引：不再需要完整克隆 crates.io-index 仓库，可以加快获取包的速度。
+cargo 1.68 版本开始支持稀疏索引：不再需要完整克隆 crates.io-index 仓库，可以加快获取包的速度。
 
-如果您的 cargo 版本小于 1.68，可以通过 cargo +nightly -Z sparse-registry update 使用稀疏索引，
-或者去除 `source.hustmirror` `registry` 字段前的 `sparse+` 来关闭稀疏索引。
+如果您的 cargo 版本小于 1.68，可以通过 cargo +nightly -Z sparse-registry update 使用稀疏索引。
 
 :::
