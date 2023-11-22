@@ -35,8 +35,10 @@
 (function () {
   var pathname = window.location.pathname;
   var mirrorid = pathname.split("/")[1];
-  var metas = MIRROR_METAS; /** Inject Meta Here */
+  var metas = window.MIRROR_METAS;
+  var helpmetas = window.HELP_METAS;
   var meta = metas.find(u => u.id == mirrorid);
+  var helpmeta = helpmetas.find(u => u.id == mirrorid || u.id == meta?.helpID);
   var displayName = meta ? (meta.displayName || meta.id) : mirrorid;
 
   var titleDoms = document.getElementsByClassName('fancyindex__mirrorname');
@@ -46,9 +48,9 @@
 
   for (var i = 0; i < titleDoms.length; i++) {
     var title = titleDoms[i];
-    title.textContent = mirrorid;
+    title.textContent = displayName;
   }
-  if (meta) { helpBtn.href = "/docs/" + meta.helpID || meta.id; }
+  if (helpmeta) { helpBtn.href = "/docs/" + meta.helpID || meta.id; }
   else { helpBtn.remove(); }
   if (!meta || !meta.supportCli) cliBlock.remove();
 })();
