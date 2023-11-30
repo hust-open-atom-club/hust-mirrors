@@ -34,7 +34,7 @@
 }
 
 .release-banner {
-  padding-left: 32px;
-  padding-right: 32px;
+  padding-left: 32px !important;
+  padding-right: 32px !important;
   text-align: center;
 }
