@@ -13,7 +13,7 @@ import SharedContext from '../utils/SharedContext';
 
 function HomepageHeader() {
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <header className={clsx('hero hero--primary', styles['release-banner'])}>
       <div className={styles['header-container']}>
         <h1>
           {translate({
