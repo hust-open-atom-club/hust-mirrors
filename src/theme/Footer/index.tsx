@@ -23,11 +23,8 @@ function Footer() {
               <a href='https://ncc.hust.edu.cn'>
                 <Translate id='mirror.footer.desc0_1'>华中科技大学网络中心</Translate>
               </a>
-              <Translate id='mirror.footer.desc0_2'>提供支持。</Translate>
-            </div>
-            <div>
-              <Translate id='mirror.footer.desc1'>
-                该镜像站收录了主流开源操作系统的软件源、安装镜像，包管理器的仓库，以及常用开源软件源代码，
+              <Translate id='mirror.footer.desc0_2'>
+                提供支持。该镜像站收录了主流开源操作系统的软件源、安装镜像，包管理器的仓库，以及常用开源软件源代码，
                 除此以外，提供了发行版ISO下载、完整的使用帮助文档和CLI工具的支持。
               </Translate>
             </div>
@@ -38,11 +35,11 @@ function Footer() {
               </Translate>
             </div> */}
             <div>
-              <Translate id='mirror.footer.desc3'>华科网安开放原子开源俱乐部践行开放、共享、协同、贡献的理念，专注于通用Linux和物联网操作系统领域，并促进跨学科合作，提升技能，分享知识，为国内开源生态系统打造可持续的开源之路。
+              <Translate id='mirror.footer.desc3'>华中科技大学开放原子开源俱乐部践行开放、共享、协同、贡献的理念，专注于通用Linux和物联网操作系统领域，并促进跨学科合作，提升技能，分享知识，为国内开源生态系统打造可持续的开源之路。
               </Translate>
             </div>
             <div>
-              <Translate id='mirror.footer.desc4'>华中科技大学OpenHarmany技术俱乐部，借助OpenHarmony社区平台推动开源技术和产学研合作，通过校内教学与俱乐部实践的深度融合，鼓励和推动开源社区技术研究和创新探索，繁荣开源社区生态。
+              <Translate id='mirror.footer.desc4'>华中科技大学OpenHarmany技术俱乐部借助OpenHarmony社区平台推动开源技术和产学研合作，通过校内教学与俱乐部实践的深度融合，鼓励和推动开源社区技术研究和创新探索，繁荣开源社区生态。
               </Translate>
             </div>
           </div>
