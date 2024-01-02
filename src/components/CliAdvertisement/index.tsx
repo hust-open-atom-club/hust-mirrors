@@ -21,7 +21,7 @@ export default function () {
     <Translate id='mirror.supportCli'>
       该程序包支持命令行工具一键部署，
     </Translate>
-    <Link to={`/docs?d=${meta.id}`}>
+    <Link to={`/docs?d=${meta.cliID || meta.id}`}>
       <Translate id='mirror.supportCli.goto'>
         去看看吧！
       </Translate>

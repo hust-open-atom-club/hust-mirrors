@@ -205,7 +205,7 @@ function MirrorHelp({ item, mirrorMeta: mirrors, docsMeta: docs }: MirrorHelpPro
       </a>}
 
     {m && m.supportCli &&
-      <Link className={styles['help-link']} to={`/docs?d=${m.id}`} title={translate({
+      <Link className={styles['help-link']} to={`/docs?d=${m.cliID || m.id}`} title={translate({
         id: 'mirror.table.supportCli',
         message: '该镜像支持CLI部署'
       })}>
