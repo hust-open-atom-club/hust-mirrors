@@ -3,7 +3,7 @@ title: Linux Mint 镜像使用帮助
 sidebar_label: Linux Mint
 ---
 
-Linux Mint 也采用 apt 作为包管理器，与 Ubuntu 和 Debian 类似，你需要编辑 `/etc/apt/sources.list` 和 `/etc/apt/sources.list.d/*` 中的路径。对于来自 Ubuntu 与 Debian 的部分源，可以参考 [Ubuntu 帮助](./ubuntu.md)与 [Debian 帮助](./debian.md)进行修改。
+Linux Mint 也采用 apt 作为包管理器，与 Ubuntu 和 Debian 类似，你需要编辑 `/etc/apt/sources.list` 和 `/etc/apt/sources.list.d/*` 中的路径。对于来自 Ubuntu 与 Debian 的部分源，可以参考 [Ubuntu 帮助](./ubuntu)与 [Debian 帮助](./debian)进行修改。
 
 需要修改 `/etc/apt/sources.list.d/official-package-repositories.list`（注意备份），把 `packages.linuxmint.com` 替换为镜像源
 
