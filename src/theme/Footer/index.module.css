@@ -3,18 +3,13 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 0;
-    max-width: 1466px !important; /* calc(1530px - 64px);  */
+    max-width: 1466px !important;
+    /* calc(1530px - 64px);  */
     font-size: 14px;
 }
 
 .container div:first-child div {
     margin-bottom: 0.3em;
-}
-
-@media screen and (max-width: 996px) {
-    .container {
-        padding: 16px;
-    }
 }
 
 .logos {
@@ -27,4 +22,27 @@
 .logos img {
     margin-left: 16px;
     margin-bottom: 16px;
+}
+
+@media screen and (max-width: 996px) {
+    .container {
+        padding: 16px;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .logos {
+        flex-direction: column;
+    }
+
+    .logos img {
+        margin-top: 16px;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
 }
