@@ -15,6 +15,8 @@ import SuccessIcon from '@site/static/icons/success.svg';
 import FailedIcon from '@site/static/icons/failed.svg';
 import DisabledIcon from '@site/static/icons/disabled.svg';
 import TerminalIcon from '@site/static/icons/terminal.svg';
+import HelpIcon from '@site/static/icons/help.svg';
+import GitIcon from '@site/static/icons/git.svg';
 import { MirrorMeta } from '@site/meta.config';
 import SharedContext from '@site/src/utils/SharedContext';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -245,13 +247,23 @@ function MirrorHelp({ item, mirrorMeta: mirrors, docsMeta: docs }: MirrorHelpPro
 
   return <>
     {docs.find(v => v.id == helpid) &&
-      <Link className={styles['help-link']} to={`/docs/${helpid}`}>
-        [ <Translate id='mirror.table.help'>帮助文档</Translate> ]
+      <Link className={styles['help-link']} to={`/docs/${helpid}`} title={translate({
+        id: 'mirror.table.help',
+        message: '帮助文档'
+      })} >
+        [
+        <HelpIcon />
+        ]
       </Link>}
 
     {isGit &&
-      <a onClick={(e) => { e.stopPropagation(); }} className={styles['help-link']} href={`/git/${item.name}`}>
-        [ <Translate id='mirror.table.gitview'>浏览仓库</Translate> ]
+      <a onClick={(e) => { e.stopPropagation(); }} className={styles['help-link']} href={`/git/${item.name}`} title={translate({
+        id: 'mirror.table.gitview',
+        message: '浏览仓库'
+      })}>
+        [
+        <GitIcon />
+        ]
       </a>}
 
     {m && m.supportCli &&
