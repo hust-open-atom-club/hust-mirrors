@@ -340,7 +340,7 @@
     "message": "Last update"
   },
   "mirror.tableMeta.lastStart": {
-    "message": "Last start - last end"
+    "message": "Time used"
   },
   "mirror.tableMeta.lastEnd": {
     "message": "Last end"

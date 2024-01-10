@@ -16,11 +16,23 @@
 }
 
 .date {
-  width: 200px;
+  width: 180px;
+  position: relative;
 }
 
-.date-long {
-  width: 280px;
+.date-abs {
+  background: var(--ifm-color-primary);
+  color: white;
+  padding: 0 0.5em;
+  border-radius: 4px;
+  white-space: nowrap;
+  position: absolute;
+  left: 8px;
+  z-index: 1000;
+}
+
+.date-short {
+  width: 140px;
 }
 
 .upstream {

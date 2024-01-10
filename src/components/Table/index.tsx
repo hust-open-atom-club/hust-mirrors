@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './index.module.css'
 import Link from '@docusaurus/Link';
 import Translate, { translate } from '@docusaurus/Translate'
@@ -17,6 +17,8 @@ import DisabledIcon from '@site/static/icons/disabled.svg';
 import TerminalIcon from '@site/static/icons/terminal.svg';
 import { MirrorMeta } from '@site/meta.config';
 import SharedContext from '@site/src/utils/SharedContext';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { format as timeagoFormat } from 'timeago.js'
 
 
 type MirrorStatus = {
@@ -59,16 +61,64 @@ function tsToStr(ts: number) {
 function tsPeriodToStr(tsStart: number, tsEnd: number) {
   if (tsStart == 0) return "N/A";
 
-  const startStr = tsToStr(tsStart);
-  const date = new Date(tsEnd * 1000);
-  const hours = String(date.getHours()).padStart(2, '0');
-  const minutes = String(date.getMinutes()).padStart(2, '0');
-  const seconds = String(date.getSeconds()).padStart(2, '0');
+  const seconds = tsEnd - tsStart;
 
-  const formattedDate = `${startStr} - ${hours}:${minutes}:${seconds}`;
-  return formattedDate;
+  const zhUnits = {
+    day: '天',
+    hour: '小时',
+    minute: '分钟',
+    second: '秒',
+  }
+
+  const enUnits = {
+    day: 'days',
+    hour: 'hours',
+    minute: 'minutes',
+    second: 'seconds',
+  }
+
+  let unit;
+
+  const locale = useDocusaurusContext().i18n.currentLocale;
+  if (locale.startsWith("zh")) unit = zhUnits;
+  else unit = enUnits;
+
+  if (seconds < 0) return "N/A";
+  else if (seconds == 0) {
+    if (locale.startsWith("zh")) return "瞬间";
+    else return "a moment";
+  }
+  else if (seconds < 60) return `${seconds} ${unit.second}`;
+  else if (seconds < 60 * 60) return `${Math.ceil(seconds / 60)} ${unit.minute}`;
+  else if (seconds < 60 * 60 * 24) return `${Math.ceil(seconds / 60 / 60)} ${unit.hour}`;
+  else return `${Math.ceil(seconds / 60 / 60 / 24)} ${unit.day}`;
 }
 
+type MirrorTimeProps = {
+  ts: number
+}
+
+function MirrorTime({ ts }: MirrorTimeProps) {
+  const docusaurusContext = useDocusaurusContext();
+  let locale = docusaurusContext.i18n.currentLocale;
+
+  // check mouse hover
+
+  const [hover, setHover] = useState(false);
+
+  if (locale.startsWith("zh")) locale = "zh_CN";
+  else locale = "en_US";
+
+  if (new Date(ts * 1000).getFullYear() <= 1) return "N/A";
+
+  return <div
+    style={{ cursor: 'default' }}
+    onMouseEnter={() => { setHover(true) }}
+    onMouseLeave={() => { setHover(false) }}>
+    <span>{timeagoFormat(new Date(ts * 1000), locale)}</span>
+    {hover && <span className={styles['date-abs']}> {tsToStr(ts)} </span>}
+  </div>
+}
 
 function metaToStatus(v: MirrorMeta): MirrorStatus {
   return {
@@ -239,7 +289,6 @@ export default function Table({ items: srcItems, search, detail }: Props) {
     items = items.filter(u => u.name.toLowerCase().indexOf(search.toLowerCase()) != -1)
   }
 
-  const timezone = new Date().getTimezoneOffset() / -60;
 
   return (
     <table className={clsx('mirror__table', styles['container'], detail && styles["detail"])}>
@@ -249,13 +298,13 @@ export default function Table({ items: srcItems, search, detail }: Props) {
             <Translate id='mirror.tableMeta.name'>镜像名称</Translate>
           </th>
           <th className={styles['date']}>
-            <Translate id='mirror.tableMeta.lastUpdate'>上次更新</Translate> (UTC{timezone > 0 && '+'}{timezone})
+            <Translate id='mirror.tableMeta.lastUpdate'>上次更新</Translate>
           </th>
-          {detail && <th className={styles['date-long']}>
-            <Translate id='mirror.tableMeta.lastStart'>上次开始 - 上次结束</Translate> (UTC{timezone > 0 && '+'}{timezone})
+          {detail && <th className={styles['date-short']}>
+            <Translate id='mirror.tableMeta.lastStart'>同步时长</Translate>
           </th>}
           {detail && <th className={styles['date']}>
-            <Translate id='mirror.tableMeta.nextUpdate'>下次更新</Translate> (UTC{timezone > 0 && '+'}{timezone})
+            <Translate id='mirror.tableMeta.nextUpdate'>下次更新</Translate>
           </th>}
           {detail && <th className={styles['status']}>
             <Translate id='mirror.tableMeta.status'>同步状态</Translate>
@@ -285,9 +334,15 @@ export default function Table({ items: srcItems, search, detail }: Props) {
             <td className={styles['name']}>
               <MirrorName item={u} docsMeta={alldocs} mirrorMeta={mirrorMeta} />
             </td>
-            <td className={styles['date']}>{tsToStr(u.last_update_ts)}</td>
-            {detail && <td className={styles['date-long']}>{tsPeriodToStr(u.last_started_ts, u.last_ended_ts)}</td>}
-            {detail && <td className={styles['date']}>{tsToStr(u.next_schedule_ts)}</td>}
+            <td className={styles['date']}>
+              <MirrorTime ts={u.last_update_ts} />
+            </td>
+            {detail && <td className={styles['date-short']}>
+              {tsPeriodToStr(u.last_started_ts, u.last_ended_ts)}
+            </td>}
+            {detail && <td className={styles['date']}>
+              <MirrorTime ts={u.next_schedule_ts} />
+            </td>}
             {detail && <td className={styles['status']}>
               <SyncingStatus status={u.status} />
             </td>}
