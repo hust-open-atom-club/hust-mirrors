@@ -16,8 +16,12 @@
 }
 
 .date {
-  width: 180px;
+  width: 240px;
   position: relative;
+}
+
+.detail .date {
+  width: 180px;
 }
 
 .date-abs {
@@ -28,7 +32,7 @@
   white-space: nowrap;
   position: absolute;
   left: 8px;
-  z-index: 1000;
+  z-index: 100;
 }
 
 .date-short {
@@ -44,11 +48,12 @@
 }
 
 .status {
-  width: 100px;
+  width: 120px;
 }
 
 .mirror-name {
   position: relative;
+  margin-right: 4px;
 }
 
 .mirror-name:hover .desc-container {
@@ -59,7 +64,8 @@
 .copied {
   font-style: italic;
   font-size: 0.8rem;
-  margin-left: 8px;
+  margin-right: 4px;
+  white-space: nowrap;
 }
 
 .desc-container {
@@ -114,10 +120,6 @@
   min-width: 300px;
 }
 
-.help {
-  width: 220px;
-}
-
 .row-none {
   background: var(--ifm-color-warning-contrast-background) !important;
 }
@@ -142,8 +144,21 @@
   background: var(--ifm-color-info-contrast-background) !important;
 }
 
+.detail .help-link {
+  display: none;
+}
+
 .help-link {
   white-space: nowrap;
+  margin-right: 4px;
+}
+
+.help-link::before {
+  content: '[';
+}
+
+.help-link::after {
+  content: ']';
 }
 
 .help-link svg {
@@ -157,6 +172,10 @@
   fill: var(--ifm-color-primary);
 }
 
+.help-link-copy {
+  margin-left: 4px;
+}
+
 .status-label svg {
   width: 1rem;
   height: 1rem;
@@ -164,22 +183,17 @@
   margin-right: 4px;
 }
 
-@media screen and (max-width:996px) {
-  .help {
-    width: 130px;
-  }
-}
-
 @media screen and (max-width:480px) {
   .date {
-    display: none;
+    width: 125px;
   }
 
   .detail .date {
     display: table-cell;
   }
 
-  .help {
-    width: 200px;
+  .date-abs {
+    left: auto;
+    right: 16px;
   }
 }

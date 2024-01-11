@@ -15,8 +15,8 @@ import SuccessIcon from '@site/static/icons/success.svg';
 import FailedIcon from '@site/static/icons/failed.svg';
 import DisabledIcon from '@site/static/icons/disabled.svg';
 import TerminalIcon from '@site/static/icons/terminal.svg';
-import HelpIcon from '@site/static/icons/help.svg';
-import GitIcon from '@site/static/icons/git.svg';
+import HelpIcon from '@site/static/icons/help2.svg';
+import CopyIcon from '@site/static/icons/copy.svg';
 import { MirrorMeta } from '@site/meta.config';
 import SharedContext from '@site/src/utils/SharedContext';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -182,7 +182,7 @@ function MirrorName({ item, docsMeta: docs, mirrorMeta: mirrors }: MirrorNamePro
 
   const isGit = (m && m.type) ? m.type == 'git' : item.name.endsWith(".git");
   const link = (m && m.link) ? m.link : (
-    isGit ? "#" : `/${item.name}`
+    isGit ? `/git/${item.name}` : `/${item.name}`
   );
 
   const dname = (m && m.displayName) ? m.displayName : item.name;
@@ -190,17 +190,17 @@ function MirrorName({ item, docsMeta: docs, mirrorMeta: mirrors }: MirrorNamePro
   let desc = <div>
     {m && m.description &&
       <p>{m.description}</p>}
-
-    {isGit &&
-      <p className={styles['git-desc']}> <Translate id='mirror.table.gitHint'>该仓库为Git仓库，点击链接复制clone url。</Translate></p>
-    }
   </div>;
 
-  const descShown = (!!m && !!m.description) || isGit;
+  const descShown = (!!m && !!m.description);
 
   const ctx = React.useContext(SharedContext);
 
   const onLinkClick: React.MouseEventHandler = (e) => {
+    e.stopPropagation();
+  }
+
+  const copyLink: React.MouseEventHandler = (e) => {
     if (isGit) {
       const gitUrl = `${ctx.https ? 'https' : 'http'}://${ctx.domain}/git/` + item.name;
       copy(gitUrl);
@@ -214,27 +214,40 @@ function MirrorName({ item, docsMeta: docs, mirrorMeta: mirrors }: MirrorNamePro
         },
         3000
       );
-      e.preventDefault();
     }
+    e.preventDefault();
     e.stopPropagation();
   }
 
-  return (
+  return (<>
     <span className={styles['mirror-name']}>
       <a onClick={onLinkClick} href={link}>
         {dname}
       </a>
-      {
-        copied &&
-        <span className={styles.copied}>
-          <Translate id='mirror.table.copied'>( 已复制 )</Translate>
-        </span>
-      }
       {descShown &&
         <div className={styles['desc-container']}>
           {desc}
         </div>}
+
     </span>
+    {
+      copied &&
+      <span className={styles.copied}>
+        <Translate id='mirror.table.copied'>( 已复制 )</Translate>
+      </span>
+    }
+    {isGit &&
+      <a onClick={copyLink} href='#' className={clsx(styles['help-link'], styles['help-link-copy'])} title={
+        translate({
+          id: 'mirror.table.copy',
+          message: '复制链接'
+        })
+      }>
+        <CopyIcon />
+      </a>
+    }
+    <MirrorHelp item={item} docsMeta={docs} mirrorMeta={mirrors} />
+  </>
   )
 }
 
@@ -251,29 +264,15 @@ function MirrorHelp({ item, mirrorMeta: mirrors, docsMeta: docs }: MirrorHelpPro
         id: 'mirror.table.help',
         message: '帮助文档'
       })} >
-        [
         <HelpIcon />
-        ]
       </Link>}
-
-    {isGit &&
-      <a onClick={(e) => { e.stopPropagation(); }} className={styles['help-link']} href={`/git/${item.name}`} title={translate({
-        id: 'mirror.table.gitview',
-        message: '浏览仓库'
-      })}>
-        [
-        <GitIcon />
-        ]
-      </a>}
 
     {m && m.supportCli &&
       <Link className={styles['help-link']} to={`/docs?d=${m.cliID || m.id}`} title={translate({
         id: 'mirror.table.supportCli',
         message: '该镜像支持CLI部署'
       })}>
-        [
         <TerminalIcon />
-        ]
       </Link>
     }
 
@@ -327,9 +326,6 @@ export default function Table({ items: srcItems, search, detail }: Props) {
           {detail && <th className={styles['upstream']}>
             <Translate id='mirror.tableMeta.upstream'>上游链接</Translate>
           </th>}
-          {!detail && <th className={styles['help']}>
-            <Translate id='mirror.tableMeta.help'>帮助</Translate>
-          </th>}
         </tr>
 
       </thead>
@@ -360,9 +356,6 @@ export default function Table({ items: srcItems, search, detail }: Props) {
             </td>}
             {detail && <td className={styles['size']}>{u.size}</td>}
             {detail && <td className={styles['upstream']}>{u.upstream}</td>}
-            {!detail && <td className={styles['help']}>
-              <MirrorHelp item={u} docsMeta={alldocs} mirrorMeta={mirrorMeta} />
-            </td>}
           </tr>
         ))}
       </tbody>
