@@ -174,10 +174,6 @@ function SyncingStatus({ status }: { status: MirrorStatus['status'] }) {
 }
 
 function MirrorName({ item, docsMeta: docs, mirrorMeta: mirrors }: MirrorNameProps) {
-
-  const [copied, setCopied] = useState(false);
-  const timeoutRef = useRef<number | undefined>(undefined);
-
   const m = mirrors.find(u => u.id == item.name);
 
   const isGit = (m && m.type) ? m.type == 'git' : item.name.endsWith(".git");
@@ -194,11 +190,36 @@ function MirrorName({ item, docsMeta: docs, mirrorMeta: mirrors }: MirrorNamePro
 
   const descShown = (!!m && !!m.description);
 
-  const ctx = React.useContext(SharedContext);
 
   const onLinkClick: React.MouseEventHandler = (e) => {
     e.stopPropagation();
   }
+
+  return (<>
+    <span className={styles['mirror-name']}>
+      <a onClick={onLinkClick} href={link}>
+        {dname}
+      </a>
+      {descShown &&
+        <div className={styles['desc-container']}>
+          {desc}
+        </div>}
+    </span>
+    <MirrorHelp item={item} docsMeta={docs} mirrorMeta={mirrors} />
+  </>
+  )
+}
+
+type MirrorHelpProps = MirrorNameProps;
+
+function MirrorHelp({ item, mirrorMeta: mirrors, docsMeta: docs }: MirrorHelpProps) {
+  const m = mirrors.find(u => u.id == item.name);
+  const isGit = (m && m.type) ? m.type == 'git' : item.name.endsWith(".git");
+  const helpid = (m && m.helpID) ? m.helpID : item.name;
+
+  const [copied, setCopied] = useState(false);
+  const ctx = React.useContext(SharedContext);
+  const timeoutRef = useRef<number | undefined>(undefined);
 
   const copyLink: React.MouseEventHandler = (e) => {
     if (isGit) {
@@ -219,23 +240,21 @@ function MirrorName({ item, docsMeta: docs, mirrorMeta: mirrors }: MirrorNamePro
     e.stopPropagation();
   }
 
-  return (<>
-    <span className={styles['mirror-name']}>
-      <a onClick={onLinkClick} href={link}>
-        {dname}
-      </a>
-      {descShown &&
-        <div className={styles['desc-container']}>
-          {desc}
-        </div>}
 
-    </span>
+  return <>
     {
       copied &&
       <span className={styles.copied}>
         <Translate id='mirror.table.copied'>( 已复制 )</Translate>
       </span>
     }
+    {docs.find(v => v.id == helpid) &&
+      <Link className={styles['help-link']} to={`/docs/${helpid}`} title={translate({
+        id: 'mirror.table.help',
+        message: '帮助文档'
+      })} >
+        <HelpIcon />
+      </Link>}
     {isGit &&
       <a onClick={copyLink} href='#' className={clsx(styles['help-link'], styles['help-link-copy'])} title={
         translate({
@@ -246,26 +265,6 @@ function MirrorName({ item, docsMeta: docs, mirrorMeta: mirrors }: MirrorNamePro
         <CopyIcon />
       </a>
     }
-    <MirrorHelp item={item} docsMeta={docs} mirrorMeta={mirrors} />
-  </>
-  )
-}
-
-type MirrorHelpProps = MirrorNameProps;
-
-function MirrorHelp({ item, mirrorMeta: mirrors, docsMeta: docs }: MirrorHelpProps) {
-  const m = mirrors.find(u => u.id == item.name);
-  const isGit = (m && m.type) ? m.type == 'git' : item.name.endsWith(".git");
-  const helpid = (m && m.helpID) ? m.helpID : item.name;
-
-  return <>
-    {docs.find(v => v.id == helpid) &&
-      <Link className={styles['help-link']} to={`/docs/${helpid}`} title={translate({
-        id: 'mirror.table.help',
-        message: '帮助文档'
-      })} >
-        <HelpIcon />
-      </Link>}
 
     {m && m.supportCli &&
       <Link className={styles['help-link']} to={`/docs?d=${m.cliID || m.id}`} title={translate({
