@@ -35,7 +35,7 @@ const plugin = (_) => {
           const strs = optionBlock.split('\n');
 
           for (const str of strs) {
-            const result = /^\[(.*)\]\s*\((.+)\)\s*(\{(.*)\}\s*)?(.+)$/.exec(str);
+            const result = /^\[(.*)\]\s*\((.+?)\)\s*(\{(.*)\}\s*)?(.+)$/.exec(str);
             if (result) {
               const [_all, defValue, key, _itemGroup, items, label] = result;
 
