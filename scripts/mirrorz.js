@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 //@ts-check
 
 const githubPrefix = 'https://raw.githubusercontent.com/mirrorz-org/mirrorz-help/master/contents/'
@@ -8,15 +9,11 @@ const githubPrefix = 'https://raw.githubusercontent.com/mirrorz-org/mirrorz-help
  */
 async function getContent(doc) {
   const url = githubPrefix + doc + '.mdx'
-  // get content from github
-  console.log("Fetching content from " + url + " ...")
   const response = await fetch(url)
   if (!response.ok) {
     throw new Error("Failed to fetch, status: " + response.statusText)
   }
   const content = await response.text()
-  console.log("Fetching done.")
-
   return content
 }
 
@@ -227,7 +224,8 @@ function transformFrontmatter(content, mirrorName, orignHash, upstream) {
     sidebar_label: mirrorName,
     cname: mirrorName,
     slug: '/' + mirrorName,
-    upstream: orignHash,
+    upstream: upstream,
+    upstream_sha256: orignHash,
     mirrorz: true
   }
   if (content.startsWith('---')) {
@@ -262,19 +260,15 @@ async function transformLink(markdown) {
   return markdown.replace(re, "[$1](/docs/$2)")
 }
 
-async function main() {
+/**
+ * Cli entry
+ * @param {string} upstreamName 
+ * @param {string} localName 
+ * @returns Promise<void>
+ */
+async function mainGenerate(upstreamName, localName) {
 
-  const arg = require('arg')
-  const args = arg({
-    '--local': String
-  })
-  const upstreamName = args._[0]
-  const localName = args['--local'] || upstreamName
-  if (!upstreamName) {
-    console.error("Usage: node mirrorz.js <upstreamName> [--local <localName>]")
-    return
-  }
-
+  console.log("Processing mirrorz/" + upstreamName + " => " + localName)
   const content = await getContent(upstreamName);
 
   // compute the hash
@@ -300,6 +294,113 @@ async function main() {
   result = transformFrontmatter(result, localName, orignHash, upstreamName)
   result = await transformLink(result)
   await save(result, localName)
+}
+
+
+/**
+ * check updates
+ * if forceUpdate is true, then update all
+ * @param {boolean} forceUpdate 
+ * @returns {Promise<{upsteam: string, local: string}[]>}
+ */
+async function checkUpdates(forceUpdate = false) {
+  const path = require('path')
+  const dir = path.resolve(__dirname + '/../docs')
+  const fs = require('fs/promises')
+  const yaml = require('yaml')
+  const files = await fs.readdir(dir)
+  const update = []
+  const list = files.filter(f => f.endsWith('.md'))
+  for (const file of list) {
+    const lcontent = await fs.readFile(path.join(dir, file), 'utf-8')
+    if (!lcontent.startsWith("---")) continue;
+    const idx = lcontent.indexOf("---", 3)
+    const meta = yaml.parse(lcontent.slice(3, idx))
+    if (meta.mirrorz !== true) continue;
+    const localName = file.replace('.md', '')
+    const upstream = meta.upstream || localName
+
+    if (forceUpdate) {
+      update.push({
+        upsteam: upstream,
+        local: localName
+      })
+      continue
+    }
+
+    const content = await getContent(upstream)
+    // compute sha256
+    const crypto = require('crypto')
+    const hash = crypto.createHash('sha256')
+    hash.update(content)
+    const sha256 = hash.digest('hex')
+
+    if (meta.upstream_sha256 === sha256) {
+      console.log(file + " is up to date.")
+    } else {
+      console.log(file + " is outdated.")
+      update.push({
+        upsteam: upstream,
+        local: localName
+      })
+    }
+  }
+  return update
+}
+
+async function mainUpdate(forceUpdate = false, ignorePrompt = false) {
+  const result = await checkUpdates(forceUpdate)
+  if (result.length === 0) {
+    console.error("No document need update.")
+    return
+  }
+  console.log("Following need update:\n" + result.map(u => `mirrorz/${u.upsteam} => ${u.local}`).join('\n'))
+  let answer = 'y'
+  if (!ignorePrompt) {
+    const interface = require('node:readline/promises').createInterface({
+      input: process.stdin,
+      output: process.stdout
+    })
+    answer = await interface.question('Do you want to update the mirrorz? (y/n) ');
+    interface.close()
+  }
+
+  if (answer === 'y') {
+    for (const { upsteam, local } of result) {
+      await mainGenerate(upsteam, local)
+    }
+  }
+}
+
+function main() {
+  const arg = require('arg')
+  const gArgs = process.argv.slice(2)
+  if (gArgs[0] == 'generate') {
+    const args = arg({
+      '--local': String
+    }, { argv: gArgs.slice(1) })
+    const upstream = args._.shift()
+    const local = args['--local'] || upstream
+
+    if (!upstream) {
+      console.error("Usage: yarn gen-mirrorz <upstream> [--local <local>]")
+      return
+    }
+    mainGenerate(upstream, local)
+  }
+  else if (gArgs[0] == 'update') {
+    const args = arg({
+      '-f': Boolean,
+      '-a': Boolean,
+    }, { argv: gArgs.slice(1) })
+
+    mainUpdate(args['-a'], args['-f'])
+  }
+  else {
+    console.error("Usage: node ./scripts/mirrorz.js <generate|update>")
+    console.error("  generate <upstream> [--local <local>]")
+    console.error("  update [-f] [-a]")
+  }
 }
 
 main()

@@ -13,8 +13,8 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
-    "gen-mirrorz": "node scripts/gen-mirrorz.js",
-    "update-mirrorz": "node scripts/update-mirrorz.js"
+    "gen-mirrorz": "node scripts/mirrorz.js generate",
+    "update-mirrorz": "node scripts/mirrorz.js update"
   },
   "dependencies": {
     "@docusaurus/core": "^2.4.3",
