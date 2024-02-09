@@ -6,7 +6,16 @@ const nanoid = nid.customAlphabet('_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQR
 const plugin = (_) => {
   return (ast) => {
     modifyChildren((node, index, parent) => {
-      if (node.type == "code" && node.meta == 'varcode') {
+      if (node.type == "code" && node.meta?.match(/\S+/g)[0] == 'varcode') {
+        let title = undefined;
+        const otherMeta = node.meta.split(/\s+/g).slice(1);
+        for (const meta of otherMeta) {
+          if(meta.startsWith("title=")){
+            title = meta.split("=")[1];
+            title = title.replace(/["']/g, "");
+          }
+        }
+
         /** @type {string} */
         const code = node.value;
         const lang = node.lang;
@@ -58,7 +67,7 @@ const plugin = (_) => {
             position: node.position
           });
         }
-        else{
+        else {
           newAsts.push({
             type: 'export',
             value: `export const options_${idOption} = []`,
@@ -83,7 +92,7 @@ const plugin = (_) => {
 
         newAsts.push({
           type: "jsx",
-          value: `<CodeBlockWithVariables code={code_${idCode}} options={options_${idOption}} blockProps={{language: '${lang}'}}/>`,
+          value: `<CodeBlockWithVariables code={code_${idCode}} options={options_${idOption}} blockProps={{language: '${lang}', title: ${JSON.stringify(title)}}}/>`,
           position: node.position
         })
 
