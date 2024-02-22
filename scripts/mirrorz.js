@@ -127,7 +127,7 @@ function transformContent(raw, mirrorName) {
     })
   })
   let isStart = false, isEnd = false;
-  const content = result.reduce((acc, line) => {
+  let content = result.reduce((acc, line) => {
     if (line === undefined && !isStart) {
       isStart = true;
       return "";
@@ -141,6 +141,9 @@ function transformContent(raw, mirrorName) {
     }
   }, "");
 
+  content = content.replace(/\\/g, "\\\\") // escape the backslash
+  // TODO: escape other special characters
+  //
   return {
     content: content,
     lang,
