@@ -1,0 +1,107 @@
+---
+title: Termux 软件仓库镜像使用帮助
+sidebar_label: termux
+cname: termux
+slug: /termux
+upstream: termux
+upstream_sha256: ee08341411a7b8b9d7c6021c30fcec6e48a6a2adffbf64c5d4ab2ca34f7811d6
+mirrorz: true
+---
+:::tip 该文档来自MirrorZ Help
+本文档于*2024年2月22日*自动生成，[点击查看原文](https://help.mirrors.cernet.edu.cn/termux)。  
+其中可能存在失效链接或其他问题，如遇到问题请及时[反馈](https://gitee.com/dzm91_hust/hust-mirrors/issues)。
+:::
+
+
+## Termux 是什么
+
+> Termux is a terminal emulator and Linux environment bringing powerful terminal access to Android.
+
+Termux 是运行在 Android 上的 terminal。不需要 root，运行于内部存储（不在 SD 卡上）。
+
+自带了一个包管理器，可以安装许多现代化的开发和系统维护工具。比如：
+
+ * neovim
+ * tmux
+ * zsh
+ * clang
+ * gcc
+ * weechat
+ * irssi
+ * ...
+
+## 如何使用 Termux 镜像
+
+### 图形界面（TUI）替换
+
+在较新版的 Termux 中，官方提供了图形界面（TUI）来半自动替换镜像，推荐使用该种方式以规避其他风险。
+在 Termux 中执行如下命令
+
+```bash
+termux-change-repo
+```
+
+在图形界面引导下，使用自带方向键可上下移动。   
+第一步使用空格选择需要更换的仓库，之后在第二步选择相应镜像源。确认无误后回车，镜像源会自动完成更换。
+
+### 命令行替换
+
+使用如下命令行替换官方源为镜像源
+
+```bash varcode
+---
+---
+sed -i 's@^\\(deb.*stable main\\)$@#\\1\\ndeb ${_http}://${_domain}/termux/apt/termux-main stable main@' $PREFIX/etc/apt/sources.list
+apt update && apt upgrade
+```
+
+社区源（如果已经启用）
+
+x11-repo
+
+```bash varcode
+---
+---
+sed -i 's@^\\(deb.*x11 main\\)$@#\\1\\ndeb ${_http}://${_domain}/termux/apt/termux-x11 x11 main @' $PREFIX/etc/apt/sources.list.d/x11.list 
+apt update && apt upgrade 
+```
+
+root-repo
+
+```bash varcode
+---
+---
+sed -i 's@^\\(deb.*root main\\)$@#\\1\\ndeb ${_http}://${_domain}/termux/apt/termux-root root main @' $PREFIX/etc/apt/sources.list.d/root.list 
+apt update && apt upgrade 
+``` 
+
+### 手动修改
+
+编辑 `$PREFIX/etc/apt/sources.list` 修改为如下内容
+
+```properties varcode title="$PREFIX/etc/apt/sources.list"
+---
+---
+# The termux repository mirror
+deb ${_http}://${_domain}/termux/apt/termux-main stable main
+```
+
+社区源（如果已经启用）
+
+x11-repo
+
+```properties varcode title="$PREFIX/etc/apt/sources.list.d/x11.list"
+---
+---
+# The termux repository mirror
+deb ${_http}://${_domain}/termux/apt/termux-x11 x11 main 
+```
+
+root-repo
+
+```properties varcode title="$PREFIX/etc/apt/sources.list.d/root.list"
+---
+---
+# The termux repository mirror
+deb ${_http}://${_domain}/termux/apt/termux-root root stable 
+```
