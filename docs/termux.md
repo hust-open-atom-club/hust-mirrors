@@ -105,3 +105,12 @@ root-repo
 # The termux repository mirror
 deb ${_http}://${_domain}/termux/apt/termux-root root stable 
 ```
+ 
+请使用内置或安装在 Termux 里的文本编辑器，例如 `vi` / `vim` / `nano` 等，**不要使用 RE 管理器等其他具有 ROOT 权限的外部 APP** 来修改 Termux 的文件
+
+注：Termux 会自动将环境变量 `$PREFIX` 设定为 `/data/data/com.termux/files/usr`
+
+### 警告
+
+* 镜像仅适用于 Android 7.0 (API 24) 及以上版本，旧版本系统使用本镜像可能导致程序错误。
+* Google Play 上的 Termux 已被弃用，如安装会产生兼容性问题。请通过 GitHub 或 F-Droid（[镜像帮助](/docs/fdroid/)）来安装 Termux。

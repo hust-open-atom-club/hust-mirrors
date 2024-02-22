@@ -8,7 +8,7 @@ upstream_sha256: 12318cd134a186583754369b8ae2d82af1906f5e714de5e007c122e6cd7b5cc
 mirrorz: true
 ---
 :::tip 该文档来自MirrorZ Help
-本文档于*2024年2月8日*自动生成，[点击查看原文](https://help.mirrors.cernet.edu.cn/llvm-project.git)。  
+本文档于*2024年2月22日*自动生成，[点击查看原文](https://help.mirrors.cernet.edu.cn/llvm-project.git)。  
 其中可能存在失效链接或其他问题，如遇到问题请及时[反馈](https://gitee.com/dzm91_hust/hust-mirrors/issues)。
 :::
 
@@ -44,3 +44,7 @@ git remote add mirror ${_http}://${_domain}/llvm-project.git
 ---
 git remote set-url origin ${_http}://${_domain}/llvm-project.git
 ```
+
+将默认上游设置为镜像站
+
+注：如需要各个子项目的发布版本代码，请至 [GitHub Release 镜像](/docs/github-release/) 中 llvm-project 一节。

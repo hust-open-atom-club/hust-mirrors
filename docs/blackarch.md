@@ -8,7 +8,7 @@ upstream_sha256: d5e4da305898a29e48a9fb6b8b456e53c5ea79ca5bea70fd2979b6e920f3b78
 mirrorz: true
 ---
 :::tip 该文档来自MirrorZ Help
-本文档于*2024年2月8日*自动生成，[点击查看原文](https://help.mirrors.cernet.edu.cn/blackarch)。  
+本文档于*2024年2月22日*自动生成，[点击查看原文](https://help.mirrors.cernet.edu.cn/blackarch)。  
 其中可能存在失效链接或其他问题，如遇到问题请及时[反馈](https://gitee.com/dzm91_hust/hust-mirrors/issues)。
 :::
 
@@ -39,3 +39,5 @@ const sudo = !root ? 'sudo ' : '';
 ---
 ${sudo}pacman -Sy blackarch-keyring
 ```
+
+注：Black Arch 软件源仅包含其打包的工具等软件。如果需要更换 Arch Linux 基础系统的软件源，请查看 [Arch Linux 帮助](/docs/archlinux/)。

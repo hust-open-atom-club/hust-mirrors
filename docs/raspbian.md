@@ -8,7 +8,7 @@ upstream_sha256: 11817d0e3e89c5d0d5a45783ec9664c2f3857e456852ba92a97e67cc653ae65
 mirrorz: true
 ---
 :::tip 该文档来自MirrorZ Help
-本文档于*2024年2月8日*自动生成，[点击查看原文](https://help.mirrors.cernet.edu.cn/raspbian)。  
+本文档于*2024年2月22日*自动生成，[点击查看原文](https://help.mirrors.cernet.edu.cn/raspbian)。  
 其中可能存在失效链接或其他问题，如遇到问题请及时[反馈](https://gitee.com/dzm91_hust/hust-mirrors/issues)。
 :::
 
@@ -54,3 +54,39 @@ ${enable_source}deb-src ${_http}://${_domain}/raspbian/raspbian/ ${release_name}
 
 ${enable_aarch64}deb [arch=arm64] ${_http}://${_domain}/raspbian/multiarch/ ${release_name} main
 ```
+
+注意：网址末尾的`raspbian`重复两次是必须的。因为 Raspbian 的仓库中除了 APT 软件源还包含其他代码。APT 软件源不在仓库的根目录，而在`raspbian/`子目录下。
+
+#### aarch64
+
+aarch64 用户可直接参考 [Debian 帮助](/docs/debian/)
+
+#### raspberry 镜像
+
+对于两个架构，编辑 `/etc/apt/sources.list.d/raspi.list` 文件，这需要查看 [Raspberrypi 帮助](/docs/raspberrypi/)。
+
+
+### 相关链接
+
+#### Raspbian 链接
+
+*  Raspbian 主页：[https://www.raspbian.org](https://www.raspbian.org)
+*  文档：[https://www.raspbian.org/RaspbianDocumentation](https://www.raspbian.org/RaspbianDocumentation)
+*  Bug 反馈：[https://www.raspbian.org/RaspbianBugs](https://www.raspbian.org/RaspbianBugs)
+*  镜像列表: [https://www.raspbian.org/RaspbianMirrors](https://www.raspbian.org/RaspbianMirrors)
+
+#### 树莓派链接
+
+* 树莓派基金会主页：[https://www.raspberrypi.org/](https://www.raspberrypi.org/)
+* 树莓派基金会论坛 Raspberry Pi OS 版块：[https://raspberrypi.org/forums/viewforum.php?f=66](https://raspberrypi.org/forums/viewforum.php?f=66)
+
+### 关于本文档
+
+本文档内容的原始版本由 Raspberry Pi
+中文社区“树莓爱好者论坛”提供。按照 [知识共享署名 - 非商业性使用
+3.0
+中国大陆许可协议](http://creativecommons.org/licenses/by-nc/3.0/cn/) 授权清华大学镜像站使用。
+
+TUNA 提供的修改版本同样使用 [知识共享署名 - 非商业性使用
+3.0
+中国大陆许可协议](http://creativecommons.org/licenses/by-nc/3.0/cn/)。

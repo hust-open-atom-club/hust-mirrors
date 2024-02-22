@@ -8,7 +8,7 @@ upstream_sha256: 91b592bd944a83869ad895c8ab657117082ef7e6f3c0c230ef1e8229975c032
 mirrorz: true
 ---
 :::tip 该文档来自MirrorZ Help
-本文档于*2024年2月8日*自动生成，[点击查看原文](https://help.mirrors.cernet.edu.cn/gcc.git)。  
+本文档于*2024年2月22日*自动生成，[点击查看原文](https://help.mirrors.cernet.edu.cn/gcc.git)。  
 其中可能存在失效链接或其他问题，如遇到问题请及时[反馈](https://gitee.com/dzm91_hust/hust-mirrors/issues)。
 :::
 
@@ -36,3 +36,5 @@ git remote add mirror ${_http}://${_domain}/gcc.git
 ---
 git remote set-url origin ${_http}://${_domain}/gcc.git
 ```
+
+将默认上游设置为镜像站
