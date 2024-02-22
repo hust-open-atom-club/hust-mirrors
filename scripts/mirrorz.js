@@ -293,7 +293,7 @@ async function mainGenerate(upstreamName, localName) {
     lastIndex = matchResult.index + matchResult[0].length
     result += transformJSX(matchResult[0], localName)
   }
-
+  result += content.substring(lastIndex)
   result = transformFrontmatter(result, localName, orignHash, upstreamName)
   result = await transformLink(result)
   await save(result, localName)
