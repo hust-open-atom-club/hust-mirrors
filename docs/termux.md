@@ -113,4 +113,4 @@ deb ${_http}://${_domain}/termux/apt/termux-root root stable
 ### 警告
 
 * 镜像仅适用于 Android 7.0 (API 24) 及以上版本，旧版本系统使用本镜像可能导致程序错误。
-* Google Play 上的 Termux 已被弃用，如安装会产生兼容性问题。请通过 GitHub 或 F-Droid（[镜像帮助](/docs/fdroid/)）来安装 Termux。
+* Google Play 上的 Termux 已被弃用，如安装会产生兼容性问题。请通过 GitHub 或 F-Droid（[镜像帮助](#)）来安装 Termux。

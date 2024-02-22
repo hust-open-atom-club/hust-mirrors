@@ -47,4 +47,4 @@ git remote set-url origin ${_http}://${_domain}/llvm-project.git
 
 将默认上游设置为镜像站
 
-注：如需要各个子项目的发布版本代码，请至 [GitHub Release 镜像](/docs/github-release/) 中 llvm-project 一节。
+注：如需要各个子项目的发布版本代码，请至 [GitHub Release 镜像](#) 中 llvm-project 一节。
