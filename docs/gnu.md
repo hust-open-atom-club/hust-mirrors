@@ -15,7 +15,7 @@ mirrorz: true
 
 ### Gentoo
 
-本节供 [Gentoo 帮助](/docs/gentoo/) 使用
+本节供 [Gentoo 帮助](#) 使用
 
 ```bash varcode
 ---
@@ -25,7 +25,7 @@ export GNU_URL="${_http}://${_domain}/gnu"
 
 ### pkgsrc
 
-本节供 [pkgsrc 帮助](/docs/pkgsrc/)使用
+本节供 [pkgsrc 帮助](#)使用
 
 ```plain varcode
 ---
