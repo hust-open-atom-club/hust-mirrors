@@ -12,4 +12,4 @@ sed -i 's#https\?://dl-cdn.alpinelinux.org/alpine#${_http}://${_domain}/alpine#g
 更改完 `/etc/apk/repositories` 文件后请运行 `apk update` 更新索引以生效。
 
 ## 引用
-[^1] [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/CPAN/)  
+[^1] [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/alpine/)  

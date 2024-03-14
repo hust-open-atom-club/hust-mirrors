@@ -18,4 +18,4 @@ deb ${_http}://${_domain}/linuxmint ${release} main upstream import backport
 注：完成后请不要再使用 mintsources（自带的图形化软件源设置工具）进行任何操作，因为在操作后，无论是否有按“确定”，mintsources 均会复写 `/etc/apt/sources.list.d/official-package-repositories.list`
 
 ## 引用
-[^1] [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/CPAN/)  
+[^1] [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/linuxmint/)  
