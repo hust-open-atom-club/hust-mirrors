@@ -59,7 +59,7 @@ const mirrors: MirrorMeta[] = [
   { id: 'raspbian-addons', description: 'Raspbian 非官方软件源' },
   { id: 'ubuntu-releases', description: 'Ubuntu 发行版镜像仓库' },
   { id: 'ohmyzsh.git', type: 'git', description: 'zsh配置管理框架 oh-my-zsh 代码仓库', supportCli: true, cliID: 'ohmyzsh' },
-  { id: 'pypi', description: 'Python软件包仓库' },
+  { id: 'pypi', description: 'Python软件包仓库', supportCli: true },
   { id: 'buildroot', description: '嵌入式Linux系统制作工具' },
   { id: 'CPAN', description: 'Perl语言软件库' },
   { id: 'CTAN', description: 'TeX发行版和宏包' },
@@ -77,7 +77,8 @@ const mirrors: MirrorMeta[] = [
   { id: 'ubuntukylin-cdimage', description: 'Ubuntu Kylin 安装镜像' },
   { id: 'linuxmint', description: 'Linux Mint 软件仓库' },
   { id: 'linuxmint-cd', description: 'Linux Mint 安装镜像' },
-  { id: 'alpine', description: 'Alpine Linux 软件仓库' },
+  { id: 'alpine', description: 'Alpine Linux 软件仓库', supportCli: true },
+  { id: 'blackarch', description: 'BlackArch Linux 软件仓库', supportCli: true },
 ]
 
 
