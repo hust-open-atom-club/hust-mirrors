@@ -216,6 +216,7 @@ function MirrorHelp({ item, mirrorMeta: mirrors, docsMeta: docs }: MirrorHelpPro
   const m = mirrors.find(u => u.id == item.name);
   const isGit = (m && m.type) ? m.type == 'git' : item.name.endsWith(".git");
   const helpid = (m && m.helpID) ? m.helpID : item.name;
+  const anchor = m?.anchorID ? '#' + m.anchorID : '';
 
   const [copied, setCopied] = useState(false);
   const ctx = React.useContext(SharedContext);
@@ -249,7 +250,7 @@ function MirrorHelp({ item, mirrorMeta: mirrors, docsMeta: docs }: MirrorHelpPro
       </span>
     }
     {docs.find(v => v.id == helpid) &&
-      <Link className={styles['help-link']} to={`/docs/${helpid}`} title={translate({
+      <Link className={styles['help-link']} to={`/docs/${helpid}${anchor}`} title={translate({
         id: 'mirror.table.help',
         message: '帮助文档'
       })} >
