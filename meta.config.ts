@@ -8,6 +8,7 @@ export type MirrorMeta = {
   forceShown?: boolean;
   link?: string;
   helpID?: string;
+  anchorID?: string;
   supportCli?: boolean;
   cliID?: string;
 };
