@@ -8,9 +8,13 @@ cname: 'debian'
 
 Debian 是一个由自由和开源软件组成的 Linux 发行版。本项目创建于 1993 年，是最古老的 Linux 发行版之一。Debian 使用 Linux 内核，但大多数的基本操作系统工具都来自于 GNU 项目。因此，Debian 也常被称为 Debian GNU/Linux 操作系统。该项目由一组志愿者通过互联网协作进行协调，他们遵循着 Debian 社会契约、Debian 宪法和 Debian 自由软件准则这三个基本文件的指导。
 
-Debian使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说，Debian 通过修改 `/etc/apt/sources.list` 配置文件来管理系统软件源。一般情况下，用户可直接将该配置文件中的默认源地址 <http://deb.debian.org/> 替换为本软件镜像站。
+Debian 使用软件包管理工具 APT 来管理 DEB 软件包。具体来说，Debian 通过修改 `/etc/apt/sources.list` 配置文件来管理系统软件源。一般情况下，用户可直接将该配置文件中的默认源地址 <http://deb.debian.org/> 替换为本软件镜像站。
 
 ## Debian 软件源替换
+
+:::caution
+**我们发现 Debian 12 及以上 Docker 镜像将默认 APT 配置文件放置在 /etc/sources.list.d/ 中，与当前文档及 CLI 工具不兼容，直接使用会导致引入多个镜像源。**
+:::
 
 :::caution
 **为了及时地获得安全更新，防止因软件源更新而导致的安全补丁滞后问题，我们推荐直接使用官方安全更新软件源。**
@@ -20,10 +24,10 @@ Debian使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说�
 **为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
 :::
 
-1. 根据个人喜欢做出选择，并将如下软件源配置内容拷贝至 `/etc/apt/sources.list`，并进行保存。
+1. 根据个人情况对下列选项进行调整，并将生成的软件源配置替换 `/etc/apt/sources.list` 的原有内容，并进行保存。
 
 ```shell varcode
-[ ] (version) { bullseye:Debian 11, bookworm:Debian 12, sid:Unstable - SID, testing:Testing, buster:Debian 10 } Debian 版本
+[ ] (version) { bookworm:Debian 12, bullseye:Debian 11, buster:Debian 10, testing:Testing, sid:Unstable SID} Debian 版本
 [ ] (src) 启用源码镜像
 ---
 const BACKPORTS_PREFIX = version == 'sid' ? '# ' : ''
@@ -42,6 +46,12 @@ ${SID_PREFIX}${SRC_PREFIX}deb-src ${_http}://${_domain}/debian ${version}-update
 
 ${SID_PREFIX}${BACKPORTS_PREFIX}deb ${_http}://${_domain}/debian ${version}-backports main contrib non-free${NFW}
 ${SID_PREFIX}${BACKPORTS_PREFIX}${SRC_PREFIX}deb-src ${_http}://${_domain}/debian ${version}-backports main contrib non-free${NFW}
+
+${SID_PREFIX}deb ${_http}://${_domain}/debian ${version}-updates main contrib non-free${NFW}
+{SRC_PREFIX}deb-src ${_http}://${_domain}/debian ${version}-updates main contrib non-free${NFW}
+
+${SID_PREFIX}deb https://security.debian.org/debian-security ${version}-security main contrib non-free${NFW}
+${SID_PREFIX}${SRC_PREFIX}deb-src https://security.debian.org/debian-security ${version}-security main contrib non-free${NFW}
 ```
 
 2. 通过如下命令更新软件。
@@ -68,6 +78,26 @@ ${SUDO}apt update
 const SUDO = !root ? 'sudo ' : '';
 ---
 ${SUDO}sed -i.bak 's|http://deb.debian.org|${_http}://${_domain}|g' /etc/apt/sources.list
+${SUDO}apt update
+```
+
+:::caution
+上述命令仅适用于替换除 Security 源之外的镜像，默认情况下，我们并不支持大家更换 Security 源。
+:::
+
+## Debian Security 源
+
+<https://security.debian.org> 是 Debian 的官方安全软件源。它包含了针对 Debian 发行版中已知安全漏洞的修复程序。当有新的安全更新可用时，你可以通过该源来更新你的系统。要确保你的系统及时获得安全更新，建议将该源添加到你的软件源列表中。虽然本站也同步了安全软件源，但本着对安全的严谨性，我们强烈建议使用官方软件源。
+
+如果你一定要做这个源的替换，我们建议大家使用如下命令：
+
+```shell varcode
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}sed -i.bak 's|https://security.debian.org|${_http}://${_domain}|g' /etc/apt/sources.list
+${SUDO}apt update
 ```
 
 ## 注意事项
@@ -82,19 +112,6 @@ const SUDO = !root ? 'sudo ' : '';
 ${SUDO}apt install apt-transport-https ca-certificates
 ${SUDO}apt update
 ```
-
-<!-- 2. Connection reset by peer 问题
-
-在 apt 2.1.9 及以后的版本中，apt 的 HTTP Pipelining 特性与 Nginx 服务器疑似存在一定的不兼容问题，可能导致高带宽从镜像站下载大量软件包
-（例如系统升级）时出现偶发的 Connection reset by peer 错误（详见 [Debian bug #973581](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=973581)）。
-
-目前，用户可以通过关闭 HTTP Pipelining 特性解决此问题。
-如果需要关闭，可以在使用 `apt` 命令时加上 `-o Acquire::http::Pipeline-Depth=0` 参数，
-或使用以下命令将相关设置加入 apt 系统配置中：
-
-```bash
-echo "Acquire::http::Pipeline-Depth \"0\";" > /etc/apt/apt.conf.d/99nopipelining
-``` -->
 
 ## 引用
 
