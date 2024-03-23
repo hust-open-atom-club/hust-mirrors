@@ -29,7 +29,7 @@ Server = ${_http}://${_domain}/archlinux/$repo/os/$arch
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
-${SUDO}pacman -Syyu
+${SUDO}pacman -Syy
 ```
 
 其中，`yy` 能避免从**损坏的**镜像切换到**正常的**镜像时出现的问题。
