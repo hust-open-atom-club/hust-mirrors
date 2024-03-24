@@ -13,14 +13,6 @@ Debian 使用软件包管理工具 APT 来管理 DEB 软件包。具体来说，
 ## Debian 软件源替换
 
 :::caution
-**我们发现 Debian 12 及以上 Docker 镜像将默认 APT 配置文件放置在 /etc/sources.list.d/ 中，与当前文档及 CLI 工具不兼容，直接使用会导致引入多个镜像源。**
-:::
-
-:::caution
-**为了及时地获得安全更新，防止因软件源更新而导致的安全补丁滞后问题，我们推荐直接使用官方安全更新软件源。**
-:::
-
-:::caution
 **为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
 :::
 
@@ -47,11 +39,8 @@ ${SID_PREFIX}${SRC_PREFIX}deb-src ${_http}://${_domain}/debian ${version}-update
 ${SID_PREFIX}${BACKPORTS_PREFIX}deb ${_http}://${_domain}/debian ${version}-backports main contrib non-free${NFW}
 ${SID_PREFIX}${BACKPORTS_PREFIX}${SRC_PREFIX}deb-src ${_http}://${_domain}/debian ${version}-backports main contrib non-free${NFW}
 
-${SID_PREFIX}deb ${_http}://${_domain}/debian ${version}-updates main contrib non-free${NFW}
-{SRC_PREFIX}deb-src ${_http}://${_domain}/debian ${version}-updates main contrib non-free${NFW}
-
-${SID_PREFIX}deb https://security.debian.org/debian-security ${version}-security main contrib non-free${NFW}
-${SID_PREFIX}${SRC_PREFIX}deb-src https://security.debian.org/debian-security ${version}-security main contrib non-free${NFW}
+${SID_PREFIX}deb http://security.debian.org/debian-security ${version}-security main contrib non-free${NFW}
+${SID_PREFIX}${SRC_PREFIX}deb-src http://security.debian.org/debian-security ${version}-security main contrib non-free${NFW}
 ```
 
 2. 通过如下命令更新软件。
@@ -81,11 +70,13 @@ ${SUDO}sed -i.bak 's|http://deb.debian.org|${_http}://${_domain}|g' /etc/apt/sou
 ${SUDO}apt update
 ```
 
-:::caution
-上述命令仅适用于替换除 Security 源之外的镜像，默认情况下，我们并不支持大家更换 Security 源。
-:::
+<div id="security"></div>
 
 ## Debian Security 源
+
+:::caution
+**为了及时地获得安全更新，防止因软件源更新而导致的安全补丁滞后问题，我们推荐直接使用官方安全更新软件源。**
+:::
 
 <https://security.debian.org> 是 Debian 的官方安全软件源。它包含了针对 Debian 发行版中已知安全漏洞的修复程序。当有新的安全更新可用时，你可以通过该源来更新你的系统。要确保你的系统及时获得安全更新，建议将该源添加到你的软件源列表中。虽然本站也同步了安全软件源，但本着对安全的严谨性，我们强烈建议使用官方软件源。
 
@@ -100,9 +91,28 @@ ${SUDO}sed -i.bak 's|https://security.debian.org|${_http}://${_domain}|g' /etc/a
 ${SUDO}apt update
 ```
 
+或将 security 源替换为以下内容：
+
+```shell varcode
+[ ] (version) { bookworm:Debian 12, bullseye:Debian 11, buster:Debian 10, testing:Testing} Debian 版本
+[ ] (src) 启用源码镜像
+---
+const BACKPORTS_PREFIX = version == 'sid' ? '# ' : ''
+const SID_PREFIX = version == 'sid' ? '# ' : ''
+let NFW = ''
+if (version == 'bookworm' || version == 'sid' || version == 'testing') 
+  NFW = ' non-free-firmware'
+const SRC_PREFIX = src ? "" : "# ";
+---
+deb ${_http}://${_domain}/debian-security ${version}-security main contrib non-free${NFW}
+${SRC_PREFIX}deb-src ${_http}://${_domain}/debian-security ${version}-security main contrib non-free${NFW}
+```
+
 ## 注意事项
 
-- Debian Buster 以上版本默认支持 HTTPS 源。如果遇到无法拉取 HTTPS 源的情况，请使用 HTTP 源安装如下软件。
+### 关于 HTTPS 源
+
+Debian Buster 以上版本默认支持 HTTPS 源。如果遇到无法拉取 HTTPS 源的情况（如 docker 镜像中），请先使用 HTTP 源安装如下软件再进行换源。
 
 ```shell varcode
 [ ] (root) 是否为 root 用户
@@ -113,7 +123,20 @@ ${SUDO}apt install apt-transport-https ca-certificates
 ${SUDO}apt update
 ```
 
+### 关于 Debian Docker 镜像
+
+目前，最新版的 Debian Docker（Debian 12，bookworm）镜像将默认 apt 配置文件置于 `/etc/apt/sources.list.d` 目录中。手动替换软件源时，请使用以下指令使原配置文件无效化并备份：
+
+```shell varcode
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}mv /etc/apt/sources.list.d/debian.sources /etc/apt/sources.list.d/debian.sources.bak
+```
+
 ## 引用
 
 [^1] [Debian 官网](https://wiki.debian.org/zh_CN/DebianIntroduction)  
 [^2] [Debian 安全更新软件源](https://www.debian.org/security/faq.en.html#mirror)  
+[^3] [debian | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror](https://mirrors.tuna.tsinghua.edu.cn/help/debian/)  
