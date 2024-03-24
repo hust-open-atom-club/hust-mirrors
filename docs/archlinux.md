@@ -44,6 +44,22 @@ const SUDO = !root ? 'sudo ' : '';
 ${SUDO}pacman -Syyuu
 ```
 
+## 一键换源
+
+:::caution
+本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
+:::
+
+使用 `sed` 命令将当前镜像站的地址添加到软件源配置文件开头：
+
+```shell varcode
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo' : '';
+---
+${SUDO}sed -i.bak '1i\Server = ${_http}://${_domain}/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist
+```
+
 ## 引用
 
 [^1] [校园网联合镜像站](https://mirrors.cernet.edu.cn/about)  
