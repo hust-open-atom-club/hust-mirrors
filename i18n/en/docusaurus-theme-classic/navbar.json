@@ -15,8 +15,8 @@
     "message": "News",
     "description": "Navbar item with label 动态"
   },
-  "item.label.Gitee": {
-    "message": "Gitee",
+  "item.label.GitHub": {
+    "message": "GitHub",
     "description": "Navbar item with label Gitee"
   }
 }

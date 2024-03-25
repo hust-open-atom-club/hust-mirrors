@@ -75,7 +75,7 @@ export default function SideBar(props: Props) {
 
         <a><h3><ContactIcon /><Translate id="mirror.sidebar.contactus">联系我们</Translate></h3></a>
         <p>
-          <a href="https://gitee.com/dzm91_hust/hust-mirrors/issues">
+          <a href="https://github.com/hust-open-atom-club/hust-mirrors/issues">
             <IssueIcon /><Translate id='mirror.sidebar.submit'>提交问题</Translate>
           </a>
         </p>
@@ -87,7 +87,7 @@ export default function SideBar(props: Props) {
           </a>
         </p>
         <p>
-          <a href='https://gitee.com/dzm91_hust/mirrorrequest/issues/new/choose'>
+          <a href='https://github.com/hust-open-atom-club/mirrorrequest/issues/new/choose'>
             <span>
               <NewMirrorIcon /><Translate id='mirror.sidebar.newmirror'>新增镜像</Translate>
             </span>

@@ -79,8 +79,8 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://gitee.com/dzm91_hust/hust-mirrors/blob/master/',
-            label: 'Gitee',
+            href: 'https://github.com/hust-open-atom-club/hust-mirrors',
+            label: 'GitHub',
             position: 'right',
           },
         ],

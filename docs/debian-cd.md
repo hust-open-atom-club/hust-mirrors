@@ -9,7 +9,7 @@ mirrorz: true
 ---
 :::tip 该文档来自MirrorZ Help
 本文档于*2024年2月22日*自动生成，[点击查看原文](https://help.mirrors.cernet.edu.cn/debian-cd)。  
-其中可能存在失效链接或其他问题，如遇到问题请及时[反馈](https://gitee.com/dzm91_hust/hust-mirrors/issues)。
+其中可能存在失效链接或其他问题，如遇到问题请及时[反馈](https://github.com/hust-open-atom-club/hust-mirrors/issues)。
 :::
 
 

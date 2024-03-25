@@ -252,7 +252,7 @@ function transformFrontmatter(content, mirrorName, orignHash, upstream) {
   const info = ":::tip 该文档来自MirrorZ Help\n" +
     "本文档于*" + dateStr +
     `*自动生成，[点击查看原文](https://help.mirrors.cernet.edu.cn/${upstream})。  \n` +
-    "其中可能存在失效链接或其他问题，如遇到问题请及时[反馈](https://gitee.com/dzm91_hust/hust-mirrors/issues)。\n" +
+    "其中可能存在失效链接或其他问题，如遇到问题请及时[反馈](https://github.com/hust-open-atom-club/hust-mirrors/issues)。\n" +
     ":::\n"
 
   return matter + info + content;
