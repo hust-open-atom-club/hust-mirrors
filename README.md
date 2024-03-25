@@ -1,33 +1,53 @@
-# HUST Mirror Website
+# HUST Mirror 网页 & 文档
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+该网站使用 [Docusaurus 2](https://docusaurus.io/) 构建。
 
-### Installation
+## 开发
+
+### 安装依赖
 
 ```
 $ yarn
 ```
 
-### Local Development
+### 本地开发
 
 ```
 $ yarn start
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+该命令会启动一个本地开发服务器，并打开一个浏览器窗口。大多数更改都会在不必重新启动服务器的情况下实时重载。
 
-### Build
+### 构建
 
 ```
 $ yarn build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+该命令会将静态内容生成到 `build` 目录中，可以使用任何静态内容托管服务进行服务。
 
-### Deployment
 
-Using SSH:
+## 贡献
 
-```
-$ USE_SSH=true yarn deploy
-```
+欢迎任何形式的贡献，包括但不限于提交问题报告、功能请求、文档改进、翻译等。
+
+### 站点功能
+
+如果您发现了站点的任何问题，或者有任何功能请求，请在
+[GitHub Issues](https://github.com/hust-open-atom-club/hust-mirrors/issues) 中提交一个问题报告，
+或者直接提交一个 Pull Request。
+
+
+### 文档改进
+
+如果您发现了文档中的任何问题，或者有任何改进意见，请在
+[GitHub Issues](https://github.com/hust-open-atom-club/hust-mirrors/issues) 中提交一个问题报告，
+或者直接提交一个 Pull Request。
+
+#### 文档格式
+
+文档采用 Markdown 格式编写，如果需要支持用户交互的代码块，请参考Ubuntu文档的写法。
+
+## 许可证
+
+MIT
