@@ -58,5 +58,4 @@ git checkout -b new_local_branch next-20231101
 
 [^1] [校园网联合镜像站](https://mirrors.cernet.edu.cn/about)  
 [^2] [帮助仓库](https://github.com/mirrorz-org/mirrorz-help)  
-[^3] [关于Git镜像](about-git)  
 [^4] [Working with linux-next](https://www.kernel.org/doc/man-pages/linux-next.html)

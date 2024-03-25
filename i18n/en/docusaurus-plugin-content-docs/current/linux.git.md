@@ -31,4 +31,3 @@ This will set the default upstream to the current software mirror site.
 
 [^2] [Help Repository](https://github.com/mirrorz-org/mirrorz-help) 
 
-[^3] [About Git Mirrors](https://chat.openai.com/c/about-git) 

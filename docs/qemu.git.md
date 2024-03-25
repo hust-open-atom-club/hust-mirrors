@@ -41,4 +41,3 @@ curl ${_http}://${_domain}/qemu/qemu.sh | bash
 
 [^2] [帮助仓库](https://github.com/mirrorz-org/mirrorz-help)
 
-[^3] [关于Git镜像](./about-git)

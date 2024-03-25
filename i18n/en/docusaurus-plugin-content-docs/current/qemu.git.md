@@ -41,4 +41,3 @@ curl ${_http}://${_domain}/qemu/qemu.sh | bash
 
 [^2] [Help Repository](https://github.com/mirrorz-org/mirrorz-help) 
 
-[^3] [About Git Mirrors](https://chat.openai.com/c/about-git) 

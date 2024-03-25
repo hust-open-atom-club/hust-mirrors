@@ -28,4 +28,3 @@ git remote set-url origin ${_http}://${_domain}/git/linux.git
 
 [^1] [校园网联合镜像站](https://mirrors.cernet.edu.cn/about)  
 [^2] [帮助仓库](https://github.com/mirrorz-org/mirrorz-help)  
-[^3] [关于 Git 镜像](./about-git)  
