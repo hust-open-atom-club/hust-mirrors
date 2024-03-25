@@ -28,7 +28,7 @@ Server = ${_http}://${_domain}/blackarch/$repo/os/$arch
 
 2. 然后请安装 ``blackarch-keyring`` 包以导入 GPG key。
 
-```plain varcode
+```shell varcode
 [ ] (root) 是否为 root 用户
 ---
 const sudo = !root ? 'sudo ' : '';
@@ -38,12 +38,12 @@ ${sudo}pacman -Sy blackarch-keyring
 
 3. 通过如下命令更新软件包缓存
 
-```plain varcode
+```shell varcode
 [ ] (root) 是否为 root 用户
 ---
-const sudo = !root ? 'sudo' : '';
+const sudo = !root ? 'sudo ' : '';
 ---
-${sudo}pacman -Syy
+${sudo}pacman -Syyu
 ```
 
 其中，`yy` 能避免从**损坏的**镜像切换到**正常的**镜像时出现的问题。
