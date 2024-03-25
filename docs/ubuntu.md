@@ -25,14 +25,22 @@ Ubuntu 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说�
 [ ] (version) { jammy:22.04 LTS, lunar:23.04, kinetic:22.10, focal:20.04 LTS, bionic:18.04 LTS, xenial:16.04 LTS, trusty:14.04 LTS } Ubuntu 版本
 [ ] (proposed) 启用预发布软件源
 [ ] (src) 启用源码镜像
+[ ] (forceSecurity) 使用 security 镜像 (强烈不推荐)
 ---
 const SRC_PREFIX = src ? "" : "# ";
 const PROPOSED_PREFIX = proposed ? "" : "# ";
+const SECURITY_URL = !forceSecurity ? "http://security.ubuntu.com/ubuntu/" : `${_http}://${_domain}/ubuntu/`;
+
 ---
 deb ${_http}://${_domain}/ubuntu/ ${version} main restricted universe multiverse
 ${SRC_PREFIX}deb-src ${_http}://${_domain}/ubuntu/ ${version} main restricted universe multiverse
 deb ${_http}://${_domain}/ubuntu/ ${version}-updates main restricted universe multiverse
 ${SRC_PREFIX}deb-src ${_http}://${_domain}/ubuntu/ ${version}-updates main restricted universe multiverse
+deb ${_http}://${_domain}/ubuntu/ ${version}-backports main restricted universe multiverse
+${SRC_PREFIX}deb-src ${_http}://${_domain}/ubuntu/ ${version}-backports main restricted universe multiverse
+
+deb ${SECURITY_URL} jammy-security main restricted universe multiverse
+${SRC_PREFIX}deb-src ${SECURITY_URL} jammy-security main restricted universe multiverse
 
 ${PROPOSED_PREFIX}deb ${_http}://${_domain}/ubuntu/ ${version}-proposed main restricted universe multiverse
 ${PROPOSED_PREFIX || SRC_PREFIX}deb-src ${_http}://${_domain}/ubuntu/ ${version}-proposed main restricted universe multiverse
