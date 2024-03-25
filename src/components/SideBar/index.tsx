@@ -17,6 +17,7 @@ import MailIcon from '@site/static/icons/mail.svg'
 import MirrorZIcon from '@site/static/icons/mirrorz.svg'
 import SettingsIcon from '@site/static/icons/settings.svg'
 import NewMirrorIcon from '@site/static/icons/newmirror.svg'
+import GlobalOptions from '@site/src/components/DocGlobalOptions/index';
 
 interface Props extends React.HTMLProps<HTMLDivElement> { }
 
@@ -30,12 +31,21 @@ function Domains({ domains }: { domains: DomainMeta[] }) {
   </>
 }
 
+function DomainChoose() {
+  return <div className={clsx('dropdown', 'dropdown--hoverable', 'dropdown--left', styles['domain-choose'])}>
+    <a><h3><DomainIcon /><Translate id='mirror.sidebar.chooseDomain'>域名选择</Translate></h3></a>
+    <div className={clsx("dropdown__menu", styles['global-dropdown'])}>
+      <GlobalOptions />
+    </div>
+  </div>;
+}
+
 export default function SideBar(props: Props) {
   const domains = useDomainMetas();
   return (
     <div {...props}>
       <div className={styles.side}>
-        <a><h3><DomainIcon /><Translate id='mirror.sidebar.chooseDomain'>域名选择</Translate></h3></a>
+        <DomainChoose />
         <Domains domains={domains}></Domains>
 
         <a><h3><ImageIcon /><Translate id='mirror.sidebar.release'>软件下载</Translate></h3></a>

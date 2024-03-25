@@ -49,3 +49,14 @@
 .side h3 svg path {
   fill: var(--ifm-color-primary);
 }
+
+.global-dropdown {
+  width: 300px;
+  font-size: 1rem;
+  padding: 8px 16px 16px 16px;
+  color: var(--ifm-font-color-base);
+}
+
+.domain-choose {
+  cursor: pointer;
+}
