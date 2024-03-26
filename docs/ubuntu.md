@@ -19,7 +19,7 @@ Ubuntu 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说�
 **为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
 :::
 
-1. 根据个人喜欢做出选择，并将如下软件源配置内容拷贝至 `/etc/apt/sources.list`，并进行保存。
+1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/apt/sources.list` 的原有内容：
 
 ```bash varcode
 [ ] (version) { jammy:22.04 LTS, lunar:23.04, kinetic:22.10, focal:20.04 LTS, bionic:18.04 LTS, xenial:16.04 LTS, trusty:14.04 LTS } Ubuntu 版本
