@@ -99,9 +99,22 @@ ${SRC_PREFIX}deb-src ${_http}://${_domain}/ubuntu ${version}-security main restr
 
 ## 注意事项
 
-- 软件包架构说明
+### 软件包架构说明
 
 本镜像仅包含 x86 与 x64 架构处理器的软件包，在 ARM(arm64, armhf)、PowerPC(ppc64el)、RISC-V(riscv64) 以及 s390x 等架构的设备上，请使用 ubuntu-ports 镜像。
+
+### 关于 HTTPS 源
+
+如果遇到无法拉取 HTTPS 源的情况（如 docker 镜像中），请先使用 HTTP 源安装如下软件再进行换源。
+
+```shell varcode
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}apt install apt-transport-https ca-certificates
+${SUDO}apt update
+```
 
 ## 引用
 
