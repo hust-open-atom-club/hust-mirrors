@@ -12,10 +12,6 @@ Ubuntu 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说�
 ## Ubuntu 软件源替换
 
 :::caution
-**为了及时地获得安全更新，防止因软件源更新而导致的安全补丁滞后问题，我们推荐直接使用官方安全更新软件源。**
-:::
-
-:::caution
 **为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
 :::
 
@@ -70,14 +66,36 @@ ${SUDO}sed -i.bak 's|http://archive.ubuntu.com|${_http}://${_domain}|g' /etc/apt
 ${SUDO}apt update
 ```
 
-<!-- 本方法没有替换 security 源，如果想要替换 security 源可以执行以下命令：
+## Ubuntu Security 源
+
+:::caution
+**为了及时地获得安全更新，防止因软件源更新而导致的安全补丁滞后问题，我们推荐直接使用官方安全更新软件源。**
+:::
+
+因镜像站同步有延迟，可能会导致生产环境系统不能及时检查、安装最新的安全更新，因此不建议替换 security 源。
+
+如果存在官方源下载速度不理想等问题，可使用如下命令替换安全更新软件源：
+
 ```shell varcode
 [ ] (root) 是否为 root 用户
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
-${SUDO}sed -i.bak 's/security.ubuntu.com/${_domain}/g' /etc/apt/sources.list
-``` -->
+${SUDO}sed -i.bak 's|http://security.ubuntu.com|${_http}://${_domain}|g' /etc/apt/sources.list
+${SUDO}apt update
+```
+
+或将 security 源替换为以下内容：
+
+```shell varcode
+[ ] (version) { jammy:22.04 LTS, lunar:23.04, kinetic:22.10, focal:20.04 LTS, bionic:18.04 LTS, xenial:16.04 LTS, trusty:14.04 LTS } Ubuntu 版本
+[ ] (src) 启用源码镜像
+---
+const SRC_PREFIX = src ? "" : "# ";
+---
+deb ${_http}://${_domain}/ubuntu ${version}-security main restricted universe multiverse
+${SRC_PREFIX}deb-src ${_http}://${_domain}/ubuntu ${version}-security main restricted universe multiverse
+```
 
 ## 注意事项
 
