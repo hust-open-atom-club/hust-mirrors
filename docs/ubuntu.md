@@ -62,7 +62,7 @@ ${SUDO}apt update
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
-${SUDO}sed -i.bak 's|http://archive.ubuntu.com|${_http}://${_domain}|g' /etc/apt/sources.list
+${SUDO}sed -i.bak 's|https\\?://archive.ubuntu.com|${_http}://${_domain}|g' /etc/apt/sources.list
 ${SUDO}apt update
 ```
 
@@ -81,7 +81,7 @@ ${SUDO}apt update
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
-${SUDO}sed -i.bak 's|http://security.ubuntu.com|${_http}://${_domain}|g' /etc/apt/sources.list
+${SUDO}sed -i.bak 's|https\\?://security.ubuntu.com|${_http}://${_domain}|g' /etc/apt/sources.list
 ${SUDO}apt update
 ```
 

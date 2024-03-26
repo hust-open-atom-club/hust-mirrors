@@ -66,7 +66,7 @@ ${SUDO}apt update
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
-${SUDO}sed -i.bak 's|http://deb.debian.org|${_http}://${_domain}|g' /etc/apt/sources.list
+${SUDO}sed -i.bak 's|https\\?://deb.debian.org|${_http}://${_domain}|g' /etc/apt/sources.list
 ${SUDO}apt update
 ```
 
@@ -87,7 +87,7 @@ ${SUDO}apt update
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
-${SUDO}sed -i.bak 's|https://security.debian.org|${_http}://${_domain}|g' /etc/apt/sources.list
+${SUDO}sed -i.bak 's|https\\?://security.debian.org|${_http}://${_domain}|g' /etc/apt/sources.list
 ${SUDO}apt update
 ```
 
