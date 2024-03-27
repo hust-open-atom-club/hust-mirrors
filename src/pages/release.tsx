@@ -10,6 +10,7 @@ import TabItem from '@theme/TabItem'
 import CodeBlock from '@theme/CodeBlock'
 import Select from '../components/Select/index';
 import SharedContext from '../utils/SharedContext';
+import { useLocation } from '@docusaurus/router';
 
 function HomepageHeader() {
   return (
@@ -33,9 +34,45 @@ export default function Home(): JSX.Element {
 
   const { https, domain } = useContext(SharedContext);
 
-  const [release, setRelease] = useState("");
-  const [version, setVersion] = useState("");
-  const [variant, setVariant] = useState("");
+  const [release, _setRelease] = useState("");
+  const [version, _setVersion] = useState("");
+  const [variant, _setVariant] = useState("");
+
+  const setRelease = (v: string) => {
+    _setRelease(v);
+    _setVersion("");
+    _setVariant("");
+    window.history.pushState({}, '', `${document.location.pathname}?release=${v}`);
+  };
+
+  const setVersion = (v: string) => {
+    _setVersion(v);
+    _setVariant("");
+    window.history.pushState({}, '', `${document.location.pathname}?release=${release}&version=${v}`);
+  };
+
+  const setVariant = (v: string) => {
+    _setVariant(v);
+    window.history.pushState({}, '', `${document.location.pathname}?release=${release}&version=${version}&variant=${v}`);
+  };
+
+  const { search } = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(search);
+    const release = params.get("release");
+    const version = params.get("version");
+    const variant = params.get("variant");
+    if (release) {
+      _setRelease(release);
+    }
+    if (version) {
+      _setVersion(version);
+    }
+    if (variant) {
+      _setVariant(variant);
+    }
+  }, [search]);
 
   const updateReleases = async () => {
     setLoading(true);
@@ -105,11 +142,7 @@ export default function Home(): JSX.Element {
           })
         } items={releaseItems}
           value={release}
-          onChange={(v) => {
-            setRelease(v);
-            setVersion("");
-            setVariant("");
-          }}
+          onChange={setRelease}
         ></Select>
 
         {release && versionItems.length > 1 &&
@@ -120,10 +153,7 @@ export default function Home(): JSX.Element {
             })
           } items={versionItems}
             value={version}
-            onChange={(v) => {
-              setVersion(v);
-              setVariant("");
-            }}
+            onChange={setVersion}
           ></Select>}
 
         {version && variantItems.length > 1 &&
@@ -146,7 +176,7 @@ export default function Home(): JSX.Element {
           const filename = link ? link.split('/').pop() : undefined;
 
           return link &&
-            <div className={styles.result}>
+            <div className={styles.result} key={filename}>
               <h4>
                 <span>
                   <DownloadIcon />
