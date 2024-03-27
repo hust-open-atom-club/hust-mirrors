@@ -10,12 +10,7 @@ tag='origin/prod'
 
 cd "$src_dir" || exit
 
-last_commit=$(git rev-parse $tag) || last_commit=""
-git pull origin --force prod
-current_commit=$(git rev-parse $tag)
-
-if [[ "$last_commit" != "$current_commit" ]]; then
-  git checkout $tag
-  yarn && yarn build
-  cp -rf ./build/* "$obj_dir"
-fi
+git fetch --all
+git checkout $tag
+yarn && yarn build
+cp -rf ./build/* "$obj_dir"
