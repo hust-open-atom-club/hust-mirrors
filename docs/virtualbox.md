@@ -3,49 +3,29 @@ title: VirtualBox 软件仓库镜像使用帮助
 sidebar_label: virtualbox
 cname: virtualbox
 slug: /virtualbox
-upstream: virtualbox
-upstream_sha256: 3304ec1c6eb768d4a3332781534e87f967853ef09c88f117bfd9dbdacce0cbd0
-mirrorz: true
 ---
-:::tip 该文档来自MirrorZ Help
-本文档于*2024年2月8日*自动生成，[点击查看原文](https://help.mirrors.cernet.edu.cn/virtualbox)。  
-其中可能存在失效链接或其他问题，如遇到问题请及时[反馈](https://github.com/hust-open-atom-club/hust-mirrors/issues)。
-:::
-
 
 [Oracle Virtualbox](https://www.virtualbox.org/) VirtualBox 是一款开源虚拟机软件。由德国 Innotek 公司开发，Sun Microsystems 公司出品。使用 Qt 编写，在 Sun 被 Oracle 收购后正式更名成 Oracle VM VirtualBox。采用 GPL 协议开源。
 
-## Microsoft Windows
+## 通用安装包 {#universal}
 
-```bash varcode
----
----
-# Windows 最新版
-${_http}://${_domain}/virtualbox/virtualbox-Win-latest.exe
-```
+通用安装包支持
+- Windows
+- macOS
+- Linux 
+- SunOS
 
+点击[此链接](/release?release=Virtualbox)，选择需要的版本和操作系统下载最新版本的 VirtualBox。
 
-## Macintosh OS X
+:::info 针对 Linux 用户
 
-```bash varcode
----
----
-# OS X 最新版
-${_http}://${_domain}/virtualbox/virtualbox-osx-latest.dmg
-```
+如果你的系统是受支持的 Linux 发行版，推荐使用包管理器安装，参考[受支持的 Linux 发行版](#package-manager)。
 
-# Linux
+如果不是，在下载通用的`run`文件（例如`VirtualBox-5.0.24-108355-Linux_x86.run`）后，使用 `chmod +x` 给予执行权限后，直接安装即可。
 
-## 通过编译好的二进制包安装
+:::
 
-```plain varcode
----
----
-${_http}://${_domain}/virtualbox
-```
-
-访问该镜像下最新的目录（例如`5.0.24`），找到名为 发行版名称~发行代号~架构 的文件。
-如 `virtualbox-5.0_5.0.24-108355~Ubuntu~xenial_i386.deb` 下载安装即可。
+## 受支持的 Linux 发行版 {#package-manager}
 
 目前支持的系统有：
 
@@ -56,7 +36,15 @@ ${_http}://${_domain}/virtualbox
 * SUSE Linux Enterprise Server
 * Oracle Linux / Red Hat Enterprise Linux / CentOS
 
-如果您所使用的发行版不在上述列表之内，请下载通用的`run`文件（例如`VirtualBox-5.0.24-108355-Linux_x86.run`），然后使用 `chmod +x` 给予执行权限后，直接安装即可。
+如果您所使用的发行版不在上述列表之内，请参考[通用安装包](#universal)安装。
+
+
+### 通过编译好的二进制包安装
+
+点击[此链接](/release?release=Virtualbox%20\(package%20manager\))，选择版本（例如`5.0.24`），
+找到名为 发行版名称\~发行代号\~架构 的文件。
+如 `virtualbox-5.0_5.0.24-108355~Ubuntu~xenial_i386.deb` 下载安装即可。
+
 
 ### 通过包管理器安装
 
@@ -64,7 +52,7 @@ ${_http}://${_domain}/virtualbox
 
 首先信任 Virtualbox 的 GPG 公钥：
 
-对于 Debian 8 和 Ubuntu 16.04 及以上：
+- 对于 Debian 8 和 Ubuntu 16.04 及以上：
 
 ```shell varcode
 [ ] (root) 是否为 root 用户
@@ -74,7 +62,7 @@ const sudo = !root ? 'sudo ' : '';
 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | ${sudo}apt-key add -
 ```
 
-其他版本
+- 其他版本
 
 ```shell varcode
 [ ] (root) 是否为 root 用户
@@ -100,7 +88,7 @@ if(a === "6") { release_name = "bionic"; }
 if(a === "7") { release_name = "xenial"; }
 if(a === "8") { release_name = "trusty"; }
 ---
-deb ${_http}://${_domain}/virtualbox/apt/ ${release_name} contrib
+deb ${_http}://${_domain}/virtualbox/debian/ ${release_name} contrib
 ```
 
 安装 VirtualBox:
@@ -115,7 +103,7 @@ ${sudo}apt-get install virtualbox
 # 此时会列出具体可用版本，选择所需版本安装
 ```
 
-### RHEL/CentOS 用户
+#### RHEL/CentOS 用户
 
 
 新建 `/etc/yum.repos.d/virtualbox.repo`，内容为
