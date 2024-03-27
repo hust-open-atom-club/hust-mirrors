@@ -42,18 +42,18 @@ export default function Home(): JSX.Element {
     _setRelease(v);
     _setVersion("");
     _setVariant("");
-    window.history.pushState({}, '', `${document.location.pathname}?release=${v}`);
+    window.history.replaceState({}, '', `${document.location.pathname}?release=${v}`);
   };
 
   const setVersion = (v: string) => {
     _setVersion(v);
     _setVariant("");
-    window.history.pushState({}, '', `${document.location.pathname}?release=${release}&version=${v}`);
+    window.history.replaceState({}, '', `${document.location.pathname}?release=${release}&version=${v}`);
   };
 
   const setVariant = (v: string) => {
     _setVariant(v);
-    window.history.pushState({}, '', `${document.location.pathname}?release=${release}&version=${version}&variant=${v}`);
+    window.history.replaceState({}, '', `${document.location.pathname}?release=${release}&version=${version}&variant=${v}`);
   };
 
   const { search } = useLocation();
