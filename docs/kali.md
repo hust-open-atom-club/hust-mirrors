@@ -17,6 +17,35 @@ Kali 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说，
 :::
 
 :::caution
+早期版本的 Kali Linux 不受本站支持。
+:::
+
+1. 根据个人喜好做出选择，使用以下内容替换 `/etc/apt/sources.list`
+
+```plaintext varcode
+[ ] (src) 启用源码镜像
+---
+const SRC_PREFIX = src ? "" : "# ";
+---
+# See https://w.kali.org/docs/general-use/kali-linux-sources-list-repositories/
+deb https://mirrors.hust.edu.cn/kali kali-rolling main contrib non-free non-free-firmware
+# Additional line for source packages
+${SRC_PREFIX}deb-src https://mirrors.hust.edu.cn/kali kali-rolling main contrib non-free non-free-firmware
+```
+
+2. 通过如下命令更新软件。
+
+```shell varcode
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}apt update
+```
+
+## 一键换源
+
+:::caution
 本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
 :::
 
@@ -27,7 +56,7 @@ Kali 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说，
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
-${SUDO}sed -E -e 's|https?://([^/]+)/kali|${_http}://${_domain}/kali|' /etc/apt/sources.list
+${SUDO}sed -i.bak -E -e 's|https?://([^/]+)/kali|${_http}://${_domain}/kali|' /etc/apt/sources.list
 ```
 
 ## 注意事项
