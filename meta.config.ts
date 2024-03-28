@@ -67,7 +67,7 @@ const mirrors: MirrorMeta[] = [
   { id: 'CRAN', description: 'R语言的可执行文件、源代码和说明文件' },
   { id: 'crates', description: '面向Rust语言的软件包仓库文件', supportCli: true },
   { id: 'crates.io-index', description: '面向Rust语言的软件包索引列表，支持git索引和稀疏索引', helpID: 'crates', supportCli: true, cliID: 'crates' },
-  { id: 'deepin-cd', description: 'Deepin 镜像文件' },
+  { id: 'deepin-cd', description: 'Deepin 镜像文件', helpID: 'deepin', anchorID: 'cd' },
   { id: 'gnu', description: 'GNU软件的源码包和文档仓库' },
   { id: 'golang', description: 'Go语言工具链' },
   { id: 'openkylin-cdimage', description: 'openKylin 镜像文件' },
