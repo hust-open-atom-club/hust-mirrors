@@ -16,7 +16,7 @@ Debian 使用软件包管理工具 APT 来管理 DEB 软件包。具体来说，
 **为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
 :::
 
-1. 根据个人情况对下列选项进行调整，并将生成的软件源配置替换 `/etc/apt/sources.list` 的原有内容，并进行保存。
+1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/apt/sources.list` 的原有内容：
 
 ```shell varcode
 [ ] (version) { bookworm:Debian 12, bullseye:Debian 11, buster:Debian 10, testing:Testing, sid:Unstable SID} Debian 版本
@@ -70,9 +70,7 @@ ${SUDO}sed -i.bak 's|https\\?://deb.debian.org|${_http}://${_domain}|g' /etc/apt
 ${SUDO}apt update
 ```
 
-<div id="security"></div>
-
-## Debian Security 源
+## Debian Security 源 {#security}
 
 :::caution
 **为了及时地获得安全更新，防止因软件源更新而导致的安全补丁滞后问题，我们推荐直接使用官方安全更新软件源。**
@@ -108,9 +106,7 @@ deb ${_http}://${_domain}/debian-security ${version}-security main contrib non-f
 ${SRC_PREFIX}deb-src ${_http}://${_domain}/debian-security ${version}-security main contrib non-free${NFW}
 ```
 
-<div id="cd"></div>
-
-## Debian CD 镜像
+## Debian CD 镜像 {#cd}
 
 光盘映像以普通文件的形式准确记录了一片光盘里的数据，这样就可以在互联网上进行传输。光盘烧录程序也可利用映像制作出真正的光盘。
 
