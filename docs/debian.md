@@ -108,6 +108,22 @@ deb ${_http}://${_domain}/debian-security ${version}-security main contrib non-f
 ${SRC_PREFIX}deb-src ${_http}://${_domain}/debian-security ${version}-security main contrib non-free${NFW}
 ```
 
+## Debian CD 镜像
+
+光盘映像以普通文件的形式准确记录了一片光盘里的数据，这样就可以在互联网上进行传输。光盘烧录程序也可利用映像制作出真正的光盘。
+
+Debian 社区使用术语 `CD 镜像` 作为描述一类文件的通用方式，很多甚至装不进普通的 CD！这个名字很古老了，但它一直存在。Debian 社区会定期构建不同种类的镜像：
+
+- Debian 安装镜像，它们有多种不同的大小。从可以快速下载的小 CD 尺寸镜像 netinst 到为 DVD、蓝光光盘、双层蓝光光盘等设计的大型完整镜像。
+- Debian Live 镜像。Live 系统被设计为可直接从 CD/DVD/USB 上运行，而无需安装。
+
+在大多数情况下，这些安装镜像和 Live 镜像都可以直接被写入 USB 闪存盘中，而不用实际涉及到 CD，参见此处。不要被 CD 镜像这个名字所迷惑！
+
+目前 Debian 最新稳定版是 Bookworm (12.5.0)，
+
+- [点此链接](/release/?release=Debian)，选择需要的版本和架构下载最新的 Debian 安装镜像。
+- [点此链接](/release/?release=Debian%20Live%20CD%20(amd64))，选择需要的版本和架构下载最新的 Debian Live 镜像。
+
 ## 注意事项
 
 ### 关于 HTTPS 源
@@ -140,3 +156,4 @@ ${SUDO}mv /etc/apt/sources.list.d/debian.sources /etc/apt/sources.list.d/debian.
 [^1] [Debian 官网](https://wiki.debian.org/zh_CN/DebianIntroduction)  
 [^2] [Debian 安全更新软件源](https://www.debian.org/security/faq.en.html#mirror)  
 [^3] [debian | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror](https://mirrors.tuna.tsinghua.edu.cn/help/debian/)  
+[^4] [常见问答集](https://www.debian.org/CD/faq/)  
