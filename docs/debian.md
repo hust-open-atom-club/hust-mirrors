@@ -108,6 +108,8 @@ deb ${_http}://${_domain}/debian-security ${version}-security main contrib non-f
 ${SRC_PREFIX}deb-src ${_http}://${_domain}/debian-security ${version}-security main contrib non-free${NFW}
 ```
 
+<div id="cd"></div>
+
 ## Debian CD 镜像
 
 光盘映像以普通文件的形式准确记录了一片光盘里的数据，这样就可以在互联网上进行传输。光盘烧录程序也可利用映像制作出真正的光盘。

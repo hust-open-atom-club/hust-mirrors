@@ -50,7 +50,7 @@ const mirrors: MirrorMeta[] = [
   { id: 'ubuntu', type: 'normal', description: 'Ubuntu 软件仓库', helpID: 'ubuntu', supportCli: true },
   { id: 'anolis', description: '阿里龙蜥软件仓库', supportCli: true },
   { id: 'AOSP', description: 'Android 源代码仓库' },
-  { id: 'debian-cd', description: 'Debian GNU/Linux 最新版镜像仓库' },
+  { id: 'debian-cd', description: 'Debian GNU/Linux 最新版镜像仓库', helpID: 'debian', anchorID: 'cd'},
   { id: 'debian-nonfree', description: 'Debian GNU/Linux 非自由软件仓库' },
   { id: 'debian-security', description: 'Debian GNU/Linux 安全更新仓库', helpID: 'debian', anchorID: 'security' },
   { id: 'git-repo', type: 'git', description: 'Google开发的多git仓库管理工具git-repo代码仓库' },
