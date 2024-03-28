@@ -68,7 +68,7 @@ export const SoftwareGuide = () => {
     </Admonition>
 }
 
-命令行工具 [hustmirror-cli](https://gitee.com/dzm91_hust/hustmirror-cli.git) 是一个可以帮助你快速换源的小工具。
+命令行工具 [hustmirror-cli](https://github.com/hust-open-atom-club/hustmirror-cli.git) 是一个可以帮助你快速换源的小工具。
 
 <SoftwareGuide/>
 
