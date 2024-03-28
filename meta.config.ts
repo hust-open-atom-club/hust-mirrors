@@ -75,7 +75,7 @@ const mirrors: MirrorMeta[] = [
   { id: 'virtualbox', description: '开源的x86架构虚拟机安装文件' },
   { id: 'gcc.git', description: 'GNU编译工具代码仓库' },
   { id: 'ubuntukylin', description: 'Ubuntu Kylin 软件仓库' },
-  { id: 'ubuntukylin-cdimage', description: 'Ubuntu Kylin 安装镜像' },
+  { id: 'ubuntukylin-cdimage', description: 'Ubuntu Kylin 安装镜像', helpID: 'ubuntukylin', anchorID: 'image' },
   { id: 'linuxmint', description: 'Linux Mint 软件仓库' },
   { id: 'linuxmint-cd', description: 'Linux Mint 安装镜像' },
   { id: 'alpine', description: 'Alpine Linux 软件仓库', supportCli: true },
