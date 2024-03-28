@@ -71,3 +71,9 @@ const SUDO = !root ? 'sudo ' : '';
 ${SUDO}apt install apt-transport-https ca-certificates
 ${SUDO}apt update
 ```
+
+## Kali CD 镜像和虚拟机镜像
+
+本站提供 Kali Linux 的 CD 镜像和虚拟机镜像下载服务。
+
+- [点此链接](/release?release=Kali%20Linux)，选择需要的版本和架构下载所需的 Kali Linux 安装镜像。

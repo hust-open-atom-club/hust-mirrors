@@ -62,3 +62,9 @@ const SUDO = !root ? 'sudo ' : '';
 ${SUDO}apt install apt-transport-https ca-certificates
 ${SUDO}apt update
 ```
+
+## openKylin CD 镜像
+
+本站提供 OpenKylin 的 CD 镜像下载，您可以通过以下链接下载：
+
+- [点此链接](/release/?release=openKylin)，选择需要的版本和架构下载所需的 openKylin 安装镜像。
