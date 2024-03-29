@@ -72,7 +72,7 @@ ${SUDO}apt install apt-transport-https ca-certificates
 ${SUDO}apt update
 ```
 
-## Kali CD 镜像和虚拟机镜像
+## Kali CD 镜像和虚拟机镜像 {#iso}
 
 本站提供 Kali Linux 的 CD 镜像和虚拟机镜像下载服务。
 
