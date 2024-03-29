@@ -16,7 +16,7 @@ openKylin 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来�
 **为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
 :::
 
-1. 根据个人喜欢做出选择，并将如下软件源配置内容拷贝至 `/etc/apt/sources.list`，并进行保存。
+1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/apt/sources.list` 的原有内容：
 
 ```shell varcode
 [ ] (version) { yangtze:1.0 } openKylin 版本
@@ -47,7 +47,7 @@ ${SUDO}apt update
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
-${SUDO}sed -i.bak 's|https?://([^/]+)/openkylin|${_http}://${_domain}/openkylin|' /etc/apt/sources.list
+${SUDO}sed -i.bak -E -e 's|https?://([^/]+)/openkylin|${_http}://${_domain}/openkylin|' /etc/apt/sources.list
 ```
 
 ## 注意事项
@@ -62,3 +62,9 @@ const SUDO = !root ? 'sudo ' : '';
 ${SUDO}apt install apt-transport-https ca-certificates
 ${SUDO}apt update
 ```
+
+## openKylin CD 镜像
+
+本站提供 OpenKylin 的 CD 镜像下载，您可以通过以下链接下载：
+
+- [点此链接](/release/?release=openKylin)，选择需要的版本和架构下载所需的 openKylin 安装镜像。
