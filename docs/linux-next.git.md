@@ -12,7 +12,7 @@ cname: 'linux-next.git'
 正因为linux-next是临时版本，所以其master分支仅仅代表最新版本，
 如果HEAD追踪master分支，在使用git pull更新master时，会出现各种无法预料的错误。
 
-而正确的做法应该是clone主线分支，而把linux-next作为另外一个remote，使用应该使用标签去追踪commit
+而正确的做法应该是clone主线分支，而把linux-next作为另外一个remote，使用标签去追踪commit。
 :::
 
 ## 使用linux-next
