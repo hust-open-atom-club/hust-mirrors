@@ -16,18 +16,20 @@ Anolis 使用 YUM 工具来管理 RPM 软件包，查询软件包信息，从指
 :::
 
 :::caution
+以下命令仅会替换 Anolis OS 相关软件源，不会替换其他软件源，例如 EPEL 。
+
 本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
 :::
 
-使用 `sed` 命令修改 `/etc/yum.repos.d/` 文件夹下的软件源配置文件
+使用 `sed` 命令修改 `/etc/yum.repos.d/` 文件夹下的软件源配置文件，原有的配置文件会被备份为 `.bak` 后缀的文件。
 
 ```shell varcode
 [ ] (root) 是否为 root 用户
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
-${SUDO}sed -i.bak -E "s|https?://([^/]+)|${_http}://${_domain}|g"\\
-	/etc/yum.repos.d/*.repo
+${SUDO}sed -i.bak -E "s|https?://(mirrors\\.openanolis\\.cn)|${_http}://${_domain}|g" \\
+    /etc/yum.repos.d/*.repo
 ${SUDO}yum makecache
 ${SUDO}yum update
 ```
