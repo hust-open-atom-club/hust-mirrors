@@ -4,12 +4,12 @@ title: Rustup工具链安装器使用帮助
 ---
 
 :::warning 注意事项
-镜像站只保留最新的stable、beta和nightly，如果需要使用rustup安装旧版工具链，请使用官方源。
+镜像站只保留最新的 stable ,beta 和 nightly，如果需要使用 rustup 安装旧版工具链，请使用官方源。
 :::
 
 ## Windows 用户
 
-### 初次安装rust工具链
+### 初次安装 Rust 工具链
 
 要使用 Rust （MSVC）之前，可能需要安装MSVC编译工具链（Microsoft C++ 生成工具）。
 
@@ -38,7 +38,7 @@ Invoke-WebRequest -OutFile \${env:TEMP}/rustup-init.exe ${_http}://${_domain}/ru
 请参考下一小节的内容。
 :::
 
-### 长期启用rustup工具链的镜像源
+### 长期启用 rustup 工具链的镜像源
 
 import SharedContext from '@site/src/utils/SharedContext';
 export function VarValue(props) {
@@ -64,15 +64,20 @@ export function VarValue(props) {
 
 ## *nix 用户
 
-### 初次安装Rust工具链
+### 初次安装 Rust 工具链
 
-考虑到官网教程的 <https://sh.rustup.rs> 链接可能无法下载，我们已经镜像了该脚本，
+考虑到官方网站提供的 <https://sh.rustup.rs> 脚本网络环境可能不稳定，我们已经镜像了该脚本。
+
 直接执行下面的命令即可完成rust工具链的安装。
 
 ```bash varcode
+[x] (shMirror) 使用安装脚本镜像
+---
+const shellUrl = shMirror ? `${_http}://${_domain}/rustup/rustup.sh` : "https://sh.rustup.rs";
+---
 RUSTUP_DIST_SERVER="${_http}://${_domain}/rustup" \\
 RUSTUP_UPDATE_ROOT="${_http}://${_domain}/rustup/rustup" \\
-curl -sSf ${_http}://${_domain}/rustup/rustup.sh | sh
+curl -sSf ${shellUrl} | sh
 ```
 
 ### 长期使用

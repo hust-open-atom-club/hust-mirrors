@@ -7,9 +7,9 @@ title: crates.io 镜像使用帮助
 
 在 `$CARGO_HOME/config.toml` 中添加如下内容：
 
-:::info
-`$CARGO_HOME` 在 Windows 系统默认为：`%USERPROFILE%\.cargo`，例如C:\Users\test\\.cargo。
-在*nix系统默认为：`$HOME/.cargo`
+:::info CARGO_HOME 默认路径
+- 在 Windows 上，`$CARGO_HOME` 默认为：`%USERPROFILE%\.cargo`，例如 C:\Users\test\\.cargo。  
+- 在 *nix 系统 上，`$CARGO_HOME` 默认为：`$HOME/.cargo`，例如 /home/test/.cargo。
 :::
 
 ```toml varcode
@@ -25,7 +25,7 @@ registry = "${registry}"
 ```
 
 
-:::info
+:::info 关于稀疏索引
 
 cargo 1.68 版本开始支持稀疏索引：不再需要完整克隆 crates.io-index 仓库，可以加快获取包的速度。
 

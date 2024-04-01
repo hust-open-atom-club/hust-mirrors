@@ -9,7 +9,7 @@ Buildroot是一个创建嵌入式Linux系统的框架。其采用KBuild框架编
 
 ## Buildroot下载
 
-如果官方站点连接速度缓慢，直接前往该镜像站的[下载页面](/release)。
+如果官方站点连接速度缓慢，直接前往该镜像站的[下载页面](/release?release=Buildroot)。
 选择buildroot，并选择所需要的版本进行下载。
 
 然后在本地使用tar工具进行解包。
@@ -20,26 +20,33 @@ Buildroot在构建过程中需要使用kernel、gnu、CPAN等源。
 
 除此以外的其他源码包会在上游仓库或者其备用服务器<http://sources.buildroot.net/>下载。
 
-本镜像站已经镜像gnu和CPAN，kernel的镜像可以使用[中科大开源镜像站](https://mirrors.ustc.edu.cn/kernel.org/)提供的kernel镜像。
+本镜像站已经镜像 gnu 和 CPAN 以及 kernel，可以在 buildroot 的配置文件中修改这些源地址。
 
+### 方法一：手动修改
 
-首先备份你的config文件，并使用menuconfig修改配置信息
+首先备份你的config文件，并手动修改配置信息。（可以使用 menuconfig, nconfig, 甚至可以直接编辑文件进行修改）
 
 ```raw varcode
-BR2_KERNEL_MIRROR="${_http}://mirrors.ustc.edu.cn/kernel.org"
+BR2_KERNEL_MIRROR="${_http}://${_domain}/kernel.org"
 BR2_GNU_MIRROR="${_http}://${_domain}/gnu"
 BR2_CPAN_MIRROR="${_http}://${_domain}/CPAN"
 ```
 
-或者在buildroot根目录（有.config文件的目录）运行下面的替换脚本：
+### 方法二：使用脚本替换
+
+:::info
+使用脚本替换前，请确保已经存在 `.config` 文件。可以使用 `make defconfig` 生成默认配置文件。
+:::
+
+在buildroot根目录（有 `.config` 文件的目录）运行下面的替换脚本：
 
 ```bash varcode
 sed -i.old \\
-    -e '/BR2_KERNEL_MIRROR/c\\BR2_KERNEL_MIRROR="https://mirrors.ustc.edu.cn/kernel.org"' \\
+    -e '/BR2_KERNEL_MIRROR/c\\BR2_KERNEL_MIRROR="${_http}://${_domain}/kernel.org"' \\
     -e '/BR2_GNU_MIRROR/c\\BR2_GNU_MIRROR="${_http}://${_domain}/gnu"' \\
     -e '/BR2_CPAN_MIRROR/c\\BR2_CPAN_MIRROR="${_http}://${_domain}/CPAN"' \\
     .config
 
 ```
 
-然后执行`make`开始构建。
+然后执行 `make` 开始构建。
