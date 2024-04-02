@@ -1,5 +1,5 @@
 ---
-sidebar_label: pypi
+sidebar_label: PyPI
 title: Python 软件包索引仓库使用帮助
 ---
 
