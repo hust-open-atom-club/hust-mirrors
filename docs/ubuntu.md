@@ -72,7 +72,13 @@ Ubuntu 官方提供两种安装镜像：桌面版安装镜像及服务器版安�
 - 桌面版安装镜像是专为桌面 PC 和笔记本打造的 Ubuntu 版本，其可以让你在不安装系统的前提下尝试 Ubuntu 系统，请注意要安装桌面版系统至少需要 384 MiB 的 RAM 大小。
 - 服务器版安装镜像将安装一个不带用户图形界面纯命令行的 Ubuntu 系统，通常用于部署服务器。
 
-要下载这两个版本的安装镜像，请前往[下载页面](/release/?release=Ubuntu)选择对应的版本和种类进行下载。
+要下载这两个版本的安装镜像，请点击下方的按钮前往[下载页面](/release/?release=Ubuntu)选择对应的版本和种类进行下载。
+
+<a href="/release?release=Ubuntu">
+    <button className="button button--primary">
+    下载镜像
+    </button>
+</a>
 
 ## Ubuntu Security 源
 
