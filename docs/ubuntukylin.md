@@ -16,7 +16,7 @@ sidebar_label: UbuntuKylin
 ## Ubuntu 官方软件源替换
 
 :::info 
-除了优麒麟的软件源以外，优麒麟和Ubuntu的软件源是一样的，请直接参考 [Ubuntu 文档](./ubuntu.md)。
+除了优麒麟的软件源以外，优麒麟和Ubuntu的软件源是一样的，请直接参考 [Ubuntu 文档](./ubuntu)。
 
 :::
 
@@ -24,7 +24,7 @@ sidebar_label: UbuntuKylin
 注意，优麒麟预装时可能已经替换 Ubuntu 源为阿里云，请不要参考 Ubuntu 文档中的“一键换源”的部分。
 :::
 
-点击 [这里](./ubuntu.md) 查看 ubuntu 软件源替换方法。
+点击 [这里](./ubuntu) 查看 ubuntu 软件源替换方法。
 
 
 ## 优麒麟官方软件源替换
