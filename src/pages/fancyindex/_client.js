@@ -50,7 +50,7 @@
     var title = titleDoms[i];
     title.textContent = displayName;
   }
-  if (helpmeta) { helpBtn.href = "/docs/" + (meta.helpID || meta.id); }
+  if (helpmeta) { helpBtn.href = "/docs/" + helpmeta.id + (meta?.anchorID ? `#${meta.anchorID}` : ""); }
   else { helpBtn.remove(); }
   if (!meta || !meta.supportCli) cliBlock.remove();
 })();
