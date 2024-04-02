@@ -10,7 +10,7 @@ PyPI（The Python Package Index）是 Python 编程语言的软件存储仓库�
 ## 切换 pip 软件镜像
 
 :::caution
-pip 工具默认配置下仅支持https, 请不要使用http。
+pip 工具默认配置下仅支持 https, 请不要使用 http。
 :::
 
 :::info 关于externally-managed-environment 错误
