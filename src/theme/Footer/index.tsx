@@ -20,22 +20,28 @@ function Footer() {
           <div className="footer__bottom" style={{ maxWidth: 750 }}>
             <div>
               <Translate id='mirror.footer.desc0_0'> 华中科技大学开源镜像站由</Translate>
-              <a href='https://ncc.hust.edu.cn'>
-                <Translate id='mirror.footer.desc0_1'>华中科技大学网络中心</Translate>
+              <a href='https://cse.hust.edu.cn'>
+                <Translate id='mirror.footer.desc0_1'>华中科技大学网络空间安全学院</Translate>
               </a>
-              <Translate id='mirror.footer.desc0_2'>
-                提供支持。该镜像站收录了主流开源操作系统的软件源、安装镜像，包管理器的仓库，以及常用开源软件源代码，
-                除此以外，提供了发行版ISO下载、完整的使用帮助文档和CLI工具的支持。
+              <Translate id='mirror.footer.desc0_2'>和</Translate>
+              <a href='https://ncc.hust.edu.cn'>
+                <Translate id='mirror.footer.desc0_3'>网络与信息化办公室</Translate>
+              </a>
+              <Translate id='mirror.footer.desc0_4'>
+                提供支持。用户使用问题可以发送邮件至 
+              </Translate>
+              <a href="mailto:mirror_support@hust.edu.cn">mirror_support@hust.edu.cn</a>
+              <Translate id='mirror.footer.desc0_5'>
+               询问。该镜像站收录了主流开源软件源、安装镜像、完整帮助文档和CLI工具支持。
               </Translate>
             </div>
-            {/* <div>
-              <Translate id='mirror.footer.desc2'>
-                该镜像站目前是华中地区规模最大，速度最快，收录最全的开源软件镜像站。除此以外，提供了发行版ISO下载、完整的使用帮助文档和CLI工具的支持。
-                是 deepin, openEuler, openKylin 等多个国产操作系统的官方源
-              </Translate>
-            </div> */}
             <div>
-              <Translate id='mirror.footer.desc3'>华中科技大学开放原子开源俱乐部践行开放、共享、协同、贡献的理念，专注于通用Linux和物联网操作系统领域，并促进跨学科合作，提升技能，分享知识，为国内开源生态系统打造可持续的开源之路。
+              <a href='https://hust.openatom.club'>
+                <Translate id='mirror.footer.desc3_0'>华中科技大学开放原子开源俱乐部
+                </Translate>
+              </a>
+              <Translate id='mirror.footer.desc3_1'>
+              践行开放、共享、协同、贡献的理念，专注于通用Linux和物联网操作系统领域，并促进跨学科合作，提升技能，分享知识，为国内开源生态系统打造可持续的开源之路。
               </Translate>
             </div>
             <div>
