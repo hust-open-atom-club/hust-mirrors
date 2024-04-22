@@ -91,13 +91,6 @@ const domains: DomainMeta[] = [
     }),
     link: 'https://mirrors.hust.edu.cn'
   },
-  {
-    domain: 'mirrors.hust.college', desc: translate({
-      id: 'mirror.domain.2',
-      message: '双栈线路'
-    }),
-    link: 'https://mirrors.hust.college'
-  },
 ]
 
 export default {

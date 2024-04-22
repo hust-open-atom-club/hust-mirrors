@@ -57,7 +57,7 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: mirrorConfig.mainTitle,
+        title: mirrorConfig.logoTitle,
         logo: {
           alt: mirrorConfig.mainTitle,
           src: 'img/logo.svg',
