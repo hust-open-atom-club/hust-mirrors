@@ -14,7 +14,7 @@ pip 工具默认配置下仅支持 https, 请不要使用 http。
 :::
 
 :::info 关于externally-managed-environment 错误
-新版的 python 3.11 实现了 PEP 668, 不允许使用 pip 安装包。  
+Python 3.11 中实现了 PEP 668，允许 Python 软件包指定默认情况下是否可以在全局解释器上下文中安装包。
 如果遇到该问题，可以尝试使用 venv 创建虚拟环境，或者使用其他基于虚拟环境的的包管理器。
 :::
 
