@@ -34,15 +34,15 @@ const config = {
           remarkPlugins: [require('./plugin/remark/varcode'), require('./plugin/remark/cliAd')],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/hust-open-atom-club/hust-mirrors/blob/master/'
+          // editUrl:
+          //   'https://github.com/hust-open-atom-club/hust-mirrors/blob/master/'
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/hust-open-atom-club/hust-mirrors/blob/master/',
+          // editUrl:
+          //   'https://github.com/hust-open-atom-club/hust-mirrors/blob/master/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
