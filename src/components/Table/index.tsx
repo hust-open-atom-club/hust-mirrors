@@ -178,7 +178,8 @@ function MirrorName({ item, docsMeta: docs, mirrorMeta: mirrors }: MirrorNamePro
 
   const isGit = (m && m.type) ? m.type == 'git' : item.name.endsWith(".git");
   const link = (m && m.link) ? m.link : (
-    isGit ? `/git/${item.name}` : `/${item.name}`
+    // isGit ? `/git/${item.name}` : `/${item.name}`
+    isGit ? "#git" : `/${item.name}`
   );
 
   const dname = (m && m.displayName) ? m.displayName : item.name;
