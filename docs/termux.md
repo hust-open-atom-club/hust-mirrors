@@ -35,7 +35,7 @@ termux-change-repo
 ```
 
 在图形界面引导下，使用自带方向键可上下移动。   
-第一步使用空格选泽 Single Mirror，之后在第二步选择 mirrors.hust.edu.cn 镜像源。确认无误后回车，镜像源会自动完成更换。
+第一步使用空格选择 Single Mirror，之后在第二步选择 mirrors.hust.edu.cn 镜像源。确认无误后回车，镜像源会自动完成更换。
 
 ### 命令行替换
 
