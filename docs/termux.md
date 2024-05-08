@@ -22,21 +22,20 @@ Termux 是运行在 Android 上的 terminal。不需要 root，运行于内部�
 
 ## 如何使用 Termux 镜像
 
-:::info
-使用Termux图形界面（TUI）换源即将支持。
-:::
 
-<!-- ### 图形界面（TUI）替换
+### 图形界面（TUI）替换
 
 在较新版的 Termux 中，官方提供了图形界面（TUI）来半自动替换镜像，推荐使用该种方式以规避其他风险。
+* 需要先把 termux-tools 更新到1.42.1版本。  
 在 Termux 中执行如下命令
 
 ```bash
+apt update && apt upgrade termux-tools
 termux-change-repo
 ```
 
 在图形界面引导下，使用自带方向键可上下移动。   
-第一步使用空格选择需要更换的仓库，之后在第二步选择相应镜像源。确认无误后回车，镜像源会自动完成更换。 -->
+第一步使用空格选择 Single Mirror，之后在第二步选择 mirrors.hust.edu.cn 镜像源。确认无误后回车，镜像源会自动完成更换。
 
 ### 命令行替换
 
@@ -78,7 +77,7 @@ apt update && apt upgrade
 deb ${_http}://${_domain}/termux/apt/termux-main stable main
 ```
 
-替换社区源 x11-repo 为镜像源，需要编辑 `$PREFIX/etc/apt/sources.list` 修改为如下内容
+替换社区源 x11-repo 为镜像源，需要编辑 `$PREFIX/etc/apt/sources.list.d/x11.list` 修改为如下内容
 
 ```properties varcode title="$PREFIX/etc/apt/sources.list.d/x11.list"
 ---
@@ -87,10 +86,10 @@ deb ${_http}://${_domain}/termux/apt/termux-main stable main
 deb ${_http}://${_domain}/termux/apt/termux-x11 x11 main 
 ```
 
-替换社区源 root-repo 为镜像源，需要编辑 `$PREFIX/etc/apt/sources.list` 修改为如下内容
+替换社区源 root-repo 为镜像源，需要编辑 `$PREFIX/etc/apt/sources.list.d/root.list` 修改为如下内容
 
 
-```properties varcode title="$PREFIX/etc/apt/sources.list.d/root.list"
+```properties varcode title="$PREFIX/etc/apt/sources.list.d/root.list.d/root.list"
 ---
 ---
 # The termux repository mirror
