@@ -55,7 +55,7 @@ ${SUDO}pacman -Syyuu
 ```shell varcode
 [ ] (root) 是否为 root 用户
 ---
-const SUDO = !root ? 'sudo' : '';
+const SUDO = !root ? 'sudo ' : '';
 ---
 ${SUDO}sed -i.bak '1i\Server = ${_http}://${_domain}/archlinux/$repo/os/$arch' /etc/pacman.d/mirrorlist
 ```

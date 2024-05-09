@@ -45,7 +45,7 @@ ${SUDO}apk update
 ```shell varcode
 [ ] (root) 是否为 root 用户
 ---
-const SUDO = !root ? 'sudo' : '';
+const SUDO = !root ? 'sudo ' : '';
 ---
 ${SUDO}sed -i 's/dl-cdn.alpinelinux.org/${_domain}/g' /etc/apk/repositories
 ```
