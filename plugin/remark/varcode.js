@@ -1,4 +1,4 @@
-const modifyChildren = require("unist-util-modify-children");
+const {modifyChildren} = require("unist-util-modify-children");
 const nid = require('nanoid');
 const nanoid = nid.customAlphabet('_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890', 15);
 

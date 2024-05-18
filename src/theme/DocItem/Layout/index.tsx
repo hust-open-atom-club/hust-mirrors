@@ -8,9 +8,10 @@ import DocVersionBadge from '@theme/DocVersionBadge';
 import DocItemFooter from '@theme/DocItem/Footer';
 import DocItemTOCMobile from '@theme/DocItem/TOC/Mobile';
 import DocItemTOCDesktop from '@theme/DocItem/TOC/Desktop';
-import DocItemContent from '@theme/DocItem/Content';
+import DocItemContent from '@site/src/theme/DocItem/Content';
 import DocBreadcrumbs from '@theme/DocBreadcrumbs';
 import type { Props } from '@theme/DocItem/Layout';
+
 
 import styles from './styles.module.css';
 import GlobalOptions from '@site/src/components/DocGlobalOptions/index';
@@ -39,7 +40,9 @@ function useDocTOC() {
   };
 }
 
-export default function DocItemLayout({ children }: Props): JSX.Element {
+
+export default function DocItemLayout(props: Props): JSX.Element {
+  const { children } = props;
   const docTOC = useDocTOC();
   const windowSize = useWindowSize();
   return (

@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState } from 'react'
-import CodeBlock from '@theme/CodeBlock'
+import CodeBlock from '@site/src/theme/CodeBlock'
 import { Props as CBProps } from '@theme/CodeBlock'
 import { SelectItem } from '../Select';
 import Select from '../Select';
@@ -30,6 +30,7 @@ type Props = {
 }
 
 export default function CodeBlockWithVariables({ code, options, blockProps }: Props) {
+
   const states: {
     [key: string]: [any, React.Dispatch<any>]
   } = {};
@@ -59,7 +60,7 @@ export default function CodeBlockWithVariables({ code, options, blockProps }: Pr
 
   vars['_http'] = ctx.https ? "https": "http";
   vars['_domain'] = ctx.domain;
-
+  const codeStr = code(vars);
   return (
     <div>
       {
@@ -72,7 +73,7 @@ export default function CodeBlockWithVariables({ code, options, blockProps }: Pr
       }
 
       <CodeBlock {...blockProps}>
-        {code(vars)}
+        {codeStr}
       </CodeBlock>
     </div>
   )
