@@ -7,7 +7,7 @@
 
 import type {ComponentProps} from 'react';
 import React from 'react';
-import CodeBlock from '@theme/CodeBlock';
+import CodeBlock from '@site/src/theme/CodeBlock';
 import CodeInline from '@theme/CodeInline';
 import type {Props} from '@theme/MDXComponents/Code';
 import CodeBlockWithVariables from "@site/src/theme/MDXComponents/CodeBlockWithVariables";

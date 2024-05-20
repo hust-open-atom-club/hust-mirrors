@@ -7,8 +7,8 @@
 
 import React, {isValidElement, type ReactNode} from 'react';
 import useIsBrowser from '@docusaurus/useIsBrowser';
-import ElementContent from '@theme/CodeBlock/Content/Element';
-import StringContent from '@theme/CodeBlock/Content/String';
+import ElementContent from '@site/src/theme/CodeBlock/Content/Element';
+import StringContent from '@site/src/theme/CodeBlock/Content/String';
 import type {Props} from '@theme/CodeBlock';
 
 /**

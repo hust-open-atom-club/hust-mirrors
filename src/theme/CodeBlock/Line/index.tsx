@@ -10,14 +10,17 @@ import clsx from 'clsx';
 import type {Props} from '@theme/CodeBlock/Line';
 
 import styles from './styles.module.css';
-
+interface PropsLine extends Props {
+  language: string;
+}
 export default function CodeBlockLine({
   line,
   classNames,
   showLineNumbers,
   getLineProps,
   getTokenProps,
-}: Props): JSX.Element {
+  language,
+}: PropsLine): JSX.Element {
   if (line.length === 1 && line[0]!.content === '\n') {
     line[0]!.content = '';
   }

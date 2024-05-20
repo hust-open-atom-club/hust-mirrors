@@ -34,7 +34,8 @@ function useSyntheticTitle(): string | null {
   return metadata.title;
 }
 
-export default function DocItemContent({children}: Props): JSX.Element {
+export default function DocItemContent(props: Props): JSX.Element {
+  const { children } = props;
   const syntheticTitle = useSyntheticTitle();
   return (
     <div className={clsx(ThemeClassNames.docs.docMarkdown, 'markdown')}>

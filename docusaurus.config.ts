@@ -99,7 +99,9 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        // additionalLanguages: ['shell-session', 'http'],
+        manualRendering: false,
+        additionalLanguages: ['shell-session', 'http','bash'],
+        cascadingPrism: true,
       },
       mermaid: {
         theme: {light: 'forest', dark: 'dark'},
