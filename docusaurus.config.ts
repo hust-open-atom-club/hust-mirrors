@@ -1,10 +1,11 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
+const prismThemes= require('prism-react-renderer');
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
-
+const lightCodeTheme = prismThemes.themes.github;
+const darkCodeTheme = prismThemes.themes.dracula;
 const mirrorConfig = require('./mirrors.config');
+const path = require("path");
 
 
 /** @type {import('@docusaurus/types').Config} */
@@ -29,9 +30,12 @@ const config = {
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
+        debug: true,
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          remarkPlugins: [require('./plugin/remark/varcode'), require('./plugin/remark/cliAd')],
+          // beforeDefaultRemarkPlugins:[require('./plugin/remark/varcode'), require('./plugin/remark/cliAd')],
+          // docItemComponent: '@theme/DocItem',
+          remarkPlugins: [],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           // editUrl:
@@ -50,7 +54,10 @@ const config = {
       }),
     ],
   ],
-
+  markdown:{
+    // mermaid: true,
+    format: "detect",
+  },
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -92,10 +99,33 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        manualRendering: false,
+        additionalLanguages: ['shell-session', 'http','bash'],
+        cascadingPrism: true,
+      },
+      mermaid: {
+        theme: {light: 'forest', dark: 'dark'},
+      },
+      liveCodeBlock: {
+        playgroundPosition: 'bottom',
       },
     }),
   plugins: [
-    require('./plugin/fancyindex')
+    '@docusaurus/theme-live-codeblock',
+    require('./plugin/fancyindex'),
+    // [
+    //   'docusaurus-plugin-module-alias',
+    //   {
+    //     alias: {
+    //       'styled-components': path.resolve(__dirname, './node_modules/styled-components'),
+    //       react: path.resolve(__dirname, './node_modules/react'),
+    //       'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
+    //       '@components': path.resolve(__dirname, './src/components'),
+    //       '@utils': path.resolve(__dirname, './src/utils'),
+    //       '@src': path.resolve(__dirname, './src')
+    //     },
+    //   },
+    // ]
   ]
 };
 
