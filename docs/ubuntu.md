@@ -32,8 +32,8 @@ ${SRC_PREFIX}deb-src ${_http}://${_domain}/ubuntu/ ${version}-updates main restr
 deb ${_http}://${_domain}/ubuntu/ ${version}-backports main restricted universe multiverse
 ${SRC_PREFIX}deb-src ${_http}://${_domain}/ubuntu/ ${version}-backports main restricted universe multiverse
 
-deb http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
-${SRC_PREFIX}deb-src http://security.ubuntu.com/ubuntu/ jammy-security main restricted universe multiverse
+deb http://security.ubuntu.com/ubuntu/ ${version}-security main restricted universe multiverse
+${SRC_PREFIX}deb-src http://security.ubuntu.com/ubuntu/ ${version}-security main restricted universe multiverse
 
 ${PROPOSED_PREFIX}deb ${_http}://${_domain}/ubuntu/ ${version}-proposed main restricted universe multiverse
 ${PROPOSED_PREFIX || SRC_PREFIX}deb-src ${_http}://${_domain}/ubuntu/ ${version}-proposed main restricted universe multiverse
