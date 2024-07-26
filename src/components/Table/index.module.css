@@ -20,6 +20,11 @@
   position: relative;
 }
 
+.date-content {
+  display: flex;
+  justify-content: space-between;
+}
+
 .detail .date {
   width: 180px;
 }
