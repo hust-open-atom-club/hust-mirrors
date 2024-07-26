@@ -147,7 +147,7 @@ type MirrorNameProps = {
 }
 
 
-function SyncingStatus({ status }: { status: MirrorStatus['status'] }) {
+function SyncingStatus({ status, hideTextAndSuccess }: { status: MirrorStatus['status'], hideTextAndSuccess?: boolean }) {
   let label;
   if (status == 'none') label = translate({ id: 'mirror.table.status.none', message: '未同步' });
   else if (status == 'paused') label = translate({ id: 'mirror.table.status.paused', message: '暂停' });
@@ -158,7 +158,9 @@ function SyncingStatus({ status }: { status: MirrorStatus['status'] }) {
   else if (status == 'disabled') label = translate({ id: 'mirror.table.status.disabled', message: '禁用' });
   else label = status;
 
-  return <span className={clsx(styles['status-label'])}>
+  if (hideTextAndSuccess && status == "success") return null;
+
+  return <span className={clsx(styles['status-label'])} title={label}>
     {status == 'none' && <NoneIcon />}
     {status == 'paused' && <PausedIcon />}
     {status == 'pre-syncing' && <PreSyncingIcon />}
@@ -167,9 +169,9 @@ function SyncingStatus({ status }: { status: MirrorStatus['status'] }) {
     {status == 'failed' && <FailedIcon />}
     {status == 'disabled' && <DisabledIcon />}
 
-    <span>
+    {!hideTextAndSuccess && <span>
       {label}
-    </span>
+    </span>}
   </span>
 }
 
@@ -343,7 +345,10 @@ export default function Table({ items: srcItems, search, detail }: Props) {
               <MirrorName item={u} docsMeta={alldocs} mirrorMeta={mirrorMeta} />
             </td>
             <td className={styles['date']}>
-              <MirrorTime ts={u.last_update_ts} />
+              <div className={styles['date-content']}>
+                <MirrorTime ts={u.last_update_ts} />
+                {!detail && <SyncingStatus status={u.status} hideTextAndSuccess />}
+              </div>
             </td>
             {detail && <td className={styles['date-short']}>
               {tsPeriodToStr(u.last_started_ts, u.last_ended_ts)}
