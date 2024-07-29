@@ -1,10 +1,11 @@
-import React, { useContext, useMemo, useState } from 'react'
-import CodeBlock from '@theme/CodeBlock'
+import React, {type ComponentProps, useContext, useMemo, useState} from 'react'
+import CodeBlock from '@site/src/theme/CodeBlock'
 import { Props as CBProps } from '@theme/CodeBlock'
 import { SelectItem } from '../Select';
 import Select from '../Select';
 import Switch from '../Switch';
 import SharedContext from '@site/src/utils/SharedContext';
+import {de} from "timeago.js/lib/lang";
 
 
 type DefaultValue = boolean | string | number;
@@ -29,7 +30,8 @@ type Props = {
   blockProps?: CBProps
 }
 
-export default function CodeBlockWithVariables({ code, options, blockProps }: Props) {
+export default function CodeBlockWithVariables(props: Props) {
+  const { code, options, blockProps } = props;
   const states: {
     [key: string]: [any, React.Dispatch<any>]
   } = {};
@@ -59,7 +61,8 @@ export default function CodeBlockWithVariables({ code, options, blockProps }: Pr
 
   vars['_http'] = ctx.https ? "https": "http";
   vars['_domain'] = ctx.domain;
-
+  const codeStr = code(vars);
+  const componentsProps = blockProps as ComponentProps<typeof CodeBlock>;
   return (
     <div>
       {
@@ -71,9 +74,7 @@ export default function CodeBlockWithVariables({ code, options, blockProps }: Pr
         })
       }
 
-      <CodeBlock {...blockProps}>
-        {code(vars)}
-      </CodeBlock>
+      <CodeBlock {...componentsProps} children={codeStr}></CodeBlock>
     </div>
   )
 
