@@ -3,7 +3,7 @@ import styles from './index.module.css'
 import Link from '@docusaurus/Link'
 import Translate from '@docusaurus/Translate'
 import { DomainMeta } from '@site/meta.config'
-import { useDomainMetas } from '@site/src/utils/mirrorUtils'
+import { useDomainMetas, useNewsList } from '@site/src/utils/mirrorUtils'
 
 import clsx from 'clsx'
 
@@ -17,6 +17,7 @@ import MailIcon from '@site/static/icons/mail.svg'
 import MirrorZIcon from '@site/static/icons/mirrorz.svg'
 import SettingsIcon from '@site/static/icons/settings.svg'
 import NewMirrorIcon from '@site/static/icons/newmirror.svg'
+import NewsIcon from '@site/static/icons/news.svg'
 import GlobalOptions from '@site/src/components/DocGlobalOptions/index';
 
 interface Props extends React.HTMLProps<HTMLDivElement> { }
@@ -40,6 +41,24 @@ function DomainChoose() {
   </div>;
 }
 
+function News() {
+  const news = useNewsList()
+    .sort((x, y) => new Date(y.date).getTime() - new Date(x.date).getTime()).slice(0, 5);
+
+  return <>
+    <a><h3><NewsIcon /><Translate id='mirror.sidebar.news'>最新动态</Translate></h3></a>
+    <ul className={styles["news-list"]}>
+      {
+        news.map(n => <li key={n.id}>
+          <a href={n.link}>{n.title}</a>
+          <span>{new Date(n.date).toLocaleDateString()}</span>
+        </li>)
+      }
+    </ul>
+  </>
+
+}
+
 export default function SideBar(props: Props) {
   const domains = useDomainMetas();
   return (
@@ -47,6 +66,8 @@ export default function SideBar(props: Props) {
       <div className={styles.side}>
         <DomainChoose />
         <Domains domains={domains}></Domains>
+
+        <News />
 
         <a><h3><ImageIcon /><Translate id='mirror.sidebar.release'>软件下载</Translate></h3></a>
         <p>

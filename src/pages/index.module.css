@@ -140,9 +140,9 @@
   }
 }
 
-@media screen and (min-width:800px) and (min-height: 800px) {
-  .sidebar-container {
-    position: sticky;
-    top: 92px;
-  }
-}
+/* @media screen and (min-width:800px) and (min-height: 800px) { */
+/*   .sidebar-container { */
+/*     position: sticky; */
+/*     top: 92px; */
+/*   } */
+/* } */
