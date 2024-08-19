@@ -477,6 +477,21 @@
   "mirror.footer.desc4": {
     "message": "HUST OpenHarmany Technology Club leverages the OpenHarmony community platform to promote open source technology and industry-university-research cooperation. Through the deep integration of on-campus teaching and club practice, it encourages and promotes open source community technology research and innovative exploration, and prospers the open source community ecology."
   },
+  "mirror.footer.desc5_0": {
+    "message": "Source code of this site is hosted on"
+  },
+  "mirror.footer.desc5_1": {
+    "message": "hust-open-atom-club/hust-mirrors"
+  },
+  "mirror.footer.desc5_2": {
+    "message": "and"
+  },
+  "mirror.footer.desc5_3": {
+    "message": "tuna/tunasync"
+  },
+  "mirror.footer.desc5_4": {
+    "message": "."
+  },
   "mirror.tableMeta.nextUpdate": {
     "message": "Next Sync"
   }
