@@ -405,6 +405,9 @@
   "mirror.sidebar.goRelease": {
     "message": "Download release"
   },
+  "mirror.sidebar.news": {
+    "message": "Lastest news"
+  },
   "mirror.server.status": {
     "message": "Status"
   },
