@@ -44,6 +44,9 @@ function Footer() {
               <Translate id='mirror.footer.desc4'>华中科技大学OpenHarmany技术俱乐部借助OpenHarmony社区平台推动开源技术和产学研合作，通过校内教学与俱乐部实践的深度融合，鼓励和推动开源社区技术研究和创新探索，繁荣开源社区生态。
               </Translate>
             </div>
+            <div>
+              <Translate id='mirror.footer.desc5_0'>本站的源码可在</Translate> <a href='https://github.com/hust-open-atom-club/hust-mirrors'><Translate id='mirror.footer.desc5_1'>hust-mirrors 前端网站</Translate></a> <Translate id='mirror.footer.desc5_2'>和</Translate> <a href='https://github.com/tuna/tunasync'><Translate id='mirror.footer.desc5_3'>tunasync 同步管理器</Translate></a> <Translate id='mirror.footer.desc5_4'>获取。</Translate>
+            </div>
           </div>
         )}
         <div className={styles.logos}>

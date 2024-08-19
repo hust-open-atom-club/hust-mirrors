@@ -15,7 +15,7 @@
   color: var(--ifm-color-primary);
 }
 
-.side a:first-child>h3 {
+.side a:first-child > h3 {
   margin-top: 0;
 }
 
@@ -23,17 +23,18 @@
   border: var(--ifm-color-primary) 2px solid;
   background: none;
   margin: 16px 0;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
   color: var(--ifm-color-primary);
 }
-
 
 .button:hover {
   background: var(--ifm-color-primary);
   color: var(--ifm-color-content-inverse);
 }
 
-.domain-row>a {
+.domain-row > a {
   display: inline-block;
   width: 180px;
 }
@@ -60,4 +61,15 @@
 
 .domain-choose {
   cursor: pointer;
+}
+
+.news-list {
+  margin: 0;
+  padding: 0;
+}
+
+.news-list li {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
 }

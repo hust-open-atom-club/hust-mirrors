@@ -58,7 +58,7 @@
 /** set date string */
 (function () {
   document.querySelectorAll("#list tbody tr td:nth-child(3)").forEach((e) => {
-    var s = new Date(e.textContent);
+    var s = new Date(e.textContent + " UTC");
     if (!isNaN(s.getTime())) {
       var u = ("000" + s.getFullYear()).substr(-4) + "-" + ("0" + (s.getMonth() + 1)).substr(-2) + "-" + ("0" + s.getDate()).substr(-2) + " " + ("0" + s.getHours()).substr(-2) + ":" + ("0" + s.getMinutes()).substr(-2);
       e.textContent = u;

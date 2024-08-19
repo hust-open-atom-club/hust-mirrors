@@ -95,7 +95,8 @@ const config = {
       },
     }),
   plugins: [
-    require('./plugin/fancyindex')
+    require('./plugin/fancyindex'),
+    require('./plugin/news')
   ]
 };
 
