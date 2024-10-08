@@ -72,4 +72,9 @@
   list-style: none;
   display: flex;
   justify-content: space-between;
+  gap: 16px;
+}
+
+.news-list li span {
+  color: var(--ifm-color-emphasis-600);
 }
