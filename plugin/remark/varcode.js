@@ -1,6 +1,14 @@
 const modifyChildren = require("unist-util-modify-children");
 const nid = require('nanoid');
 const nanoid = nid.customAlphabet('_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890', 15);
+const { fromMarkdown } = require('mdast-util-from-markdown')
+
+const generateNode = (txt) => {
+  return fromMarkdown(txt, {
+    extensions: [require('micromark-extension-mdxjs').mdxjs()],
+    mdastExtensions: [require('mdast-util-mdx').mdxFromMarkdown()]
+  }).children[0]
+}
 
 /** @type {import("unified").Plugin} */
 const plugin = (_) => {
@@ -10,7 +18,7 @@ const plugin = (_) => {
         let title = undefined;
         const otherMeta = node.meta.split(/\s+/g).slice(1);
         for (const meta of otherMeta) {
-          if(meta.startsWith("title=")){
+          if (meta.startsWith("title=")) {
             title = meta.split("=")[1];
             title = title.replace(/["']/g, "");
           }
@@ -61,40 +69,32 @@ const plugin = (_) => {
             }
           }
 
-          newAsts.push({
-            type: 'export',
-            value: `export const options_${idOption} =` + JSON.stringify(options),
-            position: node.position
-          });
+          newAsts.push(
+            generateNode(`export const options_${idOption} =` + JSON.stringify(options))
+          );
         }
         else {
-          newAsts.push({
-            type: 'export',
-            value: `export const options_${idOption} = []`,
-            position: node.position
-          });
+          newAsts.push(
+            generateNode(`export const options_${idOption} = []`)
+          );
         }
 
         if (codeBlock) {
-          newAsts.push({
-            type: 'export',
-            value: `export const code_${idCode} = ({` +
+          newAsts.push(
+            generateNode(`export const code_${idCode} = ({` +
               options.map(u => u.key).concat(['_http', '_domain']).join(",") + // destructure vars
               '}) => {\n' +
               (transformBlock || "") +
               'return (\n' +
               '`' + codeBlock +
               '`);\n' +
-              '}',
-            position: node.position
-          })
+              '}')
+          );
         }
 
-        newAsts.push({
-          type: "jsx",
-          value: `<CodeBlockWithVariables code={code_${idCode}} options={options_${idOption}} blockProps={{language: '${lang}', title: ${JSON.stringify(title)}}}/>`,
-          position: node.position
-        })
+        newAsts.push(
+          generateNode(`<CodeBlockWithVariables code={code_${idCode}} options={options_${idOption}} blockProps={{language: '${lang}', title: ${JSON.stringify(title)}}}/>`)
+        );
 
         parent.children.splice(index, 1, ...newAsts);
       }
