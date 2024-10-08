@@ -5,11 +5,14 @@
 
 .global-option {
   position: sticky;
-  top: calc(var(--ifm-navbar-height) + 1rem);
-  background: var(--ifm-background-color);
+  top: calc(var(--ifm-navbar-height) + 1.5rem);
+  background: var(--ifm-background-surface-color);
   z-index: 15;
 }
 
+[data-theme="dark"] .global-option {
+  background: var(--ifm-background-color);
+}
 
 .global-option + * {
   position: sticky;
