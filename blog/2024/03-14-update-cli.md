@@ -1,10 +1,6 @@
 ---
 title: hustmirror-cli v1.1 发布
-authors:
-  - name: Chengzi
-    title: 镜像站维护者成员
-    url: https://github.com/jxlpzqc
-    image_url: https://gitee.com/chengziqiu.png
+authors: chengzi
 ---
 
 hustmirror-cli v1.1 已经发布，

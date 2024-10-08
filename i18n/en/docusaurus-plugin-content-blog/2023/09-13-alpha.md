@@ -1,10 +1,6 @@
 ---
 title: Neo Version of Hust Mirror is rolling out for alpha testing!
-authors:
-  - name: Dongliang Mu
-    title: Mentor of HUST CSE OpenAtom Open Source Club
-    url: https://github.com/mudongliang
-    image_url: https://github.com/mudongliang.png
+authors: mudongliang
 ---
 
 On September 13th, after more than three months of internal testing, the Huazhong University of Science and Technology (HUST) Open Source Mirror Site has officially launched for internal testing, available at the temporary URL [https://mirrors.hust.college](https://mirrors.hust.college). Currently, the open source mirror station has synchronized 27 mirror sources with a data volume of 13TB, and provides three access methods: HTTP, HTTPS and RSYNC.

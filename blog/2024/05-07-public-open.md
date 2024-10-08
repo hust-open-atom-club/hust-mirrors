@@ -1,10 +1,6 @@
 ---
 title: 互联网朋友，你们好！
-authors:
-  - name: Chengzi
-    title: 镜像站维护者成员
-    url: https://github.com/jxlpzqc
-    image_url: https://gitee.com/chengziqiu.png
+authors: chengzi
 ---
 
 从最初的 nginx autoindex, 到如今的完整的网页服务；从最初的十几人内部使用，到如今的公开服务；

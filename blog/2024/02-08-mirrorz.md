@@ -1,10 +1,6 @@
 ---
 title: 集成MirrorZ文档
-authors:
-  - name: Chengzi
-    title: 镜像站维护者成员
-    url: https://github.com/jxlpzqc
-    image_url: https://gitee.com/chengziqiu.png
+authors: chengzi
 ---
 
 目前，我们镜像站目前缺失一些文档，除此以外，后期随着我们同步的镜像源增多、
