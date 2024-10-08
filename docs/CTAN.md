@@ -62,4 +62,4 @@ mpm --set-repository=${_http}://${_domain}/CTAN/systems/win32/miktex/tm/packages
 ```
 
 ## 引用
-[^1] [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/CTAN/)  
+1. [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/CTAN/)  

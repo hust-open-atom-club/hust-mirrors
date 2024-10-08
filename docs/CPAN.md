@@ -80,4 +80,4 @@ perl -MCPAN -e 'CPAN::HandleConfig->load();' \\
 
 
 ## 引用
-[^1] [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/CPAN/)  
+1. [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/CPAN/)  

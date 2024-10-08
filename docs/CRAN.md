@@ -27,4 +27,4 @@ install.packages("lattice", repos="${_http}://${_domain}/CRAN/")
 ```
 
 ## 引用
-[^1] [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/CRAN/)  
+1. [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/CRAN/)  

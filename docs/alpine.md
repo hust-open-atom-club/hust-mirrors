@@ -51,4 +51,4 @@ ${SUDO}sed -i 's/dl-cdn.alpinelinux.org/${_domain}/g' /etc/apk/repositories
 ```
 
 ## 引用
-[^1] [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/alpine/)  
+1. [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/alpine/)  

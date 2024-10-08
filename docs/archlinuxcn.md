@@ -81,4 +81,4 @@ ${SUDO}echo -e "[archlinuxcn]\nServer = ${_http}://${_domain}/archlinuxcn/\$arch
 ```
 
 ## 引用
-[^1][archlinuxcn中文社区仓库](https://www.archlinuxcn.org/archlinux-cn-repo-and-mirror/)
+1. [archlinuxcn中文社区仓库](https://www.archlinuxcn.org/archlinux-cn-repo-and-mirror/)

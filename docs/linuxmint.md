@@ -73,4 +73,4 @@ Linux Mint 安装镜像提供 cinnamon, mate 和 xfce 三种桌面环境，分�
 </a>
 
 ## 引用
-[^1] [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/linuxmint/)  
+1. [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/linuxmint/)  

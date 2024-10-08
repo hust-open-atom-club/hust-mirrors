@@ -31,4 +31,4 @@ export function SiteLink(props) {
 </SiteLink>
 
 ## 引用
-[^1] [gnu中文简介](https://www.gnu.org/gnu/about-gnu.zh-cn.html)
+1. [gnu中文简介](https://www.gnu.org/gnu/about-gnu.zh-cn.html)
