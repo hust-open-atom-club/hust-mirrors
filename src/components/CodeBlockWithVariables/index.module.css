@@ -1,0 +1,16 @@
+.panel {
+    padding: 4px 16px;
+    box-shadow: var(--ifm-global-shadow-lw);
+    border-radius: var(--ifm-code-border-radius);
+    /* make it overlap with code block */
+    margin-bottom: -8px;
+    /* NOTE: use hardcoded color to
+     * make sure the background color
+     * is same as prismjs code block.
+     */
+    background-color: #f6f8fa;
+}
+
+[data-theme='dark'] .panel {
+    background-color: #282A36;
+}
