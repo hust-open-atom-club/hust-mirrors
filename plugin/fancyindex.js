@@ -24,6 +24,7 @@ const fancyindexPlugin = {
     // remove language select
     header = header.replace(/<div class="navbar__item dropdown dropdown--hoverable dropdown--right">.+?<\/div>/, "");
     header = header.replace(/<link rel="preload".+?>/g, "");
+    header = header.replace(/<script src=.+?><\/script>/g, "");
     await fs.writeFile(outputHeader, header);
     // remove script
     let footer = files[1];
