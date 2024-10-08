@@ -62,6 +62,7 @@ const config = {
         logo: {
           alt: mirrorConfig.mainTitle,
           src: 'img/logo.svg',
+          srcDark: 'img/logo-dark.svg'
         },
         items: [
           {

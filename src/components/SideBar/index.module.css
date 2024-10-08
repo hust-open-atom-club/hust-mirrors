@@ -47,6 +47,10 @@
   margin: 0 8px 0 0;
 }
 
+.side a svg path {
+  fill: var(--ifm-color-content);
+}
+
 .side h3 svg path {
   fill: var(--ifm-color-primary);
 }

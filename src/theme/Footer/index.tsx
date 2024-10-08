@@ -50,8 +50,8 @@ function Footer() {
           </div>
         )}
         <div className={styles.logos}>
-          <img src='/img/atomclub.svg' height={80} />
-          {/* <img src='/img/logo_secondary.png' height={60} /> */}
+          <img className={styles.light} src='/img/atomclub.svg' height={80} />
+          <img className={styles.dark} src='/img/atomclub-dark.svg' height={80} />
         </div>
       </div>
     </footer>
