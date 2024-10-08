@@ -71,3 +71,8 @@ table.mirror__table {
     padding-right: 16px;
   }
 }
+
+[data-theme='dark'] .hero--primary {
+  --ifm-hero-background-color: #085040;
+  --ifm-hero-text-color: var(--ifm-font-color-base);
+}
