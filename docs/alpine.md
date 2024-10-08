@@ -40,7 +40,7 @@ ${SUDO}apk update
 本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
 :::
 
-使用 `sed` 命令将软件源配置文件中的默认源地址 <http://dl-cdn.alpinelinux.org> 直接替换为当前镜像源站：
+使用 `sed` 命令将软件源配置文件中的默认源地址 [http://dl-cdn.alpinelinux.org](http://dl-cdn.alpinelinux.org) 直接替换为当前镜像源站：
 
 ```shell varcode
 [ ] (root) 是否为 root 用户
