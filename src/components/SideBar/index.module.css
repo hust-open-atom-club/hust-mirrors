@@ -51,7 +51,7 @@
   fill: var(--ifm-color-content);
 }
 
-.side h3 svg path {
+.side a h3 svg path {
   fill: var(--ifm-color-primary);
 }
 
