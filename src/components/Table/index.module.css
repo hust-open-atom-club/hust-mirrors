@@ -91,6 +91,10 @@
   transition: opacity 0.3s;
 }
 
+[data-theme='dark'] .desc-container {
+  box-shadow: #000000 4px 4px 16px 0px;
+}
+
 @media screen and (max-width: 480px) {
   .desc-container {
     display: none;

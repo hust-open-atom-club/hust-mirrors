@@ -18,7 +18,7 @@ Buildroot是一个创建嵌入式Linux系统的框架。其采用KBuild框架编
 
 Buildroot在构建过程中需要使用kernel、gnu、CPAN等源。
 
-除此以外的其他源码包会在上游仓库或者其备用服务器<http://sources.buildroot.net/>下载。
+除此以外的其他源码包会在上游仓库或者其备用服务器[http://sources.buildroot.net/](http://sources.buildroot.net/)下载。
 
 本镜像站已经镜像 gnu 和 CPAN 以及 kernel，可以在 buildroot 的配置文件中修改这些源地址。
 

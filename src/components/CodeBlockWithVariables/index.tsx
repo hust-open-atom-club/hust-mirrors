@@ -5,6 +5,7 @@ import { SelectItem } from '../Select';
 import Select from '../Select';
 import Switch from '../Switch';
 import SharedContext from '@site/src/utils/SharedContext';
+import styles from './index.module.css'
 
 
 type DefaultValue = boolean | string | number;
@@ -57,19 +58,21 @@ export default function CodeBlockWithVariables({ code, options, blockProps }: Pr
     }
   }
 
-  vars['_http'] = ctx.https ? "https": "http";
+  vars['_http'] = ctx.https ? "https" : "http";
   vars['_domain'] = ctx.domain;
 
   return (
     <div>
-      {
-        options.map(u => {
-          if (u.type == 'switch')
-            return <Switch key={u.key} label={u.label} value={states[u.key][0]} onChange={states[u.key][1]}></Switch>
-          else if (u.type == 'select')
-            return <Select key={u.key} label={u.label} items={u.items!} value={states[u.key][0]} onChange={states[u.key][1]}></Select>
-        })
-      }
+      {options && !!options.length && <div className={styles.panel}>
+        {
+          options.map(u => {
+            if (u.type == 'switch')
+              return <Switch key={u.key} label={u.label} value={states[u.key][0]} onChange={states[u.key][1]}></Switch>
+            else if (u.type == 'select')
+              return <Select key={u.key} label={u.label} items={u.items!} value={states[u.key][0]} onChange={states[u.key][1]}></Select>
+          })
+        }
+      </div>}
 
       <CodeBlock {...blockProps}>
         {code(vars)}

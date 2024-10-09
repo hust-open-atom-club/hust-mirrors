@@ -1,5 +1,6 @@
 ---
 title: "Notice: hustmirror.cn is already deprecated"
+authors: mudongliang
 ---
 
 The old **hustmirror.cn** has been deprecated. Please use the new domain name **mirrors.hust.college**.

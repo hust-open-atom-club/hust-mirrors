@@ -5,7 +5,7 @@ var crypto = require('crypto');
 /** @type {import('@docusaurus/types').Plugin} */
 const fancyindexPlugin = {
   name: 'news-meta',
-  async contentLoaded({ allContent, actions }) {
+  async allContentLoaded({ allContent, actions }) {
     const d = allContent['docusaurus-plugin-content-blog'].default
       // @ts-ignore
       .blogPosts.map((/** @type any }} */ t) => ({

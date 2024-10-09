@@ -47,7 +47,7 @@ ${SUDO}apt update
 本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
 :::
 
-使用 `sed` 命令将软件源配置文件中的默认源地址 <http://packages.linuxmint.com> 直接替换为当前镜像源站
+使用 `sed` 命令将软件源配置文件中的默认源地址 [http://packages.linuxmint.com](http://packages.linuxmint.com) 直接替换为当前镜像源站
 
 ```shell varcode
 [ ] (root) 是否为 root 用户
@@ -73,4 +73,4 @@ Linux Mint 安装镜像提供 cinnamon, mate 和 xfce 三种桌面环境，分�
 </a>
 
 ## 引用
-[^1] [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/linuxmint/)  
+1. [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/linuxmint/)  

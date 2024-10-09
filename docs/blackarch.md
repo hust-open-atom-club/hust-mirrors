@@ -77,4 +77,4 @@ Server = ${_http}://${_domain}/blackarch/$repo/os/$arch" >> /etc/pacman.conf
 
 ## 引用
 
-[^1] [BlackArch 维基百科](https://zh.wikipedia.org/zh-hans/BlackArch_Linux)
+1. [BlackArch 维基百科](https://zh.wikipedia.org/zh-hans/BlackArch_Linux)

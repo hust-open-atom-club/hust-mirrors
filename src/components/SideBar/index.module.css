@@ -47,7 +47,11 @@
   margin: 0 8px 0 0;
 }
 
-.side h3 svg path {
+.side a svg path {
+  fill: var(--ifm-color-content);
+}
+
+.side a h3 svg path {
   fill: var(--ifm-color-primary);
 }
 
@@ -72,4 +76,9 @@
   list-style: none;
   display: flex;
   justify-content: space-between;
+  gap: 16px;
+}
+
+.news-list li span {
+  color: var(--ifm-color-emphasis-600);
 }

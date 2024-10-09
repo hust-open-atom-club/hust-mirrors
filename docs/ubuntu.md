@@ -7,7 +7,7 @@ sidebar_label: Ubuntu
 
 Ubuntu 是一个基于 Debian 的 Linux 发行版,发布包括桌面版、服务器版以及适用于物联网设备和机器人等多个版本。Ubuntu 每六个月将发布一次版本，每两年发布一次长期支持版本（LTS），目前最新的长期支持版本是 Ubuntu 22.04（"Jammy Jellyfish"）。Ubuntu 目前由英国公司 Canonical 以及其他开发者社区共同开发，采用一种以功绩为基础的治理模式。Canonical 提供每个Ubuntu版本的安全更新和支持，从发布日期开始直至达到指定的终止生命周期（EOL）日期。
 
-Ubuntu 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说，Ubuntu 通过修改 `/etc/apt/sources.list` 配置文件来管理系统软件源。一般情况下，用户可直接将该配置文件中的默认源地址 <http://archive.ubuntu.com/> 替换为本软件镜像站。
+Ubuntu 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说，Ubuntu 通过修改 `/etc/apt/sources.list` 配置文件来管理系统软件源。一般情况下，用户可直接将该配置文件中的默认源地址 [http://archive.ubuntu.com/](http://archive.ubuntu.com/) 替换为本软件镜像站。
 
 ## Ubuntu 软件源替换
 
@@ -55,7 +55,7 @@ ${SUDO}apt update
 本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
 :::
 
-使用 `sed` 命令将软件源配置文件中的默认源地址 <http://archive.ubuntu.com/> 直接替换为当前镜像源站。
+使用 `sed` 命令将软件源配置文件中的默认源地址 [http://archive.ubuntu.com/](http://archive.ubuntu.com/) 直接替换为当前镜像源站。
 
 ```shell varcode
 [ ] (root) 是否为 root 用户
@@ -75,9 +75,7 @@ Ubuntu 官方提供两种安装镜像：桌面版安装镜像及服务器版安�
 要下载这两个版本的安装镜像，请点击下方的按钮前往[下载页面](/release/?release=Ubuntu)选择对应的版本和种类进行下载。
 
 <a href="/release?release=Ubuntu">
-    <button className="button button--primary">
-    下载镜像
-    </button>
+    <button className="button button--primary">下载镜像</button>
 </a>
 
 ## Ubuntu Security 源
@@ -132,4 +130,4 @@ ${SUDO}apt update
 
 ## 引用
 
-[^1] [中科大镜像源使用帮助](https://mirrors.ustc.edu.cn/help/ubuntu.html)  
+1. [中科大镜像源使用帮助](https://mirrors.ustc.edu.cn/help/ubuntu.html)  

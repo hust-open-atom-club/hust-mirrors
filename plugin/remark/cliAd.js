@@ -1,12 +1,9 @@
-
-const modifyChildren = require("unist-util-modify-children");
-
 /** @type {import("unified").Plugin} */
 const plugin = (_) => {
-  return (ast) => {
+  return (ast, f) => {
     ast.children.unshift({
-      type: "jsx",
-      value: `<CliAdvertisement/>`,
+      type: "mdxJsxFlowElement",
+      name: "CliAdvertisement",
     })
   }
 }

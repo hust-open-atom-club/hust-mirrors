@@ -46,3 +46,20 @@
         margin-bottom: 0;
     }
 }
+
+.logos .light {
+    display: block;
+}
+
+.logos .dark {
+    display: none;
+}
+
+[data-theme="dark"] .logos .light {
+    display: none;
+}
+
+[data-theme="dark"] .logos .dark {
+    display: block;
+}
+

@@ -39,6 +39,7 @@ const config = {
         },
         blog: {
           showReadingTime: true,
+          onUntruncatedBlogPosts: 'ignore'
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           // editUrl:
@@ -61,6 +62,7 @@ const config = {
         logo: {
           alt: mirrorConfig.mainTitle,
           src: 'img/logo.svg',
+          srcDark: 'img/logo-dark.svg'
         },
         items: [
           {

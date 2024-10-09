@@ -4,7 +4,7 @@ title: Rustup工具链安装器使用帮助
 ---
 
 :::warning 注意事项
-镜像站只保留最新的 stable ,beta 和 nightly，如果需要使用 rustup 安装旧版工具链，请使用官方源。
+镜像站只保留最新的 stable, beta 和 nightly，如果需要使用 rustup 安装旧版工具链，请使用官方源。
 :::
 
 ## Windows 用户
@@ -31,7 +31,7 @@ Invoke-WebRequest -OutFile \${env:TEMP}/rustup-init.exe ${_http}://${_domain}/ru
 
 :::info 关于Windows上的Rust编译器后端
 如果你不知道如何选择，请使用MSVC版本。
-:::caution
+:::
 
 :::caution
 上面的安装脚本仅在安装时启用镜像源，下次更新又会恢复官方源，如果你需要长期启用镜像源，
@@ -40,21 +40,18 @@ Invoke-WebRequest -OutFile \${env:TEMP}/rustup-init.exe ${_http}://${_domain}/ru
 
 ### 长期启用 rustup 工具链的镜像源
 
-import SharedContext from '@site/src/utils/SharedContext';
 export function VarValue(props) {
-  const ctx = React.useContext(SharedContext);
-  const _http = ctx.https ? "https": "http";
-  const _domain = ctx.domain;
   const appendix = props.appendix || "";
-  return <code>{`${_http}://${_domain}/rustup${appendix}`}</code>;
+  return <WithVariables component={({ http, domain }) => 
+    <code>{`${http}://${domain}/rustup${appendix}`}</code>} />
 }
 
-**方法一：**在“系统-高级系统设置-环境变量” 中增加环境变量。
+**方法一：** 在“系统-高级系统设置-环境变量” 中增加环境变量。
 
 - 变量名为 `RUSTUP_DIST_SERVER`，值为<VarValue/>。
 - 变量名为 `RUSTUP_UPDATE_ROOT`，值为<VarValue appendix="/rustup"/>。
 
-**方法二（推荐）：**直接执行下面的Powershell脚本：
+**方法二（推荐）：** 直接执行下面的Powershell脚本：
 
 ```powershell varcode
 [System.Environment]::SetEnvironmentVariable("RUSTUP_DIST_SERVER", "${_http}://${_domain}/rustup", "User")
@@ -66,7 +63,7 @@ export function VarValue(props) {
 
 ### 初次安装 Rust 工具链
 
-考虑到官方网站提供的 <https://sh.rustup.rs> 脚本网络环境可能不稳定，我们已经镜像了该脚本。
+考虑到官方网站提供的 [https://sh.rustup.rs](https://sh.rustup.rs) 脚本网络环境可能不稳定，我们已经镜像了该脚本。
 
 直接执行下面的命令即可完成rust工具链的安装。
 

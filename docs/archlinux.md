@@ -62,5 +62,5 @@ ${SUDO}sed -i.bak '1i\Server = ${_http}://${_domain}/archlinux/$repo/os/$arch' /
 
 ## 引用
 
-[^1] [校园网联合镜像站](https://mirrors.cernet.edu.cn/about)  
-[^2] [帮助仓库](https://github.com/mirrorz-org/mirrorz-help)  
+1. [校园网联合镜像站](https://mirrors.cernet.edu.cn/about)  
+2. [帮助仓库](https://github.com/mirrorz-org/mirrorz-help)  

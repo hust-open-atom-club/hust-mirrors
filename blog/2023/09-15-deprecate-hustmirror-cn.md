@@ -1,10 +1,6 @@
 ---
 title: 关于hustmirror.cn即将弃用的通知
-authors:
-  - name: 慕冬亮
-    title: 华科网安开放原子俱乐部指导教师
-    url: https://github.com/mudongliang
-    image_url: https://github.com/mudongliang.png
+authors: mudongliang
 ---
 
 随着内测站点已经正式上线，并使用了新域名mirrors.hust.college，
