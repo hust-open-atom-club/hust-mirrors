@@ -11,6 +11,13 @@
     background-color: #f6f8fa;
 }
 
+.panel + div {
+    border-radius: 0 0
+        var(--ifm-code-border-radius)
+        var(--ifm-code-border-radius);
+    border-top: 1px solid var(--ifm-color-emphasis-300);
+}
+
 [data-theme='dark'] .panel {
     background-color: #282A36;
 }
