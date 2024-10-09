@@ -17,7 +17,7 @@ openEuler 使用 `dnf` 工具来管理 RPM 软件包，查询软件包信息，�
 
 1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/yum.repos.d/openEuler.repo` 的原有内容：
 
-```conf varcode
+```ini varcode
 [ ] (version) {23.09:23.09, 23.03:23.03, 22.09:22.09, 22.03-LTS-SP3:22.03 LTS SP3, 22.03-LTS-SP2:22.03 LTS SP2, 22.03-LTS-SP1:22.03 LTS SP1, 22.03-LTS:22.03 LTS, 21.09:21.09, 21.03:21.03, 20.09:20.09, 20.03-LTS-SP4:20.03 LTS SP4, 20.03-LTS-SP3:20.03 LTS SP3, 20.03-LTS-SP2:20.03 LTS SP2, 20.03-LTS-SP1:20.03 LTS SP1, 20.03-LTS:20.03 LTS} openEuler 版本
 ---
 [OS]
