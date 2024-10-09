@@ -40,14 +40,10 @@ Invoke-WebRequest -OutFile \${env:TEMP}/rustup-init.exe ${_http}://${_domain}/ru
 
 ### 长期启用 rustup 工具链的镜像源
 
-import React from "react";
-import SharedContext from '@site/src/utils/SharedContext';
 export function VarValue(props) {
-  const ctx = React.useContext(SharedContext);
-  const _http = ctx.https ? "https": "http";
-  const _domain = ctx.domain;
   const appendix = props.appendix || "";
-  return <code>{`${_http}://${_domain}/rustup${appendix}`}</code>;
+  return <WithVariables component={({ http, domain }) => 
+    <code>{`${http}://${domain}/rustup${appendix}`}</code>} />
 }
 
 **方法一：** 在“系统-高级系统设置-环境变量” 中增加环境变量。

@@ -3,6 +3,7 @@ import React from 'react';
 import MDXComponents from '@theme-original/MDXComponents';
 import CodeBlockWithVariables from '../components/CodeBlockWithVariables';
 import CliAdvertisement from '../components/CliAdvertisement';
+import WithVariables, { SiteLink } from '../components/WithVariables';
 
 export default {
   // Re-use the default mapping
@@ -10,5 +11,7 @@ export default {
   // Map the "<Highlight>" tag to our Highlight component
   // `Highlight` will receive all props that were passed to `<Highlight>` in MDX
   CodeBlockWithVariables,
-  CliAdvertisement
+  CliAdvertisement,
+  WithVariables,
+  SiteLink
 };

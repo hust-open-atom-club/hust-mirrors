@@ -16,16 +16,6 @@ GNU 的基本目标和一贯目标是提供一个和 Unix 兼容的 100% 自由�
 
 可以点击下方按钮查看文件列表。
 
-import SharedContext from '@site/src/utils/SharedContext';
-import React from "react";
-export function SiteLink(props) {
-  const ctx = React.useContext(SharedContext);
-  const _http = ctx.https ? "https": "http";
-  const _domain = ctx.domain;
-  const appendix = props.appendix || "";
-  return <a target="_self" href={`${_http}://${_domain}${props.href}`}>{props.children}</a>;
-}
-
 <SiteLink href="/gnu">
     <button className="button button--primary">查看文件列表</button>
 </SiteLink>
