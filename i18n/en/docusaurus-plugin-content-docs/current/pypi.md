@@ -1,6 +1,6 @@
 ---
 sidebar_label: PyPI
-title: How to use Python Package Index
+title: PyPI
 ---
 
 ## Introduction to PyPI
@@ -41,7 +41,7 @@ python -m pip install -i https://${_domain}/pypi/web/simple --upgrade pip
 
 ## Switching PDM Package Mirror
 
-PDM supports configuring the package mirror using the `pdm config` command or environment variables. For long-term leverage, it is recommended to configure it through `pdm config`.
+PDM supports configuring the package mirror using the `pdm config` command or environment variables. For long-term use, it is recommended to configure it through `pdm config`.
 
 Config the package mirror using the `pdm config` command:
 ```bash varcode
