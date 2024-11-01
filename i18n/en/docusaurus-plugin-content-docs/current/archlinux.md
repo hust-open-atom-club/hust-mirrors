@@ -44,8 +44,7 @@ const SUDO = !root ? 'sudo ' : '';
 ${SUDO}pacman -Syyuu
 ```
 
-
 ## References
 
-[^1] [ZMirror](https://mirrors.cernet.edu.cn/about)   
-[^2] [Help Repository](https://github.com/mirrorz-org/mirrorz-help)
+1. [ZMirror](https://mirrors.cernet.edu.cn/about)   
+2. [Help Repository](https://github.com/mirrorz-org/mirrorz-help)
