@@ -44,22 +44,6 @@ const SUDO = !root ? 'sudo ' : '';
 ${SUDO}pacman -Syyuu
 ```
 
-##One-click source switching
-
-:::caution
-This method is only applicable for switching from the official source to our site's source. If you have already switched sources, please do not use the following commands.
-:::
-
-Use the  `sed ` command to insert the address of the current mirror at the beginning of the software source configuration file:
-
-```shell varcode
-[ ] (root) Are you the root user?
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}echo -e "[archlinuxcn]\nServer = ${_http}://${_domain}/archlinuxcn/\$arch" >> /etc/pacman.conf
-```
-
 ## References
 
 1. [ZMirror](https://mirrors.cernet.edu.cn/about)   
