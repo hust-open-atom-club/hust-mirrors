@@ -5,7 +5,7 @@ title: How to use Python Package Index
 
 ## Introduction to PyPI
 
-PyPI (The Python Package Index),code-hosted at [https://pypi.org/](https://pypi.org/),is the official third-party software repository for the Python programming language.
+PyPI (The Python Package Index), code-hosted at [https://pypi.org/](https://pypi.org/), is the official third-party software repository for the Python programming language.
 
 ## Switching pip Package Mirror
 
@@ -15,7 +15,7 @@ The pip tool only supports https by default, please do not use http.
 
 :::info About externally-managed-environment Error
 Python 3.11 had implemented PEP 668, which is a significant proposal enhancing the Python packages to specify whether they can be installed in the global interpreter context by default.
-Encountering such kind of issue,you could try creating a virtual environment using venv, or use other virtual-environment-based package managers.
+Encountering such kind of issue, you could try creating a virtual environment using venv, or use other virtual-environment-based package managers.
 :::
 
 ### Temporary Usage
@@ -41,14 +41,14 @@ python -m pip install -i https://${_domain}/pypi/web/simple --upgrade pip
 
 ## Switching PDM Package Mirror
 
-PDM supports setting the package mirror using the `pdm config` command or environment variables. For long-term use, it is recommended to configure it through `pdm config`.
+PDM supports configuring the package mirror using the `pdm config` command or environment variables. For long-term leverage, it is recommended to configure it through `pdm config`.
 
-Set the package mirror using the `pdm config` command:
+Config the package mirror using the `pdm config` command:
 ```bash varcode
 pdm config pypi.url https://${_domain}/pypi/web/simple
 ```
 
-Or set the PDM package mirror using environment variables:
+Or config the PDM package mirror using environment variables:
 ```bash varcode
 export PDM_PYPI_URL=https://${_domain}/pypi/web/simple
 ```
@@ -56,17 +56,17 @@ export PDM_PYPI_URL=https://${_domain}/pypi/web/simple
 ## Switching Poetry Package Mirror
 
 :::caution
-Poetry does not support configuring a global mirror, only project-specific configuration.
+Poetry only supports project-specific configuration, instead of configuring a global mirror.
 :::
 
-Poetry supports setting the current project's package mirror using the `poetry source` command or by modifying `pyproject.toml`.
+Poetry supports configuring the current project's package mirror using the `poetry source` command or by modifying `pyproject.toml`.
 
-Set the package mirror using the `poetry source` command:
+Config the package mirror using the `poetry source` command:
 ```bash varcode
 poetry source add --priority=primary mirrors https://${_domain}/pypi/web/simple
 ```
 
-Or modify `pyproject.toml` to set the package mirror, add the following content to the `pyproject.toml` file:
+Or modify `pyproject.toml` to config the package mirror, add the following content to the `pyproject.toml` file:
 ```toml varcode
 [[tool.poetry.source]]
 name = "mirrors"
@@ -76,7 +76,7 @@ priority = "primary"
 
 ## Switching pipx Package Mirror
 
-pipx uses the same mirror as pip by default, so the method of setting the package mirror is the same as pip.
+pipx uses the same mirror as pip by default, so the method of configuring the package mirror is the same as pip.
 
 ## Switching Back to Default Mirror
 
