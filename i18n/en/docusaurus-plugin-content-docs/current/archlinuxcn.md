@@ -14,7 +14,7 @@ The Arch Linux Chinese Community Repository, an unofficial software repository d
 **To avoid problems when replacing software source configuration files, please make a backup of the system's default software source configuration files before proceeding.**
 :::
 
-1. Edit the `/etc/pacman.conf file` add the following line to the top of the file:
+1. Edit the `/etc/pacman.conf` add the following line to the top of the file:
 
 ```bash varcode
 [archlinuxcn]
@@ -64,13 +64,13 @@ const SUDO = !root ? 'sudo ' : '';
 ${SUDO}pacman -Syyuu
 ```
 
-##One-click source switching
+## One-click source switching
 
 :::caution
 This method is only applicable for switching from the official source to our site's source. If you have already switched sources, please do not use the following commands.
 :::
 
-Use the `echo`  command to add the address of the current mirror to the end of the software source configuration file:
+Use the `echo` command to add the URL of the current mirror to the end of the configuration file:
 
 ```shell varcode
 [ ] (root) Are you the root user?
@@ -83,4 +83,4 @@ ${SUDO}echo -e "[archlinuxcn]\nServer = ${_http}://${_domain}/archlinuxcn/\$arch
 ## References
 
 1. [ZMirror](https://mirrors.cernet.edu.cn/about)   
-2.  [Help Repository](https://github.com/mirrorz-org/mirrorz-help)
+2. [Help Repository](https://github.com/mirrorz-org/mirrorz-help)
