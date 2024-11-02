@@ -80,4 +80,4 @@ pipx uses the same mirror as pip by default, so the method of configuring the pa
 
 ## Switching Back to Default Mirror
 
-If you want to use the official default mirror, change the mirror address in the above commands to `https://pypi.org/simple` and configure it in the same way.
+If you want to use the official default mirror, change the mirror url in the above commands to `https://pypi.org/simple` and configure it in the same way.
