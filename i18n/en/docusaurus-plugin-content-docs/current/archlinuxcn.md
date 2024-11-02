@@ -6,7 +6,7 @@ cname: 'archlinuxcn'
 
 ## Introduction to Arch Linux CN and Software Management
 
-The Arch Linux Chinese Community Repository, an unofficial software repository driven by the Arch Linux Chinese community, includes many additional packages not provided by the official repositories, as well as git versions and other variants of existing software. Some of the packaging scripts for these packages originate from the AUR (Arch User Repository), but there are also many packages that differ from those in the AUR.
+The Arch Linux Chinese Community Repository, an unofficial software repository driven by the Arch Linux Chinese Community, includes many additional packages not provided by the official repositories, as well as git versions and other variants of existing software. Some of the packaging scripts for these packages originate from the AUR (Arch User Repository), but there are also many packages that differ from those in the AUR.
 
 ## Arch Linux CN Software Source Replacement
 
