@@ -9,7 +9,7 @@ Linux Mint is a Linux distribution based on Ubuntu. The purpose of Linux Mint is
 
 ## Ubuntu / Debian Software Source Replacement
 
-For sources from Ubuntu and Debian, you can refer to the [Ubuntu Help](./ubuntu) and [Debian Help](./debian) to make modifications.
+For partial sources from Ubuntu and Debian, you can refer to the [Ubuntu Help](./ubuntu) and [Debian Help](./debian) to make modifications.
 
 ## Linux Mint Software Source Replacement
 
