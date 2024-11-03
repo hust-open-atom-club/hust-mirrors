@@ -1,11 +1,10 @@
-
+---
+title: Linux Mint Usage Guide
+sidebar_label: Linux Mint
+cname: LinuxMint
 ---
 
-**Title: Linux Mint Mirror Usage Guide**
-**Sidebar Label: Linux Mint**
-**CName: LinuxMint**
-
-## Introduction to Linux Mint and Software Management
+## Linux Mint Introduction and Software Management
 Linux Mint is a Linux distribution based on Ubuntu. The purpose of Linux Mint is to provide a free and open-source, modern, elegant, powerful yet easy-to-use operating system. Linux Mint also uses `apt` as its package manager, similar to Ubuntu and Debian, and you need to edit the paths in `/etc/apt/sources.list` and `/etc/apt/sources.list.d/*`.
 
 ## Ubuntu / Debian Software Source Replacement
