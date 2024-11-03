@@ -56,8 +56,8 @@ ${SUDO}sed -i.bak 's|http://packages.linuxmint.com|${_http}://${_domain}/linuxmi
 ${SUDO}sed -i 's|http://archive.ubuntu.com|${_http}://${_domain}|g' /etc/apt/official-package-repositories.list
 ```
 
-## Linux Mint Installation Image {#cd}
-Linux Mint installation images are available in cinnamon, mate, and xfce desktop environments, corresponding to three different versions of the installation images. If you need to download these versions of the installation images, click the button below to select the corresponding version and type for download.
+## Linux Mint Installation Mirror {#cd}
+Linux Mint installation mirrors are available in cinnamon, mate, and xfce desktop environments, corresponding to three different versions of the installation mirrors. If you need to download these versions of the installation mirrors, click the button below to select the corresponding version and type for download.
 
 - cinnamon: The default desktop environment of Linux Mint, developed based on GNOME 3.
 - mate: A desktop environment developed based on GNOME 2.
@@ -65,7 +65,7 @@ Linux Mint installation images are available in cinnamon, mate, and xfce desktop
 
 <a href="/release?release=Linux%20Mint">
     <button className="button button--primary">
-    Download Image
+    Download Mirrors
     </button>
 </a>
 
