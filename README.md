@@ -1,6 +1,6 @@
 # HUST Mirror 网页 & 文档
 
-该网站使用 [Docusaurus 2](https://docusaurus.io/) 构建。
+该网站使用 [Docusaurus](https://docusaurus.io/) 构建。
 
 ## 开发
 
@@ -46,7 +46,7 @@ $ yarn build
 
 #### 文档格式
 
-文档采用 Markdown 格式编写，如果需要支持用户交互的代码块，请参考Ubuntu文档的写法。
+文档采用 Markdown 格式编写，如果需要支持用户交互的代码块，请参考 Ubuntu 文档的写法。
 
 ## 许可证
 
