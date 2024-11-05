@@ -28,4 +28,4 @@ EOF
 
 ## 引用
 
-1. [中科大镜像源使用帮助](https://mirrors.ustc.edu.cn/help/ros.html) 
+1. [中科大镜像源使用帮助](https://mirrors.ustc.edu.cn/help/ros.html)
