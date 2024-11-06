@@ -23,7 +23,7 @@ deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive
 EOF
 ```
 
-3. 刷新软件源缓存 `sudo apt update`，安装所需的 ROS2 发行版。
+3. 刷新软件源缓存`sudo apt update`，安装所需的 ROS2 发行版。
 
 ## 引用
 

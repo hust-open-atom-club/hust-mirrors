@@ -24,7 +24,7 @@ deb [signed-by=/usr/share/keyrings/ros.gpg] https://mirrors.hust.edu.cn/ros/ubun
 EOF
 ```
 
-3. 刷新软件源缓存 `sudo apt update`，安装所需的 ROS 发行版。
+3. 刷新软件源缓存`sudo apt update`，安装所需的 ROS 发行版。
 
 ## 引用
 
