@@ -81,6 +81,8 @@ const mirrors: MirrorMeta[] = [
   { id: 'alpine', description: 'Alpine Linux 软件仓库', supportCli: true },
   { id: 'blackarch', description: 'BlackArch Linux 软件仓库', supportCli: true },
   { id: 'archlinuxcn', description: 'Arch Linux 中文社区软件仓库', supportCli: true },
+  { id: 'ros', description: 'Robot Operating System' },
+  { id: 'ros2', description: 'Robot Operating System 2' },
 ]
 
 
