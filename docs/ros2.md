@@ -9,21 +9,49 @@ ROS2（Robot Operating System 2）是ROS（机器人操作系统，Robot Operati
 
 ## ROS2 软件源替换
 
-1. 导入 key：
+1. 安装依赖
 
-```bash
-sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+```shell varcode
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}apt install -y curl gnupg2 ca-certificates
 ```
 
-2. 将软件源添加至系统：
+2. 导入 key：
 
-```bash
-sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null << EOF
-deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://mirrors.hust.edu.cn/ros2/ubuntu $(lsb_release -sc) main
+```shell varcode
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+```
+
+3. 将软件源添加至系统：
+
+```shell varcode
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}tee /etc/apt/sources.list.d/ros2.list > /dev/null << EOF
+deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] ${_http}://${_domain}/ros2/ubuntu $(lsb_release -sc) main
 EOF
 ```
 
-3. 刷新软件源缓存`sudo apt update`，安装所需的 ROS2 发行版。
+3. 刷新软件源缓存：
+
+```shell varcode
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}apt update -y
+```
+
+4. 安装所需的 ROS 发行版。
 
 ## 引用
 
