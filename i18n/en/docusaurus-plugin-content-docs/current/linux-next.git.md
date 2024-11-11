@@ -1,5 +1,5 @@
 ---
-title: How to use linux-next.git
+title: Linux Next Git
 sidebar_label: Linux Next
 cname: 'linux-next.git'
 ---

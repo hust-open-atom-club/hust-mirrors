@@ -1,5 +1,5 @@
 ---
-title: How to use QEMU mirror
+title: QEMU Git
 cname: 'qemu.git'
 sidebar_label: QEMU
 ---
