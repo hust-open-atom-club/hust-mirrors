@@ -19,11 +19,19 @@ jobs:
       - name: Lint Markdown files
         run: |
           mkdir -p linted_output
+          lint_failed=0
           find . -name '*.md' | while read file; do
             output_dir="linted_output/$(dirname "$file")"
             mkdir -p "$output_dir"
             zhlint "$file" --output="$output_dir/$(basename "$file")"
+            if [ $? -ne 0 ]; then
+              echo "Linting failed for $file"
+              lint_failed=1
+            fi
           done
+          if [ $lint_failed -ne 0 ]; then
+            exit 1
+          fi
 
       - name: Upload Linted Markdown
         uses: actions/upload-artifact@v4
