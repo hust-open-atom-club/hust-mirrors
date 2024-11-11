@@ -19,8 +19,10 @@ jobs:
       - name: Lint Markdown files
         run: |
           mkdir -p linted_output
-          for file in $(find . -name '*.md'); do
-            zhlint "$file" --output="linted_output/$(basename "$file")"
+          find . -name '*.md' | while read file; do
+            output_dir="linted_output/$(dirname "$file")"
+            mkdir -p "$output_dir"
+            zhlint "$file" --output="$output_dir/$(basename "$file")"
           done
 
       - name: Upload Linted Markdown
