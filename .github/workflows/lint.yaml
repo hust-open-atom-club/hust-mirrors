@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Install zhlint
         run: yarn global add zhlint
@@ -24,7 +24,7 @@ jobs:
           done
 
       - name: Upload Linted Markdown
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: linted-markdown
           path: linted_output/
