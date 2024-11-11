@@ -1,0 +1,30 @@
+name: Lint
+
+on:
+  pull_request:
+    paths:
+      - '**/*.md'
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install zhlint
+        run: yarn global add zhlint
+
+      - name: Lint Markdown files
+        run: |
+          mkdir -p linted_output
+          for file in $(find . -name '*.md'); do
+            zhlint "$file" --output="linted_output/$(basename "$file")"
+          done
+
+      - name: Upload Linted Markdown
+        uses: actions/upload-artifact@v2
+        with:
+          name: linted-markdown
+          path: linted_output/
