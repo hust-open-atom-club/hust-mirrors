@@ -59,7 +59,7 @@ curl -fsSL https://download.docker.com/linux/${version}/gpg | ${SUDO}gpg --dearm
 ${SUDO}chmod a+r /etc/apt/keyrings/docker.gpg
 
 # 配置软件源
-${SUDO}tee /etc/apt/sources.list.d/docker.list > /dev/null <<EOF
+${SUDO}tee /etc/apt/sources.list.d/docker.list > /dev/null << EOF
 deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] ${_http}://${_domain}/docker-ce/linux/${version} $(lsb_release -sc) stable
 EOF
 ```
