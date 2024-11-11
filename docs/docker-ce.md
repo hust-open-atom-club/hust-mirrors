@@ -4,7 +4,7 @@ sidebar_label: Docker CE
 ---
 
 :::caution
-此镜像不是 DockerHub！！！
+此镜像不是 DockerHub，只可用于安装 Docker CE，无法用于索引或拉取 DockerHub 上的容器镜像！！！
 :::
 
 ## Docker CE 介绍
