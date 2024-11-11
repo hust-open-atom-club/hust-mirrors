@@ -1,0 +1,45 @@
+name: Lint
+
+on:
+  pull_request:
+    paths:
+      - '**/*.md'
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install zhlint
+        run: yarn global add zhlint
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+
+      - name: Lint Markdown files
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+        run: |
+          mkdir -p linted_output
+          for file in ${{ env.ALL_CHANGED_FILES }}; do
+            output_dir="linted_output/$(dirname "$file")"
+            mkdir -p "$output_dir"
+            zhlint "$file" --output="$output_dir/$(basename "$file")"
+          done
+
+      - name: Upload Linted Markdown
+        uses: actions/upload-artifact@v4
+        with:
+          name: linted-markdown
+          path: linted_output/
+
+      - name: Check lint errors
+        run: |
+          if [ -n "$(ls -A linted_output)" ]; then
+            echo "Linting errors found. Please check the uploaded artifacts and the lint logs."
+            exit 1
+          fi
