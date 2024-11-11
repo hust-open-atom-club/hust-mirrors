@@ -9,7 +9,7 @@ sidebar_label: Docker CE
 
 ## Docker CE 介绍
 
-Docker CE，即Docker Community Edition，是针对开发者和小型团队的免费版 Docker，它提供了社区支持与较快的更新周期。其托管在 [https://download.docker.com](https://download.docker.com) 上。
+Docker CE，即 Docker Community Edition，是针对开发者和小型团队的免费版 Docker，它提供了社区支持与较快的更新周期。其托管在 [https://download.docker.com](https://download.docker.com) 上。
 
 ## 自动安装
 
