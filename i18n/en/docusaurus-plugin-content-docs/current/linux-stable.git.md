@@ -1,5 +1,5 @@
 ---
-title: How to use linux-stable.git
+title: Linux Stable Git
 sidebar_label: Linux Stable
 cname: 'linux-stable.git'
 ---

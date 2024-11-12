@@ -1,5 +1,5 @@
 ---
-title: How to use linux.git
+title: Linux Mainline Git
 sidebar_label: Linux Mainline
 cname: 'linux.git'
 ---

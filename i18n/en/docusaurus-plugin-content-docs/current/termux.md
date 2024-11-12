@@ -1,5 +1,5 @@
 ---
-title: Termux Software repository mirror usage help
+title: Termux
 sidebar_label: Termux
 cname: termux
 ---
