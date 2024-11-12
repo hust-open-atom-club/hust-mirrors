@@ -1,9 +1,7 @@
-name: Lint
+name: Lint All
 
 on:
-  pull_request:
-    paths:
-      - '**/*.md'
+  workflow_dispatch:
 
 jobs:
   lint:
@@ -15,24 +13,17 @@ jobs:
       - name: Install zhlint
         run: yarn global add zhlint
 
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v45
-        with:
-          files: '**/*.md'
-
-      - name: Lint Markdown files
-        env:
-          ALL_CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
+      - name: Lint all Markdown files
         run: |
           mkdir -p linted_output
           file_list="linted_output/file_list.txt"
-          linted_failed=0
-          for file in ${{ env.ALL_CHANGED_FILES }}; do
+          linted_failed_file=$(mktemp)
+          echo 0 > "$linted_failed_file"
+          find . -type f -name '*.md' | while read -r file; do
             set +e
             zhlint "$file"
             if [ $? -ne 0 ]; then
-              linted_failed=1
+              echo 1 > "$linted_failed_file"
               echo "$file" >> "$file_list"
               output_file="linted_output/report_and_suggested_fixes/$file"
               mkdir -p "$(dirname "$output_file")"
@@ -40,9 +31,11 @@ jobs:
             fi
             set -e
           done
+          linted_failed=$(cat "$linted_failed_file")
+          rm "$linted_failed_file"
           echo "linted_failed=$linted_failed" >> "$GITHUB_ENV"
 
-      - name: Upload Linted Markdown
+      - name: Upload linted Markdown
         uses: actions/upload-artifact@v4
         with:
           name: linted-markdown
