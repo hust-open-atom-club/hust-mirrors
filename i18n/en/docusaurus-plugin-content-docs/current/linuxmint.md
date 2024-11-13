@@ -1,5 +1,5 @@
 ---
-title: Linux Mint Usage Guide
+title: Linux Mint
 sidebar_label: Linux Mint
 cname: LinuxMint
 ---
