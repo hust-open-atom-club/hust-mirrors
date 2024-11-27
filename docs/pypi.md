@@ -5,12 +5,12 @@ title: Python 软件包索引仓库使用帮助
 
 ## PyPI 介绍
 
-PyPI（The Python Package Index）是 Python 编程语言的软件存储仓库。其托管在 [https://pypi.org/](https://pypi.org/) 上。
+PyPI (The Python Package Index) 是 Python 编程语言的软件存储仓库。其托管在 [https://pypi.org/](https://pypi.org/) 上。
 
 ## 切换 pip 软件镜像
 
 :::caution
-pip 工具默认配置下仅支持 https, 请不要使用 http。
+pip 工具默认配置下仅支持 https，请不要使用 http。
 :::
 
 :::info 关于externally-managed-environment 错误

@@ -5,7 +5,7 @@ sidebar_label: ROS
 
 ## ROS 介绍
 
-ROS（机器人操作系统，Robot Operating System），是专为机器人软件开发所设计出来的一套电脑操作系统架构。其托管在 [http://packages.ros.org/ros](http://packages.ros.org/ros) 上。
+ROS (机器人操作系统，Robot Operating System)，是专为机器人软件开发所设计出来的一套电脑操作系统架构。其托管在 [http://packages.ros.org/ros](http://packages.ros.org/ros) 上。
 
 ## ROS 软件源替换
 
