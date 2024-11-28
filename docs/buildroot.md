@@ -24,7 +24,7 @@ Buildroot 在构建过程中需要使用 kernel、gnu、CPAN 等源。
 
 ### 方法一：手动修改
 
-首先备份你的 config 文件，并手动修改配置信息。（可以使用 menuconfig,nconfig, 甚至可以直接编辑文件进行修改）
+首先备份你的 config 文件，并手动修改配置信息。（可以使用 menuconfig，nconfig，甚至可以直接编辑文件进行修改）
 
 ```raw varcode
 BR2_KERNEL_MIRROR="${_http}://${_domain}/kernel.org"
