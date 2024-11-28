@@ -5,7 +5,7 @@ sidebar_label: ROS2
 
 ## ROS2 介绍
 
-ROS2（Robot Operating System 2）是 ROS（机器人操作系统，Robot Operating System）的下一代版本，它是一个用于机器人开发的开源平台，提供了一系列工具和库，用于构建机器人应用程序。其托管在 [http://packages.ros.org/ros2](http://packages.ros.org/ros2) 上。
+ROS2 (Robot Operating System 2) 是 ROS (机器人操作系统，Robot Operating System) 的下一代版本，它是一个用于机器人开发的开源平台，提供了一系列工具和库，用于构建机器人应用程序。其托管在 [http://packages.ros.org/ros2](http://packages.ros.org/ros2) 上。
 
 ## ROS2 软件源替换
 
