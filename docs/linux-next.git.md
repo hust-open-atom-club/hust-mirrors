@@ -6,16 +6,16 @@ cname: 'linux-next.git'
 
 ## linux-next 介绍
 
-与linux其他树不同的是，linux-next树是从子系统树合并补丁的窗口树。
+与 linux 其他树不同的是，linux-next 树是从子系统树合并补丁的窗口树。
 
 :::caution
-正因为linux-next是临时版本，所以其master分支仅仅代表最新版本，
-如果HEAD追踪master分支，在使用git pull更新master时，会出现各种无法预料的错误。
+正因为 linux-next 是临时版本，所以其 master 分支仅仅代表最新版本，
+如果 HEAD 追踪 master 分支，在使用 git pull 更新 master 时，会出现各种无法预料的错误。
 
-而正确的做法应该是clone主线分支，而把linux-next作为另外一个remote，使用标签去追踪commit。
+而正确的做法应该是 clone 主线分支，而把 linux-next 作为另外一个 remote，使用标签去追踪 commit。
 :::
 
-## 使用linux-next
+## 使用 linux-next
 
 1. 克隆 `Linux` 源代码，运行
 
@@ -23,7 +23,7 @@ cname: 'linux-next.git'
 git clone ${_http}://${_domain}/git/linux.git
 ```
 
-2. 将 `linux-next` 作为一个新的remote，并更新本地分支和标签
+2. 将 `linux-next` 作为一个新的 remote，并更新本地分支和标签
 
 ```bash varcode
 git remote add linux-next ${_http}://${_domain}/git/linux-next.git
@@ -31,13 +31,13 @@ git fetch linux-next
 git fetch --tags linux-next
 ```
 
-3. 检出 `linux-next` 的commit
+3. 检出 `linux-next` 的 commit
 
 ```bash
 git tag -l "next-*" | tail
 ```
 
-git工具会输出类似下面的结果
+git 工具会输出类似下面的结果
 
 ```
 next-20231101
@@ -45,13 +45,13 @@ next-20231102
 ...
 ```
 
-然后通过tag检出到新的本地分支
+然后通过 tag 检出到新的本地分支
 
 ```bash
 git checkout -b new_local_branch next-20231101
 ```
 
-最后在本地的`new_local_branch`开展你的工作。
+最后在本地的 `new_local_branch` 开展你的工作。
 
 
 ## 引用
