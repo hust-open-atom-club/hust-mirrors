@@ -8,8 +8,8 @@ title: crates.io 镜像使用帮助
 在 `$CARGO_HOME/config.toml` 中添加如下内容：
 
 :::info CARGO_HOME 默认路径
-- 在 Windows 上，`$CARGO_HOME` 默认为：`%USERPROFILE%\.cargo`，例如 C:\Users\test\\.cargo。  
-- 在 *nix 系统 上，`$CARGO_HOME` 默认为：`$HOME/.cargo`，例如 /home/test/.cargo。
+- 在 Windows 上，`$CARGO_HOME` 默认为：`%USERPROFILE%\.cargo`，例如 C:\Users\test\\.cargo
+- 在 *nix 系统上，`$CARGO_HOME` 默认为：`$HOME/.cargo`，例如 /home/test/.cargo
 :::
 
 ```toml varcode
