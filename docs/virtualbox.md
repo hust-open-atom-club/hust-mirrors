@@ -21,7 +21,7 @@ slug: /virtualbox
 
 如果你的系统是受支持的 Linux 发行版，推荐使用包管理器安装，参考[受支持的 Linux 发行版](#package-manager)。
 
-如果不是，在下载通用的`run`文件（例如`VirtualBox-5.0.24-108355-Linux_x86.run`）后，使用 `chmod +x` 给予执行权限后，直接安装即可。
+如果不是，在下载通用的 `run` 文件（例如 `VirtualBox-5.0.24-108355-Linux_x86.run`）后，使用 `chmod +x` 给予执行权限后，直接安装即可。
 
 :::
 
@@ -41,8 +41,8 @@ slug: /virtualbox
 
 ### 通过编译好的二进制包安装
 
-点击[此链接](/release?release=Virtualbox%20\(package%20manager\))，选择版本（例如`5.0.24`），
-找到名为 发行版名称\~发行代号\~架构 的文件。
+点击[此链接](/release?release=Virtualbox%20\(package%20manager\))，选择版本（例如 `5.0.24`），
+找到名为发行版名称\~发行代号\~架构的文件。
 如 `virtualbox-5.0_5.0.24-108355~Ubuntu~xenial_i386.deb` 下载安装即可。
 
 
@@ -72,7 +72,7 @@ const sudo = !root ? 'sudo ' : '';
 wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | ${sudo}apt-key add -
 ```
 
-再选择你的 Debian/Ubuntu 版本，将文本框中内容写进`/etc/apt/sources.list.d/virtualbox.list`
+再选择你的 Debian/Ubuntu 版本，将文本框中内容写进 `/etc/apt/sources.list.d/virtualbox.list`
 
 ```bash varcode title="/etc/apt/sources.list.d/virtualbox.list"
 [ ] (a) { 0:Debian 11 (bullseye), 1:Debian 10 (buster), 2:Debian 9 (stretch), 3:Debian 8 (jessie), 4:Ubuntu 22.04 LTS, 5:Ubuntu 20.04 LTS, 6:Ubuntu 18.04 LTS, 7:Ubuntu 16.04 LTS, 8:Ubuntu 14.04 LTS } 发行版
@@ -91,7 +91,7 @@ if(a === "8") { release_name = "trusty"; }
 deb ${_http}://${_domain}/virtualbox/debian/ ${release_name} contrib
 ```
 
-安装 VirtualBox:
+安装 VirtualBox：
 
 ```bash varcode
 [ ] (root) 是否为 root 用户

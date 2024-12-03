@@ -10,7 +10,7 @@ sidebar_label: QEMU
 git clone ${_http}://${_domain}/git/qemu.git
 ```
 
-2. 将`mirror`加入已有代码库，在已有仓库中运行
+2. 将 `mirror` 加入已有代码库，在已有仓库中运行
 
 ```bash varcode
 git remote add mirror ${_http}://${_domain}/git/qemu.git
