@@ -23,17 +23,13 @@ function Footer() {
               <a href='https://cse.hust.edu.cn'>
                 <Translate id='mirror.footer.desc0_1'>华中科技大学网络空间安全学院</Translate>
               </a>
-              <Translate id='mirror.footer.desc0_2'>  、  </Translate>
+              <Translate id='mirror.footer.desc0_2'>  和  </Translate>
               <a href='https://ncc.hust.edu.cn'>
                 <Translate id='mirror.footer.desc0_3'>网络与信息化办公室</Translate>
               </a>
-	      <Translate id='mirror.footer.desc0_4'>  和  </Translate>
-	      <a href='https://hlug.cn'>
-                <Translate id='mirror.footer.desc0_5'>华中科技大学Linux协会</Translate>
-              </a>
-              <Translate id='mirror.footer.desc0_6'> 提供支持。用户使用问题可以发送邮件至 </Translate>
+              <Translate id='mirror.footer.desc0_4'> 提供支持。用户使用问题可以发送邮件至 </Translate>
               <a href="mailto:mirror_support@hust.edu.cn">mirror_support@hust.edu.cn</a>
-              <Translate id='mirror.footer.desc0_7'> 询问。该镜像站收录了主流开源软件源、安装镜像、完整帮助文档和CLI工具支持。 </Translate>
+              <Translate id='mirror.footer.desc0_5'> 询问。该镜像站收录了主流开源软件源、安装镜像、完整帮助文档和CLI工具支持。 </Translate>
             </div>
             <div>
               <a href='https://hust.openatom.club'>
@@ -63,8 +59,6 @@ function Footer() {
         <div className={styles.logos}>
           <img className={styles.light} src='/img/atomclub.svg' height={80} />
           <img className={styles.dark} src='/img/atomclub-dark.svg' height={80} />
-        </div>
-	<div className={styles.logos}>
           <img className={styles.light} src='/img/hlug_logo.png' height={80} />
           <img className={styles.dark} src='/img/hlug_logo.png' height={80} />
         </div>
