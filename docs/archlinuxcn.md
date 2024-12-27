@@ -32,7 +32,7 @@ ${SUDO}pacman -S archlinuxcn-keyring
 ```
 
 :::caution
-如果在安装过程中遇到了如下错误:
+如果在安装过程中遇到了如下错误：
 ```shell
 error: archlinuxcn-keyring: Signature from "Jiachen YANG (Arch Linux Packager Signing Key) " is marginal trust
 ```
@@ -81,4 +81,4 @@ ${SUDO}echo -e "[archlinuxcn]\nServer = ${_http}://${_domain}/archlinuxcn/\$arch
 ```
 
 ## 引用
-1. [archlinuxcn中文社区仓库](https://www.archlinuxcn.org/archlinux-cn-repo-and-mirror/)
+1. [archlinuxcn 中文社区仓库](https://www.archlinuxcn.org/archlinux-cn-repo-and-mirror/)

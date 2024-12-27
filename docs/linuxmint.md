@@ -5,13 +5,13 @@ cname: LinuxMint
 ---
 
 ## Linux Mint 简介与软件管理
-Linux Mint是一种基于Ubuntu的Linux发行版，Linux Mint的宗旨是提供一个免费开源、现代、优雅、功能强大却也易于使用的作业系统
+Linux Mint 是一种基于 Ubuntu 的 Linux 发行版，Linux Mint 的宗旨是提供一个免费开源、现代、优雅、功能强大却也易于使用的作业系统
 Linux Mint 也采用 apt 作为包管理器，与 Ubuntu 和 Debian 类似，你需要编辑 `/etc/apt/sources.list` 和 `/etc/apt/sources.list.d/*` 中的路径。
 
 
 ## Ubuntu / Debian 软件源替换
 
-对于来自 Ubuntu 与 Debian 的部分源，可以参考 [Ubuntu 帮助](./ubuntu) 与 [Debian 帮助](./debian) 进行修改。
+对于来自 Ubuntu 与 Debian 的部分源，可以参考 [Ubuntu 帮助](./ubuntu)与 [Debian 帮助](./debian)进行修改。
 
 ## Linux Mint 软件源替换
 
@@ -38,7 +38,7 @@ ${SUDO}apt update
 ```
 
 :::caution
-完成后请不要再使用 mintsources（自带的图形化软件源设置工具）进行任何操作，因为在操作后，无论是否有按“确定”，mintsources 均会复写 `/etc/apt/sources.list.d/official-package-repositories.list`
+完成后请不要再使用 mintsources（自带的图形化软件源设置工具）进行任何操作，因为在操作后，无论是否有按 “确定”，mintsources 均会复写 `/etc/apt/sources.list.d/official-package-repositories.list`
 :::
 
 ## 一键换源
@@ -59,12 +59,12 @@ ${SUDO}sed -i 's|http://archive.ubuntu.com|${_http}://${_domain}|g' /etc/apt/off
 ```
 
 ## Linux Mint 安装镜像 {#cd}
-Linux Mint 安装镜像提供 cinnamon, mate 和 xfce 三种桌面环境，分别对应了三个版本的安装镜像。如果需
+Linux Mint 安装镜像提供 cinnamon，mate 和 xfce 三种桌面环境，分别对应了三个版本的安装镜像。如果需
 要下载这两个版本的安装镜像，点击下面的按钮选择对应的版本和种类进行下载。
 
-- cinnamon : Linux Mint 的默认桌面环境，基于 GNOME 3 开发。
-- mate : 基于 GNOME 2 开发的桌面环境。
-- xfce : 轻量级桌面环境，适合配置较低的计算机。
+- cinnamon：Linux Mint 的默认桌面环境，基于 GNOME 3 开发。
+- mate：基于 GNOME 2 开发的桌面环境。
+- xfce：轻量级桌面环境，适合配置较低的计算机。
 
 <a href="/release?release=Linux%20Mint">
     <button className="button button--primary">
@@ -73,4 +73,4 @@ Linux Mint 安装镜像提供 cinnamon, mate 和 xfce 三种桌面环境，分�
 </a>
 
 ## 引用
-1. [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/linuxmint/)  
+1. [Tuna 镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/linuxmint/)  

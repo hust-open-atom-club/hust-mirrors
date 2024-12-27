@@ -6,14 +6,14 @@ sidebar_label: llvm-project.git
 
 ## LLVM Project 介绍
 
-LLVM是一个开源的项目，是一个编译器框架，是一系列模块化、可重用的编译器以及工具链技术的集合。
+LLVM 是一个开源的项目，是一个编译器框架，是一系列模块化、可重用的编译器以及工具链技术的集合。
 
-其包含了一系列子项目：clang、lldb、libc++、libc++abi、klee, lld等。
+其包含了一系列子项目：clang、lldb、libc++、libc++abi、klee、lld 等。
 
 
 ## 镜像仓库介绍
 
-该镜像站点镜像了 LLVM Project 的 [GitHub 仓库](https://github.com/llvm/llvm-project.git) 。
+该镜像站点镜像了 LLVM Project 的 [GitHub 仓库](https://github.com/llvm/llvm-project.git)。
 
 :::info 发布版本
 如果需要各个子项目的发布版本源代码，该镜像站暂时不提供镜像，请至 [GitHub Release](https://github.com/llvm/llvm-project/releases) 下载。

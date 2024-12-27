@@ -26,7 +26,7 @@ Termux 是运行在 Android 上的 terminal。不需要 root，运行于内部�
 ### 图形界面（TUI）替换
 
 在较新版的 Termux 中，官方提供了图形界面（TUI）来半自动替换镜像，推荐使用该种方式以规避其他风险。
-* 需要先把 termux-tools 更新到1.42.1版本。  
+* 需要先把 termux-tools 更新到 1.42.1 版本。  
 在 Termux 中执行如下命令
 
 ```bash

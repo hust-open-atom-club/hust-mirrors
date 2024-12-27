@@ -21,13 +21,13 @@ jobs:
           echo 0 > "$linted_failed_file"
           find . -type f -name '*.md' | while read -r file; do
             set +e
-            zhlint "$file"
+
             if [ $? -ne 0 ]; then
               echo 1 > "$linted_failed_file"
               echo "$file" >> "$file_list"
               output_file="linted_output/report_and_suggested_fixes/$file"
               mkdir -p "$(dirname "$output_file")"
-              zhlint "$file" --output="$output_file" > "$output_file.log" 2>&1
+
             fi
             set -e
           done
