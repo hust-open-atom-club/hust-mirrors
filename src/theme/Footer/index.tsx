@@ -23,7 +23,7 @@ function Footer() {
               <a href='https://cse.hust.edu.cn'>
                 <Translate id='mirror.footer.desc0_1'>华中科技大学网络空间安全学院</Translate>
               </a>
-              <Translate id='mirror.footer.desc0_2'>  和  </Translate>
+              <Translate id='mirror.footer.desc0_2'> 和 </Translate>
               <a href='https://ncc.hust.edu.cn'>
                 <Translate id='mirror.footer.desc0_3'>网络与信息化办公室</Translate>
               </a>
