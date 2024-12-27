@@ -4,9 +4,9 @@ title: Alpine Linux 软件仓库镜像使用帮助
 cname: AplineLinux
 ---
 ## Alpine Linux 简介与软件管理
-Alpine Linux是一个基于musl libc和BusyBox的独立、非商业、通用的Linux发行版，旨在提供小巧、简单、安全和高效的基础系统。Alpine Linux的设计理念是“Keep It Simple”，并且由于其轻量级和高效的特性，它在Docker和Kubernetes等容器环境中非常受欢迎。
+Alpine Linux 是一个基于 musl libc 和 BusyBox 的独立、非商业、通用的 Linux 发行版，旨在提供小巧、简单、安全和高效的基础系统。Alpine Linux 的设计理念是 “Keep It Simple”，并且由于其轻量级和高效的特性，它在 Docker 和 Kubernetes 等容器环境中非常受欢迎。
 
-Alpine Linux的包管理系统是apk（Alpine Package Keeper）。apk是一个用于Alpine Linux的包管理工具，它可以用于安装新的软件包、升级或删除已存在的软件包、更新软件包索引等。
+Alpine Linux 的包管理系统是 apk (Alpine Package Keeper)。apk 是一个用于 Alpine Linux 的包管理工具，它可以用于安装新的软件包、升级或删除已存在的软件包、更新软件包索引等。
 
 ## Alpine Linux 软件源替换
 
@@ -51,4 +51,4 @@ ${SUDO}sed -i 's/dl-cdn.alpinelinux.org/${_domain}/g' /etc/apk/repositories
 ```
 
 ## 引用
-1. [Tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/alpine/)  
+1. [Tuna 镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/alpine/)  

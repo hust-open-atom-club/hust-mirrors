@@ -1,0 +1,50 @@
+name: Lint All
+
+on:
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install zhlint
+        run: yarn global add zhlint
+
+      - name: Lint all Markdown files
+        run: |
+          mkdir -p linted_output
+          file_list="linted_output/file_list.txt"
+          linted_failed_file=$(mktemp)
+          echo 0 > "$linted_failed_file"
+          find . -type f -name '*.md' | while read -r file; do
+            set +e
+            zhlint --config "$GITHUB_WORKSPACE"/ci/.zhlintrc "$file"
+            if [ $? -ne 0 ]; then
+              echo 1 > "$linted_failed_file"
+              echo "$file" >> "$file_list"
+              output_file="linted_output/report_and_suggested_fixes/$file"
+              mkdir -p "$(dirname "$output_file")"
+              zhlint --config "$GITHUB_WORKSPACE"/ci/.zhlintrc "$file" --output="$output_file" > "$output_file.log" 2>&1
+            fi
+            set -e
+          done
+          linted_failed=$(cat "$linted_failed_file")
+          rm "$linted_failed_file"
+          echo "linted_failed=$linted_failed" >> "$GITHUB_ENV"
+
+      - name: Upload linted Markdown
+        uses: actions/upload-artifact@v4
+        with:
+          name: linted-markdown
+          path: linted_output/
+
+      - name: Check lint errors
+        run: |
+          set -e
+          if [ "${{ env.linted_failed }}" -ne 0 ]; then
+            echo "Linting errors found. Please check the reports and suggested fixes in uploaded artifact."
+            exit 1
+          fi

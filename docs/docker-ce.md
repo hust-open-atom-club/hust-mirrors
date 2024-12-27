@@ -54,7 +54,7 @@ const SUDO = !root ? 'sudo ' : '';
 ${SUDO}apt install -y gnupg ca-certificates
 
 # 配置 GPG 公钥
-install -m 0755 -d /etc/apt/keyrings
+${SUDO}install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/${version}/gpg | ${SUDO}gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 ${SUDO}chmod a+r /etc/apt/keyrings/docker.gpg
 

@@ -123,5 +123,5 @@ YUM 包管理器的 metalink 功能可向用户提供受信任的镜像列表，
 
 ## 引用
 
-1. [使用DNF管理软件包](https://docs.openeuler.org/zh/docs/22.03_LTS_SP2/docs/Administration/%E4%BD%BF%E7%94%A8DNF%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6%E5%8C%85.html)  
+1. [使用 DNF 管理软件包](https://docs.openeuler.org/zh/docs/22.03_LTS_SP2/docs/Administration/%E4%BD%BF%E7%94%A8DNF%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6%E5%8C%85.html)  
 2. [Features/YumMetalinks - Fedora Project Wiki](https://fedoraproject.org/wiki/Features/YumMetalinks)

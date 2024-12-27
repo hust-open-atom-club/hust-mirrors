@@ -85,18 +85,18 @@ export const SoftwareGuide = () => {
 
 <TOCInline toc={toc} />
 
-:::info 关于POSIX Shell
-该命令行工具是采用POSIX shell兼容语法编写的。
-其声明的解释器为`PATH`中的`sh`，在dash和bash解释器中测试通过。不要使用fish，pwsh等不兼容POSIX Shell脚本解释器运行。
+:::info 关于 POSIX Shell
+该命令行工具是采用 POSIX Shell 兼容语法编写的。
+其声明的解释器为 `PATH` 中的 `sh`，在 dash 和 bash 解释器中测试通过。不要使用 fish，pwsh 等不兼容 POSIX Shell 脚本解释器运行。
 :::
 
 ## 自动部署
 
 工具检测当前是否存在可被部署的系统/软件源，如发现可部署，进行自动部署。
 
-可以加上`-y`选项，跳过选择使用默认设置。
+可以加上 `-y` 选项，跳过选择使用默认设置。
 
-<CliCodeBlock>autodeploy #或者采用ad</CliCodeBlock>
+<CliCodeBlock>autodeploy #或者采用 ad</CliCodeBlock>
 <CliAnimation.UbuntuAutoDeploySample/>
 
 ## 交互模式运行
@@ -111,7 +111,7 @@ export const SoftwareGuide = () => {
 
 ## 安装工具 / 更新工具
 
-通过命令安装工具后，你可以使用`hustmirror-cli`命令随时替换/恢复镜像源。  
+通过命令安装工具后，你可以使用 `hustmirror-cli` 命令随时替换/恢复镜像源。  
 该命令还可以对已安装的工具进行手动在线更新。
 
 <CliCodeBlock>install</CliCodeBlock>
@@ -119,13 +119,13 @@ export const SoftwareGuide = () => {
 
 ## 获取详细帮助
 
-除了上述命令以外，命令行工具还支持制定软件进行deploy/recover，不同软件还有各自的参数和环境变量设置。
+除了上述命令以外，命令行工具还支持制定软件进行 deploy/recover，不同软件还有各自的参数和环境变量设置。
 
 查看工具的基础帮助，可以
 
 <CliCodeBlock>help #查看基础帮助</CliCodeBlock>
 
-对子命令或者一些源，例如deploy命令，可以
+对子命令或者一些源，例如 deploy 命令，可以
 
 <CliCodeBlock>help deploy #查看具体主题的帮助</CliCodeBlock>
 
