@@ -147,22 +147,22 @@ Find the file named `msys2-<architecture>-<date>.exe`(such as `msys2-x86_64-2014
 
 ```bash varcode
     Server = ${_http}://${_domain}/msys2/mingw/i686
-    ```
+```
 2.**Edit the `/etc/pacman.d/mirrorlist.mingw64` file**: Add the following content at the beginning of the file:
 
 ```bash varcode
     Server = ${_http}://${_domain}/msys2/mingw/x86_64
-    ```
+```
 3.**Edit the `/etc/pacman.d/mirrorlist.msys` file**: Add the following content at the beginning of the file:
 
 ```bash varcode
     Server = ${_http}://${_domain}/msys2/msys/$arch
-    ```
+```
 4.**Edit the `/etc/pacman.d/mirrorlist.ucrt64` file**: Add the following content at the beginning of the file:
 
 ```bash varcode
     Server = ${_http}://${_domain}/msys2/mingw/ucrt64
-    ```
+```
 5.**Refresh the software package database**:
 
 ```shell varcode
@@ -171,7 +171,7 @@ Find the file named `msys2-<architecture>-<date>.exe`(such as `msys2-x86_64-2014
     const SUDO = !root ? 'sudo ' : '';
     ---
     ${SUDO}pacman -Sy
-    ```
+```
 
 Through these steps, you can change the mirror source of MSYS2 to the mirror station of Huazhong University of Science and Technology, thus speeding up the download and update of software packages.
 
