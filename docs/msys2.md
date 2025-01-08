@@ -103,19 +103,3 @@ ${SUDO}sed -i "s#https\\?://mirror.msys2.org/#${_http}://${_domain}/msys2/#g" /e
 
 1. [MSYS2 镜像站使用帮助 | 阿里云开源镜像站](https://developer.aliyun.com/mirror/msys2)
 2. [MSYS2 镜像站使用帮助 | 清华大学开源软件镜像站](https://mirrors.tuna.tsinghua.edu.cn/help/msys2/)
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
