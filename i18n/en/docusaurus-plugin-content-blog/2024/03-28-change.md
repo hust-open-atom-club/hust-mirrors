@@ -3,14 +3,14 @@ title: Mirror change notice
 authors: chengzi
 ---
 
-为了更好地利用有限的存储空间，我们对镜像站做出以下调整。
+In order to make better use of limited storage space, we make the following adjustments to the mirror site.
 
-由于新版树莓派 debian 完全采用 debian 软件源，我们删除以下镜像：
+Since the new version of Raspberry Pi Debian completely uses the Debian software source, we delete the following mirrors.
 
 - raspbian
 - raspberrypi
 - raspbian-addons
 
-同时，debian 官方源已经包含 non-free 软件，我们删除以下镜像：
+At the same time, the official Debian repository already contains non-free software. We delete the following mirrors.
 
 - debian-nonfree
