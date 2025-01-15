@@ -25,8 +25,6 @@ We have taken the following points into consideration:
 3. We hope to make some customized modifications to the documentation of MirrorZ, such as modifying the addresses of hyperlinks to adapt to our site.
 Based on the above requirements, we have decided to integrate the documentation of MirrorZ using the third method
 
-
-
 ## Scheme
 
 The script we write will follow these steps to integrate the documentation of MirrorZ:
