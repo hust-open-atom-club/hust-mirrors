@@ -34,7 +34,7 @@ Some software depends on 32-bit libraries. You need to uncomment `multilib` in `
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
-${sudo}pacman -Sy blackarch-keyring
+${SUDO}pacman -Sy blackarch-keyring
 ```
 
 3. Update the package cache with the following command:
@@ -44,7 +44,7 @@ ${sudo}pacman -Sy blackarch-keyring
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
-${sudo}pacman -Syyu
+${SUDO}pacman -Syyu
 ```
 
 The `yy` in the command helps prevent issues when switching from **broken**  mirrors to **healthy**  mirrors.
