@@ -5,9 +5,9 @@ sidebar_label: Ubuntu
 
 ## Ubuntu 简介与软件管理
 
-Ubuntu 是一个基于 Debian 的 Linux 发行版，发布包括桌面版、服务器版以及适用于物联网设备和机器人等多个版本。Ubuntu 每六个月将发布一次版本，每两年发布一次长期支持版本（LTS），目前最新的长期支持版本是 Ubuntu 22.04（“Jammy Jellyfish”）。Ubuntu 目前由英国公司 Canonical 以及其他开发者社区共同开发，采用一种以功绩为基础的治理模式。Canonical 提供每个 Ubuntu 版本的安全更新和支持，从发布日期开始直至达到指定的终止生命周期（EOL）日期。
+Ubuntu 是一个基于 Debian 的 Linux 发行版，发布包括桌面版、服务器版以及适用于物联网设备和机器人等多个版本。Ubuntu 每六个月将发布一次版本，每两年发布一次长期支持版本（LTS），目前最新的长期支持版本是 Ubuntu 24.04（“Noble Numbat”）。Ubuntu 目前由英国公司 Canonical 以及其他开发者社区共同开发，采用一种以功绩为基础的治理模式。Canonical 提供每个 Ubuntu 版本的安全更新和支持，从发布日期开始直至达到指定的终止生命周期（EOL）日期。
 
-Ubuntu 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说，Ubuntu 通过修改 `/etc/apt/sources.list` 配置文件来管理系统软件源。一般情况下，用户可直接将该配置文件中的默认源地址 [http://archive.ubuntu.com/](http://archive.ubuntu.com/) 替换为本软件镜像站。
+Ubuntu 使用软件包管理工具 `APT` 来管理 DEB 软件包。一般情况下，用户可直接将该配置文件中的默认源地址 [http://archive.ubuntu.com/](http://archive.ubuntu.com/) 替换为本软件镜像站。
 
 ## Ubuntu 软件源替换
 
@@ -15,10 +15,16 @@ Ubuntu 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说�
 **为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
 :::
 
-1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/apt/sources.list` 的原有内容：
+1. 配置软件源
+
+在 Ubuntu 24.04（“Noble Numbat”）之前的版本中，`APT` 软件源采用传统的单行格式（One-Line-Style），配置文件路径为：`/etc/apt/sources.list`，从 Ubuntu 24.04 LTS 开始，官方推荐使用更结构化的 DEB822 格式，配置文件路径改为：`/etc/apt/sources.list.d/ubuntu.sources`
+
+
+### 传统格式（`/etc/apt/sources.list`）
+根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/apt/sources.list` 的原有内容：
 
 ```bash varcode
-[ ] (version) { jammy:22.04 LTS, lunar:23.04, kinetic:22.10, focal:20.04 LTS, bionic:18.04 LTS, xenial:16.04 LTS, trusty:14.04 LTS } Ubuntu 版本
+[ ] (version) { plucky:25.04, oracular:24.10, noble:24.04 LTS, jammy:22.04 LTS, lunar:23.04, kinetic:22.10, focal:20.04 LTS, bionic:18.04 LTS, xenial:16.04 LTS, trusty:14.04 LTS } Ubuntu 版本
 [ ] (proposed) 启用预发布软件源
 [ ] (src) 启用源码镜像
 ---
@@ -37,6 +43,55 @@ ${SRC_PREFIX}deb-src http://security.ubuntu.com/ubuntu/ ${version}-security main
 
 ${PROPOSED_PREFIX}deb ${_http}://${_domain}/ubuntu/ ${version}-proposed main restricted universe multiverse
 ${PROPOSED_PREFIX || SRC_PREFIX}deb-src ${_http}://${_domain}/ubuntu/ ${version}-proposed main restricted universe multiverse
+```
+
+### DEB822 格式（`/etc/apt/sources.list.d/ubuntu.sources`）
+
+根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/apt/sources.list.d/ubuntu.sources` 的原有内容：
+
+```bash varcode
+[ ] (version) { plucky:25.04, oracular:24.10, noble:24.04 LTS, jammy:22.04 LTS, lunar:23.04, kinetic:22.10, focal:20.04 LTS, bionic:18.04 LTS, xenial:16.04 LTS, trusty:14.04 LTS } Ubuntu 版本
+[ ] (proposed) 启用预发布软件源
+[ ] (src) 启用源码镜像
+---
+const SRC_PREFIX = src ? "" : "# ";
+const PROPOSED_PREFIX = proposed ? "" : "# ";
+---
+Types: deb
+URIs: ${_http}://${_domain}/ubuntu
+Suites: ${version} ${version}-updates ${version}-backports
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+${SRC_PREFIX}Types: deb-src
+${SRC_PREFIX}URIs: ${_http}://${_domain}/ubuntu
+${SRC_PREFIX}Suites: ${version} ${version}-updates ${version}-backports
+${SRC_PREFIX}Components: main restricted universe multiverse
+${SRC_PREFIX}Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+Types: deb
+URIs: http://security.ubuntu.com/ubuntu
+Suites: ${version}-security
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+${SRC_PREFIX}Types: deb-src
+${SRC_PREFIX}URIs: http://security.ubuntu.com/ubuntu
+${SRC_PREFIX}Suites: ${version}-security
+${SRC_PREFIX}Components: main restricted universe multiverse
+${SRC_PREFIX}Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+${PROPOSED_PREFIX}Types: deb
+${PROPOSED_PREFIX}URIs: ${_http}://${_domain}/ubuntu
+${PROPOSED_PREFIX}Suites: ${version}-proposed
+${PROPOSED_PREFIX}Components: main restricted universe multiverse
+${PROPOSED_PREFIX}Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+${PROPOSED_PREFIX || SRC_PREFIX}Types: deb-src
+${PROPOSED_PREFIX || SRC_PREFIX}URIs: ${_http}://${_domain}/ubuntu
+${PROPOSED_PREFIX || SRC_PREFIX}Suites: ${version}-proposed
+${PROPOSED_PREFIX || SRC_PREFIX}Components: main restricted universe multiverse
+${PROPOSED_PREFIX || SRC_PREFIX}Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
 ```
 
 2. 通过如下命令更新软件。
