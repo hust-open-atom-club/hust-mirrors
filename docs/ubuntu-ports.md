@@ -3,7 +3,7 @@ title: Ubuntu-Ports 镜像使用帮助
 sidebar_label: Ubuntu Ports
 ---
 
-# Ubuntu Ports使用教程
+# Ubuntu Ports 使用教程
 
 ## Ubuntu Ports 简介与软件管理
 
@@ -116,9 +116,9 @@ ${SUDO}apt update
 
 ### 软件包架构说明
 
-**本镜像专门为 `ARM` (arm64, armhf)、`PowerPC` (ppc64el)、`RISC-V` (riscv64) 以及 `s390x` 等非 x86 架构的设备提供软件包。**
+**本镜像专门为 `ARM (arm64, armhf)`、`PowerPC (ppc64el)`、`RISC-V (riscv64)` 以及 `s390x` 等非 x86 架构的设备提供软件包。**
 
-如果您使用的是标准的桌面 PC 或服务器（采用 Intel 或 AMD 的 x86\_64/amd64 处理器），请使用常规的 [Ubuntu 镜像](https://mirrors.hust.edu.cn/ubuntu/) 而非本镜像。
+如果您使用的是标准的桌面 PC 或服务器（采用 Intel 或 AMD 的 x86\_64/amd64 处理器），请使用常规的 [Ubuntu 镜像](https://mirrors.hust.edu.cn/ubuntu/)而非本镜像。
 
 ### 关于 HTTPS 源
 
@@ -135,5 +135,5 @@ ${SUDO}apt-get install apt-transport-https ca-certificates
 
 ## 引用
 
-1.  [清华大学tuna镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports/)
+1.  [清华大学 tuna 镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports/)
 2.  [中科大镜像源使用帮助](https://mirrors.ustc.edu.cn/help/ubuntu-ports.html)
