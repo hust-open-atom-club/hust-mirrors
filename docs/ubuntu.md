@@ -4,6 +4,10 @@ sidebar_label: Ubuntu
 type: os
 automated: true # 可自动配置
 id: ubuntu
+detection:
+  checks:
+    - type: os_release
+      name: Ubuntu
 ---
 
 ## Ubuntu 简介与软件管理
@@ -147,13 +151,11 @@ files:
 ```
 
 ```yaml cli-nodocs
-type: TestAndExecute # 执行测试，若通过则执行脚本
+type: Execute # 执行测试，若通过则执行脚本
 description: Update Ubuntu APT sources
-required: false
+optional: true
 privileged: true
 interpreter: shell # 可选shell脚本，后续可能会增加python
-test: |
-  ask_question "是否更新 Ubuntu 软件源？(y/n)"
 exec: |
   apt-get -qq update
 ```
