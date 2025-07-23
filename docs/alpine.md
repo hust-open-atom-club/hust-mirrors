@@ -1,54 +1,62 @@
 ---
 sidebar_label: Alpine Linux
-title: Alpine Linux 软件仓库镜像使用帮助
+title: Alpine Linux software repository image usage help
 cname: AplineLinux
 ---
-## Alpine Linux 简介与软件管理
-Alpine Linux 是一个基于 musl libc 和 BusyBox 的独立、非商业、通用的 Linux 发行版，旨在提供小巧、简单、安全和高效的基础系统。Alpine Linux 的设计理念是 “Keep It Simple”，并且由于其轻量级和高效的特性，它在 Docker 和 Kubernetes 等容器环境中非常受欢迎。
+## Alpine Linux profile and software manage
+Alpine Linux is a independent, uncommercial, universial Linux edition that based on musl libc and BusyBox, aim 
+to provide compact, simple, safe and efficient basic system.The design concept of Alpine Linux is "Keep It Simple",moreover because its lightweight and efficient characteristic, it is so popular in Docker and Kubernetes
+container environments.
 
-Alpine Linux 的包管理系统是 apk (Alpine Package Keeper)。apk 是一个用于 Alpine Linux 的包管理工具，它可以用于安装新的软件包、升级或删除已存在的软件包、更新软件包索引等。
+The package management system of Alpine Linux is apk(Alpine Package Keeper). apk is a package management tool that used to Alpine Linux, it can be used to install new software packages, upgrade or delete existing software packages, update software package index and so on. 
 
-## Alpine Linux 软件源替换
+
+## Alpine Linux software source replacement
 
 :::caution
-**为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
+**To avoid software source configuration file appears problems after replacing, please backup the software source configuration file that built-in the system first**
 :::
 
-1. 编辑 `/etc/apk/repositories`，将下列内容替换原有的内容：
+
+1. Edit `/etc/apk/repositories`, replace the original content with the below content
 
 ```bash varcode
-[ ] (version) {  v3.16:v3.16, v3.17:v3.17, v3.18:v3.18, v3.19:v3.19 } Alpine 版本
+[ ] (version) {  v3.16:v3.16, v3.17:v3.17, v3.18:v3.18, v3.19:v3.19 } Alpine edition
 ---
 ---
 ${_http}://${_domain}/alpine/${version}/main
 ${_http}://${_domain}/alpine/${version}/community
 ```
 
-2. 更新软件包缓存
+2. Update the software package cache 
 
 ```shell varcode
-[ ] (root) 是否为 root 用户
+[ ] (root) whether the root user or not 
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
 ${SUDO}apk update
 ```
 
-## 一键换源
+## one click to change source
 
 :::caution
-本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
+This way only apply to change from the official source to this site, if you have changed the source, please
+don't use the following order.
 :::
 
-使用 `sed` 命令将软件源配置文件中的默认源地址 [http://dl-cdn.alpinelinux.org](http://dl-cdn.alpinelinux.org) 直接替换为当前镜像源站：
+Directly replace it with the current mirror source website:
+
+use `sed` order to make the default source address that in software source configuration file [http://dl-cdn.alpinelinux.org](http://dl-cdn.alpinelinux.org) replace it with the current mirror source site directly: 
 
 ```shell varcode
-[ ] (root) 是否为 root 用户
+[ ] (root) whether the root user or not
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
 ${SUDO}sed -i 's/dl-cdn.alpinelinux.org/${_domain}/g' /etc/apk/repositories
 ```
 
-## 引用
-1. [Tuna 镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/alpine/)  
+## Quote
+1. [Tuna Use help of mirror sources](https://mirrors.tuna.tsinghua.edu.cn/help/alpine/)  
+    
