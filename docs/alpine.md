@@ -42,7 +42,7 @@ ${SUDO}apk update
 
 :::caution
 This way only apply to change from the official source to this site, if you have changed the source, please
-don't use the following order.
+don't use the following orders.
 :::
 
 Directly replace it with the current mirror source website:
