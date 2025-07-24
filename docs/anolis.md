@@ -1,40 +1,30 @@
 ---
 sidebar_label: Anolis OS
-title: Anolis software repository mirror use help
+title: Anolis 软件仓库镜像使用帮助
 ---
 
-## Anolis OS profile and software govern
+## Anolis OS 简介与软件管理
 
-Anolis OS is OpenAnolis community launch completely open-source, neutral and open distirbution, it supports
-multiple computing architectures, face to cloud scenarios optimized too. Compatible with the CentOS sortware
-ecosystem. Anolis OS is aimed at providing stable, high-performance, safe, reliable and open-source operating
-system services for a wide number of developers operation and maintenance personnel.
+Anolis OS 是 OpenAnolis 社区推出的完全开源、中立、开放的发行版，它支持多计算架构，也面向云端场景优化，兼容 CentOS 软件生态。Anolis OS 旨在为广大开发者和运维人员提供稳定、高性能、安全、可靠、开源的操作系统服务。
 
+Anolis 使用 YUM 工具来管理 RPM 软件包，查询软件包信息，从指定软件库获取软件包，自动处理依赖关系以安装及卸载软件包，以及更新系统。Anolis OS 通过 `/etc/yum.repos.d/` 下的文件来进行配置与管理软件源。
 
-Anolis use YUM tools to govern RPM software package, enquiry software package information,get from the prescribed software library to software packages, manage dependenices automaticially to install and uninstall software 
-packages, and also update system. Anolis OS configures and manages software sources through files under `/etc/yum.repos.d/`
-
-## one click to change source
+## 一键换源
 
 :::caution
-Because of Anolis OS 23 has been released no stable version yet, this mirror site only provide the versions lower
-than Anolis OS 23 software source, if you use other Anolis OS versions, please don't use the mirror site and the following orders.
+由于 Anolis OS 23 尚无稳定版发布，本镜像站仅提供版本低于 Anolis OS 23 的软件源，如果您使用的是其他版本的 Anolis OS，请勿使用本镜像站及下列命令。
 :::
 
 :::caution
-The following orders only replace Anolis OS relative software sources, don't replace other software sources,
-such as EPEL.
+以下命令仅会替换 Anolis OS 相关软件源，不会替换其他软件源，例如 EPEL。
 
-This way only apply to change from the official source to this site, if you have changed the source, please
-don't use the following order.
+本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
 :::
 
-
-use `sed` order to modify software source configuration files in `/etc/yum.repos.d/` folder, original 
-configuration files will be backed up with `.bak` suffix.
+使用 `sed` 命令修改 `/etc/yum.repos.d/` 文件夹下的软件源配置文件，原有的配置文件会被备份为 `.bak` 后缀的文件。
 
 ```shell varcode
-[ ] (root) whether the root user or not
+[ ] (root) 是否为 root 用户
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
@@ -43,16 +33,4 @@ ${SUDO}sed -i.bak -E "s|https?://(mirrors\\.openanolis\\.cn)|${_http}://${_domai
 ${SUDO}yum makecache
 ${SUDO}yum update
 ```
-
-
-
-
-
-
-
-
-
-
-
-
 
