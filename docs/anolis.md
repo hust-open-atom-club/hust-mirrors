@@ -33,4 +33,3 @@ ${SUDO}sed -i.bak -E "s|https?://(mirrors\\.openanolis\\.cn)|${_http}://${_domai
 ${SUDO}yum makecache
 ${SUDO}yum update
 ```
-
