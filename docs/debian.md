@@ -34,6 +34,18 @@ files:
     match: '^deb .*debian.*'
     replace: 'deb ${_http}:\/\/${_domain}\/debian\/'
     comment: '> 对于Debian 11及**以下**版本，使用这个命令'
+display_policy:
+  kind: OneOf
+  variables:
+    - name: version
+      description: Ubuntu 版本
+      options:
+        - name: '>= 24.04'
+          display: 
+            - 1
+        - name: '<= 23.10'
+          display:
+            - 2
 ```
 
 

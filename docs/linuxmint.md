@@ -37,6 +37,8 @@ files:
   - path: /etc/apt/offical-package-repositories.list
     match: 'http://archive.ubuntu.com'
     replace: '${_http}://${_domain}'
+display_policy:
+  kind: All
 ```
 
 :::caution

@@ -31,11 +31,21 @@ files:
   - path: /etc/apt/sources.list
     match: 'https?://([^/]+)/deepin'
     replace: '${_http}://${_domain}/deepin'
-    comment: '> 对于Deepin 20，使用这个命令'
   - path: /etc/apt/sources.list
     match: 'https?://([^/]+)/beige'
     replace: '${_http}://${_domain}/deepin/beige'
-    comment: '> 对于Deepin 23，使用这个命令'
+display_policy:
+  kind: OneOf
+  variables:
+    - name: version
+      description: Deepin 版本
+      options:
+        - name: 'Deepin 20'
+          display: 
+            - 1
+        - name: 'Deepin 23'
+          display:
+            - 2
 ```
 
 :::caution
