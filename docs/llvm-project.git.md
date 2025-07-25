@@ -1,6 +1,7 @@
 ---
 title: LLVM Project Git 镜像使用帮助
 sidebar_label: llvm-project.git
+type: repo
 ---
 
 
@@ -22,9 +23,14 @@ LLVM 是一个开源的项目，是一个编译器框架，是一系列模块化
 ## LLVM Project Git 镜像使用帮助
 
 如需克隆代码，使用
-
-```shell varcode
-git clone ${_http}://${_domain}/llvm-project.git
+```yaml cli
+type: Execute
+privileged: false
+interpreter: shell
+exec: |
+  #{USE_IN_DOCS/}
+  git clone ${_http}://${_domain}/llvm-project.git
+  #{/USE_IN_DOCS}
 ```
 
 由于仓库体积均较大，执行 `git clone` 可能需要较长时间。
@@ -37,8 +43,14 @@ git remote add mirror ${_http}://${_domain}/llvm-project.git
 
 或运行
 
-```shell varcode
-git remote set-url origin ${_http}://${_domain}/llvm-project.git
+```yaml cli
+type: Execute
+privileged: false
+interpreter: shell
+exec: |
+  #{USE_IN_DOCS/}
+  git remote set-url origin ${_http}://${_domain}/llvm-project.git
+  #{/USE_IN_DOCS}
 ```
 
 将默认上游设置为镜像站

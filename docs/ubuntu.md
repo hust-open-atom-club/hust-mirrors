@@ -1,8 +1,8 @@
 ---
 title: Ubuntu 镜像使用帮助
 sidebar_label: Ubuntu
-type: os
-automated: true # 可自动配置
+type: OS
+automated: true
 id: ubuntu
 detection:
   checks:
@@ -119,7 +119,7 @@ files:
     replace: 'URIs: ${_http}:\/\/${_domain}\/ubuntu-ports\/'
     comment: '> 对于Ubuntu 24.04及**以上**版本，使用这个命令'
   - path: /etc/apt/sources.list
-    match: '^deb .*security.ubuntu.com.*'
+    match: '^deb .*ports.ubuntu.com.*'
     replace: 'deb ${_http}:\/\/${_domain}\/ubuntu-ports\/'
     comment: '> 对于Ubuntu 23.10及**以下**版本，使用这个命令'
 ```
@@ -157,7 +157,7 @@ optional: true
 privileged: true
 interpreter: shell # 可选shell脚本，后续可能会增加python
 exec: |
-  apt-get -qq update
+  apt-get update
 ```
 
 ## 注意事项
