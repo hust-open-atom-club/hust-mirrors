@@ -12,11 +12,36 @@ Debian 使用软件包管理工具 APT 来管理 DEB 软件包。具体来说，
 
 ## Debian 软件源替换
 
+### 一键换源
+
+:::caution
+本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
+:::
+
+使用 `sed` 命令将软件源配置文件中的默认源地址 [http://deb.debian.org/](http://deb.debian.org/) 直接替换为当前镜像源站。
+
+```yaml cli
+type: ReplaceIfExist
+required: true
+description: 替换Debian主仓库
+privileged: true
+files:
+  - path: /etc/apt/sources.list.d/ubuntu.sources
+    match: '^URIs: .*deb.debian.com.*'
+    replace: 'URIs: ${_http}:\/\/${_domain}\/debian\/'
+    comment: '> 对于Debian 12及**以上**版本，使用这个命令'
+  - path: /etc/apt/sources.list
+    match: '^deb .*debian.*'
+    replace: 'deb ${_http}:\/\/${_domain}\/debian\/'
+    comment: '> 对于Debian 11及**以下**版本，使用这个命令'
+```
+
+
 :::caution
 **为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
 :::
 
-1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/apt/sources.list` 的原有内容：
+### 1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/apt/sources.list` 的原有内容：
 
 ```shell varcode
 [ ] (version) { bookworm:Debian 12, bullseye:Debian 11, buster:Debian 10, testing:Testing, sid:Unstable SID} Debian 版本
@@ -43,32 +68,19 @@ ${SID_PREFIX}deb http://security.debian.org/debian-security ${version}-security 
 ${SID_PREFIX}${SRC_PREFIX}deb-src http://security.debian.org/debian-security ${version}-security main contrib non-free${NFW}
 ```
 
-2. 通过如下命令更新软件。
+### 2. 通过如下命令更新软件。
 
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}apt update
+```yaml cli
+type: Execute
+privileged: true
+interpreter: shell
+exec: |
+  #{USE_IN_DOCS/}
+  apt-get update
+  #{/USE_IN_DOCS}
 ```
 
-## 一键换源
 
-:::caution
-本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
-:::
-
-使用 `sed` 命令将软件源配置文件中的默认源地址 [http://deb.debian.org/](http://deb.debian.org/) 直接替换为当前镜像源站。
-
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}sed -i.bak 's|https\\?://deb.debian.org|${_http}://${_domain}|g' /etc/apt/sources.list
-${SUDO}apt update
-```
 
 ## 注意事项
 
@@ -85,17 +97,6 @@ ${SUDO}apt install apt-transport-https ca-certificates
 ${SUDO}apt update
 ```
 
-### 关于 Debian Docker 镜像
-
-目前，最新版的 Debian Docker（Debian 12，bookworm）镜像将默认 apt 配置文件置于 `/etc/apt/sources.list.d` 目录中。手动替换软件源时，请使用以下指令使原配置文件无效化并备份：
-
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}mv /etc/apt/sources.list.d/debian.sources /etc/apt/sources.list.d/debian.sources.bak
-```
 
 ## Debian CD 镜像 {#cd}
 

@@ -57,6 +57,8 @@ const formatYamlAsMarkdown = (yamlData) => {
       const path = fileInfo.path || '';
       const matchPattern = fileInfo.match || '';
       const replaceText = fileInfo.replace || '';
+      const statement = fileInfo.statement || '';
+      const flags = fileInfo.flags || '';
       const comment = fileInfo.comment || '';
       
       lines.push(`**替换文件${i + 1}**：${path}\n`);
@@ -66,7 +68,14 @@ const formatYamlAsMarkdown = (yamlData) => {
       lines.push("示例命令：");
       // 使用 sed 替换正则
 
-      const sedCmd = `sed -i.bak "s/${matchPattern}/${replaceText}/g" ${path}`;
+      let sedCmd;
+      if (statement) {
+        sedCmd = `sed -i.bak ${flags} "${statement}" ${path}`;
+      } else {
+        sedCmd = `sed -i.bak -E -e "s|${matchPattern}|${replaceText}|g" ${path}`;
+      }
+
+
       if (yamlData.privileged) {
         lines.push("```shell varcode");
         lines.push("[ ] (root) 是否为 root 用户");
@@ -83,20 +92,53 @@ const formatYamlAsMarkdown = (yamlData) => {
         }
       }
       
-      
       if (i < files.length - 1) {
         lines.push("");
       }
     });
-  } else if (actionType === 'TestAndExecute') {
+  } else if (actionType === 'TestAndExecute' || actionType === 'Execute') {
     lines.push(`**操作方法：${yamlData.description || '执行命令'}**\n`);
-
     // 处理test部分
     if (yamlData.test) {
       const testContent = extractDocsContent(yamlData.test.trim());
       if (testContent) {
         lines.push("测试条件：");
-        lines.push(`\`\`\`bash varcode\n${testContent}\n\`\`\``);
+        
+        if (yamlData.privileged) {
+          lines.push("```shell varcode");
+          lines.push("[ ] (root) 是否为 root 用户");
+          lines.push("---");
+          lines.push("const SUDO = !root ? 'sudo ' : '';");
+          lines.push("---");
+          const testLines = testContent.split('\n');
+          let inHereDoc = false;
+          let hereDocDelimiter = '';
+          
+          testLines.forEach(line => {
+            // 检查是否是here-document的开始
+            const hereDocMatch = line.match(/<<\s*([A-Za-z_][A-Za-z0-9_]*|'[^']*'|"[^"]*")/);
+            if (hereDocMatch && !inHereDoc) {
+              inHereDoc = true;
+              hereDocDelimiter = hereDocMatch[1].replace(/['"]/g, ''); // 移除引号
+              lines.push(`\${SUDO}${line}`);
+            } else if (inHereDoc && line.trim() === hereDocDelimiter) {
+              // here-document的结束
+              inHereDoc = false;
+              hereDocDelimiter = '';
+              lines.push(line);
+            } else if (inHereDoc) {
+              // here-document的内容，不添加SUDO
+              lines.push(line);
+            } else {
+              // 普通命令行，添加SUDO
+              lines.push(`\${SUDO}${line}`);
+            }
+          });
+        } else {
+          lines.push('```bash varcode');
+          lines.push(testContent);
+        }
+        lines.push('```');
         lines.push("**请确定测试条件满足后再执行命令。**\n");
       }
     }
@@ -106,7 +148,41 @@ const formatYamlAsMarkdown = (yamlData) => {
       const execContent = extractDocsContent(yamlData.exec.trim());
       if (execContent) {
         lines.push("执行命令：");
-        lines.push(`\`\`\`bash varcode\n${execContent}\n\`\`\``);
+        if (yamlData.privileged) {
+          lines.push("```shell varcode");
+          lines.push("[ ] (root) 是否为 root 用户");
+          lines.push("---");
+          lines.push("const SUDO = !root ? 'sudo ' : '';");
+          lines.push("---");
+          const execLines = execContent.split('\n');
+          let inHereDoc = false;
+          let hereDocDelimiter = '';
+          
+          execLines.forEach(line => {
+            // 检查是否是here-document的开始
+            const hereDocMatch = line.match(/<<\s*([A-Za-z_][A-Za-z0-9_]*|'[^']*'|"[^"]*")/);
+            if (hereDocMatch && !inHereDoc) {
+              inHereDoc = true;
+              hereDocDelimiter = hereDocMatch[1].replace(/['"]/g, ''); // 移除引号
+              lines.push(`\${SUDO}${line}`);
+            } else if (inHereDoc && line.trim() === hereDocDelimiter) {
+              // here-document的结束
+              inHereDoc = false;
+              hereDocDelimiter = '';
+              lines.push(line);
+            } else if (inHereDoc) {
+              // here-document的内容，不添加SUDO
+              lines.push(line);
+            } else {
+              // 普通命令行，添加SUDO
+              lines.push(`\${SUDO}${line}`);
+            }
+          });
+        } else {
+          lines.push('```bash varcode');
+          lines.push(execContent);
+        }
+        lines.push('```');
       }
     }
   }

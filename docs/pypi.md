@@ -1,9 +1,9 @@
 ---
 sidebar_label: PyPI
 title: Python 软件包索引仓库使用帮助
-type: language # 语言仓库
+type: lang
 automated: true 
-detection: # 用于检测环境中是否存在相应语言，并进行自动自动替换
+detection:
   policy: OneOf
   checks:
     - type: command
@@ -41,15 +41,17 @@ pip install -i https://${_domain}/pypi/web/simple <some-package>
 type: TestAndExecute
 required: false
 privileged: false
-provide_backup: true # 提供存储备份文件的路径 {.backup.path}
 interpreter: shell
 test: |
   has_command pip
 exec: |
-  pip config get global.index-url 2>/dev/null > {.backup.path}
+  pip config get global.index-url 2>/dev/null > ${_backup_dir}/pip.bak
   #{USE_IN_DOCS/}
-  pip config set global.index-url https://${_domain}
+  pip config set global.index-url "https://${_domain}/pypi/web/simple/"
   #{/USE_IN_DOCS}
+recover: |
+  last_url=$(cat "${_backup_dir}/pip.bak")
+  pip config set global.index-url "$last_url"
 ```
 
 :::caution
@@ -74,10 +76,13 @@ interpreter: shell
 test: |
   has_command pdm
 exec: |
-  pdm config pypi.url 2>/dev/null > {.backup.path}
+  pdm config pypi.url 2>/dev/null > ${_backup_dir}/pdm.bak
   #{USE_IN_DOCS/}
-  pdm config global.index-url https://${_domain}
+  pdm config global.index-url https://${_domain}/pypi/web/simple/
   #{/USE_IN_DOCS}
+recover: |
+  last_url=$(cat "${_backup_dir}/pdm.bak")
+  pdm config pypi.url "$last_url"
 ```
 
 或使用环境变量设置 PDM 软件镜像：
@@ -125,7 +130,7 @@ exec: |
   if [ ! -f /etc/uv/uv.toml ]; then
     touch /etc/uv/uv.toml
   else
-    cp /etc/uv/uv.toml {.backup.path}
+    cp /etc/uv/uv.toml ${_backup_dir}/uv.bak
   fi
   #{USE_IN_DOCS/}
   cat >> /etc/uv/uv.toml << EOF 
@@ -134,6 +139,9 @@ exec: |
   default = true
   EOF
   #{/USE_IN_DOCS}
+recover: |
+  rm /etc/uv/uv.toml
+  cp ${_backup_dir}/uv.bak /etc/uv/uv.toml
 ```
 
 ## 切换回默认镜像
