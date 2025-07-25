@@ -2,6 +2,7 @@
 title: Linux Mint 镜像使用帮助
 sidebar_label: Linux Mint
 cname: LinuxMint
+type: OS
 ---
 
 ## Linux Mint 简介与软件管理
@@ -15,33 +16,7 @@ Linux Mint 也采用 apt 作为包管理器，与 Ubuntu 和 Debian 类似，你
 
 ## Linux Mint 软件源替换
 
-:::caution
-**为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
-:::
-
-1. 修改 `/etc/apt/sources.list.d/official-package-repositories.list`，把 `packages.linuxmint.com` 替换为镜像源
-
-```deb varcode
-[] (release) { victoria:21.2, vera:21.1, vanessa:21, una:20.3, uma:20.2, ulyssa:20.1 } Linux Mint 版本
----
-deb ${_http}://${_domain}/linuxmint ${release} main upstream import backport
-```
-
-2. 通过如下命令更新软件。
-
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}apt update
-```
-
-:::caution
-完成后请不要再使用 mintsources（自带的图形化软件源设置工具）进行任何操作，因为在操作后，无论是否有按 “确定”，mintsources 均会复写 `/etc/apt/sources.list.d/official-package-repositories.list`
-:::
-
-## 一键换源
+### 一键换源
 
 :::caution
 本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
@@ -49,14 +24,50 @@ ${SUDO}apt update
 
 使用 `sed` 命令将软件源配置文件中的默认源地址 [http://packages.linuxmint.com](http://packages.linuxmint.com) 直接替换为当前镜像源站
 
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}sed -i.bak 's|http://packages.linuxmint.com|${_http}://${_domain}/linuxmint|g' /etc/apt/offical-package-repositories.list
-${SUDO}sed -i 's|http://archive.ubuntu.com|${_http}://${_domain}|g' /etc/apt/offical-package-repositories.list
+```yaml cli
+type: ReplaceIfExist
+required: true
+optional: false
+description: 替换Linux Mint主仓库
+privileged: true
+files:
+  - path: /etc/apt/offical-package-repositories.list
+    match: 'http://packages.linuxmint.com'
+    replace: '${_http}://${_domain}/linuxmint'
+  - path: /etc/apt/offical-package-repositories.list
+    match: 'http://archive.ubuntu.com'
+    replace: '${_http}://${_domain}'
 ```
+
+:::caution
+**为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
+:::
+
+### 1. 修改 `/etc/apt/sources.list.d/official-package-repositories.list`，把 `packages.linuxmint.com` 替换为镜像源
+
+```deb varcode
+[] (release) { victoria:21.2, vera:21.1, vanessa:21, una:20.3, uma:20.2, ulyssa:20.1 } Linux Mint 版本
+---
+deb ${_http}://${_domain}/linuxmint ${release} main upstream import backport
+```
+
+### 2. 通过如下命令更新软件。
+
+```yaml cli
+type: Execute
+privileged: true
+interpreter: shell
+exec: |
+  #{USE_IN_DOCS/}
+  apt-get update
+  #{/USE_IN_DOCS}
+```
+
+:::caution
+完成后请不要再使用 mintsources（自带的图形化软件源设置工具）进行任何操作，因为在操作后，无论是否有按 “确定”，mintsources 均会复写 `/etc/apt/sources.list.d/official-package-repositories.list`
+:::
+
+
 
 ## Linux Mint 安装镜像 {#cd}
 Linux Mint 安装镜像提供 cinnamon，mate 和 xfce 三种桌面环境，分别对应了三个版本的安装镜像。如果需

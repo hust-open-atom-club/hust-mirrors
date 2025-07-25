@@ -136,14 +136,16 @@ class MarkdownParser:
         
         return '\n'.join(check_lines)
     
-    def generate_replace_function(self, yaml_block: Dict[str, Any], func_name: str, mirror_id: str) -> str:
-        """生成ReplaceIfExist类型的函数"""
+    def generate_replace_function(self, yaml_block: Dict[str, Any], func_name: str, mirror_id: str, count: int) -> Tuple[str, List[str]]:
+        """生成ReplaceIfExist类型的函数，返回函数代码和备份文件列表"""
         files = yaml_block.get('files', [])
         privileged = yaml_block.get('privileged', False)
         optional = yaml_block.get('optional', False)
         description = yaml_block.get('description', 'Replace configuration')
         
         lines = []
+        backup_files = []  # 收集备份文件信息
+        
         lines.append(f"{func_name}() {{")
         lines.append(f"\t# {description}")
         
@@ -156,36 +158,47 @@ class MarkdownParser:
             lines.append("\tset_sudo")
             lines.append("")
         
-        for file_config in files:
+        for file_idx, file_config in enumerate(files):
             path = file_config.get('path', '')
             match_pattern = file_config.get('match', '')
             replace_pattern = file_config.get('replace', '')
+            statement = file_config.get('statement', '')
             comment = file_config.get('comment', '')
             
-            if not all([path, match_pattern, replace_pattern]):
-                continue
                 
             if comment:
                 lines.append(f"\t# {comment.lstrip('> ')}")
             
-            # 创建备份
+            # 生成备份文件名
+            backup_filename = f"{mirror_id}_{count}_{file_idx+1}.bak"
+            backup_files.append((path, backup_filename))
+            
+            # 创建备份到_backup_dir
             lines.append(f"\tif [ -f \"{path}\" ]; then")
             sudo_prefix = "$sudo " if privileged else ""
-            lines.append(f"\t\t{sudo_prefix}cp \"{path}\" \"{path}.bak\" || {{")
+            lines.append(f"\t\t{sudo_prefix}mkdir -p \"${{_backup_dir}}\" || {{")
+            lines.append(f"\t\t\tprint_error \"Failed to create backup directory\"")
+            lines.append(f"\t\t\treturn 1")
+            lines.append(f"\t\t}}")
+            lines.append(f"\t\t{sudo_prefix}cp \"{path}\" \"${{_backup_dir}}/{backup_filename}\" || {{")
             lines.append(f"\t\t\tprint_error \"Backup {path} failed\"")
             lines.append(f"\t\t\treturn 1")
             lines.append(f"\t\t}}")
+
+            if statement:
+                lines.append(f"\t\t{sudo_prefix} sed -i -E '{statement}' \"{path}\" || {{")
+            else:
+                # 执行替换
+                # 处理变量替换：${_http} -> $http, ${_domain} -> $domain
+                replace_processed = replace_pattern.replace('${_http}', '$http').replace('${_domain}', '$domain')
+                match_processed = match_pattern.replace('${_http}', '$http').replace('${_domain}', '$domain')
+                
+                # 转义sed命令中的特殊字符
+                replace_escaped = replace_processed.replace('/', r'\/')
+                match_escaped = match_processed.replace('/', r'\/')
+                
+                lines.append(f"\t\t{sudo_prefix}sed -i -E 's|{match_escaped}|{replace_escaped}|g' \"{path}\" || {{")
             
-            # 执行替换
-            # 处理变量替换：${_http} -> $http, ${_domain} -> $domain
-            replace_processed = replace_pattern.replace('${_http}', '$http').replace('${_domain}', '$domain')
-            match_processed = match_pattern.replace('${_http}', '$http').replace('${_domain}', '$domain')
-            
-            # 转义sed命令中的特殊字符
-            replace_escaped = replace_processed.replace('/', r'\/')
-            match_escaped = match_processed.replace('/', r'\/')
-            
-            lines.append(f"\t\t{sudo_prefix}sed -i 's|{match_escaped}|{replace_escaped}|g' \"{path}\" || {{")
             lines.append(f"\t\t\tprint_error \"Failed to update {path}\"")
             lines.append(f"\t\t\treturn 1")
             lines.append(f"\t\t}}")
@@ -197,13 +210,15 @@ class MarkdownParser:
         lines.append("\treturn 0")
         lines.append("}")
         
-        return '\n'.join(lines)
+        return '\n'.join(lines), backup_files
     
-    def generate_test_execute_function(self, yaml_block: Dict[str, Any], func_name: str, mirror_id: str) -> str:
-        """生成TestAndExecute类型的函数"""
+    def generate_test_execute_function(self, yaml_block: Dict[str, Any], func_name: str, mirror_id: str) -> Tuple[str, str]:
+        """生成TestAndExecute类型的函数，返回函数代码和恢复命令"""
         test_script = yaml_block.get('test', '').strip()
         exec_script = yaml_block.get('exec', '').strip()
+        recover_script = yaml_block.get('recover', '').strip()
         privileged = yaml_block.get('privileged', False)
+        required = yaml_block.get('required', False)
         optional = yaml_block.get('optional', False)
         provide_backup = yaml_block.get('provide_backup', False)
         description = yaml_block.get('description', 'Test and execute')
@@ -223,7 +238,7 @@ class MarkdownParser:
         
         # 如果需要备份路径，设置备份文件变量
         if provide_backup:
-            lines.append(f"\tbackup_path=\"/tmp/{mirror_id}_backup_$(date +%s)\"")
+            lines.append(f"\tbackup_path=\"${{_backup_dir}}\"")
             lines.append("")
         
         # 添加测试部分
@@ -236,7 +251,8 @@ class MarkdownParser:
                     line_escaped = line.replace('"', '\\"')
                     lines.append(f"\t{line} || {{")
                     lines.append(f"\t\tprint_warning \"Test condition failed: {line_escaped}\"")
-                    lines.append(f"\t\treturn 1")
+                    if required:
+                        lines.append(f"\t\treturn 1")
                     lines.append(f"\t}}")
             lines.append("")
         
@@ -245,7 +261,7 @@ class MarkdownParser:
             lines.append("\t# Execute commands")
             # 处理备份路径替换
             if provide_backup:
-                exec_script = exec_script.replace('{.backup.path}', '$backup_path')
+                exec_script = exec_script.replace('${_backup_dir}', '$backup_path')
             
             # 处理文档标记 #{USE_IN_DOCS/} 和 #{/USE_IN_DOCS}
             # 这些标记内的内容应该被保留，而标记本身应该被移除
@@ -303,15 +319,21 @@ class MarkdownParser:
         lines.append("\treturn 0")
         lines.append("}")
         
-        return '\n'.join(lines)
+        # 处理恢复脚本
+        processed_recover = ""
+        if recover_script:
+            # 处理变量替换
+            processed_recover = recover_script.replace('${_backup_dir}', '$_backup_dir').replace('${_domain}', '$domain').replace('${_http}', '$http')
+        
+        return '\n'.join(lines), processed_recover
     
-    def generate_execute_function(self, yaml_block: Dict[str, Any], func_name: str, mirror_id: str) -> str:
-        """生成Execute类型的函数"""
+    def generate_execute_function(self, yaml_block: Dict[str, Any], func_name: str, mirror_id: str) -> Tuple[str, str]:
+        """生成Execute类型的函数，返回函数代码和恢复命令"""
         exec_script = yaml_block.get('exec', '').strip()
+        recover_script = yaml_block.get('recover', '').strip()
         privileged = yaml_block.get('privileged', False)
         optional = yaml_block.get('optional', False)
         description = yaml_block.get('description', 'Execute commands')
-        interpreter = yaml_block.get('interpreter', 'shell')
         
         lines = []
         lines.append(f"{func_name}() {{")
@@ -358,8 +380,7 @@ class MarkdownParser:
                             in_heredoc = True
                             if line.startswith('mkdir') or line.startswith('cp') or line.startswith('mv') or line.startswith('cat') or line.startswith('touch'):
                                 lines.append(f"\t{sudo_prefix}{line}")
-                            else:
-                                lines.append(f"\t{line}")
+
                             continue
                 
                 # 检测here-document结束
@@ -375,16 +396,65 @@ class MarkdownParser:
                     continue
                     
                 # 普通命令
-                if line.startswith('mkdir') or line.startswith('cp') or line.startswith('mv') or line.startswith('cat >') or line.startswith('touch'):
-                    lines.append(f"\t{sudo_prefix}{line}")
-                else:
-                    lines.append(f"\t{line}")
+                lines.append(f"\t{sudo_prefix}{line}")
+
         
         lines.append("")
         lines.append("\treturn 0")
         lines.append("}")
         
-        return '\n'.join(lines)
+        # 处理恢复脚本
+        processed_recover = ""
+        if recover_script:
+            # 处理变量替换
+            processed_recover = recover_script.replace('${_backup_dir}', '$_backup_dir').replace('${_domain}', '$domain').replace('${_http}', '$http')
+        
+        return '\n'.join(lines), processed_recover
+    
+    def collect_backup_files(self, yaml_blocks: List[Dict[str, Any]], mirror_id: str) -> List[str]:
+        """收集所有会在${_backup_dir}中创建的文件名"""
+        backup_files = []
+        
+        for i, yaml_block in enumerate(yaml_blocks):
+            block_type = yaml_block.get('type', '')
+            
+            if block_type == 'ReplaceIfExist':
+                # ReplaceIfExist操作会为每个文件创建备份
+                files = yaml_block.get('files', [])
+                for file_idx, file_config in enumerate(files):
+                    backup_filename = f"{mirror_id}_{i+1}_{file_idx+1}.bak"
+                    backup_files.append(backup_filename)
+            
+            elif block_type in ['TestAndExecute', 'Execute']:
+                # 检查exec脚本中是否有写入${_backup_dir}的操作
+                exec_script = yaml_block.get('exec', '')
+                if exec_script and '${_backup_dir}' in exec_script:
+                    # 分析脚本中可能创建的文件
+                    lines = exec_script.split('\n')
+                    for line in lines:
+                        line = line.strip()
+                        if '${_backup_dir}' in line:
+                            # 尝试提取文件名模式
+                            # 例如: "config get global.index-url > ${_backup_dir}/pip.bak"
+                            # 或: "cp /path/to/file ${_backup_dir}/backup.bak"
+                            import re
+
+                            # 匹配重定向到${_backup_dir}的操作
+                            redirect_match = re.search(r'>\s*\$\{_backup_dir\}/([^\s]+)', line)
+                            if redirect_match:
+                                backup_files.append(redirect_match.group(1))
+                            
+                            # 匹配cp命令到${_backup_dir}的操作  
+                            cp_match = re.search(r'cp\s+[^>]*?\s+\$\{_backup_dir\}/([^\s]+)', line)
+                            if cp_match:
+                                backup_files.append(cp_match.group(1))
+
+                            # 匹配mv命令到${_backup_dir}的操作  
+                            mv_match = re.search(r'mv\s+[^>]*?\s+\$\{_backup_dir\}/([^\s]+)', line)
+                            if mv_match:
+                                backup_files.append(mv_match.group(1))
+        
+        return backup_files
     
     def generate_shell_script(self, parsed_data: Dict[str, Any]) -> str:
         """生成完整的shell脚本"""
@@ -417,6 +487,10 @@ class MarkdownParser:
         script_lines.append(check_function)
         script_lines.append("")
         
+        # 收集恢复命令和备份文件
+        recover_commands = []
+        backup_files = []
+        
         # 为每个yaml block生成函数
         install_functions = []
         for i, yaml_block in enumerate(yaml_blocks):
@@ -424,26 +498,32 @@ class MarkdownParser:
             func_name = f"_{mirror_id}_install_{i+1}"
             
             if block_type == 'ReplaceIfExist':
-                func_code = self.generate_replace_function(yaml_block, func_name, mirror_id)
+                func_code, backup_info = self.generate_replace_function(yaml_block, func_name, mirror_id, i+1)
                 script_lines.append(func_code)
                 script_lines.append("")
                 install_functions.append(func_name)
+                backup_files.extend(backup_info)
             elif block_type == 'TestAndExecute':
-                func_code = self.generate_test_execute_function(yaml_block, func_name, mirror_id)
+                func_code, recover_cmd = self.generate_test_execute_function(yaml_block, func_name, mirror_id)
                 script_lines.append(func_code)
                 script_lines.append("")
                 install_functions.append(func_name)
+                if recover_cmd:
+                    recover_commands.append(recover_cmd)
             elif block_type == 'Execute':
-                func_code = self.generate_execute_function(yaml_block, func_name, mirror_id)
+                func_code, recover_cmd = self.generate_execute_function(yaml_block, func_name, mirror_id)
                 script_lines.append(func_code)
                 script_lines.append("")
                 install_functions.append(func_name)
+                if recover_cmd:
+                    recover_commands.append(recover_cmd)
             else:
                 print(f"Warning: Unknown yaml block type: {block_type}")
         
         # 生成主install函数
         if install_functions:
             script_lines.append("install() {")
+            script_lines.append("")
             for func_name in install_functions:
                 script_lines.append(f"\t{func_name} || return 1")
             script_lines.append("\tprint_success \"Mirror configuration updated successfully\"")
@@ -456,30 +536,81 @@ class MarkdownParser:
             script_lines.append("}")
             script_lines.append("")
         
-        # 生成uninstall和其他标准函数
-        script_lines.extend([
-            "uninstall() {",
-            "\t# Try to restore backup files",
-            "\tprint_info \"Looking for backup files...\"",
-            "\tfind /etc /usr/local/etc ~/.config -name \"*.bak\" -type f 2>/dev/null | while read -r backup_file; do",
-            "\t\toriginal_file=\"${backup_file%.bak}\"",
-            "\t\tif [ -f \"$backup_file\" ]; then",
-            "\t\t\tset_sudo",
-            "\t\t\t$sudo mv \"$backup_file\" \"$original_file\" && print_success \"Restored $original_file\"",
-            "\t\tfi",
-            "\tdone",
-            "}",
-            "",
-            "is_deployed() {",
-            "\t# Check if any config file contains our generation tag",
-            "\tgrep -r \"$gen_tag\" /etc /usr/local/etc ~/.config 2>/dev/null >/dev/null",
-            "}",
-            "",
-            "can_recover() {",
-            "\t# Check if backup files exist",
-            "\tfind /etc /usr/local/etc ~/.config -name \"*.bak\" -type f 2>/dev/null | head -1 | grep -q .",
-            "}",
-        ])
+        # 生成recover函数
+        script_lines.append("uninstall() {")
+        script_lines.append("\t# Recover from backup files and execute recovery commands")
+        script_lines.append("\tprint_info \"Starting recovery process...\"")
+        script_lines.append("")
+        
+        # 添加ReplaceIfExist的自动恢复
+        if backup_files:
+            script_lines.append("\t# Restore files from backup")
+            for original_path, backup_filename in backup_files:
+                script_lines.append(f"\tif [ -f \"${{_backup_dir}}/{backup_filename}\" ]; then")
+                script_lines.append(f"\t\tset_sudo")
+                script_lines.append(f"\t\t$sudo cp \"${{_backup_dir}}/{backup_filename}\" \"{original_path}\" 2>/dev/null || true")
+                script_lines.append(f"\t\tprint_info \"Restored {original_path}\"")
+                script_lines.append(f"\tfi")
+        
+        # 添加recover命令
+        if recover_commands:
+            script_lines.append("")
+            script_lines.append("\t# Execute recovery commands")
+            for recover_cmd in recover_commands:
+                if recover_cmd.strip():
+                    for line in recover_cmd.split('\n'):
+                        if line.strip():
+                            script_lines.append(f"\t{line.strip()} 2>/dev/null || true")
+        
+        script_lines.append("")
+        script_lines.append("\tprint_success \"Recovery completed\"")
+        script_lines.append("}")
+        script_lines.append("")
+        
+        # 收集所有会创建的备份文件
+        all_backup_files = self.collect_backup_files(yaml_blocks, mirror_id)
+        
+        # 只有当存在ReplaceIfExist操作或有其他创建备份文件的操作时才生成相应函数
+        has_replace_operations = any(yaml_block.get('type') == 'ReplaceIfExist' for yaml_block in yaml_blocks)
+        has_backup_files = bool(all_backup_files)
+        
+        if has_replace_operations:
+            # 生成can_recover函数 - 检查具体的备份文件是否存在
+            script_lines.append("can_recover() {")
+            script_lines.append("\t# Check if any backup files exist")
+            if all_backup_files:
+                conditions = []
+                for backup_file in all_backup_files:
+                    conditions.append(f"[ -f \"${{_backup_dir}}/{backup_file}\" ]")
+                condition_str = " || ".join(conditions)
+                script_lines.append(f"\t{condition_str}")
+            else:
+                script_lines.append("\t[ -d \"$_backup_dir\" ] && [ -n \"$(ls -A \"$_backup_dir\" 2>/dev/null)\" ]")
+            script_lines.append("}")
+            script_lines.append("")
+            
+            # 生成is_deployed函数 - 检查替换的文件中是否包含域名变量
+            if backup_files:
+                script_lines.append("is_deployed() {")
+                script_lines.append("\t# Check if any replaced file contains domain variable")
+                # 去重文件路径
+                unique_paths = set(original_path for original_path, _ in backup_files)
+                for original_path in unique_paths:
+                    script_lines.append(f"\t[ -f \"{original_path}\" ] && grep -q \"$domain\" \"{original_path}\" 2>/dev/null && return 1")
+                script_lines.append("\treturn 0")
+                script_lines.append("}")
+                script_lines.append("")
+        elif has_backup_files:
+            # 只有备份文件但没有ReplaceIfExist操作的情况，只生成can_recover函数
+            script_lines.append("can_recover() {")
+            script_lines.append("\t# Check if any backup files exist")
+            conditions = []
+            for backup_file in all_backup_files:
+                conditions.append(f"[ -f \"${{_backup_dir}}/{backup_file}\" ]")
+            condition_str = " || ".join(conditions)
+            script_lines.append(f"\t{condition_str}")
+            script_lines.append("}")
+            script_lines.append("")
         
         return '\n'.join(script_lines)
     

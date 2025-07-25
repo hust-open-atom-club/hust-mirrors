@@ -2,13 +2,21 @@
 title: QEMU Git 镜像使用帮助
 cname: 'qemu.git'
 sidebar_label: QEMU
+type: repo
 ---
 
 1. 克隆 `QEMU` 代码，运行
 
-```bash varcode
-git clone ${_http}://${_domain}/git/qemu.git
+```yaml cli
+type: Execute
+privileged: false
+interpreter: shell
+exec: |
+  #{USE_IN_DOCS/}
+  git clone ${_http}://${_domain}/git/qemu.git
+  #{/USE_IN_DOCS}
 ```
+
 
 2. 将 `mirror` 加入已有代码库，在已有仓库中运行
 
@@ -18,9 +26,16 @@ git remote add mirror ${_http}://${_domain}/git/qemu.git
 
 或
 
-```bash varcode
-git remote set-url origin ${_http}://${_domain}/git/qemu.git
+```yaml cli
+type: Execute
+privileged: false
+interpreter: shell
+exec: |
+  #{USE_IN_DOCS/}
+  git remote set-url origin ${_http}://${_domain}/git/qemu.git
+  #{/USE_IN_DOCS}
 ```
+
 
 将默认上游设置为当前软件镜像站。
 
