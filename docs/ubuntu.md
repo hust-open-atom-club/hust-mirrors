@@ -37,11 +37,21 @@ files:
   - path: /etc/apt/sources.list.d/ubuntu.sources
     match: '^URIs: .*archive.ubuntu.com.*'
     replace: 'URIs: ${_http}:\/\/${_domain}\/ubuntu\/'
-    comment: '> 对于Ubuntu 24.04及**以上**版本，使用这个命令'
   - path: /etc/apt/sources.list
     match: '^deb .*ubuntu.*'
     replace: 'deb ${_http}:\/\/${_domain}\/ubuntu\/'
-    comment: '> 对于Ubuntu 23.10及**以下**版本，使用这个命令'
+display_policy:
+  kind: OneOf
+  variables:
+    - name: version
+      description: Ubuntu 版本
+      options:
+        - name: '>= 24.04'
+          display: 
+            - 1
+        - name: '<= 23.10'
+          display:
+            - 2
 ```
 
 ### DEB822 格式（`/etc/apt/sources.list.d/ubuntu.sources`）
@@ -117,11 +127,21 @@ files:
   - path: /etc/apt/sources.list.d/ubuntu.sources
     match: '^URIs: .*ports.ubuntu.com.*'
     replace: 'URIs: ${_http}:\/\/${_domain}\/ubuntu-ports\/'
-    comment: '> 对于Ubuntu 24.04及**以上**版本，使用这个命令'
   - path: /etc/apt/sources.list
     match: '^deb .*ports.ubuntu.com.*'
     replace: 'deb ${_http}:\/\/${_domain}\/ubuntu-ports\/'
-    comment: '> 对于Ubuntu 23.10及**以下**版本，使用这个命令'
+display_policy:
+  kind: OneOf
+  variables:
+    - name: version
+      description: Ubuntu 版本
+      options:
+        - name: '>= 24.04'
+          display: 
+            - 1
+        - name: '<= 23.10'
+          display:
+            - 2
 ```
 
 
@@ -143,11 +163,21 @@ files:
   - path: /etc/apt/sources.list.d/ubuntu.sources
     match: '^URIs: .*security.ubuntu.com.*'
     replace: 'URIs: ${_http}:\/\/${_domain}\/ubuntu\/'
-    comment: '> 对于Ubuntu 24.04及**以上**版本，使用这个命令'
   - path: /etc/apt/sources.list
     match: '^deb .*security.ubuntu.com.*'
     replace: 'deb ${_http}:\/\/${_domain}\/ubuntu\/'
-    comment: '> 对于Ubuntu 23.10及**以下**版本，使用这个命令'
+display_policy:
+  kind: OneOf
+  variables:
+    - name: version
+      description: Ubuntu 版本
+      options:
+        - name: '>= 24.04'
+          display: 
+            - 1
+        - name: '<= 23.10'
+          display:
+            - 2
 ```
 
 ```yaml cli-nodocs
