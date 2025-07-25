@@ -1,40 +1,30 @@
 ---
 sidebar_label: Anolis OS
-title: Anolis software repository mirror use help
+title: Anolis Software Repository Mirror Use Guide
 ---
 
-## Anolis OS profile and software govern
+## Anolis OS Profile and Software Manage
 
-Anolis OS is OpenAnolis community launch completely open-source, neutral and open distirbution, it supports
-multiple computing architectures, face to cloud scenarios optimized too. Compatible with the CentOS sortware
-ecosystem. Anolis OS is aimed at providing stable, high-performance, safe, reliable and open-source operating
-system services for a wide number of developers operation and maintenance personnel.
+Anolis OS is a fully open-source, neutral, and open distribution launched by the OpenAnolis community. It supports multiple computing architectures, is optimized for cloud scenarios, and is compatible with the CentOS software ecosystem. Anolis OS aims to provide stable, high-performance, secure, reliable, and open-source operating system services for a wide range of developers and operations and maintenance personnel.
 
+Anolis uses YUM tool to manage RPM packages, enquiry software package information, obtain packages from specified software repositories, automatically handle dependencies for package installation and uninstallation, and update the system. Anolis OS configures and manages software sources through files in `/etc/yum.repos.d/`.
 
-Anolis use YUM tools to govern RPM software package, enquiry software package information,get from the prescribed software library to software packages, manage dependenices automaticially to install and uninstall software 
-packages, and also update system. Anolis OS configures and manages software sources through files under `/etc/yum.repos.d/`
-
-## one click to change source
+## One-click Source Replacement
 
 :::caution
-Because of Anolis OS 23 has been released no stable version yet, this mirror site only provide the versions lower
-than Anolis OS 23 software source, if you use other Anolis OS versions, please don't use the mirror site and the following orders.
+Since there is no stable release of Anolis OS 23 yet, this mirror site only provides software sources for versions lower than Anolis OS 23. If you are using a different version of Anolis OS, please do not use this mirror site and the following commands.
 :::
 
 :::caution
-The following orders only replace Anolis OS relative software sources, don't replace other software sources,
-such as EPEL.
+The following commands will only replace the software sources related to Anolis OS and will not replace other software sources, such as EPEL.
 
-This way only apply to change from the official source to this site, if you have changed the source, please
-don't use the following order.
+This way only apply to change from the official source to this site source. If you have already changed the source, please don't use the following orders.
 :::
 
-
-use `sed` order to modify software source configuration files in `/etc/yum.repos.d/` folder, original 
-configuration files will be backed up with `.bak` suffix.
+Use the `sed` command to modify the software source configuration files in the `/etc/yum.repos.d/` folder. The original configuration files will be backed up as files with the `.bak` suffix.
 
 ```shell varcode
-[ ] (root) whether the root user or not
+[ ] (root) Are you the root user?
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
