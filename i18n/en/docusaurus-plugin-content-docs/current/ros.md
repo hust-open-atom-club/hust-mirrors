@@ -9,7 +9,7 @@ ROS (Robot Operating System), is a computer operating system architecture specif
 
 ## ROS Software Source Replacement
 
-1. Install dependencies：
+1. Install dependencies
 
 ```shell varcode
 [ ] (root) Are you the root user? 
@@ -19,7 +19,7 @@ const SUDO = !root ? 'sudo ' : '';
 ${SUDO}apt install -y gnupg
 ```
 
-2. Import key：
+2. Import key
 
 ```shell varcode
 [ ] (root) Are you the root user?
@@ -30,7 +30,7 @@ ${SUDO}gpg --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE
 ${SUDO}gpg --export C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 | ${SUDO}tee /usr/share/keyrings/ros.gpg > /dev/null
 ```
 
-3. Add the software source to the system:
+3. Add the software source to the system
 
 ```shell varcode
 [ ] (root) Are you the root user?
@@ -42,7 +42,7 @@ deb [signed-by=/usr/share/keyrings/ros.gpg] ${_http}://${_domain}/ros/ubuntu $(l
 EOF
 ```
 
-4. Refresh the software source cache:
+4. Refresh the software source cache
 
 ```shell varcode
 [ ] (root) Are you the root user?
