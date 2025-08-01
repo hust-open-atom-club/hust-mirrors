@@ -1,28 +1,28 @@
 ---
-title: ROS 镜像使用帮助
+title: ROS Image Usage Guide 
 sidebar_label: ROS
 ---
 
-## ROS 介绍
+## ROS Profile
 
-ROS (机器人操作系统，Robot Operating System)，是专为机器人软件开发所设计出来的一套电脑操作系统架构。其托管在 [http://packages.ros.org/ros](http://packages.ros.org/ros) 上。
+ROS (Robot Operating System), is a computer operating system architecture specifically designed for the robot software development. It is hosted on [http://packages.ros.org/ros](http://packages.ros.org/ros)
 
-## ROS 软件源替换
+## ROS Software Source Replacement
 
-1. 安装依赖：
+1. Install dependencies：
 
 ```shell varcode
-[ ] (root) 是否为 root 用户
+[ ] (root) Are you the root user? 
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
 ${SUDO}apt install -y gnupg
 ```
 
-2. 导入 key：
+2. Import key：
 
 ```shell varcode
-[ ] (root) 是否为 root 用户
+[ ] (root) Are you the root user?
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
@@ -30,10 +30,10 @@ ${SUDO}gpg --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE
 ${SUDO}gpg --export C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 | ${SUDO}tee /usr/share/keyrings/ros.gpg > /dev/null
 ```
 
-3. 将软件源添加至系统：
+3. Add the software source to the system:
 
 ```shell varcode
-[ ] (root) 是否为 root 用户
+[ ] (root) Are you the root user?
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
@@ -42,18 +42,18 @@ deb [signed-by=/usr/share/keyrings/ros.gpg] ${_http}://${_domain}/ros/ubuntu $(l
 EOF
 ```
 
-4. 刷新软件源缓存：
+4. Refresh the software source cache:
 
 ```shell varcode
-[ ] (root) 是否为 root 用户
+[ ] (root) Are you the root user?
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
 ${SUDO}apt update -y
 ```
 
-5. 安装所需的 ROS 发行版。
+5. Install the required ROS distribution
 
-## 引用
+## Quote 
 
-1. [中科大镜像源使用帮助](https://mirrors.ustc.edu.cn/help/ros.html)
+1. [USTC Mirror Source Usage Guide](https://mirrors.ustc.edu.cn/help/ros.html)
