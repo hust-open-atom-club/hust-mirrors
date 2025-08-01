@@ -5,7 +5,7 @@ sidebar_label: ROS2
 
 ## ROS2 Profile
 
-ROS2 (Robot Operating System 2) is the next - generation version of ROS (Robot Operating System). It is an open - source platform for robot development, providing a series of tools and libraries for building robot applications. It is hosted at [http://packages.ros.org/ros2](http://packages.ros.org/
+ROS2 (Robot Operating System 2) is the next - generation version of ROS (Robot Operating System). It is an open - source platform for robot development, providing a series of tools and libraries for building robot applications. It is hosted at [http://packages.ros.org/ros2](http://packages.ros.org/)
 
 ## ROS2 Software Source Replacement
 
