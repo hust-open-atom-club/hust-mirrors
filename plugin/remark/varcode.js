@@ -92,6 +92,7 @@ const plugin = (_) => {
               '`);\n' +
               '}')
           );
+          console.log(transformBlock)
         }
 
         newAsts.push(

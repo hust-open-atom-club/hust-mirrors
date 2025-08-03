@@ -50,7 +50,7 @@ const formatYamlAsMarkdown = (yamlData) => {
   const actionType = yamlData.type || '';
   
   if (actionType === 'ReplaceIfExist') {
-    lines.push("**操作方法：替换文件中的内容**");
+    lines.push("**操作方法：替换文件中的内容**\n");
     
     const files = yamlData.files || [];
     const displayPolicy = yamlData.display_policy;
@@ -113,9 +113,9 @@ const formatYamlAsMarkdown = (yamlData) => {
               
               const cmdVarName = `CMD_${varName}_${optionName}_${index}`.replace(/[^a-zA-Z0-9_]/g, '_');
               if (yamlData.privileged) {
-                jsLines.push(`const ${cmdVarName} = ${varName} === '${optionName}' ? SUDO + '${sedCmd}' : '';`);
+                jsLines.push(`const ${cmdVarName} = ${varName} === '${optionName}' ? SUDO + \`${sedCmd}\` : '';`);
               } else {
-                jsLines.push(`const ${cmdVarName} = ${varName} === '${optionName}' ? '${sedCmd}' : '';`);
+                jsLines.push(`const ${cmdVarName} = ${varName} === '${optionName}' ? \`${sedCmd}\` : '';`);
               }
               commandVars.push(cmdVarName);
             }
@@ -148,11 +148,11 @@ const formatYamlAsMarkdown = (yamlData) => {
         const flags = fileInfo.flags || '';
         const comment = fileInfo.comment || '';
         
-        lines.push(`**替换文件${i + 1}**：${path}`);
+        lines.push(`**替换文件${i + 1}**：${path}\n`);
         if (comment) {
           lines.push(`${ comment }`);
         }
-        lines.push("示例命令：");
+        lines.push("示例命令：\n");
         // 使用 sed 替换正则
 
         let sedCmd;
@@ -184,12 +184,12 @@ const formatYamlAsMarkdown = (yamlData) => {
       });
     }
   } else if (actionType === 'TestAndExecute' || actionType === 'Execute') {
-    lines.push(`**操作方法：${yamlData.description || '执行命令'}**`);
+    lines.push(`**操作方法：${yamlData.description || '执行命令'}**\n`);
     // 处理test部分
     if (yamlData.test) {
       const testContent = extractDocsContent(yamlData.test.trim());
       if (testContent) {
-        lines.push("测试条件：");
+        lines.push("测试条件：\n");
         
         if (yamlData.privileged) {
           lines.push("```shell varcode");
@@ -226,7 +226,7 @@ const formatYamlAsMarkdown = (yamlData) => {
           lines.push(testContent);
         }
         lines.push('```');
-        lines.push("**请确定测试条件满足后再执行命令。**");
+        lines.push("**请确定测试条件满足后再执行命令。**\n");
       }
     }
     
@@ -234,7 +234,7 @@ const formatYamlAsMarkdown = (yamlData) => {
     if (yamlData.exec) {
       const execContent = extractDocsContent(yamlData.exec.trim());
       if (execContent) {
-        lines.push("执行命令：");
+        lines.push("执行命令：\n");
         if (yamlData.privileged) {
           lines.push("```shell varcode");
           lines.push("[ ] (root) 是否为 root 用户");
