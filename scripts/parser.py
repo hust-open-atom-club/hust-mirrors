@@ -151,7 +151,7 @@ class MarkdownParser:
         
         # 如果是可选的，先确认是否执行
         if optional:
-            lines.append(f"\tconfirm_y \"{description}?\" || return 0")
+            lines.append(f"\tconfirm_y \"是否 {description}?\" || return 0")
             lines.append("")
         
         if privileged:
@@ -194,8 +194,8 @@ class MarkdownParser:
                 match_processed = match_pattern.replace('${_http}', '$http').replace('${_domain}', '$domain')
                 
                 # 转义sed命令中的特殊字符
-                replace_escaped = replace_processed.replace('/', r'\/')
-                match_escaped = match_processed.replace('/', r'\/')
+                replace_escaped = replace_processed.replace(r'\/', r'/')
+                match_escaped = match_processed.replace(r'\/', r'/')
                 
                 lines.append(f"\t\t{sudo_prefix}sed -i -E 's|{match_escaped}|{replace_escaped}|g' \"{path}\" || {{")
             
