@@ -12,6 +12,7 @@
 """
 
 import argparse
+import logging
 import re
 import sys
 from pathlib import Path
@@ -57,7 +58,7 @@ class MarkdownParser:
                 if yaml_data:
                     blocks.append(yaml_data)
             except yaml.YAMLError as e:
-                print(f"Warning: Failed to parse YAML block: {e}")
+                logging.warning(f"Failed to parse YAML block: {e}")
                 continue
 
         return blocks
@@ -68,7 +69,7 @@ class MarkdownParser:
             with open(file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
         except Exception as e:
-            print(f"Error reading {file_path}: {e}")
+            logging.error(f"Error reading {file_path}: {e}")
             return {}
 
         frontmatter, body_content = self.parse_frontmatter(content)
@@ -83,19 +84,15 @@ class MarkdownParser:
     def generate_check_function(self, detection: Dict[str, Any], mirror_id: str) -> str:
         """根据detection配置生成check函数"""
         if not detection:
-            return f"""check() {{
-	# No detection rules specified for {mirror_id}
-	return 0
-}}"""
+            logging.info(f"No detection rules specified for {mirror_id}")
+            return ""
 
         checks = detection.get('checks', [])
         policy = detection.get('policy', 'AllOf')  # 默认所有条件都要满足
 
         if not checks:
-            return f"""check() {{
-	# No checks specified for {mirror_id}
-	return 0
-}}"""
+            logging.warning(f"No checks defined for {mirror_id}")
+            return ""
 
         check_lines = []
         check_lines.append("check() {")
@@ -114,15 +111,26 @@ class MarkdownParser:
                 name = check.get('name', '')
                 if name:
                     conditions.append(f'[ "$NAME" = "{name}" ]')
+                else:
+                    logging.warning(f"OS release check missing 'name' for {mirror_id}")
             elif check_type == 'command':
                 command = check.get('command', '')
                 if command:
                     conditions.append(f'has_command {command}')
+                else:
+                    logging.warning(f"Command check missing 'command' for {mirror_id}")
+            elif check_type == 'file':
+                file_path = check.get('path', '')
+                if file_path:
+                    conditions.append(f'if [ -f {file_path} ]; then\n\treturn 0\nelse\n\treturn 1\nfi')
+                else:
+                    logging.warning(f"File check missing 'path' for {mirror_id}")
             else:
-                print(f"Warning: Unknown check type: {check_type}")
+                logging.warning(f"Unknown check type: {check_type}")
 
         if not conditions:
-            check_lines.append("\treturn 0")
+            logging.info(f"No valid conditions found for {mirror_id}")
+            check_lines.append("\treturn 1")
         elif policy == 'OneOf':
             # 任一条件满足即可
             condition_str = ' || '.join(conditions)
@@ -136,15 +144,15 @@ class MarkdownParser:
 
         return '\n'.join(check_lines)
 
-    def generate_replace_function(self, yaml_block: Dict[str, Any], func_name: str, mirror_id: str, count: int) -> Tuple[str, List[str]]:
-        """生成ReplaceIfExist类型的函数，返回函数代码和备份文件列表"""
+    def generate_replace_function(self, yaml_block: Dict[str, Any], func_name: str, mirror_id: str, count: int, backed_up_files: set) -> Tuple[str, List[tuple]]:
+        """生成ReplaceIfExist类型的函数，返回函数代码和备份文件列表。只对未备份过的文件进行备份。"""
         files = yaml_block.get('files', [])
         privileged = yaml_block.get('privileged', False)
         optional = yaml_block.get('optional', False)
         description = yaml_block.get('description', 'Replace configuration')
 
         lines = []
-        backup_files = []  # 收集备份文件信息
+        backup_files = []  # 收集备份文件信息 (path, backup_filename)
 
         lines.append(f"{func_name}() {{")
         lines.append(f"\t# {description}")
@@ -158,7 +166,7 @@ class MarkdownParser:
             lines.append("\tset_sudo")
             lines.append("")
 
-        for file_idx, file_config in enumerate(files):
+        for file_config in files:
             path = file_config.get('path', '')
             match_pattern = file_config.get('match', '')
             replace_pattern = file_config.get('replace', '')
@@ -169,35 +177,34 @@ class MarkdownParser:
             if comment:
                 lines.append(f"\t# {comment.lstrip('> ')}")
 
-            # 生成备份文件名
-            backup_filename = f"{mirror_id}_{count}_{file_idx+1}.bak"
-            backup_files.append((path, backup_filename))
+            # 生成备份文件名（只对第一次出现的文件进行备份）
+            backup_filename = f"{mirror_id}_first_{self._sanitize_filename(path)}.bak"
+            do_backup = path not in backed_up_files and path != ''
+            if do_backup:
+                backup_files.append((path, backup_filename))
+                backed_up_files.add(path)
 
-            # 创建备份到_backup_dir
-            lines.append(f"\tif [ -f \"{path}\" ]; then")
+            lines.append(f"\tif [ -f {path} ]; then")
             sudo_prefix = "$sudo " if privileged else ""
-            lines.append(f"\t\t{sudo_prefix}mkdir -p \"${{_backup_dir}}\" || {{")
-            lines.append(f"\t\t\tprint_error \"Failed to create backup directory\"")
-            lines.append(f"\t\t\treturn 1")
-            lines.append(f"\t\t}}")
-            lines.append(f"\t\t{sudo_prefix}cp \"{path}\" \"${{_backup_dir}}/{backup_filename}\" || {{")
-            lines.append(f"\t\t\tprint_error \"Backup {path} failed\"")
-            lines.append(f"\t\t\treturn 1")
-            lines.append(f"\t\t}}")
+            if do_backup:
+                lines.append(f"\t\tmkdir -p ${{_backup_dir}} || {{")
+                lines.append(f"\t\t\tprint_error \"Failed to create backup directory\"")
+                lines.append(f"\t\t\treturn 1")
+                lines.append(f"\t\t}}")
+                lines.append(f"\t\t[ -f ${{_backup_dir}}/{backup_filename} ] || {sudo_prefix}cp {path} ${{_backup_dir}}/{backup_filename} || {{")
+                lines.append(f"\t\t\tprint_error \"Backup {path} failed\"")
+                lines.append(f"\t\t\treturn 1")
+                lines.append(f"\t\t}}")
 
             if statement:
-                lines.append(f"\t\t{sudo_prefix} sed {flags} \"{statement}\" \"{path}\" || {{")
+                lines.append(f"\t\t{sudo_prefix} sed {flags} \"{statement}\" {path} || {{")
             else:
                 # 执行替换
-                # 处理变量替换：${_http} -> $http, ${_domain} -> $domain
                 replace_processed = replace_pattern.replace('${_http}', '$http').replace('${_domain}', '$domain')
                 match_processed = match_pattern.replace('${_http}', '$http').replace('${_domain}', '$domain')
-
-                # 转义sed命令中的特殊字符
                 replace_escaped = replace_processed.replace(r'\/', r'/')
                 match_escaped = match_processed.replace(r'\/', r'/')
-
-                lines.append(f"\t\t{sudo_prefix}sed -i -E -e \"s|{match_escaped}|{replace_escaped}|g\" \"{path}\" || {{")
+                lines.append(f"\t\t{sudo_prefix}sed -i -E -e \"s|{match_escaped}|{replace_escaped}|g\" {path} || {{")
 
             lines.append(f"\t\t\tprint_error \"Failed to update {path}\"")
             lines.append(f"\t\t\treturn 1")
@@ -211,6 +218,11 @@ class MarkdownParser:
         lines.append("}")
 
         return '\n'.join(lines), backup_files
+
+    def _sanitize_filename(self, path: str) -> str:
+        """将路径转换为安全的文件名（去除/等特殊字符）"""
+        import re
+        return re.sub(r'[^A-Za-z0-9_.-]', '_', path)
 
     def generate_test_execute_function(self, yaml_block: Dict[str, Any], func_name: str, mirror_id: str) -> Tuple[str, str]:
         """生成TestAndExecute类型的函数，返回函数代码和恢复命令"""
@@ -291,7 +303,7 @@ class MarkdownParser:
                         if delimiter_part:
                             heredoc_delimiter = delimiter_part.split()[0]
                             in_heredoc = True
-                            if line.startswith('mkdir') or line.startswith('cp') or line.startswith('mv') or line.startswith('cat') or line.startswith('touch'):
+                            if line.startswith('mkdir') or line.startswith('cp') or line.startswith('mv') or line.startswith('tee') or line.startswith('touch'):
                                 lines.append(f"\t{sudo_prefix}{line}")
                             else:
                                 lines.append(f"\t{line}")
@@ -473,12 +485,9 @@ class MarkdownParser:
         detection = frontmatter.get('detection', {})
 
         script_lines = []
-        script_lines.append(f"#!/bin/bash")
         script_lines.append(f"# Auto-generated script for {mirror_label}")
         script_lines.append(f"# Generated from: {parsed_data['file_path'].name}")
         script_lines.append(f"# Mirror ID: {mirror_id}")
-        script_lines.append(f"")
-        script_lines.append(f"gen_tag=\"{self.gen_tag}\"")
         script_lines.append(f"")
 
         # 生成check函数
@@ -489,6 +498,7 @@ class MarkdownParser:
         # 收集恢复命令和备份文件
         recover_commands = []
         backup_files = []
+        backed_up_files = set()  # 跟踪已备份的文件路径
 
         # 为每个yaml block生成函数
         install_functions = []
@@ -497,7 +507,7 @@ class MarkdownParser:
             func_name = f"_{mirror_id}_install_{i+1}"
 
             if block_type == 'ReplaceIfExist':
-                func_code, backup_info = self.generate_replace_function(yaml_block, func_name, mirror_id, i+1)
+                func_code, backup_info = self.generate_replace_function(yaml_block, func_name, mirror_id, i+1, backed_up_files)
                 script_lines.append(func_code)
                 script_lines.append("")
                 install_functions.append(func_name)
@@ -517,7 +527,7 @@ class MarkdownParser:
                 if recover_cmd:
                     recover_commands.append(recover_cmd)
             else:
-                print(f"Warning: Unknown yaml block type: {block_type}")
+                logging.warning(f"Unknown yaml block type: {block_type}")
 
         # 生成主install函数
         if install_functions:
@@ -545,9 +555,9 @@ class MarkdownParser:
         if backup_files:
             script_lines.append("\t# Restore files from backup")
             for original_path, backup_filename in backup_files:
-                script_lines.append(f"\tif [ -f \"${{_backup_dir}}/{backup_filename}\" ]; then")
+                script_lines.append(f"\tif [ -f ${{_backup_dir}}/{backup_filename} ]; then")
                 script_lines.append(f"\t\tset_sudo")
-                script_lines.append(f"\t\t$sudo cp \"${{_backup_dir}}/{backup_filename}\" \"{original_path}\" 2>/dev/null || true")
+                script_lines.append(f"\t\t$sudo cp \"${{_backup_dir}}/{backup_filename}\" {original_path} 2>/dev/null || true")
                 script_lines.append(f"\t\tprint_info \"Restored {original_path}\"")
                 script_lines.append(f"\tfi")
 
@@ -580,11 +590,11 @@ class MarkdownParser:
             if all_backup_files:
                 conditions = []
                 for backup_file in all_backup_files:
-                    conditions.append(f"[ -f \"${{_backup_dir}}/{backup_file}\" ]")
+                    conditions.append(f"[ -f ${{_backup_dir}}/{backup_file} ]")
                 condition_str = " || ".join(conditions)
                 script_lines.append(f"\t{condition_str}")
             else:
-                script_lines.append("\t[ -d \"$_backup_dir\" ] && [ -n \"$(ls -A \"$_backup_dir\" 2>/dev/null)\" ]")
+                script_lines.append("\t[ -d $_backup_dir ] && [ -n $(ls -A $_backup_dir 2>/dev/null) ]")
             script_lines.append("}")
             script_lines.append("")
 
@@ -595,7 +605,7 @@ class MarkdownParser:
                 # 去重文件路径
                 unique_paths = set(original_path for original_path, _ in backup_files)
                 for original_path in unique_paths:
-                    script_lines.append(f"\t[ -f \"{original_path}\" ] && grep -q \"$domain\" \"{original_path}\" 2>/dev/null && return 0")
+                    script_lines.append(f"\t[ -f {original_path} ] && grep -q \"$domain\" {original_path} 2>/dev/null && return 0")
                 script_lines.append("\treturn 1")
                 script_lines.append("}")
                 script_lines.append("")
@@ -605,7 +615,7 @@ class MarkdownParser:
             script_lines.append("\t# Check if any backup files exist")
             conditions = []
             for backup_file in all_backup_files:
-                conditions.append(f"[ -f \"${{_backup_dir}}/{backup_file}\" ]")
+                conditions.append(f"[ -f ${{_backup_dir}}/{backup_file} ]")
             condition_str = " || ".join(conditions)
             script_lines.append(f"\t{condition_str}")
             script_lines.append("}")
@@ -619,7 +629,7 @@ class MarkdownParser:
         output_path.mkdir(exist_ok=True)
 
         if not self.docs_dir.exists():
-            print(f"Error: Documentation directory {self.docs_dir} does not exist")
+            logging.error(f"Error: Documentation directory {self.docs_dir} does not exist")
             return
 
         processed_count = 0
@@ -628,12 +638,11 @@ class MarkdownParser:
             parsed_data = self.parse_markdown_file(md_file)
 
             if not parsed_data.get('yaml_blocks'):
-                print(f"Skipping {md_file.name}: No yaml cli blocks found")
+                logging.warning(f"Skipping {md_file.name}: No yaml cli blocks found")
                 continue
 
             mirror_id = parsed_data['frontmatter'].get('id')
             if not mirror_id:
-                print(f"Warning: No ID found in {md_file.name}, using filename")
                 mirror_id = md_file.stem
 
             script_content = self.generate_shell_script(parsed_data)
@@ -642,12 +651,12 @@ class MarkdownParser:
             try:
                 with open(output_file, 'w', encoding='utf-8') as f:
                     f.write(script_content)
-                print(f"Generated: {output_file}")
+                logging.info(f"Generated: {output_file}")
                 processed_count += 1
             except Exception as e:
-                print(f"Error writing {output_file}: {e}")
+                logging.error(f"Error writing {output_file}: {e}")
 
-        print(f"\nProcessed {processed_count} documentation files")
+        logging.info(f"\nProcessed {processed_count} documentation files")
 
 
 def main():
@@ -680,17 +689,18 @@ def main():
     args = parser.parse_args()
     
     if args.verbose:
-        print(f"Parsing documentation from: {args.docs_dir}")
-        print(f"Output directory: {args.output}")
-    
+        logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+        logging.info(f"Parsing documentation from: {args.docs_dir}")
+        logging.info(f"Output directory: {args.output}")
+
     try:
         markdown_parser = MarkdownParser(args.docs_dir)
         markdown_parser.process_all_docs(args.output)
     except KeyboardInterrupt:
-        print("\nOperation cancelled by user")
+        logging.info("\nOperation cancelled by user")
         sys.exit(1)
     except Exception as e:
-        print(f"Error: {e}")
+        logging.error(f"Error: {e}")
         sys.exit(1)
 
 

@@ -12,7 +12,7 @@ Oh My Zsh 是基于 zsh 命令行的一个扩展工具集，提供了丰富的�
 如果还没有安装 Oh My Zsh，可以通过修改安装脚本中的变量默认值，将其设置为镜像站点的地址安装，使用如下命令：
 
 ```yaml cli
-type: TeadAndExecute
+type: TestAndExecute
 privileged: false
 interpreter: shell
 test: |

@@ -2,11 +2,12 @@
 sidebar_label: CRAN
 title: CRAN仓库镜像使用帮助
 type: lang
+automated: true 
 detection:
   policy: OneOf
   checks:
     - type: file
-      command: ~/.Rprofile
+      path: ~/.Rprofile
 ---
 
 ## CRAN 介绍
