@@ -3,6 +3,10 @@ sidebar_label: Alpine Linux
 title: Alpine Linux 软件仓库镜像使用帮助
 cname: AplineLinux
 type: OS
+detection:
+  checks:
+    - type: os_release
+      name: Alpine Linux
 ---
 ## Alpine Linux 简介与软件管理
 Alpine Linux 是一个基于 musl libc 和 BusyBox 的独立、非商业、通用的 Linux 发行版，旨在提供小巧、简单、安全和高效的基础系统。Alpine Linux 的设计理念是 “Keep It Simple”，并且由于其轻量级和高效的特性，它在 Docker 和 Kubernetes 等容器环境中非常受欢迎。

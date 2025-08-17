@@ -2,6 +2,10 @@
 sidebar_label: Anolis OS
 title: Anolis 软件仓库镜像使用帮助
 type: OS
+detection:
+  checks:
+    - type: os_release
+      name: Anoolis
 ---
 
 ## Anolis OS 简介与软件管理

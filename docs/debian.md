@@ -2,6 +2,11 @@
 sidebar_label: Debian
 title: Debian 软件仓库镜像使用帮助
 cname: 'debian'
+typs: OS
+detection:
+  checks:
+    - type: os_release
+      name: Debian GNU/Linux
 ---
 
 ## Debian 简介与软件管理

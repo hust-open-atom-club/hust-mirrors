@@ -3,6 +3,10 @@ sidebar_label: Arch Linux
 title: Arch Linux 软件仓库镜像使用帮助
 cname: 'archlinux'
 type: OS
+detection:
+  checks:
+    - type: os_release
+      name: Arch Linux
 ---
 
 ## Arch Linux 简介与软件管理
