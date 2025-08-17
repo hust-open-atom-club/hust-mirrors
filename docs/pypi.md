@@ -133,7 +133,7 @@ exec: |
     cp /etc/uv/uv.toml ${_backup_dir}/uv.bak
   fi
   #{USE_IN_DOCS/}
-  cat >> /etc/uv/uv.toml << EOF 
+  tee -a /etc/uv/uv.toml > /dev/null << EOF 
   [[index]]
   url = "https://${_domain}"
   default = true
