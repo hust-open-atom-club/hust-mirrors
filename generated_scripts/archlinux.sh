@@ -12,11 +12,11 @@ _arch-linux_install_1() {
 	set_sudo
 
 	if [ -f /etc/pacman.d/mirrorlist ]; then
-		$sudo mkdir -p ${_backup_dir} || {
+		mkdir -p ${_backup_dir} || {
 			print_error "Failed to create backup directory"
 			return 1
 		}
-		[ -f ${_backup_dir}/arch-linux_first__etc_pacman.d_mirrorlist.bak ] || $sudo cp /etc/pacman.d/mirrorlist ${_backup_dir}/arch-linux_first__etc_pacman.d_mirrorlist.bak || {
+		[ -f ${_backup_dir}/arch-linux__etc_pacman.d_mirrorlist.bak ] || $sudo cp /etc/pacman.d/mirrorlist ${_backup_dir}/arch-linux__etc_pacman.d_mirrorlist.bak || {
 			print_error "Backup /etc/pacman.d/mirrorlist failed"
 			return 1
 		}
@@ -53,9 +53,9 @@ uninstall() {
 	print_info "Starting recovery process..."
 
 	# Restore files from backup
-	if [ -f ${_backup_dir}/arch-linux_first__etc_pacman.d_mirrorlist.bak ]; then
+	if [ -f ${_backup_dir}/arch-linux__etc_pacman.d_mirrorlist.bak ]; then
 		set_sudo
-		$sudo cp "${_backup_dir}/arch-linux_first__etc_pacman.d_mirrorlist.bak" /etc/pacman.d/mirrorlist 2>/dev/null || true
+		$sudo cp "${_backup_dir}/arch-linux__etc_pacman.d_mirrorlist.bak" /etc/pacman.d/mirrorlist 2>/dev/null || true
 		print_info "Restored /etc/pacman.d/mirrorlist"
 	fi
 
@@ -64,7 +64,7 @@ uninstall() {
 
 can_recover() {
 	# Check if any backup files exist
-	[ -f ${_backup_dir}/arch-linux_1_1.bak ]
+	[ -f ${_backup_dir}/arch-linux__etc_pacman.d_mirrorlist.bak ]
 }
 
 is_deployed() {
