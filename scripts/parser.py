@@ -178,7 +178,7 @@ class MarkdownParser:
                 lines.append(f"\t# {comment.lstrip('> ')}")
 
             # 生成备份文件名（只对第一次出现的文件进行备份）
-            backup_filename = f"{mirror_id}_first_{self._sanitize_filename(path)}.bak"
+            backup_filename = f"{mirror_id}_{self._sanitize_filename(path)}.bak"
             do_backup = path not in backed_up_files and path != ''
             if do_backup:
                 backup_files.append((path, backup_filename))
@@ -576,21 +576,17 @@ class MarkdownParser:
         script_lines.append("}")
         script_lines.append("")
 
-        # 收集所有会创建的备份文件
-        all_backup_files = self.collect_backup_files(yaml_blocks, mirror_id)
-
-        # 只有当存在ReplaceIfExist操作或有其他创建备份文件的操作时才生成相应函数
+        # 只有当存在ReplaceIfExist操作时才生成相应函数
         has_replace_operations = any(yaml_block.get('type') == 'ReplaceIfExist' for yaml_block in yaml_blocks)
-        has_backup_files = bool(all_backup_files)
 
         if has_replace_operations:
-            # 生成can_recover函数 - 检查具体的备份文件是否存在
+            # 生成can_recover函数 - 检查实际生成的备份文件是否存在
             script_lines.append("can_recover() {")
             script_lines.append("\t# Check if any backup files exist")
-            if all_backup_files:
+            if backup_files:
                 conditions = []
-                for backup_file in all_backup_files:
-                    conditions.append(f"[ -f ${{_backup_dir}}/{backup_file} ]")
+                for _, backup_filename in backup_files:
+                    conditions.append(f"[ -f ${{_backup_dir}}/{backup_filename} ]")
                 condition_str = " || ".join(conditions)
                 script_lines.append(f"\t{condition_str}")
             else:
@@ -609,17 +605,6 @@ class MarkdownParser:
                 script_lines.append("\treturn 1")
                 script_lines.append("}")
                 script_lines.append("")
-        elif has_backup_files:
-            # 只有备份文件但没有ReplaceIfExist操作的情况，只生成can_recover函数
-            script_lines.append("can_recover() {")
-            script_lines.append("\t# Check if any backup files exist")
-            conditions = []
-            for backup_file in all_backup_files:
-                conditions.append(f"[ -f ${{_backup_dir}}/{backup_file} ]")
-            condition_str = " || ".join(conditions)
-            script_lines.append(f"\t{condition_str}")
-            script_lines.append("}")
-            script_lines.append("")
 
         return '\n'.join(script_lines)
 

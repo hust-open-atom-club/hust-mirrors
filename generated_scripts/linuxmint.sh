@@ -9,11 +9,11 @@ _linux-mint_install_1() {
 	set_sudo
 
 	if [ -f /etc/apt/offical-package-repositories.list ]; then
-		$sudo mkdir -p ${_backup_dir} || {
+		mkdir -p ${_backup_dir} || {
 			print_error "Failed to create backup directory"
 			return 1
 		}
-		[ -f ${_backup_dir}/linux-mint_first__etc_apt_offical-package-repositories.list.bak ] || $sudo cp /etc/apt/offical-package-repositories.list ${_backup_dir}/linux-mint_first__etc_apt_offical-package-repositories.list.bak || {
+		[ -f ${_backup_dir}/linux-mint__etc_apt_offical-package-repositories.list.bak ] || $sudo cp /etc/apt/offical-package-repositories.list ${_backup_dir}/linux-mint__etc_apt_offical-package-repositories.list.bak || {
 			print_error "Backup /etc/apt/offical-package-repositories.list failed"
 			return 1
 		}
@@ -59,9 +59,9 @@ uninstall() {
 	print_info "Starting recovery process..."
 
 	# Restore files from backup
-	if [ -f ${_backup_dir}/linux-mint_first__etc_apt_offical-package-repositories.list.bak ]; then
+	if [ -f ${_backup_dir}/linux-mint__etc_apt_offical-package-repositories.list.bak ]; then
 		set_sudo
-		$sudo cp "${_backup_dir}/linux-mint_first__etc_apt_offical-package-repositories.list.bak" /etc/apt/offical-package-repositories.list 2>/dev/null || true
+		$sudo cp "${_backup_dir}/linux-mint__etc_apt_offical-package-repositories.list.bak" /etc/apt/offical-package-repositories.list 2>/dev/null || true
 		print_info "Restored /etc/apt/offical-package-repositories.list"
 	fi
 
@@ -70,7 +70,7 @@ uninstall() {
 
 can_recover() {
 	# Check if any backup files exist
-	[ -f ${_backup_dir}/linux-mint_1_1.bak ] || [ -f ${_backup_dir}/linux-mint_1_2.bak ]
+	[ -f ${_backup_dir}/linux-mint__etc_apt_offical-package-repositories.list.bak ]
 }
 
 is_deployed() {

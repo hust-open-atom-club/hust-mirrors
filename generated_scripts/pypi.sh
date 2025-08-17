@@ -86,8 +86,3 @@ uninstall() {
 
 	print_success "Recovery completed"
 }
-
-can_recover() {
-	# Check if any backup files exist
-	[ -f ${_backup_dir}/pip.bak ] || [ -f ${_backup_dir}/pdm.bak ] || [ -f ${_backup_dir}/uv.bak ]
-}
