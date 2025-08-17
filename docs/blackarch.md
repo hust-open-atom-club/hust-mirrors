@@ -3,6 +3,10 @@ title: Black Arch 软件仓库镜像使用帮助
 sidebar_label: BlackArch
 cname: 'blackarch'
 type: OS
+detection:
+  checks:
+    - type: os_release
+      name: Blackarch
 ---
 
 ## BlackArch 简介和软件管理

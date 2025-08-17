@@ -157,6 +157,7 @@ display_policy:
 
 ```yaml cli
 type: ReplaceIfExist
+description: 替换Ubuntu Security源
 optional: true
 privileged: true
 files:

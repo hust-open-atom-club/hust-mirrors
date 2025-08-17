@@ -2,6 +2,11 @@
 sidebar_label: Deepin
 title: Deepin 软件仓库镜像使用帮助
 cname: 'deepin'
+typs: OS
+detection:
+  checks:
+    - type: os_release
+      name: Deepin
 ---
 
 ## Deepin 简介与软件管理
