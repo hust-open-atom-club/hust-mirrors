@@ -3,6 +3,10 @@ sidebar_label: Kali
 title: Kali Linux 软件仓库镜像使用帮助
 cname: 'kali'
 type: OS
+detection:
+  checks:
+    - type: os_release
+      name: Kali Linux
 ---
 
 ## Kali 简介与软件管理

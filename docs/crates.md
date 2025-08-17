@@ -57,7 +57,7 @@ exec: |
       _crates_mirror="${http}://${domain}/git/crates.io-index/"
   fi
 
-  cat >"${HOME}/.cargo/config.toml" <<EOF
+  tee -a "${HOME}/.cargo/config.toml" > /dev/null << EOF
   # ${gen_tag}
   [source.crates-io]
   replace-with = 'hustmirror'
