@@ -9,11 +9,11 @@ _openeuler_install_1() {
 	set_sudo
 
 	if [ -f /etc/yum.repos.d/openEuler.repo ]; then
-		$sudo mkdir -p ${_backup_dir} || {
+		mkdir -p ${_backup_dir} || {
 			print_error "Failed to create backup directory"
 			return 1
 		}
-		[ -f ${_backup_dir}/openeuler_first__etc_yum.repos.d_openEuler.repo.bak ] || $sudo cp /etc/yum.repos.d/openEuler.repo ${_backup_dir}/openeuler_first__etc_yum.repos.d_openEuler.repo.bak || {
+		[ -f ${_backup_dir}/openeuler__etc_yum.repos.d_openEuler.repo.bak ] || $sudo cp /etc/yum.repos.d/openEuler.repo ${_backup_dir}/openeuler__etc_yum.repos.d_openEuler.repo.bak || {
 			print_error "Backup /etc/yum.repos.d/openEuler.repo failed"
 			return 1
 		}
@@ -60,9 +60,9 @@ uninstall() {
 	print_info "Starting recovery process..."
 
 	# Restore files from backup
-	if [ -f ${_backup_dir}/openeuler_first__etc_yum.repos.d_openEuler.repo.bak ]; then
+	if [ -f ${_backup_dir}/openeuler__etc_yum.repos.d_openEuler.repo.bak ]; then
 		set_sudo
-		$sudo cp "${_backup_dir}/openeuler_first__etc_yum.repos.d_openEuler.repo.bak" /etc/yum.repos.d/openEuler.repo 2>/dev/null || true
+		$sudo cp "${_backup_dir}/openeuler__etc_yum.repos.d_openEuler.repo.bak" /etc/yum.repos.d/openEuler.repo 2>/dev/null || true
 		print_info "Restored /etc/yum.repos.d/openEuler.repo"
 	fi
 
@@ -71,7 +71,7 @@ uninstall() {
 
 can_recover() {
 	# Check if any backup files exist
-	[ -f ${_backup_dir}/openeuler_1_1.bak ] || [ -f ${_backup_dir}/openeuler_1_2.bak ]
+	[ -f ${_backup_dir}/openeuler__etc_yum.repos.d_openEuler.repo.bak ]
 }
 
 is_deployed() {

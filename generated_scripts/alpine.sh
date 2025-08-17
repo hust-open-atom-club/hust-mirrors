@@ -12,11 +12,11 @@ _alpine-linux_install_1() {
 	set_sudo
 
 	if [ -f /etc/apk/repositories ]; then
-		$sudo mkdir -p ${_backup_dir} || {
+		mkdir -p ${_backup_dir} || {
 			print_error "Failed to create backup directory"
 			return 1
 		}
-		[ -f ${_backup_dir}/alpine-linux_first__etc_apk_repositories.bak ] || $sudo cp /etc/apk/repositories ${_backup_dir}/alpine-linux_first__etc_apk_repositories.bak || {
+		[ -f ${_backup_dir}/alpine-linux__etc_apk_repositories.bak ] || $sudo cp /etc/apk/repositories ${_backup_dir}/alpine-linux__etc_apk_repositories.bak || {
 			print_error "Backup /etc/apk/repositories failed"
 			return 1
 		}
@@ -53,9 +53,9 @@ uninstall() {
 	print_info "Starting recovery process..."
 
 	# Restore files from backup
-	if [ -f ${_backup_dir}/alpine-linux_first__etc_apk_repositories.bak ]; then
+	if [ -f ${_backup_dir}/alpine-linux__etc_apk_repositories.bak ]; then
 		set_sudo
-		$sudo cp "${_backup_dir}/alpine-linux_first__etc_apk_repositories.bak" /etc/apk/repositories 2>/dev/null || true
+		$sudo cp "${_backup_dir}/alpine-linux__etc_apk_repositories.bak" /etc/apk/repositories 2>/dev/null || true
 		print_info "Restored /etc/apk/repositories"
 	fi
 
@@ -64,7 +64,7 @@ uninstall() {
 
 can_recover() {
 	# Check if any backup files exist
-	[ -f ${_backup_dir}/alpine-linux_1_1.bak ]
+	[ -f ${_backup_dir}/alpine-linux__etc_apk_repositories.bak ]
 }
 
 is_deployed() {

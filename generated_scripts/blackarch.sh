@@ -12,11 +12,11 @@ _blackarch_install_1() {
 	set_sudo
 
 	if [ -f /etc/pacman.conf ]; then
-		$sudo mkdir -p ${_backup_dir} || {
+		mkdir -p ${_backup_dir} || {
 			print_error "Failed to create backup directory"
 			return 1
 		}
-		[ -f ${_backup_dir}/blackarch_first__etc_pacman.conf.bak ] || $sudo cp /etc/pacman.conf ${_backup_dir}/blackarch_first__etc_pacman.conf.bak || {
+		[ -f ${_backup_dir}/blackarch__etc_pacman.conf.bak ] || $sudo cp /etc/pacman.conf ${_backup_dir}/blackarch__etc_pacman.conf.bak || {
 			print_error "Backup /etc/pacman.conf failed"
 			return 1
 		}
@@ -64,9 +64,9 @@ uninstall() {
 	print_info "Starting recovery process..."
 
 	# Restore files from backup
-	if [ -f ${_backup_dir}/blackarch_first__etc_pacman.conf.bak ]; then
+	if [ -f ${_backup_dir}/blackarch__etc_pacman.conf.bak ]; then
 		set_sudo
-		$sudo cp "${_backup_dir}/blackarch_first__etc_pacman.conf.bak" /etc/pacman.conf 2>/dev/null || true
+		$sudo cp "${_backup_dir}/blackarch__etc_pacman.conf.bak" /etc/pacman.conf 2>/dev/null || true
 		print_info "Restored /etc/pacman.conf"
 	fi
 
@@ -75,7 +75,7 @@ uninstall() {
 
 can_recover() {
 	# Check if any backup files exist
-	[ -f ${_backup_dir}/blackarch_1_1.bak ]
+	[ -f ${_backup_dir}/blackarch__etc_pacman.conf.bak ]
 }
 
 is_deployed() {

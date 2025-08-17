@@ -12,11 +12,11 @@ _anolis-os_install_1() {
 	set_sudo
 
 	if [ -f /etc/yum.repos.d/*.repo ]; then
-		$sudo mkdir -p ${_backup_dir} || {
+		mkdir -p ${_backup_dir} || {
 			print_error "Failed to create backup directory"
 			return 1
 		}
-		[ -f ${_backup_dir}/anolis-os_first__etc_yum.repos.d__.repo.bak ] || $sudo cp /etc/yum.repos.d/*.repo ${_backup_dir}/anolis-os_first__etc_yum.repos.d__.repo.bak || {
+		[ -f ${_backup_dir}/anolis-os__etc_yum.repos.d__.repo.bak ] || $sudo cp /etc/yum.repos.d/*.repo ${_backup_dir}/anolis-os__etc_yum.repos.d__.repo.bak || {
 			print_error "Backup /etc/yum.repos.d/*.repo failed"
 			return 1
 		}
@@ -54,9 +54,9 @@ uninstall() {
 	print_info "Starting recovery process..."
 
 	# Restore files from backup
-	if [ -f ${_backup_dir}/anolis-os_first__etc_yum.repos.d__.repo.bak ]; then
+	if [ -f ${_backup_dir}/anolis-os__etc_yum.repos.d__.repo.bak ]; then
 		set_sudo
-		$sudo cp "${_backup_dir}/anolis-os_first__etc_yum.repos.d__.repo.bak" /etc/yum.repos.d/*.repo 2>/dev/null || true
+		$sudo cp "${_backup_dir}/anolis-os__etc_yum.repos.d__.repo.bak" /etc/yum.repos.d/*.repo 2>/dev/null || true
 		print_info "Restored /etc/yum.repos.d/*.repo"
 	fi
 
@@ -65,7 +65,7 @@ uninstall() {
 
 can_recover() {
 	# Check if any backup files exist
-	[ -f ${_backup_dir}/anolis-os_1_1.bak ]
+	[ -f ${_backup_dir}/anolis-os__etc_yum.repos.d__.repo.bak ]
 }
 
 is_deployed() {

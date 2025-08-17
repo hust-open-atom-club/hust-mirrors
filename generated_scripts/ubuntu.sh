@@ -12,11 +12,11 @@ _ubuntu_install_1() {
 	set_sudo
 
 	if [ -f /etc/apt/sources.list.d/ubuntu.sources ]; then
-		$sudo mkdir -p ${_backup_dir} || {
+		mkdir -p ${_backup_dir} || {
 			print_error "Failed to create backup directory"
 			return 1
 		}
-		[ -f ${_backup_dir}/ubuntu_first__etc_apt_sources.list.d_ubuntu.sources.bak ] || $sudo cp /etc/apt/sources.list.d/ubuntu.sources ${_backup_dir}/ubuntu_first__etc_apt_sources.list.d_ubuntu.sources.bak || {
+		[ -f ${_backup_dir}/ubuntu__etc_apt_sources.list.d_ubuntu.sources.bak ] || $sudo cp /etc/apt/sources.list.d/ubuntu.sources ${_backup_dir}/ubuntu__etc_apt_sources.list.d_ubuntu.sources.bak || {
 			print_error "Backup /etc/apt/sources.list.d/ubuntu.sources failed"
 			return 1
 		}
@@ -29,11 +29,11 @@ _ubuntu_install_1() {
 	fi
 
 	if [ -f /etc/apt/sources.list ]; then
-		$sudo mkdir -p ${_backup_dir} || {
+		mkdir -p ${_backup_dir} || {
 			print_error "Failed to create backup directory"
 			return 1
 		}
-		[ -f ${_backup_dir}/ubuntu_first__etc_apt_sources.list.bak ] || $sudo cp /etc/apt/sources.list ${_backup_dir}/ubuntu_first__etc_apt_sources.list.bak || {
+		[ -f ${_backup_dir}/ubuntu__etc_apt_sources.list.bak ] || $sudo cp /etc/apt/sources.list ${_backup_dir}/ubuntu__etc_apt_sources.list.bak || {
 			print_error "Backup /etc/apt/sources.list failed"
 			return 1
 		}
@@ -126,14 +126,14 @@ uninstall() {
 	print_info "Starting recovery process..."
 
 	# Restore files from backup
-	if [ -f ${_backup_dir}/ubuntu_first__etc_apt_sources.list.d_ubuntu.sources.bak ]; then
+	if [ -f ${_backup_dir}/ubuntu__etc_apt_sources.list.d_ubuntu.sources.bak ]; then
 		set_sudo
-		$sudo cp "${_backup_dir}/ubuntu_first__etc_apt_sources.list.d_ubuntu.sources.bak" /etc/apt/sources.list.d/ubuntu.sources 2>/dev/null || true
+		$sudo cp "${_backup_dir}/ubuntu__etc_apt_sources.list.d_ubuntu.sources.bak" /etc/apt/sources.list.d/ubuntu.sources 2>/dev/null || true
 		print_info "Restored /etc/apt/sources.list.d/ubuntu.sources"
 	fi
-	if [ -f ${_backup_dir}/ubuntu_first__etc_apt_sources.list.bak ]; then
+	if [ -f ${_backup_dir}/ubuntu__etc_apt_sources.list.bak ]; then
 		set_sudo
-		$sudo cp "${_backup_dir}/ubuntu_first__etc_apt_sources.list.bak" /etc/apt/sources.list 2>/dev/null || true
+		$sudo cp "${_backup_dir}/ubuntu__etc_apt_sources.list.bak" /etc/apt/sources.list 2>/dev/null || true
 		print_info "Restored /etc/apt/sources.list"
 	fi
 
@@ -142,7 +142,7 @@ uninstall() {
 
 can_recover() {
 	# Check if any backup files exist
-	[ -f ${_backup_dir}/ubuntu_1_1.bak ] || [ -f ${_backup_dir}/ubuntu_1_2.bak ] || [ -f ${_backup_dir}/ubuntu_2_1.bak ] || [ -f ${_backup_dir}/ubuntu_2_2.bak ] || [ -f ${_backup_dir}/ubuntu_3_1.bak ] || [ -f ${_backup_dir}/ubuntu_3_2.bak ]
+	[ -f ${_backup_dir}/ubuntu__etc_apt_sources.list.d_ubuntu.sources.bak ] || [ -f ${_backup_dir}/ubuntu__etc_apt_sources.list.bak ]
 }
 
 is_deployed() {
