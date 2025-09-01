@@ -26,6 +26,16 @@ $ yarn build
 
 该命令会将静态内容生成到 `build` 目录中，可以使用任何静态内容托管服务进行服务。
 
+### 自动生成CLI
+
+```
+$ python scripts/parser.py
+```
+
+该命令会自动读取文档中可以生成 `hustmirrors-cli` 替换脚本的部分，并将其生成为相应镜像的脚本，保存在 `generated_scripts` 目录下。
+
+有关编写自动生成镜像替换脚本的文档，请参考 [USAGE.md](USAGE.md)
+
 
 ## 贡献
 
