@@ -217,6 +217,12 @@ class MarkdownParser:
                 lines.append(f"\t\t{sudo_prefix} sed {flags} \"{statement}\" {path} || {{")
             else:
                 # 执行替换
+
+                if len(replace_pattern) == 0 or len(match_pattern) == 0:
+                    logging.error(f"Empty pattern for {mirror_id}")
+                    if self.test:
+                        sys.exit(1)
+
                 replace_processed = replace_pattern.replace('${_http}', '$http').replace('${_domain}', '$domain')
                 match_processed = match_pattern.replace('${_http}', '$http').replace('${_domain}', '$domain')
                 replace_escaped = replace_processed.replace(r'\/', r'/')

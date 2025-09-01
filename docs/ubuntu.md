@@ -182,11 +182,11 @@ display_policy:
 ```
 
 ```yaml cli-nodocs
-type: Execute # 执行测试，若通过则执行脚本
+type: Execute
 description: Update Ubuntu APT sources
 optional: true
 privileged: true
-interpreter: shell # 可选shell脚本，后续可能会增加python
+interpreter: shell
 exec: |
   apt-get update
 ```
