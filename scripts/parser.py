@@ -244,7 +244,6 @@ class MarkdownParser:
 
     def _sanitize_filename(self, path: str) -> str:
         """将路径转换为安全的文件名（去除/等特殊字符）"""
-        import re
         return re.sub(r'[^A-Za-z0-9_.-]', '_', path)
 
     def generate_test_execute_function(self, yaml_block: Dict[str, Any], func_name: str, mirror_id: str) -> Tuple[str, str]:
@@ -480,20 +479,13 @@ class MarkdownParser:
                         if '${_backup_dir}' in line:
                             # 尝试提取文件名模式
                             # 例如: "config get global.index-url > ${_backup_dir}/pip.bak"
-                            # 或: "cp /path/to/file ${_backup_dir}/backup.bak"
-                            import re
 
-                            # 匹配重定向到${_backup_dir}的操作
                             redirect_match = re.search(r'>\s*\$\{_backup_dir\}/([^\s]+)', line)
                             if redirect_match:
                                 backup_files.append(redirect_match.group(1))
-
-                            # 匹配cp命令到${_backup_dir}的操作
                             cp_match = re.search(r'cp\s+[^>]*?\s+\$\{_backup_dir\}/([^\s]+)', line)
                             if cp_match:
                                 backup_files.append(cp_match.group(1))
-
-                            # 匹配mv命令到${_backup_dir}的操作
                             mv_match = re.search(r'mv\s+[^>]*?\s+\$\{_backup_dir\}/([^\s]+)', line)
                             if mv_match:
                                 backup_files.append(mv_match.group(1))
@@ -571,12 +563,9 @@ class MarkdownParser:
             script_lines.append("\tprint_success \"Mirror configuration updated successfully\"")
             script_lines.append("}")
             script_lines.append("")
-        else:
-            script_lines.append("install() {")
-            script_lines.append("\tprint_warning \"No installation functions generated\"")
-            script_lines.append("\treturn 1")
-            script_lines.append("}")
-            script_lines.append("")
+        elif self.test:
+            logging.error(f"No install functions generated for {mirror_id}")
+            sys.exit(1)
 
         # 生成recover函数
         script_lines.append("uninstall() {")
