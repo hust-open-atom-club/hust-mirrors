@@ -30,7 +30,7 @@ detection: # 自动部署时，用于检测是否执行该镜像替换的方法�
 
 ### 正则表达式替换文件中内容
 
-使用规则为 `ReplaceIfExist` 的代码块替换文件中的内容。
+使用规则为 `ReplaceIfExist` 的代码块替换文件中的内容。使用这种方式进行的替换可以自动生成恢复函数。
 
 对于指定了 `match` 和 `replace` 的代码块，最终生成在文档和cli中的语句为： `sed -i -E -e "s|match|replace|g" /path/to/file`
 
@@ -46,10 +46,10 @@ files:
   - path: /etc/apt/sources.list # 需要替换内容的文件
     match: 'https?://([^/]+)/kali' # 查找的正则表达式
     replace: '${_http}://${_domain}/kali' # 替换的内容
-	comment: 替换 # 显示在文档页面中的提示
+    comment: 替换 # 显示在文档页面中的提示
   - path: /path/to/file
   	statement: '1i\\Server = ${_http}://${_domain}/archlinux/$repo/os/$arch' # sed命令使用的
-	flags: '-e -E' # 执行sed时传递的参数
+    flags: '-e -E' # 执行sed时传递的参数
 
 display_policy: # 生成文档页面时，多个替换文件的显示逻辑
   kind: OneOf # 增加变量并只显示一种（OneOf）或全部显示（AllOf）
