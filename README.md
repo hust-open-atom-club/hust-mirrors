@@ -26,7 +26,7 @@ $ yarn build
 
 该命令会将静态内容生成到 `build` 目录中，可以使用任何静态内容托管服务进行服务。
 
-### 自动生成CLI
+### 自动生成 CLI
 
 ```
 $ python scripts/parser.py
