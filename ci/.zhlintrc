@@ -1,6 +1,7 @@
 {
   "preset": "default",
   "rules": {
-    "halfwidthPunctuation": "（），。、"
+    "halfwidthPunctuation": "（），。、",
+    "fullwidthPunctuation": "，：；？！“”‘’"
   }
 }
