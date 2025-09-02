@@ -21,9 +21,9 @@ Ubuntu 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说�
 1. 替换软件仓库
 
 :::caution
-请确认自己的Ubuntu版本后再执行对应替换命令。
+请确认自己的 Ubuntu 版本后再执行对应替换命令。
 
-若不知道Ubuntu版本，可以运行`grep VERSION /etc/os-release`
+若不知道 Ubuntu 版本，可以运行 `grep VERSION /etc/os-release`
 :::
 
 
@@ -113,7 +113,7 @@ const SUDO = !root ? 'sudo ' : '';
 ${SUDO}apt update
 ```
 
-## Ubuntu Ports源
+## Ubuntu Ports 源
 
 本镜像仅包含 x86 与 x64 架构处理器的软件包，在 ARM(arm64，armhf)、PowerPC(ppc64el)、RISC-V(riscv64) 以及 s390x 等架构的设备上，请使用 ubuntu-ports 镜像。
 
