@@ -41,7 +41,7 @@ deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive
 EOF
 ```
 
-3. 刷新软件源缓存：
+4. 刷新软件源缓存：
 
 ```shell varcode
 [ ] (root) 是否为 root 用户
@@ -51,7 +51,7 @@ const SUDO = !root ? 'sudo ' : '';
 ${SUDO}apt update -y
 ```
 
-4. 安装所需的 ROS 发行版。
+5. 安装所需的 ROS 发行版。
 
 ## 引用
 
