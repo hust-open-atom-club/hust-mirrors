@@ -529,7 +529,7 @@ class MarkdownParser:
         install_functions = []
         for i, yaml_block in enumerate(yaml_blocks):
             block_type = yaml_block.get('type', '')
-            func_name = f"_{mirror_id}_install_{i+1}"
+            func_name = f"_{mirror_id.replace('-', '_').replace('.', '_')}_install_{i+1}"
 
             if block_type == 'ReplaceIfExist':
                 func_code, backup_info = self.generate_replace_function(yaml_block, func_name, mirror_id, backed_up_files)
@@ -579,7 +579,7 @@ class MarkdownParser:
             for original_path, backup_filename in backup_files:
                 script_lines.append(f"\tif [ -f ${{_backup_dir}}/{backup_filename} ]; then")
                 script_lines.append(f"\t\tset_sudo")
-                script_lines.append(f"\t\t$sudo cp \"${{_backup_dir}}/{backup_filename}\" {original_path} 2>/dev/null || true")
+                script_lines.append(f"\t\tcp \"${{_backup_dir}}/{backup_filename}\" {original_path} 2>/dev/null || true")
                 script_lines.append(f"\t\tprint_info \"Restored {original_path}\"")
                 script_lines.append(f"\tfi")
 
