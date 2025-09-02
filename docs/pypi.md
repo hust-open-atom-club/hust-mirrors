@@ -140,8 +140,9 @@ exec: |
   EOF
   #{/USE_IN_DOCS}
 recover: |
-  rm /etc/uv/uv.toml
-  cp ${_backup_dir}/uv.bak /etc/uv/uv.toml
+  set_sudo
+  $sudo rm /etc/uv/uv.toml
+  $sudo cp ${_backup_dir}/uv.bak /etc/uv/uv.toml
 ```
 
 ## 切换回默认镜像
