@@ -3,6 +3,10 @@ title: Linux Mint 镜像使用帮助
 sidebar_label: Linux Mint
 cname: LinuxMint
 type: OS
+detection:
+  checks:
+    - type: os_release
+      name: Linux Mint
 ---
 
 ## Linux Mint 简介与软件管理

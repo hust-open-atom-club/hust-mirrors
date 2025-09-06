@@ -6,7 +6,7 @@ type: OS
 detection:
   checks:
     - type: os_release
-      name: Kali Linux
+      name: Kali GNU/Linux
 ---
 
 ## Kali 简介与软件管理
