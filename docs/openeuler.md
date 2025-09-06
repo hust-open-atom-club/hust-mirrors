@@ -2,6 +2,10 @@
 sidebar_label: openEuler
 title: openEuler 软件仓库镜像使用帮助
 type: OS
+detection:
+  checks:
+    - type: os_release
+      name: openEuler
 ---
 
 ## openEuler 简介与软件管理

@@ -3,6 +3,10 @@ sidebar_label: openKylin
 title: openKylin 软件仓库镜像使用帮助
 cname: 'openkylin'
 type: OS
+detection:
+  checks:
+    - type: os_release
+      name: openKylin
 ---
 
 ## openKylin 简介与软件管理

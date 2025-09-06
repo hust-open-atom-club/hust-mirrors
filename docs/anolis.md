@@ -5,7 +5,7 @@ type: OS
 detection:
   checks:
     - type: os_release
-      name: Anoolis
+      name: Anolis OS
 ---
 
 ## Anolis OS 简介与软件管理
