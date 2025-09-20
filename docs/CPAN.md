@@ -1,6 +1,7 @@
 ---
 sidebar_label: CPAN
 title: Perl语言软件包仓库使用帮助
+type: repo
 ---
 
 [CPAN](https://www.cpan.org/) (The Comprehensive Perl Archive Network) 镜像源的配置文件为 `MyConfig.pm`（一般位于 `~/.cpan/CPAN/MyConfig.pm`），可使用包管理脚本 `cpan` 进行修改。

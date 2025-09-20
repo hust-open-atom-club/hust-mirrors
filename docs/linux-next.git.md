@@ -2,6 +2,7 @@
 title: Linux Next Git 镜像使用帮助
 sidebar_label: Linux Next
 cname: 'linux-next.git'
+type: repo
 ---
 
 ## linux-next 介绍
@@ -19,16 +20,28 @@ cname: 'linux-next.git'
 
 1. 克隆 `Linux` 源代码，运行
 
-```bash varcode
-git clone ${_http}://${_domain}/git/linux.git
+```yaml cli
+type: Execute
+privileged: false
+interpreter: shell
+exec: |
+  #{USE_IN_DOCS/}
+  git clone ${_http}://${_domain}/git/linux.git
+  #{/USE_IN_DOCS}
 ```
 
 2. 将 `linux-next` 作为一个新的 remote，并更新本地分支和标签
 
-```bash varcode
-git remote add linux-next ${_http}://${_domain}/git/linux-next.git
-git fetch linux-next
-git fetch --tags linux-next
+```yaml cli
+type: Execute
+privileged: false
+interpreter: shell
+exec: |
+  #{USE_IN_DOCS/}
+  git remote add linux-next ${_http}://${_domain}/git/linux-next.git
+  git fetch linux-next
+  git fetch --tags linux-next
+  #{/USE_IN_DOCS}
 ```
 
 3. 检出 `linux-next` 的 commit

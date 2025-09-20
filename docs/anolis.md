@@ -1,6 +1,11 @@
 ---
 sidebar_label: Anolis OS
 title: Anolis 软件仓库镜像使用帮助
+type: OS
+detection:
+  checks:
+    - type: os_release
+      name: Anolis OS
 ---
 
 ## Anolis OS 简介与软件管理
@@ -21,15 +26,31 @@ Anolis 使用 YUM 工具来管理 RPM 软件包，查询软件包信息，从指
 本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
 :::
 
+1. 替换软件源
 使用 `sed` 命令修改 `/etc/yum.repos.d/` 文件夹下的软件源配置文件，原有的配置文件会被备份为 `.bak` 后缀的文件。
 
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}sed -i.bak -E "s|https?://(mirrors\\.openanolis\\.cn)|${_http}://${_domain}|g" \\
-    /etc/yum.repos.d/*.repo
-${SUDO}yum makecache
-${SUDO}yum update
+```yaml cli
+type: ReplaceIfExist
+required: false
+privileged: true
+description: 一键替换Alpine Linux软件源
+files:
+  - path: /etc/yum.repos.d/*.repo
+    match: 'https?://(mirrors\\.openanolis\\.cn)'
+    replace: '${_http}://${_domain}'
 ```
+
+2. 更新软件包缓存
+
+```yaml cli
+type: Execute
+required: false
+privileged: true
+description: 更新软件包索引
+exec: |
+  #{USE_IN_DOCS/}
+  yum makecache
+  yum update
+  #{/USE_IN_DOCS}
+```
+

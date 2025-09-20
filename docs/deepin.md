@@ -2,6 +2,11 @@
 sidebar_label: Deepin
 title: Deepin 软件仓库镜像使用帮助
 cname: 'deepin'
+typs: OS
+detection:
+  checks:
+    - type: os_release
+      name: Deepin
 ---
 
 ## Deepin 简介与软件管理
@@ -12,11 +17,47 @@ Deepin 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说�
 
 ## Deepin 软件源替换
 
+### 一键换源
+
+:::caution
+本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
+:::
+
+使用 `sed` 命令将软件源配置文件中的默认源地址 [https://community-packages.deepin.com/](https://community-packages.deepin.com/) 直接替换为当前镜像源站。
+
+
+```yaml cli
+type: ReplaceIfExist
+required: true
+optional: false
+description: 替换Deepin主仓库
+privileged: true
+files:
+  - path: /etc/apt/sources.list
+    match: 'https?://([^/]+)/deepin'
+    replace: '${_http}://${_domain}/deepin'
+  - path: /etc/apt/sources.list
+    match: 'https?://([^/]+)/beige'
+    replace: '${_http}://${_domain}/deepin/beige'
+display_policy:
+  kind: OneOf
+  variables:
+    - name: version
+      description: Deepin 版本
+      options:
+        - name: 'Deepin 20'
+          display: 
+            - 1
+        - name: 'Deepin 23'
+          display:
+            - 2
+```
+
 :::caution
 **为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
 :::
 
-1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/apt/sources.list` 的原有内容：
+### 1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/apt/sources.list` 的原有内容：
 
 ```shell varcode
 [ ] (version) { apricot:Deepin 20, beige:Deepin 23（不支持 Nightly） } Deepin 版本
@@ -36,44 +77,19 @@ deb ${_http}${COMMAND}
 ${SRC_PREFIX}deb-src ${_http}${COMMAND}
 ```
 
-2. 通过如下命令更新软件。
+### 2. 通过如下命令更新软件。
 
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}apt update
+```yaml cli
+type: Execute
+privileged: true
+interpreter: shell
+exec: |
+  #{USE_IN_DOCS/}
+  apt-get update
+  #{/USE_IN_DOCS}
 ```
 
-## 一键换源
 
-:::caution
-本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
-:::
-
-使用 `sed` 命令将软件源配置文件中的默认源地址 [https://community-packages.deepin.com/](https://community-packages.deepin.com/) 直接替换为当前镜像源站。
-
-```shell varcode
-[ ] (root) 是否为 root 用户
-[ ] (version) { apricot:Deepin 20, beige:Deepin 23（不支持 Nightly） } Deepin 版本
----
-const SUDO = !root ? 'sudo ' : '';
-let COMMAND = '';
-let STR_TO_REPLACE = '';
-let STR_REPLACED = '';
-
-if (version == 'apricot') {
-  STR_TO_REPLACE = '([^/]+)/deepin';
-  STR_REPLACED = `${_domain}/deepin`;
-}
-if (version == 'beige') {
-  STR_TO_REPLACE = '([^/]+)/' + version;
-  STR_REPLACED = `${_domain}/deepin/` + version;
-}
----
-${SUDO}sed -i.bak -E -e "s|https?://${STR_TO_REPLACE}|${_http}://${STR_REPLACED}|" /etc/apt/sources.list
-```
 
 ## 注意事项
 

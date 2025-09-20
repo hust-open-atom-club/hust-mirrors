@@ -2,6 +2,11 @@
 sidebar_label: Kali
 title: Kali Linux 软件仓库镜像使用帮助
 cname: 'kali'
+type: OS
+detection:
+  checks:
+    - type: os_release
+      name: Kali GNU/Linux
 ---
 
 ## Kali 简介与软件管理
@@ -12,6 +17,27 @@ Kali 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说，
 
 ## Kali 软件源替换
 
+### 一键换源
+
+:::caution
+本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
+:::
+
+使用 `sed` 命令将软件源配置文件中的默认源地址 [http://http.kali.org/](http://http.kali.org/) 直接替换为当前镜像源站。
+
+
+```yaml cli
+type: ReplaceIfExist
+required: true
+optional: false
+description: 替换Kali主仓库
+privileged: true
+files:
+  - path: /etc/apt/sources.list
+    match: 'https?://([^/]+)/kali'
+    replace: '${_http}://${_domain}/kali'
+```
+
 :::caution
 **为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
 :::
@@ -20,7 +46,7 @@ Kali 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说，
 早期版本的 Kali Linux 不受本站支持。
 :::
 
-1. 根据个人喜好做出选择，使用以下内容替换 `/etc/apt/sources.list`
+### 1. 根据个人喜好做出选择，使用以下内容替换 `/etc/apt/sources.list`
 
 ```plaintext varcode
 [ ] (src) 启用源码镜像
@@ -33,31 +59,19 @@ deb https://mirrors.hust.edu.cn/kali kali-rolling main contrib non-free non-free
 ${SRC_PREFIX}deb-src https://mirrors.hust.edu.cn/kali kali-rolling main contrib non-free non-free-firmware
 ```
 
-2. 通过如下命令更新软件。
+### 2. 通过如下命令更新软件。
 
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}apt update
+```yaml cli
+type: Execute
+privileged: true
+interpreter: shell
+exec: |
+  #{USE_IN_DOCS/}
+  apt-get update
+  #{/USE_IN_DOCS}
 ```
 
-## 一键换源
 
-:::caution
-本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
-:::
-
-使用 `sed` 命令将软件源配置文件中的默认源地址 [http://http.kali.org/](http://http.kali.org/) 直接替换为当前镜像源站。
-
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}sed -i.bak -E -e 's|https?://([^/]+)/kali|${_http}://${_domain}/kali|' /etc/apt/sources.list
-```
 
 ## 注意事项
 

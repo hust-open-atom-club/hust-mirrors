@@ -2,6 +2,11 @@
 sidebar_label: openKylin
 title: openKylin 软件仓库镜像使用帮助
 cname: 'openkylin'
+type: OS
+detection:
+  checks:
+    - type: os_release
+      name: openKylin
 ---
 
 ## openKylin 简介与软件管理
@@ -12,29 +17,8 @@ openKylin 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来�
 
 ## openKylin 软件源替换
 
-:::caution
-**为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
-:::
 
-1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/apt/sources.list` 的原有内容：
-
-```shell varcode
-[ ] (version) { yangtze:1.0 } openKylin 版本
----
-deb ${_http}://${_domain}/openkylin ${version} main
-```
-
-2. 通过如下命令更新软件。
-
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}apt update
-```
-
-## 一键换源
+### 一键换源
 
 :::caution
 本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
@@ -42,13 +26,44 @@ ${SUDO}apt update
 
 使用 `sed` 命令将软件源配置文件中的默认源地址 [http://archive.build.openkylin.top](http://archive.build.openkylin.top) 直接替换为当前镜像源站。
 
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}sed -i.bak -E -e 's|https?://([^/]+)/openkylin|${_http}://${_domain}/openkylin|' /etc/apt/sources.list
+
+```yaml cli
+type: ReplaceIfExist
+required: true
+optional: false
+privileged: true
+files:
+  - path: /etc/apt/sources.list
+    match: 'https?://([^/]+)/openkylin'
+    replace: '${_http}://${_domain}/openkylin'
 ```
+
+
+:::caution
+**为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
+:::
+
+### 1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/apt/sources.list` 的原有内容：
+
+```shell varcode
+[ ] (version) { yangtze:1.0 } openKylin 版本
+---
+deb ${_http}://${_domain}/openkylin ${version} main
+```
+
+### 2. 通过如下命令更新软件。
+
+```yaml cli
+type: Execute
+privileged: true
+interpreter: shell
+exec: |
+  #{USE_IN_DOCS/}
+  apt-get update
+  #{/USE_IN_DOCS}
+```
+
+
 
 ## 注意事项
 
