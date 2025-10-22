@@ -1,6 +1,11 @@
 ---
 sidebar_label: openEuler
 title: openEuler 软件仓库镜像使用帮助
+type: OS
+detection:
+  checks:
+    - type: os_release
+      name: openEuler
 ---
 
 ## openEuler 简介与软件管理
@@ -11,11 +16,35 @@ openEuler 使用 `dnf` 工具来管理 RPM 软件包，查询软件包信息，�
 
 ## openEuler 软件源替换
 
+## 一键换源
+
+:::caution
+本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
+:::
+
+使用 `sed` 命令修改软件源配置文件 `/etc/yum.repos.d/openEuler.repo`
+
+```yaml cli
+type: ReplaceIfExist
+required: true
+optional: false
+description: 替换Linux Mint主仓库
+privileged: true
+files:
+  - path: /etc/yum.repos.d/openEuler.repo
+    match: 'http://repo.openeuler.org'
+    replace: '${_http}://${_domain}/openeuler'
+  - path: /etc/yum.repos.d/openEuler.repo
+    match: '\\(metalink=.*$\\)'
+    replace: '# \\1'
+    comment: 目前本镜像站暂不支持 openEuler 的 metalink 功能，因此需要注释相关行
+```
+
 :::caution
 **为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
 :::
 
-1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/yum.repos.d/openEuler.repo` 的原有内容：
+### 1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/yum.repos.d/openEuler.repo` 的原有内容：
 
 ```ini varcode
 [ ] (version) {23.09:23.09, 23.03:23.03, 22.09:22.09, 22.03-LTS-SP3:22.03 LTS SP3, 22.03-LTS-SP2:22.03 LTS SP2, 22.03-LTS-SP1:22.03 LTS SP1, 22.03-LTS:22.03 LTS, 21.09:21.09, 21.03:21.03, 20.09:20.09, 20.03-LTS-SP4:20.03 LTS SP4, 20.03-LTS-SP3:20.03 LTS SP3, 20.03-LTS-SP2:20.03 LTS SP2, 20.03-LTS-SP1:20.03 LTS SP1, 20.03-LTS:20.03 LTS} openEuler 版本
@@ -84,33 +113,19 @@ gpgcheck=1
 gpgkey=${_http}://${_domain}/openeuler/openEuler-${version}/source/RPM-GPG-KEY-openEuler
 ```
 
-2. 通过如下命令更新软件。
+### 2. 通过如下命令更新软件。
 
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}dnf update
+```yaml cli
+type: Execute
+privileged: true
+interpreter: shell
+exec: |
+  #{USE_IN_DOCS/}
+  dnf update
+  #{/USE_IN_DOCS}
 ```
 
-## 一键换源
 
-:::caution
-本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
-:::
-
-使用 `sed` 命令修改软件源配置文件 `/etc/yum.repos.d/openEuler.repo`
-
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}sed -i.bak -e "s|http://repo.openeuler.org|${_http}://${_domain}/openeuler|g" \\
-    -e "s|\\(metalink=.*$\\)|# \\1|g" /etc/yum.repos.d/openEuler.repo
-${SUDO}dnf update
-```
 
 ## 注意事项
 

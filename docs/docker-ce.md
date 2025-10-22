@@ -1,6 +1,7 @@
 ---
 title: Docker CE 镜像使用帮助
 sidebar_label: Docker CE
+type: install
 ---
 
 :::caution
@@ -19,13 +20,15 @@ Docker 官方提供了一个自动配置与安装的[脚本](https://get.docker.
 Docker 官方[不建议](https://github.com/docker/docker-install/blob/master/install.sh#L5-L9)在生产环境使用此脚本安装 Docker CE！！！
 :::
 
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-curl -fsSL https://get.docker.com -o get-docker.sh
-${SUDO}DOWNLOAD_URL=${_http}://${_domain}/docker-ce sh get-docker.sh
+```yaml cli
+type: Execute
+privileged: true
+interpreter: shell
+exec: |
+  #{USE_IN_DOCS/}
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  DOWNLOAD_URL=${_http}://${_domain}/docker-ce sh get-docker.sh
+  #{/USE_IN_DOCS}
 ```
 
 ## 手动安装

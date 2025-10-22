@@ -4,6 +4,8 @@
 # Production
 /build
 
+/generated_scripts
+
 # Generated files
 .docusaurus
 .cache-loader
