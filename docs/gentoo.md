@@ -12,11 +12,15 @@ stage 3 文件可以在任意一个Gentoo官方镜像站及本站的 releases/am
 :::
 
 ## 安装时配置
-打开[Gentoo主网站下载小节](https://www.gentoo.org/downloads/#other-arches)，右键单击 stage 文件的链接，然后复制链接到剪贴板，将其中的 https://distfiles.gentoo.org/ 替换成
+打开[Gentoo主网站下载小节](https://www.gentoo.org/downloads/#other-arches)，右键单击 stage 文件的链接，然后复制链接到剪贴板，将其中的
+```bash varcode
+https://distfiles.gentoo.org/
+```
+替换成
 ```bash varcode
 ${_http}://${_domain}/gentoo/
 ```
-，代替原链接，在接下来的步骤中使用。
+代替原链接，在接下来的步骤中使用。
 
 ## Gentoo Prefix Bootstrap 配置镜像
 在您运行 Bootstrap 脚本之前，可以通过执行以下命令设置环境变量来设置在 Bootstrap 过程中使用本镜像仓库。
