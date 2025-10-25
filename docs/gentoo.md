@@ -31,11 +31,19 @@ export GNU_URL="${_http}://mirror/gnu"
 ```
 
 ## Distfiles 配置
-您可以在 /etc/portage/make.conf 中加入：
+您可以在
+```
+/etc/portage/make.conf
+```
+中写入：
 ```conf varcode
 GENTOO_MIRRORS="${_http}://${_domain}/gentoo"
 ```
-设置完成后，您可以在终端执行 emerge --sync 进行更新。
+设置完成后，您可以在终端执行
+```bash varcode
+emerge --sync
+```
+进行更新。
 
 ## 引用
 1. [Gentoo 手册 AMD64：安装](https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation/zh-cn)
