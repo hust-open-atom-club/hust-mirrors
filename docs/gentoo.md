@@ -12,7 +12,7 @@ stage 3 文件可以在任意一个 Gentoo 官方镜像站及本站的 releases/
 :::
 
 ## 安装时配置
-打开 [Gentoo 主网站下载小节](https://www.gentoo.org/downloads/#other-arches) ，右键单击 stage 文件的链接，然后复制链接到剪贴板，将其中的
+打开 [Gentoo 主网站下载小节](https://www.gentoo.org/downloads/#other-arches)，右键单击 stage 文件的链接，然后复制链接到剪贴板，将其中的
 ```bash varcode
 https://distfiles.gentoo.org/
 ```
