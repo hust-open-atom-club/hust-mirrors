@@ -366,93 +366,6 @@ class MarkdownParser:
 
         return '\n'.join(lines), processed_recover
 
-    def generate_execute_function(self, yaml_block: Dict[str, Any], func_name: str, mirror_id: str) -> Tuple[str, str]:
-        """生成Execute类型的函数，返回函数代码和恢复命令"""
-        exec_script = yaml_block.get('exec', '').strip()
-        recover_script = yaml_block.get('recover', '').strip()
-        privileged = yaml_block.get('privileged', False)
-        optional = yaml_block.get('optional', False)
-        description = yaml_block.get('description', 'Execute commands')
-
-        lines = []
-        lines.append(f"{func_name}() {{")
-        lines.append(f"\t# {description}")
-
-        # 如果是可选的，先确认是否执行
-        if optional:
-            lines.append(f"\tconfirm_y \"{description}?\" || return 0")
-            lines.append("")
-
-        if privileged:
-            lines.append("\tset_sudo")
-            lines.append("")
-
-        # 添加执行部分
-        if exec_script:
-            lines.append("\t# Execute commands")
-
-            # 处理文档标记 #{USE_IN_DOCS/} 和 #{/USE_IN_DOCS}
-            exec_script = re.sub(r'#\{USE_IN_DOCS/\}\s*\n?', '', exec_script)
-            exec_script = re.sub(r'\s*#\{/USE_IN_DOCS\}', '', exec_script)
-
-            if len(exec_script) == 0:
-                logging.error(f"Empty exec script for {mirror_id}")
-                if self.test:
-                    sys.exit(1)
-
-            # 处理变量替换
-            exec_script = exec_script.replace('${_domain}', '$domain').replace('${_http}', '$http')
-
-            sudo_prefix = "$sudo " if privileged else ""
-            in_heredoc = False
-            heredoc_delimiter = None
-
-            for line in exec_script.split('\n'):
-                original_line = line
-                line = line.strip()
-
-                if not line:
-                    continue
-
-                # 检测here-document开始
-                if '<<' in line and not in_heredoc:
-                    parts = line.split('<<', 1)
-                    if len(parts) == 2:
-                        delimiter_part = parts[1].strip()
-                        if delimiter_part:
-                            heredoc_delimiter = delimiter_part.split()[0]
-                            in_heredoc = True
-                            if line.startswith('mkdir') or line.startswith('cp') or line.startswith('mv') or line.startswith('cat') or line.startswith('touch'):
-                                lines.append(f"\t{sudo_prefix}{line}")
-
-                            continue
-
-                # 检测here-document结束
-                if in_heredoc and line == heredoc_delimiter:
-                    lines.append(line)  # EOF不加制表符前缀
-                    in_heredoc = False
-                    heredoc_delimiter = None
-                    continue
-
-                # here-document内容
-                if in_heredoc:
-                    lines.append(original_line)  # 保持原始缩进
-                    continue
-
-                # 普通命令
-                lines.append(f"\t{sudo_prefix}{line}")
-
-        lines.append("")
-        lines.append("\treturn 0")
-        lines.append("}")
-
-        # 处理恢复脚本
-        processed_recover = ""
-        if recover_script:
-            # 处理变量替换
-            processed_recover = recover_script.replace('${_backup_dir}', '$_backup_dir').replace('${_domain}', '$domain').replace('${_http}', '$http')
-
-        return '\n'.join(lines), processed_recover
 
     def collect_backup_files(self, yaml_blocks: List[Dict[str, Any]], mirror_id: str) -> List[str]:
         """收集所有会在${_backup_dir}中创建的文件名"""
@@ -537,15 +450,8 @@ class MarkdownParser:
                 script_lines.append("")
                 install_functions.append(func_name)
                 backup_files.extend(backup_info)
-            elif block_type == 'TestAndExecute':
+            elif block_type == 'TestAndExecute' or block_type == 'Execute':
                 func_code, recover_cmd = self.generate_test_execute_function(yaml_block, func_name, mirror_id)
-                script_lines.append(func_code)
-                script_lines.append("")
-                install_functions.append(func_name)
-                if recover_cmd:
-                    recover_commands.append(recover_cmd)
-            elif block_type == 'Execute':
-                func_code, recover_cmd = self.generate_execute_function(yaml_block, func_name, mirror_id)
                 script_lines.append(func_code)
                 script_lines.append("")
                 install_functions.append(func_name)
