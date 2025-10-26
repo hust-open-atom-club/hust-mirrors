@@ -255,7 +255,7 @@ class MarkdownParser:
         required = yaml_block.get('required', False)
         optional = yaml_block.get('optional', False)
         provide_backup = yaml_block.get('provide_backup', False)
-        description = yaml_block.get('description', 'Test and execute')
+        description = yaml_block.get('description', 'Test and execute' if test_script else 'Execute commands')
 
         lines = []
         lines.append(f"{func_name}() {{")
@@ -348,11 +348,12 @@ class MarkdownParser:
                     lines.append(original_line)  # 保持原始缩进
                     continue
 
-                # 普通命令
-                if line.startswith('mkdir') or line.startswith('cp') or line.startswith('mv') or line.startswith('cat >') or line.startswith('touch'):
-                    lines.append(f"\t{sudo_prefix}{line}")
-                else:
+                # shell控制结构
+                if line.startswith('if') or line.startswith('else') or line.startswith('fi') or line.startswith('while') or line.startswith('do') or line.startswith('done') or line.startswith('for'):
                     lines.append(f"\t{line}")
+                else:
+                    # 普通命令
+                    lines.append(f"\t{sudo_prefix}{line}")
 
         lines.append("")
         lines.append("\treturn 0")
