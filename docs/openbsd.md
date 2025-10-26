@@ -15,7 +15,7 @@ ${_http}://${_domain}/openbsd/
 
 ## 快速设置
 运行以下命令：
-```bash varcode
+```shell varcode
 echo '${_http}://${_domain}/openbsd/' | sudo tee /etc/installurl
 ```
 
