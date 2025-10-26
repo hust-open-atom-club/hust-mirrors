@@ -70,7 +70,9 @@ const mirrors: MirrorMeta[] = [
   { id: 'deepin-cd', description: 'Deepin 镜像文件', helpID: 'deepin', anchorID: 'cd' },
   { id: 'gnu', description: 'GNU软件的源码包和文档仓库' },
   { id: 'golang', description: 'Go语言工具链' },
+  { id: 'gentoo', description: 'Gentoo 的 Stage3 的镜像', helpID: 'gentoo' },
   { id: 'openkylin-cdimage', description: 'openKylin 镜像文件', helpID: 'openkylin', anchorID: 'iso' },
+  { id: 'openbsd', description: 'OpenBSD 软件仓库', helpID: 'openbsd'}
   { id: 'rustup', description: 'Rust语言工具链', supportCli: true },
   { id: 'virtualbox', description: '开源的x86架构虚拟机安装文件' },
   { id: 'gcc.git', description: 'GNU编译工具代码仓库' },
