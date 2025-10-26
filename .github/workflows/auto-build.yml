@@ -34,8 +34,6 @@ jobs:
         run: yarn
       - name: Download status.json
         run: wget https://mirrors.hust.edu.cn/status.json -P ./static/
-      - name: Download config
-        run: wget -O docusaurus.config.js https://github.com/yeying-xingchen/hust-mirrors-gh-ppage/raw/refs/heads/main/docusaurus.config.js
       - name: Build
         run: yarn build
       - name: Setup Pages
