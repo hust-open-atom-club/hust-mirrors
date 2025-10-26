@@ -20,5 +20,5 @@ echo '${_http}://${_domain}/openbsd/' | sudo tee /etc/installurl
 ```
 
 ## 引用
-1. [OpenBSD 软件仓库镜像使用帮助-MirrorZ Project](https://help.mirrors.cernet.edu.cn/OpenBSD/)
-2. [openbsd.org](https://www.openbsd.org/index.html)
+1. [使用帮助 - MirrorZ Projec](https://help.mirrors.cernet.edu.cn/OpenBSD/)
+2. [项目简介 - Openbsd.org](https://www.openbsd.org/index.html)
