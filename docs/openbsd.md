@@ -15,8 +15,12 @@ ${_http}://${_domain}/openbsd/
 
 ## 快速设置
 运行以下命令：
-```bash varcode
-echo '${_http}://${_domain}/openbsd/' | sudo tee /etc/installurl
+```shell varcode
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO} echo '${_http}://${_domain}/openbsd/' | ${SUDO} tee /etc/installurl
 ```
 
 ## 引用
