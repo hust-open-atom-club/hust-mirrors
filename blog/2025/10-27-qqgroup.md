@@ -1,5 +1,5 @@
 ---
-title: 镜像站QQ群现已创建
+title: 镜像站 QQ 群现已创建
 authors: yeying-xingchen
 ---
 
