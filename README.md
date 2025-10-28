@@ -1,5 +1,7 @@
 # HUST Mirror 网页 & 文档
 
+[![](https://img.shields.io/badge/Join_QQ-%E5%8D%8E%E7%A7%91%E5%A4%A7%E5%BC%80%E6%BA%90%E9%95%9C%E5%83%8F%E7%AB%99%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81%E7%BE%A4-white?style=for-the-badge&color=76bad9&logo=qq&logoColor=76bad9)]( https://qm.qq.com/q/GxLlEDSdMI )
+
 该网站使用 [Docusaurus](https://docusaurus.io/) 构建。
 
 ## 开发
