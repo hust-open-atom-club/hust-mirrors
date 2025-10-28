@@ -6,7 +6,7 @@ cname: 'Rocky Linux'
 
 ## Rocky 简介
 
-Rocky Linux 是一个开源的企业级操作系统，旨在与 Red Hat Enterprise Linux® 100% 完全兼容。本镜像仓库是为 Rocky Linux 提供的软件源镜像。本仓库收录了 x86_64, aarch64 架构的 8, 9 版本。
+Rocky Linux 是一个开源的企业级操作系统，旨在与 Red Hat Enterprise Linux® 100% 完全兼容。本镜像仓库是为 Rocky Linux 提供的软件源镜像。本仓库收录了 x86_64，aarch64 架构的 8，9 版本。
 
 ## 一键使用
 打开终端，执行以下命令，替换默认的软件源配置：
@@ -17,7 +17,7 @@ sed -e 's|^mirrorlist=|#mirrorlist=|g' \
     /etc/yum.repos.d/rocky-extras.repo \
     /etc/yum.repos.d/rocky.repo
 ```
-执行以上命令后，默认启用了的仓库将会被正确替换。在执行命令替换之后，请运行`dnf makecache`更新缓存以启用更改。
+执行以上命令后，默认启用了的仓库将会被正确替换。在执行命令替换之后，请运行 `dnf makecache` 更新缓存以启用更改。
 
 ## 引用
 1. [Rocky Linux-USTC Mirror Help](https://mirrors.ustc.edu.cn/help/rocky.html)
