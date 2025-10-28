@@ -6,7 +6,7 @@ cname: 'Rocky Linux'
 
 ## Rocky 简介
 
-Rocky Linux 是一个开源的企业级操作系统，旨在与 Red Hat Enterprise Linux® 100% 完全兼容。本镜像仓库是为 Rocky Linux 提供的软件源镜像。本仓库收录了 x86_64, aarch64 架构的8, 9版本。
+Rocky Linux 是一个开源的企业级操作系统，旨在与 Red Hat Enterprise Linux® 100% 完全兼容。本镜像仓库是为 Rocky Linux 提供的软件源镜像。本仓库收录了 x86_64, aarch64 架构的 8, 9 版本。
 
 ## 一键使用
 打开终端，执行以下命令，替换默认的软件源配置：
