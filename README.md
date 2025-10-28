@@ -2,7 +2,7 @@
 
 [![](https://img.shields.io/badge/Join_QQ-%E5%8D%8E%E7%A7%91%E5%A4%A7%E5%BC%80%E6%BA%90%E9%95%9C%E5%83%8F%E7%AB%99%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81%E7%BE%A4-white?style=for-the-badge&color=76bad9&logo=qq&logoColor=76bad9)]( https://qm.qq.com/q/GxLlEDSdMI )
 
-该网站使用 [Docusaurus](https://docusaurus.io/) 构建。
+本网站前端使用 [Docusaurus](https://docusaurus.io/) 构建。
 
 ## 开发
 
@@ -58,7 +58,7 @@ $ python scripts/parser.py
 
 #### 文档格式
 
-文档采用 Markdown 格式编写，如果需要支持用户交互的代码块，请参考 Ubuntu 文档的写法。
+文档采用 Markdown 格式编写，请在开始编写前仔细阅读[风格指南](https://docs.ubuntu.com/styleguide/en#interacting-with-ui-elements)，如果需要支持用户交互的代码块，请参考 [USAGE.md](USAGE.md) 和 Ubuntu 文档的写法。
 
 ## 许可证
 
