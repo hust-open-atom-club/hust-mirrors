@@ -21,3 +21,4 @@ sed -e 's|^mirrorlist=|#mirrorlist=|g' \
 
 ## 引用
 1. [Rocky Linux-USTC Mirror Help](https://mirrors.ustc.edu.cn/help/rocky.html)
+2. [主页 - Rocky Linux](https://rockylinux.org/zh-CN)
