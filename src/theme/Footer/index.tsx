@@ -55,6 +55,12 @@ function Footer() {
               <Translate id='mirror.footer.desc6_0'>本站的源码可在</Translate> <a href='https://github.com/hust-open-atom-club/hust-mirrors'><Translate id='mirror.footer.desc6_1'>hust-mirrors 前端网站</Translate></a> <Translate id='mirror.footer.desc6_2'>和</Translate> <a href='https://github.com/tuna/tunasync'><Translate id='mirror.footer.desc6_3'>tunasync 同步管理器</Translate></a> <Translate id='mirror.footer.desc6_4'>获取。</Translate>
             </div>
           </div>
+	    <div>
+		  <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">
+			  <span>鄂ICP备05003321号-1</span></a>&nbsp; &nbsp; &nbsp;&nbsp;
+		  <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102000123" target="_blank">
+			  <span>鄂公网安备 42011102000123号</span></a>
+	   </div>
         )}
         <div className={styles.logos}>
           <img className={styles.light} src='/img/atomclub.svg' height={80} />
