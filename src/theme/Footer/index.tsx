@@ -44,23 +44,25 @@ function Footer() {
               <Translate id='mirror.footer.desc4'>华中科技大学OpenHarmany技术俱乐部借助OpenHarmony社区平台推动开源技术和产学研合作，通过校内教学与俱乐部实践的深度融合，鼓励和推动开源社区技术研究和创新探索，繁荣开源社区生态。
               </Translate>
             </div>
-	    <div>
-	    <a href='https://hlug.cn'>
-              <Translate id='mirror.footer.desc5_0'>华中科技大学Linux协会 </Translate>
-	    </a>
-	    <Translate id='mirror.footer.desc5_1'>是由华中科技大学在校的Linux爱好者自发组织成立的学术科技类社团。协会旨在为Linux使用者提供一个可以有效交流学习的平台，并推广校内外自由软件的使用，营造自由软件社区的文化氛围。
-              </Translate>
+            <div>
+              <a href='https://hlug.cn'>
+                      <Translate id='mirror.footer.desc5_0'>华中科技大学Linux协会 </Translate>
+              </a>
+              <Translate id='mirror.footer.desc5_1'>是由华中科技大学在校的Linux爱好者自发组织成立的学术科技类社团。协会旨在为Linux使用者提供一个可以有效交流学习的平台，并推广校内外自由软件的使用，营造自由软件社区的文化氛围。
+                      </Translate>
             </div>
             <div>
               <Translate id='mirror.footer.desc6_0'>本站的源码可在</Translate> <a href='https://github.com/hust-open-atom-club/hust-mirrors'><Translate id='mirror.footer.desc6_1'>hust-mirrors 前端网站</Translate></a> <Translate id='mirror.footer.desc6_2'>和</Translate> <a href='https://github.com/tuna/tunasync'><Translate id='mirror.footer.desc6_3'>tunasync 同步管理器</Translate></a> <Translate id='mirror.footer.desc6_4'>获取。</Translate>
             </div>
+            <div style={{ textAlign: 'right', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '10px', marginTop: '10px' }}>
+              <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">鄂ICP备05003321号-1</a>
+              <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102000123" target="_blank">鄂公网安备 42011102000123号</a>
+              <a href="http://bszs.conac.cn/sitename?method=show&id=4FD79F577D9C0994E053012819AC03E9" target="_blank">
+                <img src="/img/shiye_blue.png" alt="事业单位" height="30" />
+              </a>
+            </div>
           </div>
-	    <div>
-		  <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">
-			  <span>鄂ICP备05003321号-1</span></a>&nbsp; &nbsp; &nbsp;&nbsp;
-		  <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102000123" target="_blank">
-			  <span>鄂公网安备 42011102000123号</span></a>
-	   </div>
+
         )}
         <div className={styles.logos}>
           <img className={styles.light} src='/img/atomclub.svg' height={80} />
