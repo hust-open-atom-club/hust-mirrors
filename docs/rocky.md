@@ -14,7 +14,7 @@ Rocky Linux 是一个开源的企业级操作系统，旨在与 Red Hat Enterpri
 Rocky Linux 8：
 ```shell varcode
 sed -e 's|^mirrorlist=|#mirrorlist=|g' \ 
-    -e 's|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=https://mirrors.ustc.edu.cn/rocky|g' \ 
+    -e 's|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=${_http}://${_domain}/rocky|g' \ 
     -i.bak \ 
     /etc/yum.repos.d/Rocky-AppStream.repo \ 
     /etc/yum.repos.d/Rocky-BaseOS.repo \ 
