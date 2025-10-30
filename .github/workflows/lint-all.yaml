@@ -46,5 +46,6 @@ jobs:
           set -e
           if [ "${{ env.linted_failed }}" -ne 0 ]; then
             echo "Linting errors found. Please check the reports and suggested fixes in uploaded artifact."
+            cat "$output_file"
             exit 1
           fi
