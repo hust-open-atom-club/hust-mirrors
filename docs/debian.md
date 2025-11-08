@@ -31,7 +31,7 @@ required: true
 description: 替换Debian主仓库
 privileged: true
 files:
-  - path: /etc/apt/sources.list.d/ubuntu.sources
+  - path: /etc/apt/sources.list.d/debian.sources
     match: '^URIs: .*deb.debian.com.*'
     replace: 'URIs: ${_http}:\/\/${_domain}\/debian\/'
     comment: '> 对于Debian 12及**以上**版本，使用这个命令'
@@ -43,12 +43,12 @@ display_policy:
   kind: OneOf
   variables:
     - name: version
-      description: Ubuntu 版本
+      description: Debain 版本
       options:
-        - name: '>= 24.04'
+        - name: '>= 12'
           display: 
             - 1
-        - name: '<= 23.10'
+        - name: '<= 11'
           display:
             - 2
 ```
@@ -61,13 +61,13 @@ display_policy:
 ### 1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/apt/sources.list` 的原有内容：
 
 ```shell varcode
-[ ] (version) { bookworm:Debian 12, bullseye:Debian 11, buster:Debian 10, testing:Testing, sid:Unstable SID} Debian 版本
+[ ] (version) { trixie:Debian 13, bookworm:Debian 12, bullseye:Debian 11, buster:Debian 10, testing:Testing, sid:Unstable SID} Debian 版本
 [ ] (src) 启用源码镜像
 ---
 const BACKPORTS_PREFIX = version == 'sid' ? '# ' : ''
 const SID_PREFIX = version == 'sid' ? '# ' : ''
 let NFW = ''
-if (version == 'bookworm' || version == 'sid' || version == 'testing') 
+if (version == 'trixie' || version == 'bookworm' || version == 'sid' || version == 'testing') 
   NFW = ' non-free-firmware'
 const SRC_PREFIX = src ? "" : "# ";
 ---
@@ -144,13 +144,13 @@ ${SUDO}apt update
 或将 security 源替换为以下内容：
 
 ```shell varcode
-[ ] (version) { bookworm:Debian 12, bullseye:Debian 11, buster:Debian 10, testing:Testing} Debian 版本
+[ ] (version) { trixie:Debian 13, bookworm:Debian 12, bullseye:Debian 11, buster:Debian 10, testing:Testing} Debian 版本
 [ ] (src) 启用源码镜像
 ---
 const BACKPORTS_PREFIX = version == 'sid' ? '# ' : ''
 const SID_PREFIX = version == 'sid' ? '# ' : ''
 let NFW = ''
-if (version == 'bookworm' || version == 'sid' || version == 'testing') 
+if (version == 'trixie' || version == 'bookworm' || version == 'sid' || version == 'testing') 
   NFW = ' non-free-firmware'
 const SRC_PREFIX = src ? "" : "# ";
 ---
