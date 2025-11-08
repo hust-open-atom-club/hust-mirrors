@@ -32,7 +32,11 @@ Python 3.11 中实现了 PEP 668，允许 Python 软件包指定默认情况下�
 ### 临时使用
 
 ```bash varcode
-pip install -i https://${_domain}/pypi/web/simple <some-package>
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}pip install -i https://${_domain}/pypi/web/simple <some-package>
 ```
 
 ### 设为默认
@@ -60,7 +64,13 @@ recover: |
 
 如果 pip 版本较低，可以使用下面的命令升级 pip
 ```bash varcode
-python -m pip install -i https://${_domain}/pypi/web/simple --upgrade pip
+[ ] (root) 是否为 root 用户
+[ ] (mirror) 使用镜像站进行升级
+---
+const SUDO = !root ? 'sudo ' : '';
+const MIRROR = !mirror ? '-i https://${_domain}/pypi/web/simple ' : '';
+---
+${SUDO}python -m pip install {MIRROR}--upgrade pip
 ```
 
 ## 切换 PDM 软件镜像
@@ -87,7 +97,11 @@ recover: |
 
 或使用环境变量设置 PDM 软件镜像：
 ```bash varcode
-export PDM_PYPI_URL=https://${_domain}/pypi/web/simple
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}export PDM_PYPI_URL=https://${_domain}/pypi/web/simple
 ```
 
 ## 切换 Poetry 软件镜像
@@ -100,7 +114,11 @@ Poetry 支持使用 `poetry source` 命令或修改 `pyproject.toml` 来设置�
 
 使用 `poetry source` 命令设置软件镜像：
 ```bash varcode
-poetry source add --priority=primary mirrors https://${_domain}/pypi/web/simple
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}poetry source add --priority=primary mirrors https://${_domain}/pypi/web/simple
 ```
 
 或修改 `pyproject.toml` 设置软件镜像，在 `pyproject.toml` 文件中添加如下内容：
