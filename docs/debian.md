@@ -31,7 +31,7 @@ required: true
 description: 替换Debian主仓库
 privileged: true
 files:
-  - path: /etc/apt/sources.list.d/ubuntu.sources
+  - path: /etc/apt/sources.list.d/debian.sources
     match: '^URIs: .*deb.debian.com.*'
     replace: 'URIs: ${_http}:\/\/${_domain}\/debian\/'
     comment: '> 对于Debian 12及**以上**版本，使用这个命令'
@@ -43,12 +43,12 @@ display_policy:
   kind: OneOf
   variables:
     - name: version
-      description: Ubuntu 版本
+      description: Debain 版本
       options:
-        - name: '>= 24.04'
+        - name: '>= 12'
           display: 
             - 1
-        - name: '<= 23.10'
+        - name: '<= 11'
           display:
             - 2
 ```
