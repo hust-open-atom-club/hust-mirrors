@@ -4,10 +4,9 @@ title: MXLinux 软件仓库镜像使用帮助
 ---
 
 ## MXLinux 简介
-MX Linux 是 [antiX](https://antixlinux.com/) 和 [MX Linux 社区](https://mxlinux.org/)之间的合作项目。它是由 Debian 稳定存储库的用户构建的一系列作系统 ，旨在将优雅高效的桌面与高稳定性和稳定的性能相结合。 
-
+MX Linux 是 [antiX](https://antixlinux.com/) 和 [MX Linux 社区](https://mxlinux.org/)之间的合作项目。它是由 Debian 稳定存储库的用户构建的一系列作系统，旨在将优雅高效的桌面与高稳定性和稳定的性能相结合。
 ## 使用
-1. 备份/etc/apt/sources.list.d/下面所有的索引文件:
+1. 备份/etc/apt/sources.list.d/下面所有的索引文件：
 ```bash varcode
 [ ] (root) 是否为 root 用户
 ---
