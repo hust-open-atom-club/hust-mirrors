@@ -24,7 +24,7 @@ if (version == '9')
     REPOS = "/etc/yum.repos.d/rocky-extras.repo \\
     /etc/yum.repos.d/rocky.repo";
 ---
-${SUDO}sed -e 's|^mirrorlist=|#mirrorlist=|g' \ 
+${SUDO}sed -e 's|^mirrorlist=|#mirrorlist=|g' \\
     -e 's|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=${_http}://${_domain}/rocky|g' \\
     -i.bak \\
     ${REPOS}
