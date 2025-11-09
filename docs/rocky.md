@@ -15,12 +15,20 @@ Rocky Linux 是一个开源的企业级操作系统，旨在与 Red Hat Enterpri
 ---
 const SUDO = !root ? 'sudo ' : '';
 let REPOS = ''
-
+if (version == '8') 
+    REPOS = '/etc/yum.repos.d/Rocky-AppStream.repo \
+    /etc/yum.repos.d/Rocky-BaseOS.repo \
+    /etc/yum.repos.d/Rocky-Extras.repo \
+    /etc/yum.repos.d/Rocky-PowerTools.repo';
+if (version == '9') 
+    REPOS = '/etc/yum.repos.d/rocky-extras.repo \
+    /etc/yum.repos.d/rocky.repo';
 ---
 ${SUDO}sed -e 's|^mirrorlist=|#mirrorlist=|g' \\
     -e 's|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=${_http}://${_domain}/rocky|g' \\
     -i.bak \\
     ${REPOS}
+
 ```
 
 执行以上命令后，默认启用了的仓库将会被正确替换。在执行命令替换之后，请运行 `dnf makecache` 更新缓存以启用更改。
