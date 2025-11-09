@@ -16,9 +16,9 @@ Rocky Linux 是一个开源的企业级操作系统，旨在与 Red Hat Enterpri
 const SUDO = !root ? 'sudo ' : '';
 let REPOS = ''
 if (version == '8') 
-    REPOS = '/etc/yum.repos.d/Rocky-AppStream.repo \
-    /etc/yum.repos.d/Rocky-BaseOS.repo \
-    /etc/yum.repos.d/Rocky-Extras.repo \
+    REPOS = '/etc/yum.repos.d/Rocky-AppStream.repo \\
+    /etc/yum.repos.d/Rocky-BaseOS.repo \\
+    /etc/yum.repos.d/Rocky-Extras.repo \\
     /etc/yum.repos.d/Rocky-PowerTools.repo';
 if (version == '9') 
     REPOS = '/etc/yum.repos.d/rocky-extras.repo \
