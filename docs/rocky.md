@@ -25,17 +25,21 @@ if (version == '8')
     REPO2 = "/etc/yum.repos.d/Rocky-BaseOS.repo"
     REPO3 = "/etc/yum.repos.d/Rocky-Extras.repo"
     REPO4 = "/etc/yum.repos.d/Rocky-PowerTools.repo"
+    REPOend3 = " \\ \n"
+    REPOend4 = " \\ \n"
 if (version == '9') 
     REPO1 = "/etc/yum.repos.d/rocky-extras.repo"
     REPO2 = "/etc/yum.repos.d/rocky.repo"
-    REPOend3 = " \\ \n"
-    REPOend4 = " \\ \n"
+    REPO3 = ""
+    REPO4 = ""
+    REPOend3 = ""
+    REPOend4 = ""
 ---
 ${SUDO}sed -e 's|^mirrorlist=|#mirrorlist=|g' \\
     -e 's|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=${_http}://${_domain}/rocky|g' \\
     -i.bak \\
-    ${REPO1} \\ \n
-    ${REPO2} \\ \n
+    ${REPO1} \\
+    ${REPO2} \\
     ${REPO3}${REPOend3}
     ${REPO4}${REPOend4}
 ```
