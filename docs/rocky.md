@@ -14,21 +14,30 @@ Rocky Linux 是一个开源的企业级操作系统，旨在与 Red Hat Enterpri
 [ ] (version) { 8:Rocky Linux 8, 9:Rocky Linux 9 } Rocky Linux 版本
 ---
 const SUDO = !root ? 'sudo ' : '';
-let REPOS = ''
+let REPO1 = ''
+let REPO2 = ''
+let REPO3 = ''
+let REPO4 = ''
+let REPOend3 =  ''
+let REPOend4 =  ''
 if (version == '8') 
-    REPOS = "/etc/yum.repos.d/Rocky-AppStream.repo \
-    /etc/yum.repos.d/Rocky-BaseOS.repo \
-    /etc/yum.repos.d/Rocky-Extras.repo \
-    /etc/yum.repos.d/Rocky-PowerTools.repo";
+    REPO1 = "/etc/yum.repos.d/Rocky-AppStream.repo"
+    REPO2 = "/etc/yum.repos.d/Rocky-BaseOS.repo"
+    REPO3 = "/etc/yum.repos.d/Rocky-Extras.repo"
+    REPO4 = "/etc/yum.repos.d/Rocky-PowerTools.repo"
 if (version == '9') 
-    REPOS = "/etc/yum.repos.d/rocky-extras.repo \
-    /etc/yum.repos.d/rocky.repo";
+    REPO1 = "/etc/yum.repos.d/rocky-extras.repo"
+    REPO2 = "/etc/yum.repos.d/rocky.repo"
+    REPOend3 = " \\ \n"
+    REPOend4 = " \\ \n"
 ---
 ${SUDO}sed -e 's|^mirrorlist=|#mirrorlist=|g' \\
     -e 's|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=${_http}://${_domain}/rocky|g' \\
     -i.bak \\
-    ${REPOS}
-
+    ${REPO1} \\ \n
+    ${REPO2} \\ \n
+    ${REPO3}${REPOend3}
+    ${REPO4}${REPOend4}
 ```
 
 执行以上命令后，默认启用了的仓库将会被正确替换。在执行命令替换之后，请运行 `dnf makecache` 更新缓存以启用更改。
