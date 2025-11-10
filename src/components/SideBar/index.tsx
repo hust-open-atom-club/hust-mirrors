@@ -138,6 +138,13 @@ function Contact() {
         </span>
       </a>
     </p>
+    <p>
+      <a href='https://qm.qq.com/q/hsGP2BkIXS'>
+        <span>
+          <MailIcon /><Translate id='mirror.sidebar.joinqq'>加入 QQ 群</Translate>
+        </span>
+      </a>
+    </p>
   </>;
 }
 
