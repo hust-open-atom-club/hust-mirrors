@@ -309,6 +309,9 @@
   "mirror.sidebar.newmirror": {
     "message": "New Mirror"
   },
+  "mirror.sidebar.joinqq": {
+    "message": "Join QQ group"
+  },
   "mirror.sidebar.links": {
     "message": "Link exchange"
   },
