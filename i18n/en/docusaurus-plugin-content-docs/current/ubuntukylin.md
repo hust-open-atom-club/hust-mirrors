@@ -64,7 +64,5 @@ This mirror site synchronizes Ubuntu Kylin installation images.
 Please click the button below, then select the appropriate version to download and install.
 
 <a href="/release?release=Ubuntu%20Kylin">
-    <button className="button button--primary">
-    Download Image
-    </button>
+    <button className="button button--primary">Download Image</button>
 </a>

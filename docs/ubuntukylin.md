@@ -66,7 +66,5 @@ ${SUDO}apt update
 请点击下面的按钮后，选择相应版本，进行下载安装。
 
 <a href="/release?release=Ubuntu%20Kylin">
-    <button className="button button--primary">
-    下载镜像
-    </button>
+    <button className="button button--primary">下载镜像</button>
 </a>

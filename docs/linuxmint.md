@@ -84,9 +84,7 @@ Linux Mint 安装镜像提供 cinnamon，mate 和 xfce 三种桌面环境，分�
 - xfce：轻量级桌面环境，适合配置较低的计算机。
 
 <a href="/release?release=Linux%20Mint">
-    <button className="button button--primary">
-    下载镜像
-    </button>
+    <button className="button button--primary">下载镜像</button>
 </a>
 
 ## 引用
