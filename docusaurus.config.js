@@ -18,7 +18,7 @@ const config = {
   baseUrl: '/',
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  
 
   i18n: {
     defaultLocale: 'zh-Hans',
@@ -101,7 +101,12 @@ const config = {
     require('./plugin/fancyindex'),
     require('./plugin/cgit'),
     require('./plugin/news')
-  ]
+  ],
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    }
+  }
 };
 
 module.exports = config;
