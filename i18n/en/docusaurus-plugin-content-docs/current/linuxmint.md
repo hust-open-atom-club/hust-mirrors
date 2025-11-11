@@ -64,9 +64,7 @@ Linux Mint installation images are available in cinnamon, mate, and xfce desktop
 - xfce: A lightweight desktop environment, suitable for computers with lower specifications.
 
 <a href="/release?release=Linux%20Mint">
-    <button className="button button--primary">
-    Download Images
-    </button>
+    <button className="button button--primary">Download Images</button>
 </a>
 
 ## References

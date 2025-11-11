@@ -37,7 +37,7 @@
     "timeago.js": "^4.0.2",
     "uglify-js": "^3.17.4",
     "unified": "^10.1.2",
-    "unist-util-modify-children": "2.0.0",
+    "unist-util-modify-children": "^2.0.0",
     "unist-util-visit-parents": "^6.0.1"
   },
   "devDependencies": {
@@ -65,6 +65,6 @@
     "node": ">=16.14"
   },
   "resolutions": {
-    "webpack-dev-server": "5.2.1"
+    "webpack-dev-server": "^5.2.1"
   }
 }
