@@ -44,7 +44,7 @@ skip_if_unavailable=False
 # /etc/yum.repos.d/fedora-updates.repo
 [updates]
 name=Fedora $releasever - $basearch - Updates
-baseurl=https://mirrors.tuna.tsinghua.edu.cn/fedora/updates/$releasever/Everything/$basearch/
+baseurl=${_http}://${_domain}/fedora/updates/$releasever/Everything/$basearch/
 #metalink=https://mirrors.fedoraproject.org/metalink?repo=updates-released-f$releasever&arch=$basearch
 enabled=1
 countme=1
