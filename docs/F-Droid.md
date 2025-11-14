@@ -10,11 +10,11 @@ F-Droid 是一个 Android 平台上 FOSS（Free and Open Source Software，自�
 
 ## 配置镜像
 
-用 F-Droid 客户端打开此链接：<https://mirrors.hust.edu.cn/fdroid/repo/?fingerprint=43238D512C1E5EB2D6569F4A3AFBF5523418B82E0A3ED1552770ABB9A9C9CCAB> 或点击[这里](https://mirrors.hust.edu.cn/fdroid/repo/?fingerprint=43238D512C1E5EB2D6569F4A3AFBF5523418B82E0A3ED1552770ABB9A9C9CCAB)，选择用 F-Droid 客户端打开，一键使用。
+用 F-Droid 客户端打开此链接：[https://mirrors.hust.edu.cn/fdroid/repo/?fingerprint=43238D512C1E5EB2D6569F4A3AFBF5523418B82E0A3ED1552770ABB9A9C9CCAB](https://mirrors.hust.edu.cn/fdroid/repo/?fingerprint=43238D512C1E5EB2D6569F4A3AFBF5523418B82E0A3ED1552770ABB9A9C9CCAB) 或点击[这里](https://mirrors.hust.edu.cn/fdroid/repo/?fingerprint=43238D512C1E5EB2D6569F4A3AFBF5523418B82E0A3ED1552770ABB9A9C9CCAB)，选择用 F-Droid 客户端打开，一键使用。
 
 ### 配置 Archive 镜像
 
-用 F-Droid 客户端打开此链接：<https://mirrors.hust.edu.cn/fdroid/archive/?fingerprint=43238D512C1E5EB2D6569F4A3AFBF5523418B82E0A3ED1552770ABB9A9C9CCAB> 或点击[这里](https://mirrors.hust.edu.cn/fdroid/archive/?fingerprint=43238D512C1E5EB2D6569F4A3AFBF5523418B82E0A3ED1552770ABB9A9C9CCAB)，选择用 F-Droid 客户端打开，一键使用。
+用 F-Droid 客户端打开此链接：[https://mirrors.hust.edu.cn/fdroid/repo/?fingerprint=43238D512C1E5EB2D6569F4A3AFBF5523418B82E0A3ED1552770ABB9A9C9CCAB](https://mirrors.hust.edu.cn/fdroid/archive/?fingerprint=43238D512C1E5EB2D6569F4A3AFBF5523418B82E0A3ED1552770ABB9A9C9CCAB) 或点击[这里](https://mirrors.hust.edu.cn/fdroid/archive/?fingerprint=43238D512C1E5EB2D6569F4A3AFBF5523418B82E0A3ED1552770ABB9A9C9CCAB)，选择用 F-Droid 客户端打开，一键使用。
 
 ## 下载 F-Droid 客户端
 
