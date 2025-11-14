@@ -22,7 +22,7 @@ sed -e 's|^metalink=|#metalink=|g' \\
 执行后，您的软件源已替换为本站镜像源。
 
 ## 手动替换
-将 fedora 仓库（/etc/yum.repos.d/fedora.repo）替换为以下内容：
+将 fedora 仓库（`/etc/yum.repos.d/fedora.repo`）替换为以下内容：
 ```repo varcode
 # /etc/yum.repos.d/fedora.repo
 [fedora]
@@ -39,7 +39,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-$basearch
 skip_if_unavailable=False
 ```
 
-将 updates 仓库（/etc/yum.repos.d/fedora-updates.repo）替换为以下内容：
+将 updates 仓库（`/etc/yum.repos.d/fedora-updates.repo`）替换为以下内容：
 ```repo varcode
 # /etc/yum.repos.d/fedora-updates.repo
 [updates]
