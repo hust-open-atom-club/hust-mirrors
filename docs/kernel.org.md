@@ -10,3 +10,11 @@ kernel.org 是 Linux 内核官方主站，托管着内核源码（如 tarball �
 ## 镜像仓库介绍
 
 该镜像站点镜像了 [https://www.kernel.org/pub/]([https://www.kernel.org/pub/)。
+
+
+## 使用
+在使用时，将链接里的 `https://www.kernel.org/pub/` 替换为以下内容：
+```url varcode
+${_http}://${_domain}/kernel.org/
+```
+即可使用。
