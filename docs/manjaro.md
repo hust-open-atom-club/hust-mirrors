@@ -4,12 +4,12 @@ title: Manjaro 软件仓库镜像使用帮助
 ---
 
 ## Manjaro 简介
-Manjaro基于Arch Linux，但目标是提供一个更加用户友好的系统，让更多用户能够体验Arch的强大功能，而不必面对Arch的复杂安装和维护过程。
+Manjaro 基于 Arch Linux，但目标是提供一个更加用户友好的系统，让更多用户能够体验 Arch 的强大功能，而不必面对 Arch 的复杂安装和维护过程。
 
 ## 手动替换
-编辑`/etc/pacman.d/mirrorlist`文件，按以下步骤操作：
+编辑 `/etc/pacman.d/mirrorlist` 文件，按以下步骤操作：
 1. 禁用其它软件源（可选）  
-在所有以字符串`Server`开头的行前面加上字符`#`，比如：
+在所有以字符串 `Server` 开头的行前面加上字符 `#` ，比如：
 ```mirrorlist
 ## Country : Germany
 Server = https://mirror.philpot.de/manjaro/unstable/$repo/$arch
