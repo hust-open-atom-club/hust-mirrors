@@ -9,7 +9,7 @@ kernel.org 是 Linux 内核官方主站，托管着内核源码（如 tarball �
 
 ## 镜像仓库介绍
 
-该镜像站点镜像了 [https://www.kernel.org/pub/]([https://www.kernel.org/pub/)。
+该镜像站点镜像了 [https://www.kernel.org/pub/](https://www.kernel.org/pub/)。
 
 
 ## 使用
