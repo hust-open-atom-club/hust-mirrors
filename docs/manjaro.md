@@ -32,7 +32,7 @@ Server = https://mirror.philpot.de/manjaro/unstable/$repo/$arch
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
-${SUDO} pacman -Syu
+${SUDO}pacman -Syu
 ```
 ## 引用
 1. [使用帮助 - Manjaro Wiki](https://wiki.manjaro.org/index.php/Change_to_a_Different_Download_Server)
