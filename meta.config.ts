@@ -58,6 +58,7 @@ const mirrors: MirrorMeta[] = [
   { id: 'git-repo', type: 'git', description: 'Google开发的多git仓库管理工具git-repo代码仓库' },
   { id: 'kali', description: 'Kali Linux 软件仓库', supportCli: true },
   { id: 'kali-images', description: 'Kali Linux 镜像仓库', helpID: 'kali', anchorID: 'iso' },
+  { id: 'manjaro', description: 'Manjaro 软件仓库', helpID: 'manjaro' },
   { id: 'raspbian', description: '为树莓派编译的Debian GNU/Linux软件仓库' },
   { id: 'raspbian-addons', description: 'Raspbian 非官方软件源' },
   { id: 'ohmyzsh.git', type: 'git', description: 'zsh配置管理框架 oh-my-zsh 代码仓库', supportCli: true, cliID: 'ohmyzsh' },
