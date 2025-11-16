@@ -45,6 +45,7 @@ const mirrors: MirrorMeta[] = [
   { id: 'archlinux', type: 'normal', description: 'Arch Linux 软件仓库', helpID: 'archlinux', supportCli: true },
   { id: 'debian', type: 'normal', description: 'Debian GNU/Linux 软件仓库', helpID: 'debian', supportCli: true },
   { id: 'deepin', type: 'normal', description: 'Deepin 软件仓库', helpID: 'deepin', supportCli: true },
+  { id: 'fdroid', type: 'normal', description: 'F-driod 软件仓库', helpID: 'F-Droid' },
   { id: 'fedora', description: 'Fedora 软件仓库', helpID: 'fedora' },
   { id: 'openeuler', type: 'normal', description: 'OpenEuler 软件仓库', helpID: 'openeuler', supportCli: true },
   { id: 'openkylin', type: 'normal', description: 'OpenKylin 软件仓库', helpID: 'openkylin', supportCli: true },
