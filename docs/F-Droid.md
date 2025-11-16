@@ -19,10 +19,7 @@ F-Droid 是一个 Android 平台上 FOSS（Free and Open Source Software，自�
 ## 下载 F-Droid 客户端
 
 我们推荐您从[官网](https://f-droid.org/)下载。
-<details>
-  <summary>无法进入 f-droid.org ?</summary>
-  您也可以点击<a href=https://mirrors.hust.edu.cn/fdroid/repo/org.fdroid.fdroid_1023051.apk>这里</a>在本站下载。
-</details>
+如果您无法进入 f-droid.org ，也可以点击[这里](https://mirrors.hust.edu.cn/fdroid/repo/org.fdroid.fdroid_1023051.apk)在本站下载 F-Droid 客户端。
 
 ## 引用
 
