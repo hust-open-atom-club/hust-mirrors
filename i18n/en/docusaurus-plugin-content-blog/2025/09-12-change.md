@@ -6,7 +6,7 @@ authors: m0rtzz
 To better meet user needs and optimize resource allocation, we have updated the synchronization policy for our mirror repository as follows:
 
 1. **Resumed Synchronizations:**
-   - Synchronization of all cgit repositories, including critical code repositories such as `linux.git`, has been fully restored.  
+   - Synchronization of all cgit repositories, including critical code repositories such as `linux.git`, has been fully restored.
    - OpenBSD mirror synchronization has been re-enabled, and resources for this project are once again available via our service.
 
 3. **Refined Synchronization Scope:**  
