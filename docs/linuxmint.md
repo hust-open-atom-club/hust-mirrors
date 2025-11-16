@@ -75,7 +75,7 @@ exec: |
 
 ## Linux Mint Security 源替换
 
-由于 Linux Mint 的 Security 源采用的是和 Ubuntu 相同的源，因此可直接使用 Ubuntu 的 Security 源。但两者配置文件目录不同，不可直接使用Ubuntu的换源命令。
+由于 Linux Mint 的 Security 源采用的是和 Ubuntu 相同的源，因此可直接使用 Ubuntu 的 Security 源。但两者配置文件目录不同，不可直接使用 Ubuntu 文档中的换源命令。
 
 ### 1. 修改 `/etc/apt/sources.list.d/official-package-repositories.list`，把 `security.ubuntu.com` 替换为镜像源
 
