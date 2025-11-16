@@ -52,7 +52,7 @@ display_policy:
 ### 1. 修改 `/etc/apt/sources.list.d/official-package-repositories.list`，把 `packages.linuxmint.com` 替换为镜像源
 
 ```list varcode
-[] (release) { victoria:21.2, vera:21.1, vanessa:21, una:20.3, uma:20.2, ulyssa:20.1 } Linux Mint 版本
+[] (release) { zara:22.2, xia:22.1, wilma:22, virginia:21.3, victoria:21.2, vera:21.1, vanessa:21, una:20.3, uma:20.2, ulyssa:20.1 } Linux Mint 版本
 ---
 deb ${_http}://${_domain}/linuxmint ${release} main upstream import backport
 ```
@@ -80,9 +80,9 @@ exec: |
 ### 1. 修改 `/etc/apt/sources.list.d/official-package-repositories.list`，把 `security.ubuntu.com` 替换为镜像源
 
 ```list varcode
-[ ] (version) { plucky:25.04, oracular:24.10, noble:24.04 LTS, jammy:22.04 LTS, lunar:23.04, kinetic:22.10, focal:20.04 LTS, bionic:18.04 LTS, xenial:16.04 LTS, trusty:14.04 LTS } 当前 Linux Mint 基于的 Ubuntu 版本
+[] (release) { noble:22.2, noble:22.1, noble:22, jammy:21.3, jammy:21.2, jammy:21.1, jammy:21 } Linux Mint 版本
 ---
-deb ${_http}://${_domain}/ubuntu ${version}-security main restricted universe multiverse
+deb ${_http}://${_domain}/ubuntu ${release}-security main restricted universe multiverse
 ```
 
 ### 2. 通过如下命令更新软件。
