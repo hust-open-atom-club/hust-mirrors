@@ -1,0 +1,27 @@
+name: MarkdownLint
+
+on:
+  pull_request:
+    paths:
+      - '**/*.md'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Find change file
+        uses: tj-actions/changed-files@v47
+        id: changed-files
+        with:
+          files: '**/*.md'
+          separator: ","
+      - name: Lint Markdown files
+        uses: DavidAnson/markdownlint-cli2-action@v20
+        if: steps.changed-files.outputs.any_changed == 'true'
+        with:
+          globs: ${{ steps.changed-files.outputs.all_changed_files }}
+          separator: ","
