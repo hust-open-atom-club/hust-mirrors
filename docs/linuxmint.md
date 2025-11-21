@@ -87,14 +87,12 @@ deb ${_http}://${_domain}/ubuntu ${release}-security main restricted universe mu
 
 ### 2. 通过如下命令更新软件。
 
-```yaml cli
-type: Execute
-privileged: true
-interpreter: shell
-exec: |
-  #{USE_IN_DOCS/}
-  apt-get update
-  #{/USE_IN_DOCS}
+```list varcode
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+{SUDO}apt update
 ```
 
 ## Linux Mint 安装镜像 {#cd}
