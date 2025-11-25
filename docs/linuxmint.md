@@ -92,7 +92,7 @@ deb ${_http}://${_domain}/ubuntu ${release}-security main restricted universe mu
 ---
 const SUDO = !root ? 'sudo ' : '';
 ---
-{SUDO}apt update
+${SUDO}apt update
 ```
 
 ## Linux Mint 安装镜像 {#cd}
