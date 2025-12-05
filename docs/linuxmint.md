@@ -77,22 +77,12 @@ exec: |
 
 由于 Linux Mint 的 Security 源采用的是和 Ubuntu 相同的源，因此可直接使用 Ubuntu 的 Security 源。但两者配置文件目录不同，不可直接使用 Ubuntu 文档中的换源命令。
 
-### 1. 修改 `/etc/apt/sources.list.d/official-package-repositories.list`，把 `security.ubuntu.com` 替换为镜像源
+修改 `/etc/apt/sources.list.d/official-package-repositories.list`，把 `security.ubuntu.com` 替换为镜像源
 
 ```list varcode
-[] (release) { noble:22.2, noble:22.1, noble:22, jammy:21.3, jammy:21.2, jammy:21.1, jammy:21 } Linux Mint 版本
+[] (release) { noble:22, jammy:21 } Linux Mint 版本
 ---
 deb ${_http}://${_domain}/ubuntu ${release}-security main restricted universe multiverse
-```
-
-### 2. 通过如下命令更新软件。
-
-```list varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}apt update
 ```
 
 ## Linux Mint 安装镜像 {#cd}
