@@ -51,7 +51,6 @@ const mirrors: MirrorMeta[] = [
   { id: 'openkylin', type: 'normal', description: 'OpenKylin 软件仓库', helpID: 'openkylin', supportCli: true },
   { id: 'ubuntu', type: 'normal', description: 'Ubuntu 软件仓库', supportCli: true },
   { id: 'ubuntu-releases', description: 'Ubuntu 发行版镜像仓库', helpID: 'ubuntu', anchorID: 'cd' },
-  { id: 'anolis', description: '阿里龙蜥软件仓库', supportCli: true },
   { id: 'AOSP', description: 'Android 源代码仓库' },
   { id: 'debian-cd', description: 'Debian GNU/Linux 最新版镜像仓库', helpID: 'debian', anchorID: 'cd' },
   { id: 'debian-nonfree', description: 'Debian GNU/Linux 非自由软件仓库' },
