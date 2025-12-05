@@ -51,8 +51,8 @@ display_policy:
 
 ### 1. 修改 `/etc/apt/sources.list.d/official-package-repositories.list`，把 `packages.linuxmint.com` 替换为镜像源
 
-```deb varcode
-[] (release) { victoria:21.2, vera:21.1, vanessa:21, una:20.3, uma:20.2, ulyssa:20.1 } Linux Mint 版本
+```list varcode
+[] (release) { zara:22.2, xia:22.1, wilma:22, virginia:21.3, victoria:21.2, vera:21.1, vanessa:21, una:20.3, uma:20.2, ulyssa:20.1 } Linux Mint 版本
 ---
 deb ${_http}://${_domain}/linuxmint ${release} main upstream import backport
 ```
@@ -73,7 +73,17 @@ exec: |
 完成后请不要再使用 mintsources（自带的图形化软件源设置工具）进行任何操作，因为在操作后，无论是否有按 “确定”，mintsources 均会复写 `/etc/apt/sources.list.d/official-package-repositories.list`
 :::
 
+## Linux Mint Security 源替换
 
+由于 Linux Mint 的 Security 源采用的是和 Ubuntu 相同的源，因此可直接使用 Ubuntu 的 Security 源。但两者配置文件目录不同，不可直接使用 Ubuntu 文档中的换源命令。
+
+修改 `/etc/apt/sources.list.d/official-package-repositories.list`，把 `security.ubuntu.com` 替换为镜像源
+
+```list varcode
+[] (release) { noble:22, jammy:21 } Linux Mint 版本
+---
+deb ${_http}://${_domain}/ubuntu ${release}-security main restricted universe multiverse
+```
 
 ## Linux Mint 安装镜像 {#cd}
 Linux Mint 安装镜像提供 cinnamon，mate 和 xfce 三种桌面环境，分别对应了三个版本的安装镜像。如果需
