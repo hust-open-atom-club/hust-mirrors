@@ -6,7 +6,28 @@ on:
       - '**/*.md'
 
 jobs:
-  lint:
+  markdownlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+        with:
+          files: '**/*.md'
+          
+      - name: Lint Markdown files
+        uses: DavidAnson/markdownlint-cli2-action@v20
+        if: steps.changed-files.outputs.any_changed == 'true'
+        with:
+          globs: ${{ steps.changed-files.outputs.all_changed_files }}
+          separator: ","
+          
+  zhlint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
