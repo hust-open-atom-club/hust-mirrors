@@ -56,6 +56,7 @@ const mirrors: MirrorMeta[] = [
   { id: 'debian-nonfree', description: 'Debian GNU/Linux 非自由软件仓库' },
   { id: 'debian-security', description: 'Debian GNU/Linux 安全更新仓库', helpID: 'debian', anchorID: 'security' },
   { id: 'git-repo', type: 'git', description: 'Google开发的多git仓库管理工具git-repo代码仓库' },
+  { id: 'github-release', description: '部分知名软件发行版镜像', helpID: 'github-release' }
   { id: 'kali', description: 'Kali Linux 软件仓库', supportCli: true },
   { id: 'kali-images', description: 'Kali Linux 镜像仓库', helpID: 'kali', anchorID: 'iso' },
   { id: 'manjaro', description: 'Manjaro 软件仓库', helpID: 'manjaro' },
