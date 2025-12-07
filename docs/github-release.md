@@ -46,6 +46,10 @@ https://mirrors.hust.edu.cn/github-release/<组织名>/<仓库名>/<版本名>/<
 - [7zip](https://mirrors.hust.edu.cn/github-release/ip7z/7zip/LatestRelease/)
 - [llvm-project](https://mirrors.hust.edu.cn/github-release/llvm/llvm-project/LatestRelease/)
 
+## 添加镜像
+
+当您需要的软件没有出现在这里，您可以返回首页，点击新增镜像按钮，按照提示填写表格，我们将会认真评估您的需求并添加相应的软件镜像。
+
 ## 引用
 
 1. [关于发行版 - Github Docs](https://docs.github.com/zh/repositories/releasing-projects-on-github/about-releases)
