@@ -41,6 +41,18 @@ const SUDO = !root ? 'sudo ' : '';
 ${SUDO}apt update
 ```
 
+## MXLinux 安装镜像 {#cd}
+
+MXLinux 安装镜像提供 KDE，Fluxbox 和 xfce 三种桌面环境，分别对应了三个版本的安装镜像。如果需要下载这两个版本的安装镜像，可点击下面的按钮选择对应的版本和种类进行下载。
+
+- KDE：一个自定义化的桌面环境，基于 GNOME 3 开发。
+- Fluxbox：一个轻量级窗口管理器，作为默认 Xfce 桌面环境的替代方案。
+- xfce：轻量级桌面环境，适合配置较低的计算机。
+
+<a href="/release?release=Mxlinux">
+    <button className="button button--primary">下载镜像</button>
+</a>
+
 ## 引用
 1. [MXLinux 官网](https://mxlinux.org/)
 2. [帮助 - 阿里云镜像站](https://developer.aliyun.com/mirror/mxlinux)
