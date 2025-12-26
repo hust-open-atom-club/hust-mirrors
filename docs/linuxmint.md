@@ -11,7 +11,7 @@ detection:
 
 ## Linux Mint 简介与软件管理
 
-Linux Mint 是一种基于 Ubuntu 的 Linux 发行版，Linux Mint 的宗旨是提供一个免费开源、现代、优雅、功能强大却也易于使用的作业系统
+Linux Mint 是一种基于 Ubuntu 的 Linux 发行版，宗旨是提供一个免费开源、现代、优雅、功能强大却也易于使用的操作系统。
 Linux Mint 也采用 apt 作为包管理器，与 Ubuntu 和 Debian 类似，你需要编辑 `/etc/apt/sources.list` 和 `/etc/apt/sources.list.d/*` 中的路径。
 
 ## Ubuntu / Debian 软件源替换
@@ -32,7 +32,7 @@ Linux Mint 也采用 apt 作为包管理器，与 Ubuntu 和 Debian 类似，你
 type: ReplaceIfExist
 required: true
 optional: false
-description: 替换Linux Mint主仓库
+description: 替换Linux Mint相关仓库
 privileged: true
 files:
   - path: /etc/apt/sources.list.d/official-package-repositories.list
