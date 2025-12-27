@@ -8,8 +8,17 @@ title: RadxaOS Deb软件源镜像使用帮助
 RadxaOS 是基于 Debian / Ubuntu 基础上进行二次开发而获得的系统。
 本镜像源为 RadxaOS 独有的软件包提供了额外的仓库的镜像源。
 
-## 一键使用
+## Debian 软件源替换
 
+对于来自 Debian 的部分源，可以参考 [Debian 帮助](./debian)进行修改。
+
+## RadxaOS 软件源替换
+
+### 一键换源
+
+:::caution
+本方法仅适用于从官方源更换到本站源，如果您已经换过了源，请勿使用下列命令。
+:::
 打开终端，执行以下命令，替换默认的软件源配置：
 
 ```shell varcode
