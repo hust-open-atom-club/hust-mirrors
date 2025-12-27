@@ -10,9 +10,9 @@ detection:
 ---
 
 ## Linux Mint 简介与软件管理
-Linux Mint 是一种基于 Ubuntu 的 Linux 发行版，Linux Mint 的宗旨是提供一个免费开源、现代、优雅、功能强大却也易于使用的作业系统
-Linux Mint 也采用 apt 作为包管理器，与 Ubuntu 和 Debian 类似，你需要编辑 `/etc/apt/sources.list` 和 `/etc/apt/sources.list.d/*` 中的路径。
 
+Linux Mint 是一种基于 Ubuntu 的 Linux 发行版，宗旨是提供一个免费开源、现代、优雅、功能强大却也易于使用的操作系统。
+Linux Mint 也采用 apt 作为包管理器，与 Ubuntu 和 Debian 类似，你需要编辑 `/etc/apt/sources.list` 和 `/etc/apt/sources.list.d/*` 中的路径。
 
 ## Ubuntu / Debian 软件源替换
 
@@ -32,24 +32,29 @@ Linux Mint 也采用 apt 作为包管理器，与 Ubuntu 和 Debian 类似，你
 type: ReplaceIfExist
 required: true
 optional: false
-description: 替换Linux Mint主仓库
+description: 替换Linux Mint相关仓库
 privileged: true
 files:
-  - path: /etc/apt/offical-package-repositories.list
+  - path: /etc/apt/sources.list.d/official-package-repositories.list
     match: 'http://packages.linuxmint.com'
     replace: '${_http}://${_domain}/linuxmint'
-  - path: /etc/apt/offical-package-repositories.list
+  - path: /etc/apt/sources.list.d/official-package-repositories.list
     match: 'http://archive.ubuntu.com'
+    replace: '${_http}://${_domain}'
+  - path: /etc/apt/sources.list.d/official-package-repositories.list
+    match: 'http://deb.debian.org'
     replace: '${_http}://${_domain}'
 display_policy:
   kind: All
 ```
 
+### 手动换源
+
 :::caution
 **为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
 :::
 
-### 1. 修改 `/etc/apt/sources.list.d/official-package-repositories.list`，把 `packages.linuxmint.com` 替换为镜像源
+- 修改 `/etc/apt/sources.list.d/official-package-repositories.list`，把 `packages.linuxmint.com` 替换为镜像源
 
 ```list varcode
 [] (release) { zara:22.2, xia:22.1, wilma:22, virginia:21.3, victoria:21.2, vera:21.1, vanessa:21, una:20.3, uma:20.2, ulyssa:20.1 } Linux Mint 版本
@@ -57,7 +62,7 @@ display_policy:
 deb ${_http}://${_domain}/linuxmint ${release} main upstream import backport
 ```
 
-### 2. 通过如下命令更新软件。
+- 通过如下命令更新软件
 
 ```yaml cli
 type: Execute
@@ -86,6 +91,7 @@ deb ${_http}://${_domain}/ubuntu ${release}-security main restricted universe mu
 ```
 
 ## Linux Mint 安装镜像 {#cd}
+
 Linux Mint 安装镜像提供 cinnamon，mate 和 xfce 三种桌面环境，分别对应了三个版本的安装镜像。如果需
 要下载这两个版本的安装镜像，点击下面的按钮选择对应的版本和种类进行下载。
 
@@ -98,4 +104,5 @@ Linux Mint 安装镜像提供 cinnamon，mate 和 xfce 三种桌面环境，分�
 </a>
 
 ## 引用
+
 1. [Tuna 镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/linuxmint/)  
