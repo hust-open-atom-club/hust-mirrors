@@ -36,7 +36,7 @@ exec: |
   apt-get update
   #{/USE_IN_DOCS}
 recover: |
-  ${SUDO}sed -e "s|h${_http}://${_domain}/radxa-deb|https://radxa-repo.github.io|g" \
+  sudo sed -e "s|h${_http}://${_domain}/radxa-deb|https://radxa-repo.github.io|g" \
            -i /etc/apt/sources.list.d/*radxa*.list
   apt-get update
 ```
