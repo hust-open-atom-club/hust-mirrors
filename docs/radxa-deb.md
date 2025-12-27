@@ -1,6 +1,11 @@
 ---
 sidebar_label: RadxaOS
 title: RadxaOS Deb软件源镜像使用帮助
+type: OS
+detection:
+  checks:
+    - type: command
+      command: rsetup
 ---
 
 ## RadxaOS 简介
@@ -21,13 +26,19 @@ RadxaOS 是基于 Debian / Ubuntu 基础上进行二次开发而获得的系统�
 :::
 打开终端，执行以下命令，替换默认的软件源配置：
 
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}sed -i "s|https://radxa-repo.github.io|https://mirrors.hust.edu.cn/radxa-deb|g" /etc/apt/sources.list.d/*radxa*.list
-${SUDO}apt-get update
+```yaml cli
+type: Execute
+privileged: true
+interpreter: shell
+exec: |
+  #{USE_IN_DOCS/}
+  ${SUDO}sed -i "s|https://radxa-repo.github.io|${_http}://${_domain}/radxa-deb|g" /etc/apt/sources.list.d/*radxa*.list
+  apt-get update
+  #{/USE_IN_DOCS}
+recover: |
+  ${SUDO}sed -e "s|h${_http}://${_domain}/radxa-deb|https://radxa-repo.github.io|g" \
+           -i /etc/apt/sources.list.d/*radxa*.list
+  apt-get update
 ```
 
 执行以上命令后，默认启用了的仓库将会被正确替换并更新缓存。
