@@ -30,7 +30,7 @@ ${SUDO}sed -i "s|https://radxa-repo.github.io|https://mirrors.hust.edu.cn/radxa-
 ${SUDO}apt-get update
 ```
 
-执行以上命令后，默认启用了的仓库将会被正确替换。在执行命令替换之后，请运行 `dnf makecache` 更新缓存以启用更改。
+执行以上命令后，默认启用了的仓库将会被正确替换并更新缓存。
 
 ## 引用
 
