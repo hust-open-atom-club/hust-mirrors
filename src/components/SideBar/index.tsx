@@ -18,6 +18,7 @@ import MirrorZIcon from '@site/static/icons/mirrorz.svg'
 import SettingsIcon from '@site/static/icons/settings.svg'
 import NewMirrorIcon from '@site/static/icons/newmirror.svg'
 import NewsIcon from '@site/static/icons/news.svg'
+import ChatIcon from '@site/static/icons/chat.svg'
 import GlobalOptions from '@site/src/components/DocGlobalOptions/index';
 
 interface Props extends React.HTMLProps<HTMLDivElement> { }
@@ -141,7 +142,7 @@ function Contact() {
     <p>
       <a href='https://qm.qq.com/q/hsGP2BkIXS'>
         <span>
-          <MailIcon /><Translate id='mirror.sidebar.joinqq'>加入 QQ 群</Translate>
+          <ChatIcon /><Translate id='mirror.sidebar.joinqq'>加入 QQ 群</Translate>
         </span>
       </a>
     </p>
