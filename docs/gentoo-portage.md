@@ -1,11 +1,6 @@
 ---
 sidebar_label: Gentoo Portage
 title: Gentoo Portage 软件源镜像使用帮助
-type: OS
-detection:
-  checks:
-    - type: command
-      command: rsetup
 ---
 
 ## Gentoo Portage 简介
@@ -33,5 +28,3 @@ sync-uri = rsync://${_domain}/gentoo-portage
 ## 引用
 
 1. [使用帮助 - TUNA Mirror](https://mirrors.tuna.tsinghua.edu.cn/help/gentoo-portage/)
-
-
