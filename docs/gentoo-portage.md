@@ -32,5 +32,6 @@ sync-uri = rsync://${_domain}/gentoo-portage
 
 ## 引用
 
-1. [使用帮助 - Radxa Docs](https://docs.radxa.com/zero/zero3/radxa-os/using-apt?mirror=HUST#%E4%B8%AD%E5%9B%BD%E4%BB%93%E5%BA%93%E9%95%9C%E5%83%8F)
+1. [使用帮助 - TUNA Mirror](https://mirrors.tuna.tsinghua.edu.cn/help/gentoo-portage/)
+
 
