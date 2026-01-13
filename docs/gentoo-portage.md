@@ -1,11 +1,11 @@
 ---
-sidebar_label: Gentoo Portage Prefix
-title: Gentoo Portage Prefix 软件源镜像使用帮助
+sidebar_label: Gentoo Portage
+title: Gentoo Portage 软件源镜像使用帮助
 ---
 
-## Gentoo Portage Prefix 简介
+## 简介
 
-为了突出 Gentoo 在不同操作系统上的优点，Gentoo Prefix 项目开发并维护了一种在非标准位置安装 Gentoo 系统的方法。本镜像仓库同步了 Gentoo Portage Ebuild 源，采用 Git 方式同步。
+Portage 是 Gentoo 的官方包管理器和分发系统 。它作为基于 Gentoo 作系统的核心，提供高级依赖解析、从源代码或二进制包灵活构建和安装软件，以及大多数其他核心发行功能。Portage 会从 Gentoo ebuild 仓库、额外的 ebuild 仓库或 binhost 中配置软件。本镜像仓库同步了 Gentoo Portage Ebuild 源，采用 Git 方式同步。
 
 ## 使用方法
 
