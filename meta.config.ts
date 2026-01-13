@@ -75,6 +75,7 @@ const mirrors: MirrorMeta[] = [
   { id: 'gnu', description: 'GNU软件的源码包和文档仓库' },
   { id: 'golang', description: 'Go语言工具链' },
   { id: 'gentoo', description: 'Gentoo 的 Stage3 的镜像', helpID: 'gentoo' },
+  { id: 'gentoo-portage.git', description: 'Gentoo Portage Ebuild 源（Git 方式同步）', helpID: 'gentoo-portage' },
   { id: 'openkylin-cdimage', description: 'openKylin 镜像文件', helpID: 'openkylin', anchorID: 'iso' },
   { id: 'OpenBSD', description: 'OpenBSD 软件仓库', helpID: 'openbsd' },
   { id: 'rustup', description: 'Rust语言工具链', supportCli: true },
