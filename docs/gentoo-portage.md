@@ -5,7 +5,7 @@ title: Gentoo Portage 软件源镜像使用帮助
 
 ## 简介
 
-Portage 是 Gentoo 的官方包管理器和分发系统。它作为基于 Gentoo 作系统的核心，提供高级依赖解析、从源代码或二进制包灵活构建和安装软件，以及大多数其他核心发行功能。Portage 会从 Gentoo ebuild 仓库、额外的 ebuild 仓库或 binhost 中配置软件。本镜像仓库同步了 Gentoo Portage Ebuild 源，采用 Git 方式同步。
+Portage 是 Gentoo 的官方包管理器和分发系统。它提供高级依赖解析、从源代码或二进制包灵活构建和安装软件等功能。Portage 会从 Gentoo ebuild 仓库、额外的 ebuild 仓库或 binhost 中配置软件。本镜像仓库镜像了 Gentoo Portage Ebuild 仓库，采用 Git 方式同步。
 
 ## 使用方法
 
@@ -42,7 +42,7 @@ emerge --sync
 # 进入 main tree 目录
 cd /var/db/repos/gentoo
 
-# 将 remote url 设置为中科大
+# 设置 remote url 为华中科大镜像源
 git remote set-url origin ${_http}://${_domain}/git/gentoo-portage.git
 
 # 重新同步
