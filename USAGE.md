@@ -48,7 +48,7 @@ files:
     replace: '${_http}://${_domain}/kali' # 替换的内容
     comment: 替换 # 显示在文档页面中的提示
   - path: /path/to/file
-  	statement: '1i\\Server = ${_http}://${_domain}/archlinux/$repo/os/$arch' # sed命令使用的
+    statement: '1i\\Server = ${_http}://${_domain}/archlinux/$repo/os/$arch' # sed命令使用的
     flags: '-e -E' # 执行sed时传递的参数
 
 display_policy: # 生成文档页面时，多个替换文件的显示逻辑
@@ -68,6 +68,7 @@ display_policy: # 生成文档页面时，多个替换文件的显示逻辑
 ### 执行命令
 
 注意：
+
 1. 此部分中无法自动生成恢复脚本，需要自行指定 `recover` 代码，若无则代表无恢复方法
 2. 此部分的代码默认不生成至帮助页面中，若生成，请将**需要显示的部分**包裹在 `#{USE_IN_DOCS/}` 和 `#{/USE_IN_DOCS}` 标签中
 
@@ -83,7 +84,8 @@ exec: |
 ### 测试并执行命令
 
 注意：
-1. 此部分中无法自动生成恢复脚本，需要自行指定 `recover` 代码，若无则代表无恢复方法
+
+1. 此部分中无法自动生成恢复脚本，需要自行指定 `recover` 代码，若无则代表无恢复方法。
 2. 此部分的代码默认不生成至帮助页面中，若生成，请将**需要显示的部分**包裹在 `#{USE_IN_DOCS/}` 和 `#{/USE_IN_DOCS}` 标签中
 
 ```yaml
