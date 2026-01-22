@@ -72,6 +72,12 @@ table.mirror__table {
   }
 }
 
+/* Navbar background */
+.navbar {
+  background: #FFFFFF;
+  opacity: 0.8;
+}
+
 [data-theme='dark'] .hero--primary {
   --ifm-hero-background-color: #085040;
   --ifm-hero-text-color: var(--ifm-font-color-base);
