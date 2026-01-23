@@ -16,7 +16,7 @@ export default function NotFoundContent({className}: Props): ReactNode {
     <main className={clsx('container margin-vert--xl', className)}>
       <div className="row"  style={{ textAlign: 'center' }}>
         <div className="col col--6 col--offset-3">
-          <img src="/img/logo.svg" alt="404" style={{ width: '50%' }} />
+          <img src="/img/atomclub.svg" alt="404" style={{ width: '50%' }} />
           <Heading as="h1" className="hero__title">
             <Translate
               id="theme.NotFound.title"
