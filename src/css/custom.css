@@ -78,6 +78,11 @@ table.mirror__table {
   opacity: 0.8;
 }
 
+[data-theme='dark'] .navbar {
+  background: #000000;
+  opacity: 0.8;
+}
+
 [data-theme='dark'] .hero--primary {
   --ifm-hero-background-color: #085040;
   --ifm-hero-text-color: var(--ifm-font-color-base);
