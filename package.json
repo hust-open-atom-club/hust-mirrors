@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build-preview": "wget https://mirrors.hust.edu.cn/status.json -P ./static/ && wget https://mirrors.hust.edu.cn/releases.json -P ./static/ && docusaurus build",
+    "build-preview": "mv .test/* .  && docusaurus build",
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build",

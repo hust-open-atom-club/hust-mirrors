@@ -1,0 +1,47 @@
+[
+    {
+        "name": "test-success",
+        "is_master": true,
+        "status": "success",
+        "last_update": "2026-01-25 12:30:16 +0000",
+        "last_update_ts": 1769344216,
+        "last_started": "2026-01-25 12:30:14 +0000",
+        "last_started_ts": 1769344214,
+        "last_ended": "2026-01-25 12:30:16 +0000",
+        "last_ended_ts": 1769344216,
+        "next_schedule": "2026-01-25 14:30:16 +0000",
+        "next_schedule_ts": 1769351416,
+        "upstream": "https://mirrors.hust.edu.cn",
+        "size": "0M"
+    },
+    {
+        "name": "test-syncing",
+        "is_master": true,
+        "status": "syncing",
+        "last_update": "2026-01-25 12:30:16 +0000",
+        "last_update_ts": 1769344216,
+        "last_started": "2026-01-25 12:30:14 +0000",
+        "last_started_ts": 1769344214,
+        "last_ended": "2026-01-25 12:30:16 +0000",
+        "last_ended_ts": 1769344216,
+        "next_schedule": "2026-01-25 14:30:16 +0000",
+        "next_schedule_ts": 1769351416,
+        "upstream": "https://mirrors.hust.edu.cn",
+        "size": "0M"
+    },
+    {
+        "name": "Please Modify the mock data to test.",
+        "is_master": true,
+        "status": "syncing",
+        "last_update": "2026-01-25 12:30:16 +0000",
+        "last_update_ts": 1769344216,
+        "last_started": "2026-01-25 12:30:14 +0000",
+        "last_started_ts": 1769344214,
+        "last_ended": "2026-01-25 12:30:16 +0000",
+        "last_ended_ts": 1769344216,
+        "next_schedule": "2026-01-25 14:30:16 +0000",
+        "next_schedule_ts": 1769351416,
+        "upstream": "https://github.com/hust-open-atom-club/hust-mirrors/wiki/2.-For-Contributor-%E2%80%90-%E5%AF%B9%E8%B4%A1%E7%8C%AE%E8%80%85",
+        "size": "0M"
+    }
+]
