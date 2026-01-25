@@ -38,9 +38,6 @@ files:
   - path: /etc/apt/sources.list
     match: 'https?://([^/]+)/beige'
     replace: '${_http}://${_domain}/deepin/beige'
-  - path: /etc/apt/sources.list
-    match: 'https?://([^/]+)/beige'
-    replace: '${_http}://${_domain}/deepin/beige'
 display_policy:
   kind: OneOf
   variables:
@@ -50,12 +47,9 @@ display_policy:
         - name: 'Deepin 20'
           display: 
             - 1
-        - name: 'Deepin 23'
+        - name: 'Deepin 23-25'
           display:
             - 2
-        - name: 'Deepin 25'
-          display:
-            - 3
 ```
 
 :::caution
