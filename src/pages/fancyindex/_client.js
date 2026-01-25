@@ -60,8 +60,17 @@
   document.querySelectorAll("#list tbody tr td:nth-child(3)").forEach((e) => {
     var s = new Date(e.textContent + " UTC");
     if (!isNaN(s.getTime())) {
-      var u = ("000" + s.getFullYear()).substr(-4) + "-" + ("0" + (s.getMonth() + 1)).substr(-2) + "-" + ("0" + s.getDate()).substr(-2) + " " + ("0" + s.getHours()).substr(-2) + ":" + ("0" + s.getMinutes()).substr(-2);
-      e.textContent = u;
+      // 使用Intl.DateTimeFormat本地化时间显示
+      var formatter = new Intl.DateTimeFormat('default', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+      });
+      e.textContent = formatter.format(s);
     }
   })
 })();
