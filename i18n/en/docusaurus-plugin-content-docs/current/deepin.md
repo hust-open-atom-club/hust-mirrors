@@ -47,12 +47,9 @@ display_policy:
         - name: 'Deepin 20'
           display: 
             - 1
-        - name: 'Deepin 23'
+        - name: 'Deepin 23-25'
           display:
             - 2
-        - name: 'Deepin 25'
-          display:
-            - 3
 ```
 
 :::caution
