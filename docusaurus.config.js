@@ -72,6 +72,11 @@ const config = {
             label: '帮助',
           },
           {
+            to: '/release',
+            label: '下载',
+            position: 'left'
+          },
+          {
             to: '/blog',
             label: '动态',
             position: 'left'
