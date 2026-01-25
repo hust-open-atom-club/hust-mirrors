@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build-preview": "mv .test/* .  && docusaurus build",
+    "build-preview": "mv -r -f .test/* .  && docusaurus build",
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build",
