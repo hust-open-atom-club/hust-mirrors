@@ -25,7 +25,6 @@ Deepin 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说�
 
 使用 `sed` 命令将软件源配置文件中的默认源地址 [https://community-packages.deepin.com/](https://community-packages.deepin.com/) 直接替换为当前镜像源站。
 
-
 ```yaml cli
 type: ReplaceIfExist
 required: true
@@ -48,7 +47,7 @@ display_policy:
         - name: 'Deepin 20'
           display: 
             - 1
-        - name: 'Deepin 23'
+        - name: 'Deepin 23-25'
           display:
             - 2
 ```
@@ -57,10 +56,10 @@ display_policy:
 **为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
 :::
 
-### 1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/apt/sources.list` 的原有内容：
+### 1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/apt/sources.list` 的原有内容
 
 ```shell varcode
-[ ] (version) { apricot:Deepin 20, beige:Deepin 23（不支持 Nightly） } Deepin 版本
+[ ] (version) { apricot:Deepin 20, beige:Deepin 23（不支持 Nightly）, crimson:Deepin 25 } Deepin 版本
 [ ] (src) 启用源码镜像
 ---
 let COMMAND = '';
@@ -71,13 +70,16 @@ if (version == 'apricot') {
 if (version == 'beige') {
   COMMAND = `://${_domain}/deepin/beige beige main community commercial`;
 }
+if (version == 'crimson') {
+  COMMAND = `://${_domain}/deepin/beige crimson main community commercial`;
+}
 const SRC_PREFIX = src ? "" : "# ";
 ---
 deb ${_http}${COMMAND}
 ${SRC_PREFIX}deb-src ${_http}${COMMAND}
 ```
 
-### 2. 通过如下命令更新软件。
+### 2. 通过如下命令更新软件
 
 ```yaml cli
 type: Execute
@@ -88,8 +90,6 @@ exec: |
   apt-get update
   #{/USE_IN_DOCS}
 ```
-
-
 
 ## 注意事项
 
@@ -112,8 +112,12 @@ ${SUDO}apt update
 
 ## Deepin 安装镜像 {#cd}
 
-本站提供 amd64 架构的 Deepin 安装镜像下载，[点击链接跳转](/release?release=deepin)。
+本站提供 amd64,arm64,loongarch64,riscv64 架构的最新版本和 amd64 架构的其它版本 Deepin 安装镜像下载。
 
 :::info
 本站收录了 Deepin 23 Nightly 的安装镜像，但暂不提供其软件源镜像，如有需要请使用官方源。
 :::
+
+<a href="/release?release=deepin">
+    <button className="button button--primary">下载镜像</button>
+</a>
