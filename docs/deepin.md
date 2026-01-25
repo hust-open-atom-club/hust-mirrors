@@ -118,7 +118,7 @@ ${SUDO}apt update
 
 ## Deepin 安装镜像 {#cd}
 
-本站提供 amd64,arm64,loongarch64,riscv64 架构的最新版本 和 amd64 架构的其它版本 Deepin 安装镜像下载。
+本站提供 amd64,arm64,loongarch64,riscv64 架构的最新版本和 amd64 架构的其它版本 Deepin 安装镜像下载。
 
 :::info
 本站收录了 Deepin 23 Nightly 的安装镜像，但暂不提供其软件源镜像，如有需要请使用官方源。
