@@ -1,0 +1,7 @@
+[
+    {
+        "release": "请先修改.test/static/releases.json以测试对release的修改",
+        "version": "latest",
+        "path": "release-test"
+    }
+]
