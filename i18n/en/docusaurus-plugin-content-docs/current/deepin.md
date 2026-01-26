@@ -56,7 +56,7 @@ display_policy:
 **To avoid problems when replacing software source configuration files, please make a backup of the system's default software source configuration files before proceeding.**
 :::
 
-### 1. Based on your preference, copy the following software source configuration content to `/etc/apt/sources.list` and save it.
+### 1. Based on your preference, copy the following software source configuration content to `/etc/apt/sources.list` and save it
 
 ```shell varcode
 [ ] (root) Are you the root user?
@@ -81,7 +81,7 @@ deb ${_http}${COMMAND}
 ${SRC_PREFIX}deb-src ${_http}${COMMAND}
 ```
 
-### 2. Update the software using the following command:
+### 2. Update the software using the following command
 
 ```yaml cli
 type: Execute
