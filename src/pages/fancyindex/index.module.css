@@ -37,6 +37,12 @@
     margin-right: 16px;
 }
 
+[data-theme='dark'] .blist a {
+    background: #1a8870;
+    color: white;
+    border: solid 1.5px var(--ifm-color-content-inverse);
+}
+
 .breadcrumbs {
     margin: 16px 0;
 }
@@ -53,6 +59,11 @@
     padding: 4px 20px;
     vertical-align: middle;
     border-radius: 4px;
+}
+
+[data-theme='dark'] .cliBlock {
+    background: #1a8870;
+    color: white;
 }
 
 @media screen and (min-width:996px) {
