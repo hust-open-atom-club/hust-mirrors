@@ -15,8 +15,6 @@ Arch Linux 是一个独立开发的、x86-64 通用 Linux 发行版，致力于�
 
 Arch Linux 使用其独特的软件包管理器 Pacman 来安装，更新与卸载软件包。Pacman 以 mirrorlist 中 Server 的顺序作为优先级，因此，用户可以在 `/etc/pacman.d/mirrorlist` 文件的最顶端添加相应镜像，同时可注释其它镜像。关于更详细的 Arch Linux 软件仓库镜像使用帮助，详见[官方文档](https://wiki.archlinuxcn.org/wiki/%E9%95%9C%E5%83%8F%E6%BA%90)。
 
-
-
 ## Arch Linux 软件源替换
 
 :::caution
@@ -31,7 +29,6 @@ Arch Linux 使用其独特的软件包管理器 Pacman 来安装，更新与卸�
 
 使用 `sed` 命令将当前镜像站的地址添加到软件源配置文件开头：
 
-
 ```yaml cli
 type: ReplaceIfExist
 required: false
@@ -42,7 +39,7 @@ files:
     statement: '1i\\Server = ${_http}://${_domain}/archlinux/$repo/os/$arch'
 ```
 
-### 1. 编辑 `/etc/pacman.d/mirrorlist`，在文件的最顶端添加如下语句：
+### 1. 编辑 `/etc/pacman.d/mirrorlist`，在文件的最顶端添加如下语句
 
 ```bash varcode
 Server = ${_http}://${_domain}/archlinux/$repo/os/$arch

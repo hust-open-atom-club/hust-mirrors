@@ -26,7 +26,6 @@ Ubuntu 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说�
 若不知道 Ubuntu 版本，可以运行 `grep VERSION /etc/os-release`
 :::
 
-
 ```yaml cli
 type: ReplaceIfExist
 required: false
@@ -144,7 +143,6 @@ display_policy:
             - 2
 ```
 
-
 ## Ubuntu Security 源
 
 :::caution
@@ -193,9 +191,8 @@ exec: |
 
 ## 注意事项
 
-
-
 ## Ubuntu Release 镜像 {#cd}
+
 Ubuntu 官方提供两种安装镜像：桌面版安装镜像及服务器版安装镜像。
 
 - 桌面版安装镜像是专为桌面 PC 和笔记本打造的 Ubuntu 版本，其可以让你在不安装系统的前提下尝试 Ubuntu 系统，请注意要安装桌面版系统至少需要 384 MiB 的 RAM 大小。

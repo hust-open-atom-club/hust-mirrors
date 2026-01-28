@@ -44,7 +44,7 @@ files:
 **为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
 :::
 
-### 1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/yum.repos.d/openEuler.repo` 的原有内容：
+### 1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/yum.repos.d/openEuler.repo` 的原有内容
 
 ```ini varcode
 [ ] (version) {23.09:23.09, 23.03:23.03, 22.09:22.09, 22.03-LTS-SP3:22.03 LTS SP3, 22.03-LTS-SP2:22.03 LTS SP2, 22.03-LTS-SP1:22.03 LTS SP1, 22.03-LTS:22.03 LTS, 21.09:21.09, 21.03:21.03, 20.09:20.09, 20.03-LTS-SP4:20.03 LTS SP4, 20.03-LTS-SP3:20.03 LTS SP3, 20.03-LTS-SP2:20.03 LTS SP2, 20.03-LTS-SP1:20.03 LTS SP1, 20.03-LTS:20.03 LTS} openEuler 版本
@@ -113,7 +113,7 @@ gpgcheck=1
 gpgkey=${_http}://${_domain}/openeuler/openEuler-${version}/source/RPM-GPG-KEY-openEuler
 ```
 
-### 2. 通过如下命令更新软件。
+### 2. 通过如下命令更新软件
 
 ```yaml cli
 type: Execute
@@ -125,15 +125,13 @@ exec: |
   #{/USE_IN_DOCS}
 ```
 
-
-
 ## 注意事项
 
 :::caution
 目前本镜像站暂不支持 openEuler 的 metalink 功能，可能存在一定的安全风险，请谨慎使用。
 :::
 
-YUM 包管理器的 metalink 功能可向用户提供受信任的镜像列表，保护用户免受中间人攻击的影响，并防止用户从恶意或陈旧的镜像源下载存在已知漏洞的过时软件。 
+YUM 包管理器的 metalink 功能可向用户提供受信任的镜像列表，保护用户免受中间人攻击的影响，并防止用户从恶意或陈旧的镜像源下载存在已知漏洞的过时软件。
 然而本站目前暂不支持 openEuler 的 metalink 功能，错误的 metalink 配置可能会导致系统升级失败，因此本站提供的 openEuler 配置中暂不包含 metalink 配置。
 
 ## 引用

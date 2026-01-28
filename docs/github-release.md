@@ -35,7 +35,7 @@ https://github.com/<组织名>/<仓库名>/releases/download/<版本名>/<文件
 修改为
 
 ```url varcode
-https://mirrors.hust.edu.cn/github-release/<组织名>/<仓库名>/<版本名>/<文件名>
+${_http}://${_domain}/github-release/<组织名>/<仓库名>/<版本名>/<文件名>
 ```
 
 ### 方法二：手动查找

@@ -115,36 +115,36 @@ ${SUDO}dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin
 
 1. 先删除由官方维护的 Docker：
 
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-for pkg in docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine; do ${SUDO}yum remove -y \${pkg}; done
-```
-
+  ```shell varcode
+  [ ] (root) 是否为 root 用户
+  ---
+  const SUDO = !root ? 'sudo ' : '';
+  ---
+  for pkg in docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-engine; do ${SUDO}yum remove -y \${pkg}; done
+  ```
+  
 2. 安装依赖，下载 repo 文件，并把软件仓库地址替换为镜像站：
 
-```shell varcode
-[ ] (version) { centos:CentOS, rhel:EHEL } Distribution
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}yum install -y yum-utils
-${SUDO}yum-config-manager --add-repo https://download.docker.com/linux/${version}/docker-ce.repo
-${SUDO}sed -i 's+https://download.docker.com+${_http}://${_domain}/docker-ce+' /etc/yum.repos.d/docker-ce.repo
-```
+  ```shell varcode
+  [ ] (version) { centos:CentOS, rhel:EHEL } Distribution
+  [ ] (root) 是否为 root 用户
+  ---
+  const SUDO = !root ? 'sudo ' : '';
+  ---
+  ${SUDO}yum install -y yum-utils
+  ${SUDO}yum-config-manager --add-repo https://download.docker.com/linux/${version}/docker-ce.repo
+  ${SUDO}sed -i 's+https://download.docker.com+${_http}://${_domain}/docker-ce+' /etc/yum.repos.d/docker-ce.repo
+  ```
 
 3. 安装 Docker CE：
 
-```shell varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
+  ```shell varcode
+  [ ] (root) 是否为 root 用户
+  ---
+  const SUDO = !root ? 'sudo ' : '';
+  ---
+  ${SUDO}yum install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  ```
 
 ## 引用
 
