@@ -42,6 +42,7 @@
   var displayName = meta ? (meta.displayName || meta.id) : mirrorid;
 
   var titleDoms = document.getElementsByClassName('fancyindex__mirrorname');
+  var descriptionDom = document.getElementById('fancyindex__description');
   // var lastUpdate = document.getElementById('fancyindex__lastUpdate');
   var helpBtn = document.getElementById('fancyindex__helpbutton');
   var cliBlock = document.getElementById('fancyindex__cliblock');
@@ -50,6 +51,15 @@
     var title = titleDoms[i];
     title.textContent = displayName;
   }
+  
+  // 设置镜像描述
+  if (meta && meta.description && descriptionDom) {
+    descriptionDom.textContent = meta.description;
+    descriptionDom.style.display = 'block'; // 显示描述元素
+  } else if (descriptionDom) {
+    descriptionDom.style.display = 'none'; // 如果没有描述则隐藏元素
+  }
+  
   if (helpmeta) { helpBtn.href = "/docs/" + helpmeta.id + (meta?.anchorID ? `#${meta.anchorID}` : ""); }
   else { helpBtn.remove(); }
   if (!meta || !meta.supportCli) cliBlock.remove();

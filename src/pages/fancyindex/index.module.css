@@ -22,6 +22,12 @@
     justify-content: space-between;
 }
 
+.description {
+    font-size: 1rem;
+    margin-top: 8px;
+    font-weight: normal;
+}
+
 .blist {
     display: flex;
     flex-direction: row;
