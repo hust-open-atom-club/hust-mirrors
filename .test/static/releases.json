@@ -1,7 +1,42 @@
 [
     {
-        "release": "请先修改.test/static/releases.json以测试对release的修改",
-        "version": "latest",
-        "path": "release-test"
+        "release": "Test Software - Number",
+        "version": "1.0",
+        "path": "test-software/1.0/test.iso"
+    },
+    {
+        "release": "Test Software - Number",
+        "version": "1.10",
+        "path": "test-software/1.10/test.iso"
+    },
+    {
+        "release": "Test Software - Number",
+        "version": "1.2",
+        "path": "test-software/1.2/test.iso"
+    },
+    {
+        "release": "Test Software - Number",
+        "version": "2.0",
+        "path": "test-software/2.0/test.iso"
+    },
+    {
+        "release": "Test Software - Number",
+        "version": "10.0",
+        "path": "test-software/10.0/test.iso"
+    },
+    {
+        "release": "Test Software - String",
+        "version": "alpha",
+        "path": "another-software/alpha/test.iso"
+    },
+    {
+        "release": "Test Software - String",
+        "version": "beta",
+        "path": "another-software/beta/test.iso"
+    },
+    {
+        "release": "Test Software - String",
+        "version": "gamma",
+        "path": "another-software/gamma/test.iso"
     }
 ]
