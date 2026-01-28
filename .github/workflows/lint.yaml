@@ -79,7 +79,7 @@ jobs:
             echo "Linting errors found. Please check the reports and suggested fixes in uploaded artifact."
             while IFS= read -r file; do
               if [ -n " $ file" ]; then
-                report_file=" $ report_dir/ $ (basename " $ file").log"
+                log_file=" $ report_dir/ $ file.log"
                 if [ -f " $ report_file" ]; then
                   echo "========== Report for  $ file =========="
                   cat " $ report_file"
@@ -89,4 +89,5 @@ jobs:
                 fi
               fi
             done < " $ file_list"
+            exit 1
           fi
