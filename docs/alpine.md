@@ -9,6 +9,7 @@ detection:
       name: Alpine Linux
 ---
 ## Alpine Linux 简介与软件管理
+
 Alpine Linux 是一个基于 musl libc 和 BusyBox 的独立、非商业、通用的 Linux 发行版，旨在提供小巧、简单、安全和高效的基础系统。Alpine Linux 的设计理念是 “Keep It Simple”，并且由于其轻量级和高效的特性，它在 Docker 和 Kubernetes 等容器环境中非常受欢迎。
 
 Alpine Linux 的包管理系统是 apk (Alpine Package Keeper)。apk 是一个用于 Alpine Linux 的包管理工具，它可以用于安装新的软件包、升级或删除已存在的软件包、更新软件包索引等。
@@ -38,7 +39,7 @@ files:
     replace: '${_domain}'
 ```
 
-### 1. 编辑 `/etc/apk/repositories`，将下列内容替换原有的内容：
+### 1. 编辑 `/etc/apk/repositories`，将下列内容替换原有的内容
 
 ```bash varcode
 [ ] (version) {  v3.16:v3.16, v3.17:v3.17, v3.18:v3.18, v3.19:v3.19 } Alpine 版本
@@ -61,8 +62,13 @@ exec: |
   #{/USE_IN_DOCS}
 ```
 
+## Alpine Linux 镜像下载
 
-
+请点击下方按钮下载 Alpine Linux 镜像。
+<a href="/release?release=Alpine%20Linux">
+    <button className="button button--primary">下载镜像</button>
+</a>
 
 ## 引用
+
 1. [Tuna 镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/alpine/)  
