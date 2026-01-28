@@ -167,5 +167,5 @@ ${SRC_PREFIX}deb-src ${_http}://${_domain}/debian-security ${version}-security m
 
 1. [Debian 官网](https://wiki.debian.org/zh_CN/DebianIntroduction)  
 2. [Debian 安全更新软件源](https://www.debian.org/security/faq.en.html#mirror)  
-3. [使用帮助 - TUNA镜像站](https://mirrors.tuna.tsinghua.edu.cn/help/debian/)  
+3. [使用帮助 - TUNA 镜像站](https://mirrors.tuna.tsinghua.edu.cn/help/debian/)  
 4. [常见问答集](https://www.debian.org/CD/faq/)  
