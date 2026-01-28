@@ -59,6 +59,7 @@ jobs:
               output_file="linted_output/report_and_suggested_fixes/$file"
               mkdir -p "$(dirname "$output_file")"
               zhlint --config "$GITHUB_WORKSPACE"/ci/.zhlintrc "$file" --output="$output_file" > "$output_file.log" 2>&1
+              exit 1
             fi
             set -e
           done
@@ -69,25 +70,3 @@ jobs:
         with:
           name: linted-markdown
           path: linted_output/
-
-      - name: Check lint errors
-        if: env.linted_failed == '1'
-        run: |
-          file_list="linted_output/file_list.txt"
-          report_dir="linted_output/report_and_suggested_fixes"
-          if [ -f " $ file_list" ] && [ -s " $ file_list" ]; then
-            echo "Linting errors found. Please check the reports and suggested fixes in uploaded artifact."
-            while IFS= read -r file; do
-              if [ -n " $ file" ]; then
-                log_file=" $ report_dir/ $ file.log"
-                if [ -f " $ report_file" ]; then
-                  echo "========== Report for  $ file =========="
-                  cat " $ report_file"
-                  echo ""
-                else
-                  echo "Report not found:  $ report_file"
-                fi
-              fi
-            done < " $ file_list"
-            exit 1
-          fi
