@@ -9,16 +9,19 @@ type: repo
 ## 初次使用
 
 对于 Perl 5.36（或 CPAN 2.29）及以上，使用如下命令自动生成 MyConfig.pm
+
 ```bash varcode
 PERL_MM_USE_DEFAULT=1 perl -MCPAN -e 'CPAN::HandleConfig->edit("pushy_https", 0); CPAN::HandleConfig->edit("urllist", "unshift", "${_http}://${_domain}/CPAN/"); mkmyconfig'
 ```
 
 对于较久版本，使用如下命令自动生成
+
 ```bash varcode
 PERL_MM_USE_DEFAULT=1 perl -MCPAN -e 'CPAN::HandleConfig->edit("urllist", "unshift", "${_http}://${_domain}/CPAN/"); mkmyconfig'
 ```
 
 或不使用默认配置，手动确认各个配置选项
+
 ```bash varcode
 perl -MCPAN -e 'mkmyconfig'
 ```
@@ -79,6 +82,6 @@ perl -MCPAN -e 'CPAN::HandleConfig->load();' \\
     -e 'CPAN::HandleConfig->commit()'
 ```
 
-
 ## 引用
+
 1. [Tuna 镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/CPAN/)  

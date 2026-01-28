@@ -20,7 +20,8 @@ TeX Live 发行版的常见安装方法可以参考[此文档](pathname:///CTAN/
 1. 下载 [`install-tl.zip`](pathname:///CTAN/systems/texlive/tlnet/install-tl.zip) 并解压缩
 2. Windows 下双击运行其中的 `install-tl.bat`。如果有图形化界面，可以在进入安装器前的右下角按钮指定使用镜像源。
 
-    Linux 下使用如下命令：
+Linux 下使用如下命令：
+
 ```bash varcode
 perl install-tl --repository ${_http}://${_domain}/CTAN/systems/texlive/tlnet
 ```
@@ -62,4 +63,5 @@ mpm --set-repository=${_http}://${_domain}/CTAN/systems/win32/miktex/tm/packages
 ```
 
 ## 引用
+
 1. [Tuna 镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/CTAN/)  

@@ -29,7 +29,6 @@ MSYS2 是一个用于 Windows 的软件发行版，提供了一个类似于 Unix
     <button className="button button--primary">查看 i686 版本安装包</button>
 </SiteLink>
 
-
 ### 使用细节
 
 找到名为 `msys2-<架构>-<日期>.exe` 的文件（如 `msys2-x86_64-20141113.exe`），下载安装即可。

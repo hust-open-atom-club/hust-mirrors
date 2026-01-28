@@ -10,14 +10,14 @@ sidebar_label: UbuntuKylin
 
 优麒麟使用软件包管理工具 `APT` 来管理 DEB 软件包。
 其软件源包含两部分：
-- 一部分是 Ubuntu 软件源。
-- 另一部分是优麒麟软件源。
+
+- Ubuntu 软件源。
+- 优麒麟软件源。
 
 ## Ubuntu 官方软件源替换
 
-:::info 
+:::info
 除了优麒麟的软件源以外，优麒麟和 Ubuntu 的软件源是一样的，请直接参考 [Ubuntu 文档](./ubuntu)。
-
 :::
 
 :::caution
@@ -25,7 +25,6 @@ sidebar_label: UbuntuKylin
 :::
 
 点击[这里](./ubuntu)查看 ubuntu 软件源替换方法。
-
 
 ## 优麒麟官方软件源替换
 
@@ -57,7 +56,6 @@ const SUDO = !root ? 'sudo ' : '';
 ---
 ${SUDO}apt update
 ```
-
 
 ## 镜像下载 {#image}
 

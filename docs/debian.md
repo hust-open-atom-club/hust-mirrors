@@ -53,12 +53,11 @@ display_policy:
             - 2
 ```
 
-
 :::caution
 **为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
 :::
 
-### 1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/apt/sources.list` 的原有内容：
+### 1. 根据个人情况对下列选项进行调整，并使用如下软件源配置替换 `/etc/apt/sources.list` 的原有内容
 
 ```shell varcode
 [ ] (version) { trixie:Debian 13, bookworm:Debian 12, bullseye:Debian 11, buster:Debian 10, testing:Testing, sid:Unstable SID} Debian 版本
@@ -85,7 +84,7 @@ ${SID_PREFIX}deb http://security.debian.org/debian-security ${version}-security 
 ${SID_PREFIX}${SRC_PREFIX}deb-src http://security.debian.org/debian-security ${version}-security main contrib non-free${NFW}
 ```
 
-### 2. 通过如下命令更新软件。
+### 2. 通过如下命令更新软件
 
 ```yaml cli
 type: Execute
@@ -96,8 +95,6 @@ exec: |
   apt-get update
   #{/USE_IN_DOCS}
 ```
-
-
 
 ## 注意事项
 
@@ -114,13 +111,21 @@ ${SUDO}apt install apt-transport-https ca-certificates
 ${SUDO}apt update
 ```
 
-
 ## Debian CD 镜像 {#cd}
 
 Debian 官方提供两种安装镜像：网络安装镜像（文件名含有 `netinst`）及 Live CD 镜像（文件名含有 `live`）。
 
-- [网络安装镜像（点此跳转至下载页面）](/release/?release=Debian)：网络安装镜像只包含安装基本系统所需的最少的软件，通常具有较小的体积，但是需要互联网连接以安装完整系统。
-- [Live CD 镜像（点此跳转至下载页面）](/release/?release=Debian%20Live%20CD%20(amd64))：Live CD 镜像可用于直接启动 Debian 系统，并在没有互联网连接时完成安装，但仅支持 amd64 架构。
+网络安装镜像只包含安装基本系统所需的最少的软件，通常具有较小的体积，但是需要互联网连接以安装完整系统。
+
+<a href="/release?release=Debian">
+    <button className="button button--primary">下载镜像</button>
+</a>
+
+Live CD 镜像可用于直接启动 Debian 系统，并在没有互联网连接时完成安装，但仅支持 amd64 架构。
+
+<a href="/release?release=Debian%20Live%20CD%20(amd64)">
+    <button className="button button--primary">下载镜像</button>
+</a>
 
 ## Debian Security 源 {#security}
 
@@ -162,5 +167,5 @@ ${SRC_PREFIX}deb-src ${_http}://${_domain}/debian-security ${version}-security m
 
 1. [Debian 官网](https://wiki.debian.org/zh_CN/DebianIntroduction)  
 2. [Debian 安全更新软件源](https://www.debian.org/security/faq.en.html#mirror)  
-3. [debian | 镜像站使用帮助 | 清华大学开源软件镜像站 | Tsinghua Open Source Mirror](https://mirrors.tuna.tsinghua.edu.cn/help/debian/)  
+3. [使用帮助 - TUNA镜像站](https://mirrors.tuna.tsinghua.edu.cn/help/debian/)  
 4. [常见问答集](https://www.debian.org/CD/faq/)  

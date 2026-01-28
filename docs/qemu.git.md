@@ -36,7 +36,6 @@ exec: |
   #{/USE_IN_DOCS}
 ```
 
-
 将默认上游设置为当前软件镜像站。
 
 <!-- 
@@ -53,6 +52,4 @@ curl ${_http}://${_domain}/qemu/qemu.sh | bash
 ## 引用
 
 1. [校园网联合镜像站](https://mirrors.cernet.edu.cn/about)
-
 2. [帮助仓库](https://github.com/mirrorz-org/mirrorz-help)
-
