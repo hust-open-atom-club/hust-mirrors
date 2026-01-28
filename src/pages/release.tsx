@@ -96,19 +96,19 @@ export default function Home(): JSX.Element {
     return Array.from(set);
   }
 
-  const releaseItems = unique(releases.map(u => u.release)).map(u => ({
+  const releaseItems = unique(releases.map(u => u.release)).sort().map(u => ({
     value: u,
     label: u
   }));
 
   const versionItems = unique(releases.filter(u => u.release === release)
-    .map(u => u.version)).filter(u => !!u).map(u => ({
+    .map(u => u.version)).filter(u => !!u).sort().map(u => ({
       value: u,
       label: u
     }));
 
   const variantItems = unique(releases.filter(u => u.release === release && u.version === version)
-    .map(u => u.variant)).filter(u => !!u).map(u => ({
+    .map(u => u.variant)).filter(u => !!u).sort().map(u => ({
       value: u,
       label: u
     }));
