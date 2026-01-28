@@ -71,10 +71,22 @@ jobs:
           path: linted_output/
 
       - name: Check lint errors
+        if: env.linted_failed == '1'
         run: |
-          set -e
-          if [ "${{ env.linted_failed }}" -ne 0 ]; then
+          file_list="linted_output/file_list.txt"
+          report_dir="linted_output/report_and_suggested_fixes"
+          if [ -f " $ file_list" ] && [ -s " $ file_list" ]; then
             echo "Linting errors found. Please check the reports and suggested fixes in uploaded artifact."
-            cat "$output_file"
-            exit 1
+            while IFS= read -r file; do
+              if [ -n " $ file" ]; then
+                report_file=" $ report_dir/ $ (basename " $ file").log"
+                if [ -f " $ report_file" ]; then
+                  echo "========== Report for  $ file =========="
+                  cat " $ report_file"
+                  echo ""
+                else
+                  echo "Report not found:  $ report_file"
+                fi
+              fi
+            done < " $ file_list"
           fi
