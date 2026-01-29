@@ -22,6 +22,13 @@
     justify-content: space-between;
 }
 
+.description {
+    font-size: 1rem;
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
 .blist {
     display: flex;
     flex-direction: row;
@@ -29,6 +36,12 @@
 
 .blist a {
     margin-right: 16px;
+}
+
+[data-theme='dark'] .blist a {
+    background: #1a8870;
+    color: white;
+    border: solid 1.5px var(--ifm-color-content-inverse);
 }
 
 .breadcrumbs {
@@ -47,6 +60,11 @@
     padding: 4px 20px;
     vertical-align: middle;
     border-radius: 4px;
+}
+
+[data-theme='dark'] .cliBlock {
+    background: #1a8870;
+    color: white;
 }
 
 @media screen and (min-width:996px) {

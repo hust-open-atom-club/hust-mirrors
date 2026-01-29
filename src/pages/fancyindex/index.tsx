@@ -30,6 +30,9 @@ function Header() {
         <h1>
           <span className='fancyindex__mirrorname'></span>
           <span>的文件索引</span>
+          <p id='fancyindex__description' className={styles.description}>
+            {/* 镜像描述将会在这里显示 */}
+          </p>
         </h1>
         <p id='fancyindex__lastUpdate'>
           {/* 上次同步时间：N/A */}
