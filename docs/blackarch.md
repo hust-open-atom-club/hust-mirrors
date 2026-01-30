@@ -10,6 +10,7 @@ detection:
 ---
 
 ## BlackArch 简介和软件管理
+
 BlackArch 是一个基于 Arch Linux 的渗透测试发行版，提供了大量的网路安全工具。它是专为渗透测试人员和安全研究人员创建的开放源码的发行版。该存储库包含 3000 多个可以单独或成组安装的工具。BlackArch Linux 与现有的 Arch Linux 安装相容，可使用 pacman 安装 BlackArch 中的软件。
 
 ## BlackArch 软件源替换
@@ -34,7 +35,7 @@ files:
     statement: '$a\\[blackarch]\nServer = ${_http}://${_domain}/blackarch/$repo/os/$arch'
 ```
 
-### 1. 在 `/etc/pacman.conf` 文件末尾添加两行：
+### 1. 在 `/etc/pacman.conf` 文件末尾添加两行
 
 ```ini varcode
 ---
@@ -44,10 +45,10 @@ Server = ${_http}://${_domain}/blackarch/$repo/os/$arch
 ```
 
 :::caution
-由于一些软件依赖 32 位的库，需要取消掉 `/etc/pacman.conf` 中 `multilib` 的注释，详见 https://wiki.archlinux.org/index.php/Official_repositories#Enabling_multilib
+由于一些软件依赖 32 位的库，需要取消掉 `/etc/pacman.conf` 中 `multilib` 的注释，详见 [https://wiki.archlinux.org/index.php/Official_repositories#Enabling_multilib](https://wiki.archlinux.org/index.php/Official_repositories#Enabling_multilib)
 :::
 
-### 2. 然后请安装 ``blackarch-keyring`` 包以导入 GPG key。
+### 2. 然后请安装 ``blackarch-keyring`` 包以导入 GPG key
 
 ```yaml cli
 type: Execute
@@ -59,7 +60,6 @@ exec: |
   pacman -Sy blackarch-keyring
   #{/USE_IN_DOCS}
 ```
-
 
 ### 3. 通过如下命令更新软件包缓存
 
@@ -85,7 +85,6 @@ const SUDO = !root ? 'sudo ' : '';
 ---
 ${SUDO}pacman -Syyuu
 ```
-
 
 注：Black Arch 软件源仅包含其打包的工具等软件。如果需要更换 Arch Linux 基础系统的软件源，请查看 [Arch Linux 帮助](/docs/archlinux/)。
 

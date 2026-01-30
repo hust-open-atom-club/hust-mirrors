@@ -52,7 +52,7 @@ git tag -l "next-*" | tail
 
 git 工具会输出类似下面的结果
 
-```
+```bash
 next-20231101
 next-20231102
 ...
@@ -65,7 +65,6 @@ git checkout -b new_local_branch next-20231101
 ```
 
 最后在本地的 `new_local_branch` 开展你的工作。
-
 
 ## 引用
 

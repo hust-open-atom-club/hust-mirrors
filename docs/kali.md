@@ -25,7 +25,6 @@ Kali 使用软件包管理工具 `APT` 来管理 DEB 软件包。具体来说，
 
 使用 `sed` 命令将软件源配置文件中的默认源地址 [http://http.kali.org/](http://http.kali.org/) 直接替换为当前镜像源站。
 
-
 ```yaml cli
 type: ReplaceIfExist
 required: true
@@ -59,7 +58,7 @@ deb https://mirrors.hust.edu.cn/kali kali-rolling main contrib non-free non-free
 ${SRC_PREFIX}deb-src https://mirrors.hust.edu.cn/kali kali-rolling main contrib non-free non-free-firmware
 ```
 
-### 2. 通过如下命令更新软件。
+### 2. 通过如下命令更新软件
 
 ```yaml cli
 type: Execute
@@ -70,8 +69,6 @@ exec: |
   apt-get update
   #{/USE_IN_DOCS}
 ```
-
-
 
 ## 注意事项
 
@@ -90,4 +87,6 @@ ${SUDO}apt update
 
 本站提供 Kali Linux 的 CD 镜像和虚拟机镜像下载服务。
 
-- [点此链接](/release?release=Kali%20Linux)，选择需要的版本和架构下载所需的 Kali Linux 安装镜像。
+<a href="/release?release=Kail%20Linux">
+    <button className="button button--primary">下载镜像</button>
+</a>

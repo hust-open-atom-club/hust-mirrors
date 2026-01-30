@@ -17,7 +17,6 @@ exec: |
   #{/USE_IN_DOCS}
 ```
 
-
 2. 将 `mirror` 加入已有代码库，在已有仓库中运行
 
 ```bash varcode
@@ -25,6 +24,7 @@ git remote add mirror ${_http}://${_domain}/git/linux.git
 ```
 
 或
+
 ```yaml cli
 type: Execute
 privileged: false

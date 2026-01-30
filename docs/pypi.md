@@ -59,6 +59,7 @@ recover: |
 :::
 
 如果 pip 版本较低，可以使用下面的命令升级 pip
+
 ```bash varcode
 python -m pip install -i https://${_domain}/pypi/web/simple --upgrade pip
 ```
@@ -86,6 +87,7 @@ recover: |
 ```
 
 或使用环境变量设置 PDM 软件镜像：
+
 ```bash varcode
 export PDM_PYPI_URL=https://${_domain}/pypi/web/simple
 ```
@@ -99,11 +101,13 @@ Poetry 不支持配置全局镜像，只能为项目配置。
 Poetry 支持使用 `poetry source` 命令或修改 `pyproject.toml` 来设置当前项目的软件镜像。
 
 使用 `poetry source` 命令设置软件镜像：
+
 ```bash varcode
 poetry source add --priority=primary mirrors https://${_domain}/pypi/web/simple
 ```
 
 或修改 `pyproject.toml` 设置软件镜像，在 `pyproject.toml` 文件中添加如下内容：
+
 ```toml varcode
 [[tool.poetry.source]]
 name = "mirrors"

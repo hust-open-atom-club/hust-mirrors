@@ -57,17 +57,20 @@ exec: |
 
 :::caution
 如果在安装过程中遇到了如下错误：
+
 ```shell
 error: archlinuxcn-keyring: Signature from "Jiachen YANG (Arch Linux Packager Signing Key) " is marginal trust
 ```
+
 这是因为由于开发者退休，导致新安装的系统中，farseerfc 的 GPG key 是勉强信任的。可以通过如下命令解决：
+
 ```shell varcode
 sudo pacman-key --lsign-key "farseerfc@archlinux.org"
 ```
+
 :::
 
 3. 更新软件包缓存
-
 
 ```yaml cli
 type: Execute
@@ -92,7 +95,6 @@ const SUDO = !root ? 'sudo ' : '';
 ${SUDO}pacman -Syyuu
 ```
 
-
-
 ## 引用
-1. [archlinuxcn 中文社区仓库](https://www.archlinuxcn.org/archlinux-cn-repo-and-mirror/)
+
+1. [ArchlinuxCN 中文社区仓库](https://www.archlinuxcn.org/archlinux-cn-repo-and-mirror/)

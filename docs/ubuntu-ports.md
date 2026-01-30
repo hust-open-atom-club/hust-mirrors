@@ -3,8 +3,6 @@ title: Ubuntu-Ports 镜像使用帮助
 sidebar_label: Ubuntu Ports
 ---
 
-# Ubuntu Ports 使用教程
-
 ## Ubuntu Ports 简介与软件管理
 
 Ubuntu Ports 是一个为官方支持的非 x86 架构（如 ARM、RISC-V、PowerPC、s390x 等）提供的 Ubuntu 软件源。与主软件源 `archive.ubuntu.com` 服务于 `amd64` (x86-64) 和 `i386` (x86) 架构不同，`ports.ubuntu.com` 专门为其他处理器架构的用户提供软件包支持。
@@ -17,7 +15,7 @@ Ubuntu Ports 同样使用软件包管理工具 `APT` 来管理 DEB 软件包。�
 **为避免软件源配置文件替换后产生问题，请先将系统自带的软件源配置文件进行备份，然后进行下列操作。**
 :::
 
-1.  配置软件源
+1. 配置软件源
 
 在 Ubuntu 24.04（“Noble Numbat”）之前的版本中，`APT` 软件源采用传统的单行格式（One-Line-Style），配置文件路径为：`/etc/apt/sources.list`，从 Ubuntu 24.04 LTS 开始，官方推荐使用更结构化的 DEB822 格式，配置文件路径改为：`/etc/apt/sources.list.d/ubuntu.sources`
 
@@ -83,7 +81,7 @@ ${PROPOSED_PREFIX || SRC_PREFIX}Components: main restricted universe multiverse
 ${PROPOSED_PREFIX || SRC_PREFIX}Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
 ```
 
-2.  通过如下命令更新软件。
+2. 通过如下命令更新软件。
 
 <!-- end list -->
 
@@ -135,5 +133,5 @@ ${SUDO}apt-get install apt-transport-https ca-certificates
 
 ## 引用
 
-1.  [清华大学 tuna 镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports/)
-2.  [中科大镜像源使用帮助](https://mirrors.ustc.edu.cn/help/ubuntu-ports.html)
+1. [清华大学 tuna 镜像源使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu-ports/)
+2. [中科大镜像源使用帮助](https://mirrors.ustc.edu.cn/help/ubuntu-ports.html)

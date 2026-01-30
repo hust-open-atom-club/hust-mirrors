@@ -10,9 +10,10 @@ slug: /virtualbox
 ## 通用安装包 {#universal}
 
 通用安装包支持
+
 - Windows
 - macOS
-- Linux 
+- Linux
 - SunOS
 
 点击[此链接](/release?release=Virtualbox)，选择需要的版本和操作系统下载最新版本的 VirtualBox。
@@ -29,22 +30,20 @@ slug: /virtualbox
 
 目前支持的系统有：
 
-* Ubuntu
-* Debian
-* Fedora
-* openSUSE
-* SUSE Linux Enterprise Server
-* Oracle Linux / Red Hat Enterprise Linux / CentOS
+- Ubuntu
+- Debian
+- Fedora
+- openSUSE
+- SUSE Linux Enterprise Server
+- Oracle Linux / Red Hat Enterprise Linux / CentOS
 
 如果您所使用的发行版不在上述列表之内，请参考[通用安装包](#universal)安装。
-
 
 ### 通过编译好的二进制包安装
 
 点击[此链接](/release?release=Virtualbox%20\(package%20manager\))，选择版本（例如 `5.0.24`），
 找到名为发行版名称\~发行代号\~架构的文件。
 如 `virtualbox-5.0_5.0.24-108355~Ubuntu~xenial_i386.deb` 下载安装即可。
-
 
 ### 通过包管理器安装
 
@@ -104,7 +103,6 @@ ${sudo}apt-get install virtualbox
 ```
 
 #### RHEL/CentOS 用户
-
 
 新建 `/etc/yum.repos.d/virtualbox.repo`，内容为
 
