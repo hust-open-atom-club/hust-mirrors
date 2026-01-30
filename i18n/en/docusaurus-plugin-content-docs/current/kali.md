@@ -9,6 +9,12 @@ detection:
       name: Kali GNU/Linux
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 ## Kali Introduction and Software Management
 
 Kali Linux is an open-source, Debian-based Linux distribution designed to provide powerful tool support for various information security tasks including penetration testing, security research, and reverse engineering.
@@ -24,7 +30,6 @@ This method only applies to switching from the official source to this site sour
 :::
 
 Use the `sed` command to directly replace the default source address [http://http.kali.org/](http://http.kali.org/) in the software source configuration file with the current mirror source site.
-
 
 ```yaml cli
 type: ReplaceIfExist
@@ -59,7 +64,7 @@ deb https://mirrors.hust.edu.cn/kali kali-rolling main contrib non-free non-free
 ${SRC_PREFIX}deb-src https://mirrors.hust.edu.cn/kali kali-rolling main contrib non-free non-free-firmware
 ```
 
-### 2. Update software with the following command.
+### 2. Update software with the following command
 
 ```yaml cli
 type: Execute
@@ -70,8 +75,6 @@ exec: |
   apt-get update
   #{/USE_IN_DOCS}
 ```
-
-
 
 ## Notes
 

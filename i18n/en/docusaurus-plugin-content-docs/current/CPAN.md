@@ -4,21 +4,30 @@ title: Perl Language Package Repository Usage Guide
 type: repo
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 [CPAN](https://www.cpan.org/) (The Comprehensive Perl Archive Network) mirror source configuration file is `MyConfig.pm` (usually located at `~/.cpan/CPAN/MyConfig.pm`), which can be modified using the package management script `cpan`.
 
 ## First Use
 
 For Perl 5.36 (or CPAN 2.29) and above, use the following command to automatically generate MyConfig.pm
+
 ```bash varcode
 PERL_MM_USE_DEFAULT=1 perl -MCPAN -e 'CPAN::HandleConfig->edit("pushy_https", 0); CPAN::HandleConfig->edit("urllist", "unshift", "${_http}://${_domain}/CPAN/"); mkmyconfig'
 ```
 
 For older versions, use the following command to automatically generate
+
 ```bash varcode
 PERL_MM_USE_DEFAULT=1 perl -MCPAN -e 'CPAN::HandleConfig->edit("urllist", "unshift", "${_http}://${_domain}/CPAN/"); mkmyconfig'
 ```
 
 Or manually confirm each configuration option without using default configuration
+
 ```bash varcode
 perl -MCPAN -e 'mkmyconfig'
 ```
@@ -79,6 +88,6 @@ perl -MCPAN -e 'CPAN::HandleConfig->load();' \\
     -e 'CPAN::HandleConfig->commit()'
 ```
 
-
 ## References
+
 1. [Tuna Mirror Usage Guide](https://mirrors.tuna.tsinghua.edu.cn/help/CPAN/)

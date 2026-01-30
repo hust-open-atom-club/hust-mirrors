@@ -10,6 +10,12 @@ detection:
       path: ~/.Rprofile
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 ## CRAN Introduction
 
 CRAN is a network of ftp and Web servers around the world that store identical, up-to-date versions of R code and documentation.
