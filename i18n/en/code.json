@@ -376,7 +376,7 @@
     "message": "Get CLI tool"
   },
   "mirror.release": {
-    "message": "Get Release ISO"
+    "message": "Get Release Software and ISO"
   },
   "mirror.release.select": {
     "message": "Select..."
@@ -469,7 +469,7 @@
     "message": "Support cli deploy"
   },
   "mirror.supportCli": {
-    "message": "This software can be deployed using CLI，"
+    "message": "This software can be deployed using CLI."
   },
   "mirror.supportCli.goto": {
     "message": "see details."
