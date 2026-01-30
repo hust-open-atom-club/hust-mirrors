@@ -3,6 +3,12 @@ sidebar_label: Gentoo Portage
 title: Gentoo Portage Repository Mirror Usage Guide
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 ## Introduction
 
 Portage is the official package manager and distribution system for Gentoo. It provides advanced dependency resolution, flexible building and installation of software from source code or binary packages, and other features. Portage configures software from the Gentoo ebuild repository, additional ebuild repositories, or binhosts. This mirror repository mirrors the Gentoo Portage Ebuild repository using Git synchronization.

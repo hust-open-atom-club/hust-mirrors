@@ -5,6 +5,7 @@ cname: 'blackarch'
 ---
 
 ## Introduction to BlackArch and Software Management
+
 BlackArch Linux is an Arch Linux-based penetration testing distribution for penetration testers and security researchers. The repository contains over 3000 tools that can be installed individually or in groups.
 BlackArch Linux is compatible with existing Arch Linux installations and allows software installation from BlackArch repository using pacman.
 
@@ -24,7 +25,7 @@ Server = ${_http}://${_domain}/blackarch/$repo/os/$arch
 ```
 
 :::caution
-Some software depends on 32-bit libraries. You need to uncomment `multilib` in `/etc/pacman.conf`. For details, see https://wiki.archlinux.org/index.php/Official_repositories#Enabling_multilib
+Some software depends on 32-bit libraries. You need to uncomment `multilib` in `/etc/pacman.conf`. For details, see [https://wiki.archlinux.org/index.php/Official_repositories#Enabling_multilib](https://wiki.archlinux.org/index.php/Official_repositories#Enabling_multilib).
 :::
 
 2. Install the `blackarch-keyring` package to import the GPG key.
@@ -66,6 +67,7 @@ This method is only applicable when switching from official sources to the mirro
 :::
 
 Use the `echo` command to add the current mirror source in one step:
+
 ```shell varcode
 [ ] (root) Are you the root user?
 ---

@@ -10,6 +10,12 @@ detection:
       command: cargo
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 ## Cargo Usage Method
 
 Add the following content to `$CARGO_HOME/config.toml`:

@@ -10,7 +10,6 @@ Click the appropriate link to copy the clone link, and then use a Git client to 
 
 <!-- ![Copy URL](./assets/git-linux.png)  -->
 
-
 ```bash varcode
 git clone ${_http}://${_domain}/git/linux.git
 ```
@@ -18,6 +17,7 @@ git clone ${_http}://${_domain}/git/linux.git
 ## Important Notes
 
 Differences between Git repository mirrors and regular software mirrors:
+
 - When this URL is opened in a browser, it displays a non-repository page.
-- You can only clone it using a Git client. 
+- You can only clone it using a Git client.
 - The `git` protocol is not currently supported.

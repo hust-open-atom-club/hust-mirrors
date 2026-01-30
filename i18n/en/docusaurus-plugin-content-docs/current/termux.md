@@ -4,6 +4,11 @@ sidebar_label: Termux
 cname: termux
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
 
 ## What is Termux
 

@@ -3,6 +3,12 @@ sidebar_label: Rustup
 title: Rustup Toolchain Installer Usage Guide
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 :::warning Important Notes
 The mirror site only keeps the latest stable, beta, and nightly versions. If you need to install older toolchains using rustup, please use the official source.
 :::

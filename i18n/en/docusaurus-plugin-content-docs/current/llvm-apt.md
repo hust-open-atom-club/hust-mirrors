@@ -3,6 +3,12 @@ title: LLVM APT Mirror Usage Guide
 sidebar_label: LLVM APT
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 ## LLVM APT Introduction
 
 LLVM APT is an APT repository provided for Debian and Ubuntu systems to install the LLVM toolchain.
