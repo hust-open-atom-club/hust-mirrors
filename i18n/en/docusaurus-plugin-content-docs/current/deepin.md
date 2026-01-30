@@ -9,6 +9,12 @@ detection:
       name: Deepin
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 ## Introduction to Deepin and Software Management
 
 Deepin (formerly known as Linux Deepin) is committed to providing a beautiful, user-friendly, secure, and reliable Linux distribution for users worldwide. The Deepin project was initiated in 2008 and released its first version under the name "Linux Deepin" in 2009. In April 2014, it was renamed "Deepin" and is often referred to as the "Deepin Operating System" in China. Deepin is an open-source operating system primarily based on the Linux kernel and focuses on the desktop environment. It features a clean and modern interface, a wide range of applications and tools, and can meet daily office, study, and entertainment needs.
@@ -124,7 +130,7 @@ ${SUDO}sed -E -e "s|https?://${STR_TO_REPLACE}|${_http}://${STR_REPLACED}|" /etc
 
 ## Important Notes
 
-- This mirror site does not synchronize versions earlier than Deepin 20. If needed, please use the official sources. 
+- This mirror site does not synchronize versions earlier than Deepin 20. If needed, please use the official sources.
 - This mirror site does not synchronize Deepin 23 Nightly versions. If needed, please use the official sources.
 - This mirror site does not provide Deepin App Store mirrors, so please do not modify the App Store related sources in `/etc/apt/sources.list`, such as [https://app-store-files.uniontech.com/](https://app-store-files.uniontech.com/)
 - Deepin 20 and above versions support HTTPS sources by default. If you encounter issues pulling HTTPS sources, please use HTTP sources to install the following software.

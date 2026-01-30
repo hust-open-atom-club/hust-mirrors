@@ -9,15 +9,16 @@ cname: 'debian'
 Debian is a Linux distribution composed of free and open-source software. The project was created in 1993 and is one of the oldest Linux distributions. Debian uses the Linux kernel, but most of its core operating system tools come from the GNU project. Therefore, Debian is often referred to as the Debian GNU/Linux operating system. The project is coordinated by a group of volunteers collaborating over the internet, following three fundamental documents: the Debian Social Contract, Debian Constitution, and Debian Free Software Guidelines.
 
 Debian uses the package management tool APT to manage DEB software packages. Specifically, Debian manages system software sources by modifying the `/etc/apt/sources.list` configuration file. In general, users can replace the default source address in this configuration file (i.e., `http://deb.debian.org/`) with the mirror source provided by this software mirror site.
+
 ## Replacing Debian Software Sources
 
 :::caution
-**To receive security updates promptly and avoid security patch lag due to source updates, we recommend using the official security update software source.** 
+**To receive security updates promptly and avoid security patch lag due to source updates, we recommend using the official security update software source.**
 :::
 
 :::caution
-**To avoid problems when replacing software source configuration files, please make a backup of the system's default software source configuration files before proceeding.** 
-::: 
+**To avoid problems when replacing software source configuration files, please make a backup of the system's default software source configuration files before proceeding.**
+:::
 
 1. Based on your preference, copy the following software source configuration content to `/etc/apt/sources.list` and save it.
 
@@ -42,7 +43,6 @@ ${SID_PREFIX}${SRC_PREFIX}deb-src ${_http}://${_domain}/debian ${version}-update
 ${SID_PREFIX}${BACKPORTS_PREFIX}deb ${_http}://${_domain}/debian ${version}-backports main contrib non-free${NFW}
 ${SID_PREFIX}${BACKPORTS_PREFIX}${SRC_PREFIX}deb-src ${_http}://${_domain}/debian ${version}-backports main contrib non-free${NFW}
 ```
-
 
 2. Update the software using the following command:
 
@@ -70,8 +70,8 @@ const SUDO = !root ? 'sudo ' : '';
 ${SUDO}sed -i.bak 's|http://deb.debian.org|${_http}://${_domain}|g' /etc/apt/sources.list
 ```
 
-
 ## Important Notes
+
 - Debian Buster and later versions support HTTPS sources by default. If you encounter issues fetching HTTPS sources, you can install the following software using HTTP sources:
 
 ```shell varcode
@@ -94,5 +94,5 @@ echo "Acquire::http::Pipeline-Depth \"0\";" > /etc/apt/apt.conf.d/99nopipelining
 ``` -->
 ## References
 
-[^1] [Debian Official Website](https://wiki.debian.org/zh_CN/DebianIntroduction) 
+[^1] [Debian Official Website](https://wiki.debian.org/zh_CN/DebianIntroduction)
 [^2] [Debian Security FAQ](https://www.debian.org/security/faq.en.html#mirror)

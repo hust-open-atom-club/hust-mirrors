@@ -4,8 +4,16 @@ sidebar_label: Docker CE
 type: install
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 :::caution
+
 This mirror is not DockerHub and can only be used to install Docker CE. It cannot be used to index or pull container images from DockerHub!!!
+
 :::
 
 ## Docker CE Introduction
@@ -17,7 +25,9 @@ Docker CE, or Docker Community Edition, is the free version of Docker for develo
 Docker officially provides an automatic configuration and installation [script](https://get.docker.com) that supports installation on Debian, RHEL, SUSE series, and derivative systems.
 
 :::caution
+
 Docker officially [does not recommend](https://github.com/docker/docker-install/blob/master/install.sh#L5-L9) using this script to install Docker CE in production environments!!!
+
 :::
 
 ```yaml cli

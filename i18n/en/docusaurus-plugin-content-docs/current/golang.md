@@ -3,7 +3,14 @@ title: Golang Installation Files Usage Guide
 sidebar_label: Golang
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 ## Golang Introduction
+
 Golang is an open-source project aimed at improving programmer productivity.
 
 Go is expressive, concise, clean, and efficient. Its concurrency mechanisms make it easy to write programs that make full use of multi-core and networked machines,
@@ -30,6 +37,7 @@ The mirror site provides installation packages for Golang on four platforms: Lin
     ```
 
 2. After downloading, if Golang was previously installed, execute the following command to remove it:
+
     ```shell varcode
     [ ] (root) Whether root user
     ---
@@ -39,6 +47,7 @@ The mirror site provides installation packages for Golang on four platforms: Lin
     ```
 
 3. After removal, execute the following command to extract the binary files to the system path:
+
     ```shell varcode
     [ ] (root) Whether root user
     ---
@@ -48,6 +57,7 @@ The mirror site provides installation packages for Golang on four platforms: Lin
     ```
 
 4. Add the Golang executable file path to the environment variable `PATH`:
+
     ```shell varcode
     # Only effective for current terminal
     export PATH=$PATH:/usr/local/go/bin
@@ -57,6 +67,7 @@ The mirror site provides installation packages for Golang on four platforms: Lin
     ```
 
 5. Verify installation, open a new terminal and enter:
+
     ```shell
     go version
     ```
@@ -64,6 +75,7 @@ The mirror site provides installation packages for Golang on four platforms: Lin
 If the downloaded Golang version is printed, Golang installation is successful.
 
 ### Windows Installation
+
 1. First download the installation package corresponding to your system and architecture from the [download page](/release/?release=Golang). It is recommended to download the MSI package.
 
 2. Open the downloaded MSI file and follow the prompts to install Golang.
@@ -73,6 +85,7 @@ If the downloaded Golang version is printed, Golang installation is successful.
     :::
 
 3. Verify installation, open terminal or command prompt and enter:
+
     ```shell
     go version
     ```
@@ -80,15 +93,19 @@ If the downloaded Golang version is printed, Golang installation is successful.
 If the downloaded Golang version is printed, Golang installation is successful.
 
 ### Mac Installation
+
 1. First download the installation package corresponding to your system and architecture from the [download page](/release/?release=Golang). It is recommended to download the pkg package.
 
 2. Open the downloaded pkg file and follow the prompts to install Golang. The installation package will install Golang to the `usr/local/go` directory and add this directory to the environment variable `PATH`.
 
 3. Verify installation, open terminal or command prompt and enter:
+
     ```shell
     go version
     ```
+
 If the downloaded Golang version is printed, Golang installation is successful.
 
 ## References
+
 1. [Golang Official Documentation](https://go.dev/doc/install)

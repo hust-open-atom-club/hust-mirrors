@@ -5,6 +5,7 @@ cname: LinuxMint
 ---
 
 ## Linux Mint Introduction and Software Management
+
 Linux Mint is a Linux distribution based on Ubuntu. The purpose of Linux Mint is to provide a free and open-source, modern, elegant, powerful yet easy-to-use operating system. Linux Mint also uses `apt` as its package manager, similar to Ubuntu and Debian, and you need to edit the paths in `/etc/apt/sources.list` and `/etc/apt/sources.list.d/*`.
 
 ## Ubuntu / Debian Software Source Replacement
@@ -57,6 +58,7 @@ ${SUDO}sed -i 's|http://archive.ubuntu.com|${_http}://${_domain}|g' /etc/apt/off
 ```
 
 ## Linux Mint Installation Image {#cd}
+
 Linux Mint installation images are available in cinnamon, mate, and xfce desktop environments, corresponding to three different versions of the installation images. If you need to download these versions of the installation images, click the button below to select the corresponding version and type for download.
 
 - cinnamon: The default desktop environment of Linux Mint, developed based on GNOME 3.
@@ -68,6 +70,7 @@ Linux Mint installation images are available in cinnamon, mate, and xfce desktop
 </a>
 
 ## References
+
 1. [Tuna Mirror Help](https://mirrors.tuna.tsinghua.edu.cn/help/linuxmint/)
 
 ---

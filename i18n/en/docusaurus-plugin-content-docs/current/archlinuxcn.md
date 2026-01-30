@@ -22,6 +22,7 @@ Server = ${_http}://${_domain}/archlinuxcn/$arch
 ```
 
 2. Install the archlinuxcn-keyring:
+
 ```shell varcode
 [ ] (root) Are you the root user?
 ---
@@ -32,13 +33,17 @@ ${SUDO}pacman -S archlinuxcn-keyring
 
 :::caution
 If you encounter the following error during the installation process:
+
 ```shell
 error: archlinuxcn-keyring: Signature from "Jiachen YANG (Arch Linux Packager Signing Key) " is marginal trust
 ```
+
 This issue occurs because the developer has retired, which leaves the GPG key for farseerfc with a limited trust status in new installations. You can address this by executing the following command:
+
 ```shell varcode
 sudo pacman-key --lsign-key "farseerfc@archlinux.org"
 ```
+
 :::
 
 3. Update the package cache:
@@ -54,7 +59,6 @@ ${SUDO}pacman -Syyu
 The `yy` in the command helps prevent issues when switching from **broken**  mirrors to **healthy**  mirrors.
 
 If you want to switch from a newer mirror to an older mirror, you can execute the following command to downgrade some packages and avoid partial updates to the system:
-
 
 ```shell varcode
 [ ] (root) Are you the root user?
@@ -82,5 +86,5 @@ ${SUDO}echo -e "[archlinuxcn]\nServer = ${_http}://${_domain}/archlinuxcn/\$arch
 
 ## References
 
-1. [ZMirror](https://mirrors.cernet.edu.cn/about)   
+1. [ZMirror](https://mirrors.cernet.edu.cn/about)
 2. [Help Repository](https://github.com/mirrorz-org/mirrorz-help)

@@ -3,6 +3,12 @@ sidebar_label: Manjaro
 title: Manjaro Repository Mirror Usage Guide
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 ## Manjaro Introduction
 
 Manjaro is based on Arch Linux, but aims to provide a more user-friendly system, allowing more users to experience the powerful features of Arch without facing the complex installation and maintenance process of Arch.
