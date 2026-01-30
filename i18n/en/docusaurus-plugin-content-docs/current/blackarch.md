@@ -25,7 +25,7 @@ Server = ${_http}://${_domain}/blackarch/$repo/os/$arch
 ```
 
 :::caution
-Some software depends on 32-bit libraries. You need to uncomment `multilib` in `/etc/pacman.conf`. For details, see <https://wiki.archlinux.org/index.php/Official_repositories#Enabling_multilib>
+Some software depends on 32-bit libraries. You need to uncomment `multilib` in `/etc/pacman.conf`. For details, see [https://wiki.archlinux.org/index.php/Official_repositories#Enabling_multilib](https://wiki.archlinux.org/index.php/Official_repositories#Enabling_multilib).
 :::
 
 2. Install the `blackarch-keyring` package to import the GPG key.
