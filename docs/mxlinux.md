@@ -22,7 +22,7 @@ exec: |
   cp /etc/apt/sources.list.d/mx.list /etc/apt/sources.list.d/mx.list.bak
   cp /etc/apt/sources.list.d/debian.list /etc/apt/sources.list.d/debian.list.bak
   cp /etc/apt/sources.list.d/debian-stable-updates.list /etc/apt/sources.list.d/debian-stable-updates.list.bak
-  #{USE_IN_DOCS/}
+  #{/USE_IN_DOCS}
 recover: |
   cp /etc/apt/sources.list.d/antix.list.bak /etc/apt/sources.list.d/antix.list
   cp /etc/apt/sources.list.d/mx.list.bak /etc/apt/sources.list.d/mx.list
