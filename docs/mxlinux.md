@@ -11,40 +11,66 @@ MX Linux 是 [antiX](https://antixlinux.com/) 和 [MX Linux 社区](https://mxli
 
 1. 备份/etc/apt/sources.list.d/下面所有的索引文件：
 
-```bash varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}cp /etc/apt/sources.list.d/antix.list /etc/apt/sources.list.d/antix.list.bak
-${SUDO}cp /etc/apt/sources.list.d/mx.list /etc/apt/sources.list.d/mx.list.bak
-${SUDO}cp /etc/apt/sources.list.d/debian.list /etc/apt/sources.list.d/debian.list.bak
-${SUDO}cp /etc/apt/sources.list.d/debian-stable-updates.list /etc/apt/sources.list.d/debian-stable-updates.list.bak
+```yaml cli
+type: Execute
+description: 备份 MXLinux 相关的 APT 源文件
+optional: false
+privileged: true
+exec: |
+  cp /etc/apt/sources.list.d/antix.list /etc/apt/sources.list.d/antix.list.bak
+  cp /etc/apt/sources.list.d/mx.list /etc/apt/sources.list.d/mx.list.bak
+  cp /etc/apt/sources.list.d/debian.list /etc/apt/sources.list.d/debian.list.bak
+  cp /etc/apt/sources.list.d/debian-stable-updates.list /etc/apt/sources.list.d/debian-stable-updates.list.bak
+recover: |
+  cp /etc/apt/sources.list.d/antix.list.bak /etc/apt/sources.list.d/antix.list
+  cp /etc/apt/sources.list.d/mx.list.bak /etc/apt/sources.list.d/mx.list
+  cp /etc/apt/sources.list.d/debian.list.bak /etc/apt/sources.list.d/debian.list
+  cp /etc/apt/sources.list.d/debian-stable-updates.list.bak /etc/apt/sources.list.d/debian-stable-updates.list
 ```
 
 2. 修改所有索引文件的下载源地址为本站：
 
-```bash varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}sed -i "s@http://repo.antixlinux.com/stretch@${_http}://${_domain}/mxlinux/antix/stretch@g" /etc/apt/sources.list.d/antix.list
-${SUDO}sed -i "s@http://la.mxrepo.com/mx/repo/@${_http}://${_domain}/mxlinux/mx/repo/@g" /etc/apt/sources.list.d/mx.list
-${SUDO}sed -i "s@http://ftp.us.debian.org/debian/@${_http}://${_domain}/debian/@g" /etc/apt/sources.list.d/debian-stable-updates.list
-${SUDO}sed -i "s@http://ftp.us.debian.org/debian/@${_http}://${_domain}/debian/@g" /etc/apt/sources.list.d/debian.list
-${SUDO}sed -i "s@http://security.debian.org/@${_http}://${_domain}/debian-security/@g" /etc/apt/sources.list.d/debian.list
+```yaml cli
+required: true
+optional: false
+description: 配置 MXLinux 软件仓库镜像源
+privileged: true
+type: ReplaceIfExist
+files:
+  - path: /etc/apt/sources.list.d/antix.list
+    match: 'http://repo.antixlinux.com/stretch'
+    replace: '${_http}://${_domain}/mxlinux/antix/stretch'
+    comment: 替换 antix 仓库源
+  - path: /etc/apt/sources.list.d/mx.list
+    match: 'http://la\.mxrepo\.com/mx/repo/'
+    replace: '${_http}://${_domain}/mxlinux/mx/repo/'
+    comment: 替换 mx 仓库源
+  - path: /etc/apt/sources.list.d/debian-stable-updates.list
+    match: 'http://ftp\.us\.debian\.org/debian/'
+    replace: '${_http}://${_domain}/debian/'
+    comment: 替换 debian stable updates 仓库源
+  - path: /etc/apt/sources.list.d/debian.list
+    match: 'http://ftp\.us\.debian\.org/debian/'
+    replace: '${_http}://${_domain}/debian/'
+    comment: 替换 debian 仓库源
+  - path: /etc/apt/sources.list.d/debian.list
+    match: 'http://security\.debian\.org/'
+    replace: '${_http}://${_domain}/debian-security/'
+    comment: 替换 debian security 仓库源
 ```
 
 3. 更新镜像列表
 执行以下命令：
 
-```bash varcode
-[ ] (root) 是否为 root 用户
----
-const SUDO = !root ? 'sudo ' : '';
----
-${SUDO}apt update
+```yaml cli
+required: true
+description: 更新 MXLinux 软件包列表
+privileged: true
+type: Execute
+exec: |
+  #{USE_IN_DOCS/}
+  apt update
+  #{/USE_IN_DOCS}
 ```
 
 ## MXLinux 安装镜像 {#cd}
