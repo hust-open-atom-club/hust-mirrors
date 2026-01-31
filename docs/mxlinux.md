@@ -9,18 +9,20 @@ MX Linux 是 [antiX](https://antixlinux.com/) 和 [MX Linux 社区](https://mxli
 
 ## 使用
 
-1. 备份/etc/apt/sources.list.d/下面所有的索引文件：
+### 1. 备份/etc/apt/sources.list.d/下面所有的索引文件
 
 ```yaml cli
 type: Execute
-description: 备份 MXLinux 相关的 APT 源文件
+description: 复制 APT 源文件
 optional: false
 privileged: true
 exec: |
+  #{USE_IN_DOCS/}
   cp /etc/apt/sources.list.d/antix.list /etc/apt/sources.list.d/antix.list.bak
   cp /etc/apt/sources.list.d/mx.list /etc/apt/sources.list.d/mx.list.bak
   cp /etc/apt/sources.list.d/debian.list /etc/apt/sources.list.d/debian.list.bak
   cp /etc/apt/sources.list.d/debian-stable-updates.list /etc/apt/sources.list.d/debian-stable-updates.list.bak
+  #{USE_IN_DOCS/}
 recover: |
   cp /etc/apt/sources.list.d/antix.list.bak /etc/apt/sources.list.d/antix.list
   cp /etc/apt/sources.list.d/mx.list.bak /etc/apt/sources.list.d/mx.list
@@ -28,7 +30,7 @@ recover: |
   cp /etc/apt/sources.list.d/debian-stable-updates.list.bak /etc/apt/sources.list.d/debian-stable-updates.list
 ```
 
-2. 修改所有索引文件的下载源地址为本站：
+### 2. 修改所有索引文件的下载源地址为本站
 
 ```yaml cli
 required: true
@@ -40,31 +42,25 @@ files:
   - path: /etc/apt/sources.list.d/antix.list
     match: 'http://repo.antixlinux.com/stretch'
     replace: '${_http}://${_domain}/mxlinux/antix/stretch'
-    comment: 替换 antix 仓库源
   - path: /etc/apt/sources.list.d/mx.list
     match: 'http://la\.mxrepo\.com/mx/repo/'
     replace: '${_http}://${_domain}/mxlinux/mx/repo/'
-    comment: 替换 mx 仓库源
   - path: /etc/apt/sources.list.d/debian-stable-updates.list
     match: 'http://ftp\.us\.debian\.org/debian/'
     replace: '${_http}://${_domain}/debian/'
-    comment: 替换 debian stable updates 仓库源
   - path: /etc/apt/sources.list.d/debian.list
     match: 'http://ftp\.us\.debian\.org/debian/'
     replace: '${_http}://${_domain}/debian/'
-    comment: 替换 debian 仓库源
   - path: /etc/apt/sources.list.d/debian.list
     match: 'http://security\.debian\.org/'
     replace: '${_http}://${_domain}/debian-security/'
-    comment: 替换 debian security 仓库源
 ```
 
-3. 更新镜像列表
-执行以下命令：
+### 3. 更新镜像列表
 
 ```yaml cli
 required: true
-description: 更新 MXLinux 软件包列表
+description: 更新软件包列表
 privileged: true
 type: Execute
 exec: |
