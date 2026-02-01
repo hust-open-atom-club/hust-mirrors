@@ -33,7 +33,7 @@ Server = https://mirror.philpot.de/manjaro/unstable/$repo/$arch
 
 ```mirrorlist varcode
 ## Country : China
-# Server = ${_http}://${_domain}/manjaro/unstable/$repo/$arch
+Server = ${_http}://${_domain}/manjaro/unstable/$repo/$arch
 ```
 
 ### 3. 保存文件并更新源列表
