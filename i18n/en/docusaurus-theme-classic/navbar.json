@@ -11,6 +11,10 @@
     "message": "Help",
     "description": "Navbar item with label 帮助"
   },
+  "item.label.下载": {
+    "message": "Download",
+    "description": "Navbar item with label 下载"
+  },
   "item.label.动态": {
     "message": "News",
     "description": "Navbar item with label 动态"
