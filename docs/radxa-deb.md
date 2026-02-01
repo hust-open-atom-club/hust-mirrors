@@ -40,7 +40,7 @@ exec: |
   #{/USE_IN_DOCS}
 recover: |
   ${SUDO} sed -i "s|${_http}://${_domain}/radxa-deb|https://radxa-repo.github.io|g" /etc/apt/sources.list.d/*radxa*.list
-  apt-get update
+  ${SUDO} apt-get update
 ```
 
 执行以上命令后，默认启用了的仓库将会被正确替换并更新缓存。
