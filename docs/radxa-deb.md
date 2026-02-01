@@ -35,11 +35,11 @@ privileged: true
 interpreter: shell
 exec: |
   #{USE_IN_DOCS/}
-  ${SUDO}sed -i "s|https://radxa-repo.github.io|${_http}://${_domain}/radxa-deb|g" /etc/apt/sources.list.d/*radxa*.list
+  sed -i "s|https://radxa-repo.github.io|${_http}://${_domain}/radxa-deb|g" /etc/apt/sources.list.d/*radxa*.list
   apt-get update
   #{/USE_IN_DOCS}
 recover: |
-  ${SUDO}sed -i "s|${_http}://${_domain}/radxa-deb|https://radxa-repo.github.io|g" /etc/apt/sources.list.d/*radxa*.list
+  sed -i "s|${_http}://${_domain}/radxa-deb|https://radxa-repo.github.io|g" /etc/apt/sources.list.d/*radxa*.list
   apt-get update
 ```
 
