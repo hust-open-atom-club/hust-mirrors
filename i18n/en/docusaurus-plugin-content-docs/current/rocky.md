@@ -3,6 +3,12 @@ sidebar_label: Rocky
 title: Rocky Software Repository Mirror Usage Guide
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 ## Rocky Introduction
 
 Rocky Linux is an open-source enterprise-grade operating system designed to be 100% fully compatible with Red Hat Enterprise Linux®. This mirror repository provides software source mirrors for Rocky Linux. This repository includes versions 8, 9, and 10 for x86_64 and aarch64 architectures.

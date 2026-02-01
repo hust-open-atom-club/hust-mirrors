@@ -3,6 +3,12 @@ sidebar_label: CTAN
 title: TeX Packages and Distribution Usage Guide
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 CTAN (The Comprehensive TeX Archive Network) is the gathering place for all TeX typesetting system related materials, including source code and documentation for compilation engines, packages, and fonts. Currently, the vast majority of LaTeX packages are uploaded to the CTAN core site and then synchronized to various mirrors around the world.
 
 This article provides mirror configuration methods for the two major distributions: TeX Live and MiKTeX.

@@ -4,6 +4,12 @@ title: F-Droid Repository Mirror Usage Guide
 cname: 'F-Droid'
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 ## F-Droid Introduction
 
 F-Droid is a directory of FOSS (Free and Open Source Software) on the Android platform, providing download and installation support. Using the client makes it easier to browse, install, and follow up on application updates on your device. This is a mirror of Android free software from f-droid.org.

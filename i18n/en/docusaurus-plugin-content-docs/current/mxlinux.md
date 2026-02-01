@@ -3,6 +3,12 @@ sidebar_label: MXLinux
 title: MXLinux Software Repository Mirror Usage Guide
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 ## MXLinux Introduction
 
 MX Linux is a cooperative venture between the [antiX](https://antixlinux.com/) and [MX Linux communities](https://mxlinux.org/). It is a family of operating systems built by users from Debian stable repositories, designed to combine elegant and efficient desktops with high stability and solid performance.

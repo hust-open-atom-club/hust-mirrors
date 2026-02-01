@@ -4,6 +4,12 @@ title: Fedora Repository Mirror Usage Guide
 cname: 'Fedora Linux'
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 ## Fedora Linux Introduction
 
 Fedora Linux is one of the most well-known Linux distributions, developed by the Fedora Project community and sponsored by Red Hat. Its goal is to create a novel, multifunctional, and free (open source) operating system. Fedora serves as the upstream source for the commercial Red Hat Enterprise Linux distribution.

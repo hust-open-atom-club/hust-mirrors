@@ -4,6 +4,12 @@ sidebar_label: llvm-project.git
 type: repo
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 ## LLVM Project Introduction
 
 LLVM is an open-source project, a compiler framework, and a collection of modular and reusable compiler and toolchain technologies.

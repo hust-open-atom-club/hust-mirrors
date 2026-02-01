@@ -3,6 +3,12 @@ title: GNU Software Source Mirror Usage Guide
 sidebar_label: GNU
 ---
 
+:::info
+
+Some content in this document may have been translated by AI.
+
+:::
+
 ## GNU Introduction
 
 GNU was initiated by Richard Stallman (rms) in 1983，aiming to build an operating system developed collectively by everyone so that all software users can freely control their computing.

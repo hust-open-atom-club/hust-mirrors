@@ -13,14 +13,14 @@ Arch Linux uses its unique package manager, Pacman, for installing, updating, an
 ## Replacing Arch Linux Software Sources
 
 :::caution
-**To avoid problems when replacing software source configuration files, please make a backup of the system's default software source configuration files before proceeding.** 
-::: 
+**To avoid problems when replacing software source configuration files, please make a backup of the system's default software source configuration files before proceeding.**
+:::
+
 1. Edit `/etc/pacman.d/mirrorlist` and add the following line to the top of the file:
 
 ```bash varcode
 Server = ${_http}://${_domain}/archlinux/$repo/os/$arch
 ```
-
 
 1. Update the package cache:
 
@@ -44,8 +44,7 @@ const SUDO = !root ? 'sudo ' : '';
 ${SUDO}pacman -Syyuu
 ```
 
-
 ## References
 
-[^1] [ZMirror](https://mirrors.cernet.edu.cn/about)   
+[^1] [ZMirror](https://mirrors.cernet.edu.cn/about)
 [^2] [Help Repository](https://github.com/mirrorz-org/mirrorz-help)
