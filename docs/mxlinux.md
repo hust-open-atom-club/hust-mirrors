@@ -11,23 +11,11 @@ MX Linux 是 [antiX](https://antixlinux.com/) 和 [MX Linux 社区](https://mxli
 
 ### 1. 备份/etc/apt/sources.list.d/下面所有的索引文件
 
-```yaml cli
-type: Execute
-description: 复制 APT 源文件
-optional: false
-privileged: true
-exec: |
-  #{USE_IN_DOCS/}
-  cp /etc/apt/sources.list.d/antix.list /etc/apt/sources.list.d/antix.list.bak
-  cp /etc/apt/sources.list.d/mx.list /etc/apt/sources.list.d/mx.list.bak
-  cp /etc/apt/sources.list.d/debian.list /etc/apt/sources.list.d/debian.list.bak
-  cp /etc/apt/sources.list.d/debian-stable-updates.list /etc/apt/sources.list.d/debian-stable-updates.list.bak
-  #{/USE_IN_DOCS}
-recover: |
-  cp /etc/apt/sources.list.d/antix.list.bak /etc/apt/sources.list.d/antix.list
-  cp /etc/apt/sources.list.d/mx.list.bak /etc/apt/sources.list.d/mx.list
-  cp /etc/apt/sources.list.d/debian.list.bak /etc/apt/sources.list.d/debian.list
-  cp /etc/apt/sources.list.d/debian-stable-updates.list.bak /etc/apt/sources.list.d/debian-stable-updates.list
+```bash varcode
+cp /etc/apt/sources.list.d/antix.list /etc/apt/sources.list.d/antix.list.bak
+cp /etc/apt/sources.list.d/mx.list /etc/apt/sources.list.d/mx.list.bak
+cp /etc/apt/sources.list.d/debian.list /etc/apt/sources.list.d/debian.list.bak
+cp /etc/apt/sources.list.d/debian-stable-updates.list /etc/apt/sources.list.d/debian-stable-updates.list.bak
 ```
 
 ### 2. 修改所有索引文件的下载源地址为本站
