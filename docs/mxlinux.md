@@ -12,10 +12,14 @@ MX Linux 是 [antiX](https://antixlinux.com/) 和 [MX Linux 社区](https://mxli
 ### 1. 备份/etc/apt/sources.list.d/下面所有的索引文件
 
 ```bash varcode
-cp /etc/apt/sources.list.d/antix.list /etc/apt/sources.list.d/antix.list.bak
-cp /etc/apt/sources.list.d/mx.list /etc/apt/sources.list.d/mx.list.bak
-cp /etc/apt/sources.list.d/debian.list /etc/apt/sources.list.d/debian.list.bak
-cp /etc/apt/sources.list.d/debian-stable-updates.list /etc/apt/sources.list.d/debian-stable-updates.list.bak
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}cp /etc/apt/sources.list.d/antix.list /etc/apt/sources.list.d/antix.list.bak
+${SUDO}cp /etc/apt/sources.list.d/mx.list /etc/apt/sources.list.d/mx.list.bak
+${SUDO}cp /etc/apt/sources.list.d/debian.list /etc/apt/sources.list.d/debian.list.bak
+${SUDO}cp /etc/apt/sources.list.d/debian-stable-updates.list /etc/apt/sources.list.d/debian-stable-updates.list.bak
 ```
 
 ### 2. 修改所有索引文件的下载源地址为本站
