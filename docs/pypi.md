@@ -127,7 +127,7 @@ pipx 默认使用和 pip 相同的镜像，故设置软件镜像的方式与 pip
 
 :::
 
-### 方法1：设置环境变量
+### 方法 1：设置环境变量
 
 uv 提供了 `UV_DEFAULT_INDEX` 环境变量来设置默认的包索引源。
 
@@ -147,7 +147,7 @@ setx UV_DEFAULT_INDEX "https://${_domain}/pypi/web/simple" /M
 export UV_DEFAULT_INDEX="https://${_domain}/pypi/web/simple"
 ```
 
-### 方法2：通过配置文件修改
+### 方法 2：通过配置文件修改
 
 uv 会在用户层面寻找 `uv.toml` 配置文件，这些文件与 `pyproject.toml` 结构相同，但省略了 `[tool.uv]` 前缀。因此，您可以使用以下方法设置 uv 软件镜像。
 
