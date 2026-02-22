@@ -502,6 +502,12 @@
     "message": "tuna/tunasync"
   },
   "mirror.footer.desc6_4": {
+    "message": ".The tunasync configuration file is available at "
+  },
+  "mirror.footer.desc6_5": {
+    "message": "mirrorrequest repo"
+  },
+  "mirror.footer.desc6_6": {
     "message": "."
   },
   "mirror.tableMeta.nextUpdate": {
