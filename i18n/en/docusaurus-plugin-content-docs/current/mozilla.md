@@ -88,4 +88,4 @@ ${SUDO}apt-get update && ${SUDO}apt-get install firefox
 ## References
 
 1. [Using Help - Mozilla Firefox](https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions)
-2. [Using Help - TUNA Mirror Station](https://mirrors.tuna.tsinghua.edu.cn/help/mozilla/)
+2. [Using Help - TUNA Mirror](https://mirrors.tuna.tsinghua.edu.cn/help/mozilla/)
