@@ -52,7 +52,7 @@ function Footer() {
               </Translate>
             </div>
             <div>
-              <Translate id='mirror.footer.desc6_0'>本站的源码可在</Translate> <a href='https://github.com/hust-open-atom-club/hust-mirrors'><Translate id='mirror.footer.desc6_1'>hust-mirrors 前端网站</Translate></a> <Translate id='mirror.footer.desc6_2'>和</Translate> <a href='https://github.com/tuna/tunasync'><Translate id='mirror.footer.desc6_3'>tunasync 同步管理器</Translate></a> <Translate id='mirror.footer.desc6_4'>获取。</Translate>
+              <Translate id='mirror.footer.desc6_0'>本站的源码可在</Translate> <a href='https://github.com/hust-open-atom-club/hust-mirrors'><Translate id='mirror.footer.desc6_1'>hust-mirrors 前端网站</Translate></a> <Translate id='mirror.footer.desc6_2'>和</Translate> <a href='https://github.com/tuna/tunasync'><Translate id='mirror.footer.desc6_3'>tunasync 同步管理器</Translate></a> <Translate id='mirror.footer.desc6_4'>获取，tunasync 配置文件可在</Translate> <a href='https://github.com/hust-open-atom-club/mirrorrequest'><Translate id='mirror.footer.desc6_5'>mirrorrequest 仓库</Translate></a> <Translate id='mirror.footer.desc6_6'>获取。</Translate>
             </div>
           </div>
         )}
