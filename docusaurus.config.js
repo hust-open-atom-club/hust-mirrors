@@ -31,7 +31,6 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          blogSidebarCount: 'ALL',
           remarkPlugins: [require('./plugin/remark/yamlcli'), require('./plugin/remark/varcode'), require('./plugin/remark/cliAd'), ],
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -40,6 +39,7 @@ const config = {
         },
         blog: {
           showReadingTime: true,
+          blogSidebarCount: 'ALL',
           onUntruncatedBlogPosts: 'ignore'
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
