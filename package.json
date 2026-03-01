@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build-preview": "sed 's|/status.json|https://mirrors.hust.edu.cn/status.json|g' src/pages/index.tsx && sed 's|/status.json|https://mirrors.hust.edu.cn/status.json|g' src/pages/syncing-status/index.tsx && docusaurus build",
+    "build-preview": "sed -i 's|/status.json|https://mirrors.hust.edu.cn/status.json|g' src/pages/index.tsx && sed 's|/status.json|https://mirrors.hust.edu.cn/status.json|g' src/pages/syncing-status/index.tsx && docusaurus build",
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build",
