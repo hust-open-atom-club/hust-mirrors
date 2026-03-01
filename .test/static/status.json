@@ -988,5 +988,35 @@
     "next_schedule_ts": 1769358051,
     "upstream": "https://github.com/llvm/llvm-project.git",
     "size": "6.0G"
+  },
+  {
+    "name": "anthon",
+    "is_master": true,
+    "status": "syncing",
+    "last_update": "0001-01-01 00:00:00 +0000",
+    "last_update_ts": -62135596800,
+    "last_started": "2026-02-28 08:11:09 +0000",
+    "last_started_ts": 1772266269,
+    "last_ended": "0001-01-01 00:00:00 +0000",
+    "last_ended_ts": -62135596800,
+    "next_schedule": "0001-01-01 00:00:00 +0000",
+    "next_schedule_ts": -62135596800,
+    "upstream": "rsync://repo-us.aosc.io/anthon/",
+    "size": "unknown"
+  },
+  {
+    "name": "mozilla",
+    "is_master": true,
+    "status": "success",
+    "last_update": "2026-02-28 11:03:48 +0000",
+    "last_update_ts": 1772276628,
+    "last_started": "2026-02-28 07:24:09 +0000",
+    "last_started_ts": 1772263449,
+    "last_ended": "2026-02-28 11:03:48 +0000",
+    "last_ended_ts": 1772276628,
+    "next_schedule": "2026-03-01 11:03:48 +0000",
+    "next_schedule_ts": 1772363028,
+    "upstream": "https://packages.mozilla.org/",
+    "size": "unknown"
   }
 ]
