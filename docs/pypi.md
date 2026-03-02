@@ -121,6 +121,50 @@ pipx 默认使用和 pip 相同的镜像，故设置软件镜像的方式与 pip
 
 ## 切换 uv 软件镜像
 
+:::caution
+
+本章节中所有方法都是对用户层面所进行的配置。
+
+:::
+
+### 方法 1：设置环境变量
+
+uv 提供了 `UV_DEFAULT_INDEX` 环境变量来设置默认的包索引源。
+
+#### Windows
+
+以管理员权限打开 `cmd` 执行以下命令：
+
+```command varcode
+setx UV_DEFAULT_INDEX "https://${_domain}/pypi/web/simple" /M
+```
+
+#### Linux
+
+编辑 `~/.bashrc` 文件，在文件末尾添加以下内容：
+
+```config varcode
+export UV_DEFAULT_INDEX="https://${_domain}/pypi/web/simple"
+```
+
+### 方法 2：通过配置文件修改
+
+uv 会在用户层面寻找 `uv.toml` 配置文件，这些文件与 `pyproject.toml` 结构相同，但省略了 `[tool.uv]` 前缀。因此，您可以使用以下方法设置 uv 软件镜像。
+
+#### Windows
+
+打开 `%APPDATA%\uv\uv.toml` 文件，如果没有可以创建一个，在里面输入以下内容：
+
+```toml varcode
+[[index]]
+url = "https://${_domain}/pypi/web/simple"
+default = true
+```
+
+#### Linux
+
+执行以下命令：
+
 ```yaml cli
 type: TestAndExecute
 required: false
@@ -136,13 +180,11 @@ exec: |
   else
     cp /etc/uv/uv.toml ${_backup_dir}/uv.bak
   fi
-  #{USE_IN_DOCS/}
   tee -a /etc/uv/uv.toml > /dev/null << EOF 
   [[index]]
-  url = "https://${_domain}"
+  url = "https://${_domain}/pypi/web/simple"
   default = true
   EOF
-  #{/USE_IN_DOCS}
 recover: |
   set_sudo
   $sudo rm /etc/uv/uv.toml
