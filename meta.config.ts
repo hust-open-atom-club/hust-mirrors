@@ -86,6 +86,7 @@ const mirrors: MirrorMeta[] = [
   { id: 'linuxmint', description: 'Linux Mint 软件仓库' },
   { id: 'linuxmint-cd', description: 'Linux Mint 安装镜像', helpID: 'linuxmint', anchorID: 'cd' },
   { id: 'alpine', description: 'Alpine Linux 软件仓库', supportCli: true },
+  { id: 'anthon', description: '安同 OS 软件仓库', helpID: 'anthon' },
   { id: 'blackarch', description: 'BlackArch Linux 软件仓库', supportCli: true },
   { id: 'archlinuxcn', description: 'Arch Linux 中文社区软件仓库', supportCli: true },
   { id: 'rocky', description: 'Rocky Linux 软件源镜像仓库', helpID: 'rocky' },
