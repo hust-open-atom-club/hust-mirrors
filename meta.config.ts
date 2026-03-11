@@ -86,11 +86,12 @@ const mirrors: MirrorMeta[] = [
   { id: 'rustup', type: 'normal', description: 'Rust语言工具链', supportCli: true },
   { id: 'termux', type: 'normal', description: 'Termux 软件仓库镜像', helpID: 'termux', supportCli: true },
   { id: 'ubuntu', type: 'normal', description: 'Ubuntu 软件仓库', helpID: 'ubuntu', supportCli: true },
+  { id: 'ubuntu-ports', type: 'normal', description: 'Ubuntu 非 x86 架构软件仓库', helpID: 'ubuntu', supportCli: true },
   { id: 'ubuntu-releases', type: 'normal', description: 'Ubuntu 发行版镜像仓库', helpID: 'ubuntu', anchorID: 'cd' },
   { id: 'ubuntukylin', type: 'normal', description: 'Ubuntu Kylin 软件仓库' },
   { id: 'virtualbox', type: 'normal', description: '开源的x86架构虚拟机安装文件' },
-  { id: 'gcc.git', type: 'normal', description: 'GNU编译工具代码仓库' },
   // Git仓库与非Git仓库分开排序
+  { id: 'gcc.git', type: 'normal', description: 'GNU编译工具代码仓库' },
   { id: 'gentoo-portage.git', description: 'Gentoo Portage Ebuild 源（Git 方式同步）', helpID: 'gentoo-portage' },
   { id: 'linux.git', type: 'git', description: 'Linux 内核主线仓库', helpID: 'linux.git' },
   { id: 'linux-stable.git', type: 'git', description: 'Linux 内核稳定分支仓库', helpID: 'linux-stable.git' },
