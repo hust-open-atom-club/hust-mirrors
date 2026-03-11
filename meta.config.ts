@@ -39,7 +39,7 @@ export type ReleaseMeta = {
 
 const mirrors: MirrorMeta[] = [
   { id: 'alpine', type: 'normal', description: 'Alpine Linux 软件仓库', supportCli: true },
-  { id: 'anthon', type: 'normal', description: '安同 OS 软件仓库', helpID: 'anthon' },
+  { id: 'anthon', type: 'normal', description: '安同 OS 软件与镜像仓库', helpID: 'anthon' },
   { id: 'archlinux', type: 'normal', description: 'Arch Linux 软件仓库', helpID: 'archlinux', supportCli: true },
   { id: 'archlinuxcn', type: 'normal', description: 'Arch Linux 中文社区软件仓库', supportCli: true },
   { id: 'blackarch', type: 'normal', description: 'BlackArch Linux 软件仓库', supportCli: true },
@@ -72,6 +72,7 @@ const mirrors: MirrorMeta[] = [
   { id: 'manjaro', type: 'normal', description: 'Manjaro 软件仓库', helpID: 'manjaro' },
   { id: 'mozilla', type: 'normal', description: 'Mozilla apt 软件仓库', helpID: 'mozilla' },
   { id: 'msys2', type: 'normal', description: 'MSYS2 软件仓库', helpID: 'msys2' },
+  { id: 'mxlinux', type: 'normal', description: 'MXLinux 软件仓库', helpID: 'mxlinux' },
   { id: 'mxlinux-isos', type: 'normal', description: 'MXLinux 镜像仓库', helpID: 'mxlinux', anchorID: 'cd' },
   { id: 'OpenBSD', type: 'normal', description: 'OpenBSD 软件仓库', helpID: 'openbsd' },
   { id: 'openeuler', type: 'normal', description: 'OpenEuler 软件仓库', helpID: 'openeuler', supportCli: true },
