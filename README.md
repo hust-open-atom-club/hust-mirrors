@@ -1,7 +1,7 @@
 # HUST Mirror 网页 & 文档
 
-[![](https://img.shields.io/badge/Join_QQ-%E5%8D%8E%E7%A7%91%E5%A4%A7%E5%BC%80%E6%BA%90%E9%95%9C%E5%83%8F%E7%AB%99%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81%E7%BE%A4-white?style=for-the-badge&color=76bad9&logo=qq&logoColor=76bad9)]( https://qm.qq.com/q/GxLlEDSdMI )
-[![](https://img.shields.io/badge/Join_Feishu-%E5%BC%80%E6%BA%90%E9%95%9C%E5%83%8F%E7%AB%99%E7%82%B9%E8%BF%90%E7%BB%B4-white?style=for-the-badge&color=76bad9)](https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=66ajb326-0a9d-41ea-81a7-2b8a937ee6fc)
+[![JOIN QQ](https://img.shields.io/badge/Join_QQ-%E5%8D%8E%E7%A7%91%E5%A4%A7%E5%BC%80%E6%BA%90%E9%95%9C%E5%83%8F%E7%AB%99%E6%8A%80%E6%9C%AF%E4%BA%A4%E6%B5%81%E7%BE%A4-white?style=for-the-badge&color=76bad9&logo=qq&logoColor=76bad9)]( https://qm.qq.com/q/GxLlEDSdMI )
+[![JOIN FEISHU](https://img.shields.io/badge/Join_Feishu-%E5%BC%80%E6%BA%90%E9%95%9C%E5%83%8F%E7%AB%99%E7%82%B9%E8%BF%90%E7%BB%B4-white?style=for-the-badge&color=76bad9)](https://applink.feishu.cn/client/chat/chatter/add_by_link?link_token=66ajb326-0a9d-41ea-81a7-2b8a937ee6fc)
 
 该网站使用 [Docusaurus](https://docusaurus.io/) 构建。
 
