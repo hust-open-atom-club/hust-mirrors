@@ -93,10 +93,13 @@ export default function Home(): JSX.Element {
   const [search, setSearch] = useState("");
 
   // 检查是否是4月1日
-  const isAprilFirst = (): boolean => {
+  const [isAprilFirstState, setIsAprilFirstState] = useState(false);
+  
+  useEffect(() => {
+    // 在客户端设置时间，确保基于访问端时间而不是构建时间
     const now = new Date();
-    return now.getMonth() === 3 && now.getDate() === 1; // 月份从0开始，所以4月是3
-  };
+    setIsAprilFirstState(now.getMonth() === 3 && now.getDate() === 1); // 月份从0开始，所以4月是3
+  }, []);
 
   // 老版组件
   const AprilFirstVersion = () => {
@@ -445,8 +448,8 @@ export default function Home(): JSX.Element {
     );
   };
 
-  // 如果是4月1日，显示old.html的内容
-  if (isAprilFirst()) {
+  // 如果是4月1日，显示老版本界面
+  if (isAprilFirstState) {
     return <AprilFirstVersion />;
   }
 
