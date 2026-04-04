@@ -14,6 +14,6 @@ authors: yeying-xingchen
    - 更换了 `docker-ce` 的上游
 
 3. 更换同步方式：
-   - 更换了 `golang` 的同步方式为 `command`
+   - 更换了 `golang` 的同步方式。修复后 Golang 可正常同步最新的版本。
 
 我们将持续关注镜像服务的稳定性，为您提供更高质量的使用体验。感谢大家一直以来的支持与理解。
