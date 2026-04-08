@@ -67,6 +67,11 @@
     color: white;
 }
 
+[data-theme='dark'] iframe {
+    background: black;
+    color: white;
+}
+
 @media screen and (min-width:996px) {
     .table {
         margin: 32px;
