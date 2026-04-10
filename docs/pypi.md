@@ -174,6 +174,7 @@ interpreter: shell
 test: |
   has_command uv
 exec: |
+  #{USE_IN_DOCS/}
   mkdir -p /etc/uv
   if [ ! -f /etc/uv/uv.toml ]; then
     touch /etc/uv/uv.toml
@@ -185,6 +186,7 @@ exec: |
   url = "https://${_domain}/pypi/web/simple"
   default = true
   EOF
+  #{/USE_IN_DOCS}
 recover: |
   set_sudo
   $sudo rm /etc/uv/uv.toml
