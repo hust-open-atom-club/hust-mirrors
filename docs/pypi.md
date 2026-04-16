@@ -174,13 +174,13 @@ interpreter: shell
 test: |
   has_command uv
 exec: |
-  #{USE_IN_DOCS/}
   mkdir -p /etc/uv
   if [ ! -f /etc/uv/uv.toml ]; then
     touch /etc/uv/uv.toml
   else
     cp /etc/uv/uv.toml ${_backup_dir}/uv.bak
   fi
+  #{USE_IN_DOCS/}
   tee -a /etc/uv/uv.toml > /dev/null << EOF 
   [[index]]
   url = "https://${_domain}/pypi/web/simple"
