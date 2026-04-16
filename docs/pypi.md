@@ -180,11 +180,13 @@ exec: |
   else
     cp /etc/uv/uv.toml ${_backup_dir}/uv.bak
   fi
+  #{USE_IN_DOCS/}
   tee -a /etc/uv/uv.toml > /dev/null << EOF 
   [[index]]
   url = "https://${_domain}/pypi/web/simple"
   default = true
   EOF
+  #{/USE_IN_DOCS}
 recover: |
   set_sudo
   $sudo rm /etc/uv/uv.toml
