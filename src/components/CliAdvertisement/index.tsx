@@ -7,7 +7,12 @@ import React from 'react'
 
 export default function () {
   const { pathname } = useLocation();
-  const mirrorHelpid = pathname.split('/')[2];
+  const pathSegments = pathname.split('/').filter(Boolean);
+  const docsSegmentIndex = pathSegments.indexOf('docs');
+  const mirrorHelpid =
+    docsSegmentIndex >= 0 && docsSegmentIndex + 1 < pathSegments.length
+      ? pathSegments[docsSegmentIndex + 1]
+      : undefined;
   if (!mirrorHelpid) {
     return null;
   }
