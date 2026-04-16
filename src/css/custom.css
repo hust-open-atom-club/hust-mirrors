@@ -81,8 +81,10 @@ table.mirror__table {
 }
 
 [data-theme='dark'] .navbar {
-  background: #000000;
-  opacity: 0.95;
+  background: rgba(0, 0, 0, 0.68);;
+  border: 0px solid #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 5px 32px rgba(0,0,0,0.05);
 }
 
 [data-theme='dark'] .hero--primary {
