@@ -9,6 +9,7 @@ export default function () {
   const { pathname } = useLocation();
   const pathSegments = pathname.split('/').filter(Boolean);
   const docsSegmentIndex = pathSegments.indexOf('docs');
+  const maybeLanguage = pathSegments[0];
   const mirrorHelpid =
     docsSegmentIndex >= 0 && docsSegmentIndex + 1 < pathSegments.length
       ? pathSegments[docsSegmentIndex + 1]
@@ -22,10 +23,12 @@ export default function () {
   if (meta && meta.supportCli) {
     ok = true;
   }
-  return ok && (<Admonition type='tip' icon='🌈' title={mirrorHelpid + translate({
-    id: 'mirror.supportCli.title',
-    message: '支持CLI部署'
-  })}>
+  return ok && (<Admonition type='tip' icon='🌈' title={
+    mirrorHelpid + (maybeLanguage === 'en' ? ' ' : '') + translate({
+      id: 'mirror.supportCli.title',
+      message: '支持CLI部署'
+    })
+  }>
     <Translate id='mirror.supportCli'>
       该程序包支持命令行工具一键部署，
     </Translate>
