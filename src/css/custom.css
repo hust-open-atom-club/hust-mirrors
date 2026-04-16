@@ -74,13 +74,15 @@ table.mirror__table {
 
 /* Navbar background */
 .navbar {
-  background: #FFFFFF;
-  opacity: 0.8;
+  background: rgba(255, 255, 255, 0.68);
+  border: 0px solid #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 5px 32px rgba(0,0,0,0.05);
 }
 
 [data-theme='dark'] .navbar {
   background: #000000;
-  opacity: 0.8;
+  opacity: 0.95;
 }
 
 [data-theme='dark'] .hero--primary {
