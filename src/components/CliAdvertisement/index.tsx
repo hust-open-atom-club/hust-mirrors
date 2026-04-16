@@ -8,6 +8,9 @@ import React from 'react'
 export default function () {
   const { pathname } = useLocation();
   const mirrorHelpid = pathname.split('/')[2];
+  if (!mirrorHelpid) {
+    return null;
+  }
   const metas = useMirrorMetas();
   let ok = false;
   const meta = metas.find(u => u.id == mirrorHelpid || u.helpID == mirrorHelpid);
