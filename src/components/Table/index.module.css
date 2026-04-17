@@ -23,6 +23,7 @@
 .date-content {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .detail .date {
@@ -32,12 +33,13 @@
 .date-abs {
   background: var(--ifm-color-primary);
   color: white;
-  padding: 0 0.5em;
-  border-radius: 4px;
+  padding: 4px 10px;
+  border-radius: 6px;
   white-space: nowrap;
   position: absolute;
   left: 8px;
   z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .date-short {
@@ -153,6 +155,16 @@
   background: var(--ifm-color-info-contrast-background) !important;
 }
 
+.mirror__table tbody tr {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 4px solid transparent;
+}
+
+.mirror__table tbody tr:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
 .detail .help-link {
   display: none;
 }
@@ -160,6 +172,13 @@
 .help-link {
   white-space: nowrap;
   margin-right: 4px;
+  opacity: 0.6;
+  transition: all 0.2s ease;
+}
+
+.help-link:hover {
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 .help-link::before {
@@ -175,6 +194,11 @@
   height: 1rem;
   vertical-align: middle;
   margin: 0 4px;
+  transition: transform 0.2s ease;
+}
+
+.help-link:hover svg {
+  transform: rotate(-3deg);
 }
 
 .help-link svg path {
@@ -185,11 +209,47 @@
   margin-left: 4px;
 }
 
+.status-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: rgba(0, 0, 0, 0.05);
+}
+
 .status-label svg {
-  width: 1rem;
-  height: 1rem;
+  width: 0.875rem;
+  height: 0.875rem;
   vertical-align: middle;
-  margin-right: 4px;
+  margin-right: 6px;
+}
+
+.status-success {
+  background: rgba(40, 167, 69, 0.15);
+  color: #28a745;
+}
+
+.status-failed {
+  background: rgba(220, 53, 69, 0.15);
+  color: #dc3545;
+}
+
+.status-syncing {
+  background: rgba(23, 162, 184, 0.15);
+  color: #17a2b8;
+}
+
+.status-paused,
+.status-none {
+  background: rgba(255, 193, 7, 0.15);
+  color: #ffc107;
+}
+
+.status-disabled {
+  background: rgba(108, 117, 125, 0.15);
+  color: #6c757d;
 }
 
 @media screen and (max-width:480px) {

@@ -74,13 +74,51 @@ table.mirror__table {
 
 /* Navbar background */
 .navbar {
-  background: #FFFFFF;
-  opacity: 0.8;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.navbar:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.navbar__item {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.navbar__item:hover {
+  transform: translateY(-2px);
+}
+
+.navbar__item::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--ifm-color-primary);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navbar__item:hover::after {
+  width: 80%;
 }
 
 [data-theme='dark'] .navbar {
-  background: #000000;
-  opacity: 0.8;
+  background: rgba(17, 17, 17, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='dark'] .navbar:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  background: rgba(17, 17, 17, 0.85);
 }
 
 [data-theme='dark'] .hero--primary {

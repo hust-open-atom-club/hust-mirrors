@@ -73,30 +73,79 @@
 
 .search {
   display: block;
-  font-size: 1.5em;
-  padding: 16px;
-  background: transparent;
-  border: var(--ifm-hero-text-color) solid 2px;
-  border-radius: 8px;
-  transition: all 0.3s;
+  font-size: 1.125rem;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   outline: none;
   caret-color: var(--ifm-hero-text-color);
   color: var(--ifm-color-black);
-  max-width: 480px;
+  max-width: 520px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.search:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
 }
 
 .search::placeholder {
-  color: var(--ifm-hero-text-color)
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 400;
 }
 
 .search:not(:placeholder-shown) {
-  background: var(--ifm-hero-text-color);
-  caret-color: var(--ifm-color-black);
+  background: rgba(255, 255, 255, 0.95);
+  border-color: var(--ifm-color-primary);
+  caret-color: var(--ifm-color-primary);
+  box-shadow: 0 8px 30px rgba(46, 133, 85, 0.2);
 }
 
 .search:focus {
-  background: var(--ifm-hero-text-color);
-  caret-color: var(--ifm-color-black);
+  background: rgba(255, 255, 255, 0.98);
+  border-color: var(--ifm-color-primary);
+  caret-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px rgba(46, 133, 85, 0.15), 0 8px 30px rgba(46, 133, 85, 0.25);
+  transform: translateY(-2px);
+}
+
+[data-theme='dark'] .search {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--ifm-font-color-base);
+}
+
+[data-theme='dark'] .search:hover {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme='dark'] .search::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme='dark'] .search:not(:placeholder-shown),
+[data-theme='dark'] .search:focus {
+  background: rgba(30, 30, 30, 0.95);
+}
+
+.search-icon {
+  position: relative;
+}
+
+.search-icon::before {
+  content: '\1F50D';
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 
