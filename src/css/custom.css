@@ -76,7 +76,6 @@ table.mirror__table {
 .navbar {
   background: rgba(255, 255, 255, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
 }
@@ -114,7 +113,6 @@ table.mirror__table {
 [data-theme='dark'] .navbar {
   background: rgba(17, 17, 17, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
