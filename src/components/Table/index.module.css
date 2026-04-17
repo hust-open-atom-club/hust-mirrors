@@ -66,7 +66,6 @@
 .mirror-name:hover .desc-container {
   visibility: visible;
   opacity: 1;
-  transform: translateX(0);
 }
 
 .copied {
@@ -74,19 +73,6 @@
   font-size: 0.8rem;
   margin-right: 4px;
   white-space: nowrap;
-  color: var(--ifm-color-success);
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .desc-container {
@@ -96,20 +82,19 @@
   opacity: 0;
   top: -8px;
   left: calc(100% + 16px);
-  padding: 12px 16px;
+  padding: 2px 8px;
   z-index: 999;
   width: max-content;
-  max-width: 280px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  max-width: 256px;
+  box-shadow: #aeaeae 4px 4px 16px 0px;
   background: var(--ifm-color-content-inverse);
-  border: 1px solid var(--ifm-color-primary);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateX(-8px);
+  border: var(--ifm-color-primary) 2px solid;
+  border-radius: 8px;
+  transition: opacity 0.3s;
 }
 
 [data-theme='dark'] .desc-container {
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: #000000 4px 4px 16px 0px;
 }
 
 @media screen and (max-width: 480px) {
@@ -122,7 +107,7 @@
   content: ' ';
   position: absolute;
   left: -10px;
-  top: 12px;
+  top: 8px;
   width: 10px;
   height: 16px;
   display: block;
@@ -133,7 +118,6 @@
 .desc-container p {
   padding: 0px;
   margin: 0;
-  color: var(--ifm-font-color-base);
 }
 
 .git-desc {
