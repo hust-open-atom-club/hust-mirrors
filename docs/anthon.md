@@ -27,11 +27,21 @@ const SUDO = !root ? 'sudo ' : '';
 ${SUDO}oma mirror
 ```
 
+一键设置：
+
+```bash varcode
+[ ] (root) 是否为 root 用户
+---
+const SUDO = !root ? 'sudo ' : '';
+---
+${SUDO}oma mirror set hust
+```
+
 关于该命令的更多详细信息和用法，请参考 [oma 的 GitHub 页面](https://github.com/AOSC-Dev/oma?tab=readme-ov-file#command-reference)。
 
 ### 手动修改
 
-安同 OS 推荐使用 `oma` 完成对软件源配置的修改，不推荐手动编辑配置文件。
+安同 OS 社区推荐使用 `oma` 完成对软件源配置的修改，不推荐手动编辑配置文件。
 
 但如您确实有相关需求，请根据下面的信息编辑 `/etc/apt/sources.list` 的内容：
 
