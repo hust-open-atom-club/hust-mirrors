@@ -9,12 +9,12 @@ authors: paulkm
 
 1. 调整同步源：
 
-    自2026年8月28日起，`github-releases`下的软件包 Release 同步将通过 Cloudflare 反向代理站点拉取。对于绝大部分用户来说，这个操作不会带来任何影响。但受限于上游同步策略，Release 文件的同步存在一定的缓存时间，因此同步可能会出现数小时的延迟。
+    自2026年8月28日起，`github-releases` 下的软件包 Release 同步将通过 Cloudflare 反向代理站点拉取。对于绝大部分用户来说，这个操作不会带来任何影响。但受限于上游同步策略，Release 文件的同步存在一定的缓存时间，因此同步可能会出现数小时的延迟。
 
 2. 删除镜像
 
-      - 删除了 `llvm-project.git` 的同步
-      - 删除了 `metasploit-framework.git` 的同步
+      - 删除了 `llvm-project.git` 的同步，该路径已重定向至 Github 上游。
+      - 删除了 `metasploit-framework.git` 的同步，该路径已重定向至 Github 上游。
 
 3. 新增镜像
 
