@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -9,32 +9,13 @@ import Table from '../components/Table';
 import SideBar from '../components/SideBar';
 import mirrorConfig from '@site/mirrors.config';
 import CliAnimation from '../components/CliAnimation'
+import SearchInput from '../components/SearchInput';
 
 function HomepageHeader({
   searchValue, onSearchValueChange
 }: {
   searchValue: string, onSearchValueChange: (value: string) => void
 }) {
-
-
-
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key === '/') {
-        event.preventDefault();
-        inputRef.current?.focus();
-      }
-    };
-
-    document.addEventListener('keypress', handleKeyPress);
-
-    return () => {
-      document.removeEventListener('keypress', handleKeyPress);
-    };
-  }, []);
-
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className={styles['header-container']}>
@@ -53,18 +34,22 @@ function HomepageHeader({
               })}
             </p>
           </div>
-          <input ref={inputRef} value={searchValue} onChange={(e) => { onSearchValueChange(e.target.value) }}
-            onKeyDown={(e) => {
-              if (e.key == 'Escape') {
-                inputRef.current?.blur();
-                onSearchValueChange("");
-              }
-            }}
-            className={`${styles.left} ${styles.search}`} placeholder={translate({
+
+          <SearchInput
+            value={searchValue}
+            onChange={onSearchValueChange}
+            className={`${styles.left} ${styles.search}`}
+            ariaLabel={translate({
+              id: 'mirror.index.searchLabel',
+              message: 'Search mirrors',
+            })}
+            placeholder={translate({
               id: 'mirror.index.searchHint',
               message: "按下 / 开始搜索"
-            })} />
+            })}
+          />
         </div>
+
         <div className={styles['cli-ad-container']}>
           <CliAnimation.UbuntuSample windowStyle={{
             height: 300,

@@ -38,3 +38,8 @@
   display: block;
   font-weight: bold;
 }
+
+.container:focus-visible {
+  outline: 3px solid var(--ifm-color-primary);
+  outline-offset: 3px;
+}
