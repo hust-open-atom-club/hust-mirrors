@@ -35,3 +35,11 @@ paulkm:
   image_url: https://github.com/paulkm2006.png
   socials:
     github: paulkm2006
+
+mirrorz:
+  name: MirrorZ Project
+  title: CERNET united mirrors site
+  url: https://mirrors.cernet.edu.cn/
+  image_url: https://github.com/mirrorz-org.png
+  socials:
+    github: mirrorz-org
