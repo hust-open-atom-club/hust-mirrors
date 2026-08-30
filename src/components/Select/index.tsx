@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React from 'react'
+import React, { useId } from 'react'
 import Select from 'react-select'
 import styles from './index.module.css'
 
@@ -17,12 +17,21 @@ type Props = {
 }
 
 export default ({ label, value, onChange, items, labelTop }: Props) => {
+  const labelId = useId();
+
   return (
     <div>
-      <span className={clsx(styles.label, labelTop && styles['label-top'])}>{label}</span>
+      <span
+        id={labelId}
+        className={clsx(styles.label, labelTop && styles['label-top'])}
+      >
+        {label}
+      </span>
+
       <
         // @ts-ignore
         Select<SelectItem>
+        aria-labelledby={labelId}
         value={items.find(u => u.value == value)}
         classNames={{
           container: () => labelTop ? "" : styles.container,
@@ -52,8 +61,6 @@ export default ({ label, value, onChange, items, labelTop }: Props) => {
         })}
       >
       </Select>
-    </div >
+    </div>
   )
 }
-
-
