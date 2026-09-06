@@ -15,3 +15,5 @@ jobs:
 
       - name: Test generation
         run: python scripts/parser.py -t -v
+      - name: Test release configuration
+        run: python3 ci/test/test-releases-conf.py
