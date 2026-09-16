@@ -126,7 +126,7 @@ ${SUDO}dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin
 2. 安装依赖，下载 repo 文件，并把软件仓库地址替换为镜像站：
 
   ```shell varcode
-  [ ] (version) { centos:CentOS, rhel:EHEL } Distribution
+  [ ] (version) { centos:CentOS, rhel:RHEL } Distribution
   [ ] (root) 是否为 root 用户
   ---
   const SUDO = !root ? 'sudo ' : '';

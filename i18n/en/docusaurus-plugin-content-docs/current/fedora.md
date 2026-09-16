@@ -14,7 +14,7 @@ Some content in this document may have been translated by AI.
 
 Fedora Linux is one of the most well-known Linux distributions, developed by the Fedora Project community and sponsored by Red Hat. Its goal is to create a novel, multifunctional, and free (open source) operating system. Fedora serves as the upstream source for the commercial Red Hat Enterprise Linux distribution.
 :::info
-Since Fedora 38 and older versions are no longer officially supported, Fedora 38 and older versions cannot use this mirror. Please use the default configuration file to allow the package manager to automatically obtain available mirror sources.
+This site mirrors only those Fedora versions that remain under official maintenance. Versions that have reached End-of-Life (EOL) will be removed from the mirror and may no longer be available. Please use the default configuration file so that the package manager automatically retrieves the available mirror sources.
 :::
 
 ## One-click Usage
