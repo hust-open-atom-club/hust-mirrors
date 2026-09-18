@@ -25,8 +25,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    env:
-      YARN_CACHE_FOLDER: ${{ runner.temp }}/yarn-cache
 
     steps:
       - name: Checkout code
@@ -35,7 +33,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20.19.5
+          node-version: 22.20.0
 
       - name: Set up Yarn
         run: |
@@ -45,13 +43,15 @@ jobs:
       - name: Cache Yarn packages
         uses: actions/cache@v4
         with:
-          path: ${{ env.YARN_CACHE_FOLDER }}
+          path: ${{ runner.temp }}/yarn-cache
           key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile --non-interactive
+        env:
+          YARN_CACHE_FOLDER: ${{ runner.temp }}/yarn-cache
 
       - name: Check TypeScript
         run: yarn typecheck
