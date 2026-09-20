@@ -55,7 +55,6 @@ const mirrors: MirrorMeta[] = [
   { id: 'deepin', type: 'normal', description: 'Deepin 软件仓库', helpID: 'deepin', supportCli: true },
   { id: 'deepin-cd', type: 'normal', description: 'Deepin 镜像文件', helpID: 'deepin', anchorID: 'cd' },
   { id: 'docker-ce', type: 'normal', description: 'Docker CE 软件仓库', helpID: 'docker-ce' },
-  { id: 'fdroid', type: 'normal', description: 'F-driod 软件仓库', helpID: 'F-Droid' },
   { id: 'fedora', type: 'normal', description: 'Fedora 软件仓库', helpID: 'fedora' },
   { id: 'gentoo', type: 'normal', description: 'Gentoo 的 Stage3 的镜像', helpID: 'gentoo' },
   { id: 'gentoo-portage-prefix', type: 'normal', description: 'Gentoo Prefix macOS 镜像' },
