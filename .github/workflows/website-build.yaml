@@ -1,0 +1,60 @@
+name: Website Build
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/website-build.yaml'
+      - '**/*.js'
+      - '**/*.jsx'
+      - '**/*.ts'
+      - '**/*.tsx'
+      - '**/*.md'
+      - '**/*.mdx'
+      - '**/*.css'
+      - 'package.json'
+      - 'yarn.lock'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: website-build-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.20.0
+
+      - name: Set up Yarn
+        run: |
+          corepack enable
+          corepack prepare yarn@1.22.22 --activate
+
+      - name: Cache Yarn packages
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/yarn-cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --non-interactive
+        env:
+          YARN_CACHE_FOLDER: ${{ runner.temp }}/yarn-cache
+
+      - name: Check TypeScript
+        run: yarn typecheck
+
+      - name: Build website
+        run: yarn build
