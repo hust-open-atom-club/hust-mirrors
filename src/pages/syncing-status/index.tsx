@@ -4,7 +4,7 @@ import { translate } from '@docusaurus/Translate'
 import Table from '@site/src/components/Table';
 
 
-export default function Home(): JSX.Element {
+export default function Home(): React.JSX.Element {
   const [loading, setLoading] = useState(false);
   const [items, setItems] = useState([]);
   const [err, setErr] = useState(false);

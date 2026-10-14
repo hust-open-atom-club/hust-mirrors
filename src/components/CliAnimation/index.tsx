@@ -1,7 +1,7 @@
 import styles from './index.module.css'
 import React, { useEffect } from 'react'
 import clsx from 'clsx'
-import SharedContext from '@site/src/utils/SharedContext'
+import { useSharedContext } from '@site/src/utils/SharedContext'
 import useIsBrowser from '@docusaurus/useIsBrowser'
 import { useLocation } from '@docusaurus/router'
 
@@ -47,7 +47,7 @@ export default function CliAnimation({ blocks, onDone, windowStyle, autoReplay }
         if (current >= blocks.length) {
           await delay(FINISH_DELAY);
           onDone?.();
-          if (!autoReplay) return;
+          if (!autoReplay || blocks.length === 0) return;
           else {
             current = 0;
             currentChar = 0;
@@ -67,14 +67,15 @@ export default function CliAnimation({ blocks, onDone, windowStyle, autoReplay }
           }
           else {
             await delay(INPUT_INTERVAL);
+            const text = block.text ?? '';
             if (currentChar === 0) {
-              lastLine.push({ ...block, text: block.text.slice(0, 1), color: undefined, bold: undefined, underline: undefined })
+              lastLine.push({ ...block, text: text.slice(0, 1), color: undefined, bold: undefined, underline: undefined })
             }
             else {
-              lastLine[lastLine.length - 1].text += block.text[currentChar];
+              lastLine[lastLine.length - 1].text += text[currentChar];
             }
             currentChar++;
-            if (currentChar >= block.text.length) {
+            if (currentChar >= text.length) {
               lastLine[lastLine.length - 1] = block
               currentChar = 0;
               current++;
@@ -149,7 +150,7 @@ function makeCliInput(text: string = ""): CliBlock[] {
 
 type PromptType = 'online' | 'offline';
 
-function makePrompt(http: string, domain: string, instruction: string, type: PromptType): CliBlock[] {
+function makePrompt(http: string, domain: string, instruction: string, type: PromptType = 'online'): CliBlock[] {
   if (type === 'offline') return [
     { text: '$ ', type: 'output', color: 'green' },
     { text: 'hustmirror-cli ', color: 'green' },
@@ -303,7 +304,7 @@ const helpBlock: BlockGen = (_http, _domain, _type) => [
 ]
 
 CliAnimation.UbuntuSample = (props: Omit<CliAnimateProps, 'blocks'>) => {
-  const ctx = React.useContext(SharedContext);
+  const ctx = useSharedContext();
   const _http = ctx.https ? "https" : "http";
   const _domain = ctx.domain;
 
@@ -326,15 +327,14 @@ CliAnimation.UbuntuSample = (props: Omit<CliAnimateProps, 'blocks'>) => {
 }
 
 function genSample(props: Omit<CliAnimateProps, 'blocks'>, blockGen: BlockGen) {
-  const ctx = React.useContext(SharedContext);
+  const ctx = useSharedContext();
   const _http = ctx.https ? "https" : "http";
   const _domain = ctx.domain;
-  let type = 'online';
-  if (useIsBrowser()) {
-    type = new URLSearchParams(useLocation().search).get('mode');
-  }
+  const { search } = useLocation();
+  const type: PromptType = useIsBrowser() && new URLSearchParams(search).get('mode') === 'offline'
+    ? 'offline' : 'online';
   const nprops = JSON.parse(JSON.stringify(props));
-  const block = blockGen(_http, _domain, type as PromptType);
+  const block = blockGen(_http, _domain, type);
   if (nprops.autoReplay === undefined) nprops.autoReplay = true;
   if (nprops.windowStyle?.height === undefined) {
     if (nprops.windowStyle) nprops.windowStyle.height = 400;

@@ -1,4 +1,4 @@
-import SharedContext from '@site/src/utils/SharedContext';
+import { useSharedContext } from '@site/src/utils/SharedContext';
 import React from "react";
 
 type VariableProps = {
@@ -16,7 +16,7 @@ type Props = {
 };
 
 export default function WithVariables(props: Props) {
-  const ctx = React.useContext(SharedContext);
+  const ctx = useSharedContext();
   const isHttps = ctx.https;
   const http = isHttps ? 'https' : 'http';
   const domain = ctx.domain;
@@ -26,10 +26,10 @@ export default function WithVariables(props: Props) {
   if (props.component) {
     if (Array.isArray(props.component)) {
       retNodes.push(
-        ...props.component.map((c) => c({ http, isHttps, domain }))
+        ...props.component.map((c, key) => React.createElement(c, { http, isHttps, domain, key }))
       );
     } else {
-      retNodes.push(props.component({ http, isHttps, domain }));
+      retNodes.push(React.createElement(props.component, { http, isHttps, domain }));
     }
   }
 

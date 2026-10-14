@@ -3,6 +3,7 @@ const fs = require('fs/promises')
 var crypto = require('crypto');
 var uglify = require("uglify-js");
 
+/** @param {string} scriptStr */
 function getFileName(scriptStr) {
   var hash = crypto.createHash('md5').update(scriptStr).digest('hex').substring(0, 8);
   return "fancyindex." + hash + ".js";

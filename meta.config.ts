@@ -79,6 +79,7 @@ const mirrors: MirrorMeta[] = [
   { id: 'openkylin-cdimage', type: 'normal', description: 'openKylin 镜像文件', helpID: 'openkylin', anchorID: 'iso' },
   { id: 'pypi', type: 'normal', description: 'Python软件包仓库', supportCli: true },
   { id: 'radxa-deb', type: 'normal', description: 'RadxaOS Deb软件源镜像仓库', helpID: 'radxa-deb' },
+  { id: 'registry', type: 'normal', description: 'OCI 容器镜像仓库', forceShown: true, link: '/docs/registry' },
   { id: 'rocky', type: 'normal', description: 'Rocky Linux 软件源镜像仓库', helpID: 'rocky' },
   { id: 'ros', type: 'normal', description: 'Robot Operating System' },
   { id: 'ros2', type: 'normal', description: 'Robot Operating System 2' },

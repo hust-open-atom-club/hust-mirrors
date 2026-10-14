@@ -40,7 +40,7 @@ function useDocTOC() {
   };
 }
 
-export default function DocItemLayout({children}: Props): JSX.Element {
+export default function DocItemLayout({children}: Props): React.JSX.Element {
   const docTOC = useDocTOC();
   const {metadata} = useDoc();
   const windowSize = useWindowSize();

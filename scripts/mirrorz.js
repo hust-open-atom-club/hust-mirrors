@@ -3,6 +3,8 @@
 
 const githubPrefix = 'https://raw.githubusercontent.com/mirrorz-org/mirrorz-help/master/contents/'
 
+/** @typedef {{title: string, items: [string, Record<string, string>][]}[]} Menus */
+
 /**
  * @param {string} doc
  * @returns {Promise<string>}
@@ -20,7 +22,7 @@ async function getContent(doc) {
 
 /**
  * 
- * @param {{title: string, items:any[][]}[]} menus 
+ * @param {Menus | undefined} menus
  */
 function generateMenu(menus, hasSudo = false) {
 
@@ -31,6 +33,7 @@ function generateMenu(menus, hasSudo = false) {
     return identifier
   }
 
+  /** @param {number} num */
   function numToIdentifier(num) {
     return String.fromCharCode(97 + num)
   }
@@ -127,7 +130,7 @@ function transformContent(raw, mirrorName) {
     })
   })
   let isStart = false, isEnd = false;
-  let content = result.reduce((acc, line) => {
+  let content = result.reduce((/** @type {string} */ acc, line) => {
     if (line === undefined && !isStart) {
       isStart = true;
       return "";
@@ -176,16 +179,24 @@ function transformJSX(jsxContent, mirrorName) {
   const { content, lang, hasSudo } = transformContent(rawContent, mirrorName);
 
   const name = openningTag.name.name;
+  /** @type {Menus | undefined} */
   let menus = undefined;
   let filepath = undefined;
 
   if (name === 'CodeBlock') {
-    openningTag.attributes.forEach((attr) => {
+    openningTag.attributes.forEach((/** @type {import('estree-jsx').JSXAttribute} */ attr) => {
       if (attr.name.name === 'menus') {
+        if (attr.value?.type !== 'JSXExpressionContainer' || attr.value.expression.type === 'JSXEmptyExpression') {
+          throw new Error('CodeBlock menus must be a JSX expression');
+        }
+        const expression = /** @type {import('acorn').Node} */ (attr.value.expression);
         // TODO: use safe eval
-        menus = eval(jsxContent.substring(attr.value.expression.start, attr.value.expression.end))
+        menus = eval(jsxContent.substring(expression.start, expression.end))
       }
       if (attr.name.name === 'filepath') {
+        if (attr.value?.type !== 'Literal' || typeof attr.value.value !== 'string') {
+          throw new Error('CodeBlock filepath must be a string');
+        }
         filepath = attr.value.value
       }
     });
@@ -202,6 +213,10 @@ function transformJSX(jsxContent, mirrorName) {
   return ret
 }
 
+/**
+ * @param {string} content
+ * @param {string} filename
+ */
 async function save(content, filename) {
   const dirname = __dirname + '/../docs/'
   const fs = require('fs/promises')
@@ -258,6 +273,7 @@ function transformFrontmatter(content, mirrorName, orignHash, upstream) {
   return matter + info + content;
 }
 
+/** @param {string} markdown */
 async function transformLink(markdown) {
   const re = /\[(.*?)\]\(\/(.*?)\)/g
   return markdown.replace(re, "[$1](/docs/$2)")
@@ -360,12 +376,12 @@ async function mainUpdate(forceUpdate = false, ignorePrompt = false) {
   console.log("Following need update:\n" + result.map(u => `mirrorz/${u.upsteam} => ${u.local}`).join('\n'))
   let answer = 'y'
   if (!ignorePrompt) {
-    const interface = require('node:readline/promises').createInterface({
+    const readline = require('node:readline/promises').createInterface({
       input: process.stdin,
       output: process.stdout
     })
-    answer = await interface.question('Do you want to update the mirrorz? (y/n) ');
-    interface.close()
+    answer = await readline.question('Do you want to update the mirrorz? (y/n) ');
+    readline.close()
   }
 
   if (answer === 'y') {
@@ -383,13 +399,12 @@ function main() {
       '--local': String
     }, { argv: gArgs.slice(1) })
     const upstream = args._.shift()
-    const local = args['--local'] || upstream
 
     if (!upstream) {
       console.error("Usage: yarn gen-mirrorz <upstream> [--local <local>]")
       return
     }
-    mainGenerate(upstream, local)
+    mainGenerate(upstream, args['--local'] || upstream)
   }
   else if (gArgs[0] == 'update') {
     const args = arg({
@@ -406,4 +421,5 @@ function main() {
   }
 }
 
-main()
+module.exports = { transformContent, transformJSX };
+if (require.main === module) main()

@@ -1,7 +1,7 @@
 import Translate, { translate } from '@docusaurus/Translate';
 import { useDomainMetas } from '@site/src/utils/mirrorUtils';
-import SharedContext from '@site/src/utils/SharedContext'
-import React, { useContext } from 'react'
+import { useSharedContext } from '@site/src/utils/SharedContext'
+import React from 'react'
 import Select from '@site/src/components/Select/index'
 import Switch from '@site/src/components/Switch/index';
 import styles from './index.module.css'
@@ -9,7 +9,7 @@ import styles from './index.module.css'
 interface Props extends React.HTMLProps<HTMLDivElement> { }
 
 export default function GlobalOptions(props: Props) {
-  const context = useContext(SharedContext);
+  const context = useSharedContext();
   const domains = useDomainMetas();
   return (
     <div {...props}>

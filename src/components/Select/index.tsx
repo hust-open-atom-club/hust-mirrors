@@ -28,15 +28,13 @@ export default ({ label, value, onChange, items, labelTop }: Props) => {
         {label}
       </span>
 
-      <
-        // @ts-ignore
-        Select<SelectItem>
+      <Select<SelectItem>
         aria-labelledby={labelId}
         value={items.find(u => u.value == value)}
         classNames={{
           container: () => labelTop ? "" : styles.container,
         }}
-        onChange={(value) => { onChange(value.value); }}
+        onChange={(value) => { if (value) onChange(value.value); }}
         options={items}
         theme={(theme) => ({
           ...theme,

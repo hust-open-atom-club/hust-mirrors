@@ -18,7 +18,7 @@ import TerminalIcon from '@site/static/icons/terminal.svg';
 import HelpIcon from '@site/static/icons/help2.svg';
 import CopyIcon from '@site/static/icons/copy.svg';
 import { MirrorMeta } from '@site/meta.config';
-import SharedContext from '@site/src/utils/SharedContext';
+import { useSharedContext } from '@site/src/utils/SharedContext';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { format as timeagoFormat } from 'timeago.js'
 
@@ -221,7 +221,7 @@ function MirrorHelp({ item, mirrorMeta: mirrors, docsMeta: docs }: MirrorHelpPro
   const anchor = m?.anchorID ? '#' + m.anchorID : '';
 
   const [copied, setCopied] = useState(false);
-  const ctx = React.useContext(SharedContext);
+  const ctx = useSharedContext();
   const timeoutRef = useRef<number | undefined>(undefined);
 
   const copyLink: React.MouseEventHandler = (e) => {

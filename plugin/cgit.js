@@ -4,6 +4,7 @@ const { JSDOM } = require('jsdom');
 var crypto = require('crypto');
 var uglify = require("uglify-js");
 
+/** @param {string} scriptStr */
 function getFileName(scriptStr, ext = ".js") {
   var hash = crypto.createHash('md5').update(scriptStr).digest('hex').substring(0, 8);
   return "cgit." + hash + ext;
@@ -43,7 +44,7 @@ const fancyindexPlugin = {
     outputHead += `<link rel="stylesheet" href="/cgit/${cssFile}">`;
 
     const nav = document.body.querySelector("nav");
-    nav.querySelector(".navbar__item.dropdown.dropdown--hoverable.dropdown--right").remove();
+    nav?.querySelector(".navbar__item.dropdown.dropdown--hoverable.dropdown--right")?.remove();
     if (nav) {
       outputHeader += nav.outerHTML;
     }
