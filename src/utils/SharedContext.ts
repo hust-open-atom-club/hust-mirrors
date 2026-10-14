@@ -7,4 +7,12 @@ export type SharedState = {
   setDomain: (v: string) => void;
 }
 
-export default React.createContext<SharedState>(undefined);
+const SharedContext = React.createContext<SharedState | undefined>(undefined);
+
+export function useSharedContext(): SharedState {
+  const context = React.useContext(SharedContext);
+  if (!context) throw new Error('SharedContext provider is missing');
+  return context;
+}
+
+export default SharedContext;

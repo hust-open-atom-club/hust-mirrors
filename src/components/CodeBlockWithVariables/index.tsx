@@ -1,10 +1,10 @@
-import React, { useContext, useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import CodeBlock from '@theme/CodeBlock'
 import { Props as CBProps } from '@theme/CodeBlock'
 import { SelectItem } from '../Select';
 import Select from '../Select';
 import Switch from '../Switch';
-import SharedContext from '@site/src/utils/SharedContext';
+import { useSharedContext } from '@site/src/utils/SharedContext';
 import styles from './index.module.css'
 
 
@@ -37,19 +37,19 @@ export default function CodeBlockWithVariables({ code, options, blockProps }: Pr
 
   for (const option of options) {
     let def: DefaultValue = "";
-    if (option.default)
+    if (option.default !== undefined)
       def = option.default;
     else if (option.type == 'switch')
       def = false;
     else if (option.type == 'select') {
-      def = option.items?.[0].value;
+      def = option.items?.[0]?.value ?? "";
     }
     states[option.key] = useState(def);
   }
 
   const vars: Variables = {};
 
-  const ctx = useContext(SharedContext);
+  const ctx = useSharedContext();
 
   for (const key in states) {
     if (states.hasOwnProperty(key)) {

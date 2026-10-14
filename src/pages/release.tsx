@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import DownloadIcon from '@site/static/icons/download.svg';
 import Layout from '@theme/Layout';
@@ -9,7 +9,8 @@ import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
 import CodeBlock from '@theme/CodeBlock'
 import Select from '../components/Select/index';
-import SharedContext from '../utils/SharedContext';
+import { useSharedContext } from '../utils/SharedContext';
+import type { ReleaseMeta } from '@site/meta.config';
 import { useLocation } from '@docusaurus/router';
 
 function HomepageHeader() {
@@ -27,12 +28,12 @@ function HomepageHeader() {
   );
 }
 
-export default function Home(): JSX.Element {
+export default function Home(): React.JSX.Element {
 
-  const [releases, setReleases] = useState([]);
+  const [releases, setReleases] = useState<ReleaseMeta[]>([]);
   const [loading, setLoading] = useState(false);
 
-  const { https, domain } = useContext(SharedContext);
+  const { https, domain } = useSharedContext();
 
   const [release, _setRelease] = useState("");
   const [version, _setVersion] = useState("");
@@ -102,13 +103,13 @@ export default function Home(): JSX.Element {
   }));
 
   const versionItems = unique(releases.filter(u => u.release === release)
-    .map(u => u.version)).filter(u => !!u).sort().map(u => ({
+    .map(u => u.version)).filter((u): u is string => !!u).sort().map(u => ({
       value: u,
       label: u
     }));
 
   const variantItems = unique(releases.filter(u => u.release === release && u.version === version)
-    .map(u => u.variant)).filter(u => !!u).sort().map(u => ({
+    .map(u => u.variant)).filter((u): u is string => !!u).sort().map(u => ({
       value: u,
       label: u
     }));

@@ -3,7 +3,7 @@ import RootContext from '@site/src/utils/SharedContext'
 import { useDomainMetas } from '../utils/mirrorUtils';
 
 
-export default function Root({ children }) {
+export default function Root({ children }: React.PropsWithChildren) {
 
   const domains = useDomainMetas();
 

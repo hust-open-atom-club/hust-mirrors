@@ -18,12 +18,9 @@ export default function () {
     return null;
   }
   const metas = useMirrorMetas();
-  let ok = false;
   const meta = metas.find(u => u.id == mirrorHelpid || u.helpID == mirrorHelpid);
-  if (meta && meta.supportCli) {
-    ok = true;
-  }
-  return ok && (<Admonition type='tip' icon='🌈' title={
+  if (!meta?.supportCli) return null;
+  return (<Admonition type='tip' icon='🌈' title={
     mirrorHelpid + (maybeLanguage === 'en' ? ' ' : '') + translate({
       id: 'mirror.supportCli.title',
       message: '支持CLI部署'
