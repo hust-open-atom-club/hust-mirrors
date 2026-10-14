@@ -3,7 +3,7 @@ import { createRequire } from 'node:module';
 import { describe, expect, it } from 'vitest';
 
 const require = createRequire(import.meta.url);
-const { fromMarkdown } = require('mdast-util-from-markdown');
+const { fromMarkdown } = require('mdast-util-from-markdown') as typeof import('mdast-util-from-markdown');
 const varcode = require('./varcode.js');
 
 describe.each([
@@ -35,13 +35,14 @@ describe.each([
     const ast = fromMarkdown(source);
     varcode()(ast);
 
-    const exports = ast.children.filter(node => node.type === 'mdxjsEsm');
-    const evaluate = (node) => {
-      const name = node.value.match(/^export const (\w+)/)[1];
+    const exports = ast.children.filter((node): node is import('mdast-util-mdx').MdxjsEsm => node.type === 'mdxjsEsm');
+    const evaluate = (node: import('mdast-util-mdx').MdxjsEsm) => {
+      const name = node.value.match(/^export const (\w+)/)?.[1];
+      expect(name).toBeDefined();
       return new Function(`${node.value.replace(/^export /, '')}; return ${name};`)();
     };
 
-    expect(evaluate(exports[0]).map(option => option.key)).toEqual(optionKeys);
+    expect(evaluate(exports[0]).map((option: { key: string }) => option.key)).toEqual(optionKeys);
     const code = evaluate(exports[1]);
     expect(code({ _http: 'https', _domain: 'mirrors.hust.edu.cn', ...variables }))
       .toContain(expected);

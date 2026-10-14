@@ -6,9 +6,10 @@ var crypto = require('crypto');
 const fancyindexPlugin = {
   name: 'news-meta',
   async allContentLoaded({ allContent, actions }) {
-    const d = allContent['docusaurus-plugin-content-blog'].default
-      // @ts-ignore
-      .blogPosts.map((/** @type any }} */ t) => ({
+    const content = /** @type {import('@docusaurus/plugin-content-blog').BlogContent} */ (
+      allContent['docusaurus-plugin-content-blog'].default
+    );
+    const d = content.blogPosts.map((t) => ({
         id: t.id,
         title: t.metadata.title,
         date: t.metadata.date,

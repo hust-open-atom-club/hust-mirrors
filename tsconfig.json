@@ -7,5 +7,6 @@
       "@site/*": ["./*"]
     },
     "jsx": "react"
-  }
+  },
+  "exclude": ["node_modules", "build", ".docusaurus"]
 }
