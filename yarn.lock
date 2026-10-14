@@ -2134,6 +2134,136 @@
   resolved "https://registry.npmmirror.com/@emotion/weak-memoize/-/weak-memoize-0.4.0.tgz#5e13fac887f08c44f76b0ccaf3370eb00fec9bb6"
   integrity sha512-snKqtPW01tN0ui7yu9rGv69aJXr/a/Ywvl11sUjNtEcRc+ng/mQriFL0wLXMef74iHa/EkftbDzU9F8iFbH+zg==
 
+"@esbuild/aix-ppc64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/aix-ppc64/-/aix-ppc64-0.28.2.tgz#bf6e10303bcf2e7c686975fa52f937ec2728d8bc"
+  integrity sha512-XExcO+dvLKvVtNTibSTBej1NCAbaGhWn9Ww1ZPx80qsahhPFe/8jgWP0IchNe0F3HwkU7n8ejhH8bjonqht8mQ==
+
+"@esbuild/android-arm64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/android-arm64/-/android-arm64-0.28.2.tgz#0c6246bc8d2c4d172aac2db3fb1190d72bd65504"
+  integrity sha512-5YfKeeI8qWfBZIX+u2xZC3Zlb3Os/gLS2sbEKM+I4ZOcsWmHS2WLysCcQZDAFRslDUU5Oiq44gf6PYN1vGwG5A==
+
+"@esbuild/android-arm@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/android-arm/-/android-arm-0.28.2.tgz#2d84ece6a4e2684d92be26ee13d42757d831c381"
+  integrity sha512-kXXoiPVVGQcnIYGOeaovwOURpniDBpSq4A03qkQ+BMQqtGG6HYap3xne9C1O1yo4TR3qxlCX5IqqmX6fFo2Lqg==
+
+"@esbuild/android-x64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/android-x64/-/android-x64-0.28.2.tgz#fc38d4d6358d8dc1cf53f09f7589fe436eb64801"
+  integrity sha512-O387ite7SzUyCcy3JQX4P4bLtEA7bLLkx+esve5JHnyYfNTxcVpXZo9jhdB0lTKN44gztELTdU7nS8Nr16Fs1Q==
+
+"@esbuild/darwin-arm64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/darwin-arm64/-/darwin-arm64-0.28.2.tgz#f83afeeac1d7dac01c7a2fd012b3e451a0591fcc"
+  integrity sha512-n4KqkOQrraxHJcgjM1RvwbigfQKIKJVpM7xp+KsxiyUSrRdIXnt73VhrPAx0fV44hgfmIVKjxMN9J1t5jySVkw==
+
+"@esbuild/darwin-x64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/darwin-x64/-/darwin-x64-0.28.2.tgz#510147c055a795588dbbe14fd6b1b8ad0a2f30de"
+  integrity sha512-uq6suIWYP37qzGddBKPw5QEQPi6HiLGsO7UmkpfyaYNQ3D+rN6w6WfwH+nuqcGXWvawGwxOEroO4YGnFh95azw==
+
+"@esbuild/freebsd-arm64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/freebsd-arm64/-/freebsd-arm64-0.28.2.tgz#093b9200ecf0b115ba4e5e248a7485c9c5f8bd5e"
+  integrity sha512-n+I0BTSRIoy+d6RPKnEVwql5UwBJolytvY4mAOIEJorKlqgPII8ix6slVVrfZ5Tnj7glIZvloylbB/EJPMWEXw==
+
+"@esbuild/freebsd-x64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/freebsd-x64/-/freebsd-x64-0.28.2.tgz#0be22b6df925d213e841ea87123af5df80b0faf7"
+  integrity sha512-78XJTJkvPs0kz2w61301PJjXl4g7q3JqiYMZ/M/yVI73EHBrCRTgkhu9oqG7vPqq+a/yadEW8aD+agKlk5xrmg==
+
+"@esbuild/linux-arm64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/linux-arm64/-/linux-arm64-0.28.2.tgz#1bdbc651cda9ba9995c53ed9c71ceaa65094762d"
+  integrity sha512-pW4AC0P3it8c7do9MVM4p51FzHzdM/TZrerurgRcHJ2WTa1VQ1CIq18xncfpBJw4ojkiZZrKW2yIBWBP92j6Ug==
+
+"@esbuild/linux-arm@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/linux-arm/-/linux-arm-0.28.2.tgz#beb12ad72b84f72d28488cc1b8ee9f7eb141d753"
+  integrity sha512-XlDnu2q5yoqems+xay6wSAcg9DDD7K9RLKZEBOMZm3ckNpJBvOX20tSfby8KfrrhINDyv9V2YVZKY/SpoGJI8w==
+
+"@esbuild/linux-ia32@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/linux-ia32/-/linux-ia32-0.28.2.tgz#b81f9d55529b45c206a46a138214b1aa6879696b"
+  integrity sha512-CYbnj78HsIeA+DhgUKgFCfvNsTHFhMMrinUrMZpDXJXKN8T3XViTZ/+wtHeVxEWY8ewSzTFN+nRmSwO2tZaLUQ==
+
+"@esbuild/linux-loong64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/linux-loong64/-/linux-loong64-0.28.2.tgz#598667241a04c99b76ed6ef940ac50038c419f98"
+  integrity sha512-buwkd8nsph4R+ajRvw0qM5Hja/TXQow3ptzWO2EbG/cqcIkHloRrdlBtQlshyYGTNFvfkfJ5tpPLVkY4DtsPfQ==
+
+"@esbuild/linux-mips64el@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/linux-mips64el/-/linux-mips64el-0.28.2.tgz#1c51eb9cea903f53d97b5af3b1841db70f5596ca"
+  integrity sha512-ZVykbDyk7519VwiNb9Lcj9m8XM6v5V9uKPvrEMkkEedVewf+0itkhahp4HDpgERXhwLRpWFypsGbG/J8s0QjJA==
+
+"@esbuild/linux-ppc64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/linux-ppc64/-/linux-ppc64-0.28.2.tgz#63dd61f17ceb31a81227f413feac8a71bc2c51f2"
+  integrity sha512-CAXl+Dtd9UUuJd8pKKdwh6MLm3MUMiqMPmhZ3tTSXPqfyQ3vDl6R5hZdZ/kYojK4ofXtdfSv1tFq8XzWx3heNQ==
+
+"@esbuild/linux-riscv64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/linux-riscv64/-/linux-riscv64-0.28.2.tgz#3763b08fde5cf25ab1facb8e7752edfe45fbfc27"
+  integrity sha512-GeXCej4IQtU1B+QlDV8W/RRvbzI3O/Stss+/bCXv4lZls5WGRtu2a+3JkA3i4qIUlMXpcHebWpF8AkJhATowuA==
+
+"@esbuild/linux-s390x@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/linux-s390x/-/linux-s390x-0.28.2.tgz#1a137ff293a82906eb3176385bd7e8e0e5cfb7cb"
+  integrity sha512-3H1weTYZPxt/WOhByszQZybS9w5lKzUn1FDMsgEChbHWQwHYQQRfBxgCcZvPhjHfKyJjIievvMmEUawJrdY9Dg==
+
+"@esbuild/linux-x64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/linux-x64/-/linux-x64-0.28.2.tgz#268b36211c146ca54f8fe12c578a8d6ef8979485"
+  integrity sha512-4xTZr1FUmSoQW4XIWmit3tzQrUTZM+N3P0XV8xROKYF50XfI7xeO90+1bZvNwxIufQ9hDQVRJH5YhgPVF8A/HQ==
+
+"@esbuild/netbsd-arm64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/netbsd-arm64/-/netbsd-arm64-0.28.2.tgz#22571ad951d62bb6accc82d8d1fad5c8c1ac0ba1"
+  integrity sha512-sSATRjPeDBg3pdgHoQfoYBob11Kk1FGa9lui5RIHZCoCkJa9QKlvl3/vKz2usCmYYjs7ymJR/2Nnsqe+Hjt5nw==
+
+"@esbuild/netbsd-x64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/netbsd-x64/-/netbsd-x64-0.28.2.tgz#42fcc57297eb0a0ca3f5fc475291f4c1a3f7c0de"
+  integrity sha512-lqnzCV+mM0gIADaKihiCg6ifgfU2L3h5E33rNQBN1Y4MaVGnzryzmvvf7UHxprpQdE8hpqLolJ9Rl+SkIRDpyw==
+
+"@esbuild/openbsd-arm64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/openbsd-arm64/-/openbsd-arm64-0.28.2.tgz#9eb32af104ac3dacf4edca01f596664aab0c73ef"
+  integrity sha512-AL2qJILH7lNjrDmCQDvdxMfAUIv8KMNZOvrwAQ8i8//ntL9FflhOyMJ8OZSMBb8/AWXe3/5v5S20y3zCoZWKoQ==
+
+"@esbuild/openbsd-x64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/openbsd-x64/-/openbsd-x64-0.28.2.tgz#febed2402d6088225e91f20fb4ce2522ad0a4efd"
+  integrity sha512-QtiuPytchRyC4rwUKhexJdQKvDuZ6hWloi3igqPQNUJCS1/v9EiO3UTOXR6A3FoMo4fnAKbWJdqaIwhOzh8qEw==
+
+"@esbuild/openharmony-arm64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/openharmony-arm64/-/openharmony-arm64-0.28.2.tgz#85641c3d466428bfbccea5f21c26836663fef5ce"
+  integrity sha512-WkhYDmpTjLvGlScA1rwjRUmhl4k8oXR3cIbtqWmELgU/dFeHHlEllxDvdWcNJV9rbzCexB5vz8gtNewWLgCT7Q==
+
+"@esbuild/sunos-x64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/sunos-x64/-/sunos-x64-0.28.2.tgz#a736f9d8962481045fc4c3e54f5479f22c870fb4"
+  integrity sha512-GPMSkTOtMnv2U2F8gxe4Io6qmVs+YKyp832Etqqxr0hFngmXQ3rzwytelm3GIn7T4VviRUlf3sOgBOiTdvaf7g==
+
+"@esbuild/win32-arm64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/win32-arm64/-/win32-arm64-0.28.2.tgz#ee5ab40fad186201b652a33f8a5eb149e9e42532"
+  integrity sha512-PIhhEkE9uPBleRBrQEJpUn7MBnibZzbGzYWPmY3x+YoVg/95zbjB4CxPPOQ8l5tYYM4mMaCthF8/1DIfBQQyWQ==
+
+"@esbuild/win32-ia32@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/win32-ia32/-/win32-ia32-0.28.2.tgz#c40d28a6d99a127da6711f2afd74b11cb63b06a7"
+  integrity sha512-YmJbfTlvU7Sdn9BB+4PRES4oB6pxgS37MAONj+hBr/cpXS1aBPKXxNnDbu+QCWPj0o9dgyxeq79g6c5P8KeuYA==
+
+"@esbuild/win32-x64@0.28.2":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/@esbuild/win32-x64/-/win32-x64-0.28.2.tgz#b21affb804cc167c133d95f45b3a1dc1323b9a87"
+  integrity sha512-5ebpxr3nWMzrL/rnUI755Jkuee0bHL/Gq0WTF9lvcpv73wAp5eu8MfBUgWK9bhWvZjj7yX8etf/8tI8Ney695g==
+
 "@exodus/bytes@^1.15.1", "@exodus/bytes@^1.16.0":
   version "1.16.0"
   resolved "https://registry.npmmirror.com/@exodus/bytes/-/bytes-1.16.0.tgz#954c9d9dd7eec15b966b2e8f2d883c04295b720c"
@@ -2436,6 +2566,11 @@
   dependencies:
     "@types/mdx" "^2.0.0"
 
+"@napi-rs/lzma-linux-x64-gnu@1.5.1":
+  version "1.5.1"
+  resolved "https://registry.npmmirror.com/@napi-rs/lzma-linux-x64-gnu/-/lzma-linux-x64-gnu-1.5.1.tgz#e57d4306966078662038094fb38eb9146dc3aea9"
+  integrity sha512-oTXEIha4SsuXdTA4Iyskj0kpdx2yVXdhd75c2v3xGrHFfVMsbhTPZU/nMPL4sWKo4pBHm3aucLaqGlF696dTyQ==
+
 "@noble/hashes@1.8.0":
   version "1.8.0"
   resolved "https://registry.npmmirror.com/@noble/hashes/-/hashes-1.8.0.tgz#cee43d801fcef9644b11b8194857695acd5f815a"
@@ -2461,11 +2596,6 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
-
-"@oxc-project/types@=0.154.0":
-  version "0.154.0"
-  resolved "https://registry.npmmirror.com/@oxc-project/types/-/types-0.154.0.tgz#0a4f2adaeef41d1931861adca8166b7615e5a49a"
-  integrity sha512-KYOUGQFlLWR+s4QMV2Q9ko38TZm7EdO87Qm7rvZLqk/webse/cDjtyxKhg/47l0byCbs/k46LT8qc4PKjAikzA==
 
 "@peculiar/asn1-cms@^2.11.0", "@peculiar/asn1-cms@^2.6.0":
   version "2.11.0"
@@ -2623,85 +2753,130 @@
   resolved "https://registry.npmmirror.com/@polka/url/-/url-1.0.0-next.29.tgz#5a40109a1ab5f84d6fd8fc928b19f367cbe7e7b1"
   integrity sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==
 
-"@rolldown/binding-android-arm-eabi@1.2.14":
-  version "1.2.14"
-  resolved "https://registry.npmmirror.com/@rolldown/binding-android-arm-eabi/-/binding-android-arm-eabi-1.2.14.tgz#4e56a59bff8b2756fb6474ed4af7fcb1f19e96ed"
-  integrity sha512-aWR+XKH9+rW7m5fWq/5360J3mHycrx/o6xZM2DQFdJnTMdyP7/WzxPjhtLbVWdKo2y612/4U1bWqb3HQhiF7vg==
+"@rollup/rollup-android-arm-eabi@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-android-arm-eabi/-/rollup-android-arm-eabi-4.64.6.tgz#9a4844ea4be87ce055381d7bea424d495849d939"
+  integrity sha512-FkO19Fowv/OQeJZPVfdetJaI3/VpbZmBsnmAlR/rQ+b3QwfiGQiOpVegpSRH331kelvHTVw9hXYG3DwjAaRzyQ==
 
-"@rolldown/binding-android-arm64@1.2.14":
-  version "1.2.14"
-  resolved "https://registry.npmmirror.com/@rolldown/binding-android-arm64/-/binding-android-arm64-1.2.14.tgz#71988681aae082ae949e593037fbb331577c5078"
-  integrity sha512-QiVxHofl6A8lQU7WAtOUY4QMVZXohxwz7WJJoeh8NBEUyKfIkMRKhYyq8az/1RypNiIXzNTtiS6KwHz0erxYRQ==
+"@rollup/rollup-android-arm64@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-android-arm64/-/rollup-android-arm64-4.64.6.tgz#efc03c9b69ae5cd49d658d46860d523c4611c9c0"
+  integrity sha512-si5/Etm6MphPc2xYHnk455Shls/hoMjTy3mhXge4OPmvCw7TwC4KP4fKokAlKLV4XaQvLvgSHfafPcblLMYYdQ==
 
-"@rolldown/binding-darwin-arm64@1.2.14":
-  version "1.2.14"
-  resolved "https://registry.npmmirror.com/@rolldown/binding-darwin-arm64/-/binding-darwin-arm64-1.2.14.tgz#33fcab8a34317f9022b8ae8753ff77289c084116"
-  integrity sha512-lTQOzHuBIooh3jIr5XINQkjPGEuGy+Dsy0meXDr6Sjty0b99kYgGh4uBC/8mJX1T0kC8d6S0aPP1Y+bHkh6aBw==
+"@rollup/rollup-darwin-arm64@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.64.6.tgz#611b14bba7f1c9c9443829fe5b434980e15e9175"
+  integrity sha512-PQCl3q7b0BgvVt72i2xrWM6I5KliwwVe4GpWW5QDGyUQawDS9aPZss/aGyFqBmxdRxlE8wDc9CaxiQ5DHRSp/Q==
 
-"@rolldown/binding-darwin-x64@1.2.14":
-  version "1.2.13"
-  resolved "https://registry.npmmirror.com/@rolldown/binding-darwin-x64/-/binding-darwin-x64-1.2.13.tgz#ead595e305a065ebc704c5db88ee1207d7a5f25f"
-  integrity sha512-e4r340I5hxSzJkD3YJBxgzq/rJ3wwxwdLLb2FPt1Zpyem20nrQPT11DDEEkazwxaHumH8wpglsp/Ozgj/wT6mw==
+"@rollup/rollup-darwin-x64@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-darwin-x64/-/rollup-darwin-x64-4.64.6.tgz#006d9d07f0b1c9c360bfacf64844a8f3d728928f"
+  integrity sha512-l9DFl1Itb1YYdSrP1K3U8ih44AOHa/p+Q4WMMDfGvH5qVWp+ajfgS1DlYo4yCRh8wJ2ZJv0Fqccf+ULAmMFjmg==
 
-"@rolldown/binding-freebsd-x64@1.2.14":
-  version "1.2.14"
-  resolved "https://registry.npmmirror.com/@rolldown/binding-freebsd-x64/-/binding-freebsd-x64-1.2.14.tgz#1bbe60ec663fd61637d2f419fccb4fad734c5f10"
-  integrity sha512-u371GbXoVXrEgP20PwzoGNOdAOqAMhzo19JzzY+V4YmmnC+DTOoqdbMu+O+54emM59Mik/UdrtWgcuEDKWRPKA==
+"@rollup/rollup-freebsd-arm64@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-freebsd-arm64/-/rollup-freebsd-arm64-4.64.6.tgz#81b78c29a39aace820df8cc14f18fe638b730234"
+  integrity sha512-bR4GR3205N9+od0+l5Dd9/iZTDpJkIe6d6Ydp2qbcQZJLmKBdYQQRp8gbWpbMt92twKJY66o1vK4NkoKQODIrA==
 
-"@rolldown/binding-linux-arm-gnueabihf@1.2.14":
-  version "1.2.14"
-  resolved "https://registry.npmmirror.com/@rolldown/binding-linux-arm-gnueabihf/-/binding-linux-arm-gnueabihf-1.2.14.tgz#e371df969ce60cac6d439309d2040c49392f3aa6"
-  integrity sha512-BqwKsdZQf6EqVWr8fv2MrDYzAvOZ7+NYFSJESRGs87fkseEhs0TU9TXgRJTkZoRRkxTizyEg1LKUXfU3/78uqg==
+"@rollup/rollup-freebsd-x64@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-freebsd-x64/-/rollup-freebsd-x64-4.64.6.tgz#6bb28441468bd9cb0816294ddcb6b9784dcdb122"
+  integrity sha512-XTVNaDzcFl2TeBglvxdGgsCv9JGtAGRAoJENmGBR/XvDH2mA2K0IXc2aMfP0dR8mexSXSKifJ85FixoXX1wfTw==
 
-"@rolldown/binding-linux-arm64-gnu@1.2.14":
-  version "1.2.14"
-  resolved "https://registry.npmmirror.com/@rolldown/binding-linux-arm64-gnu/-/binding-linux-arm64-gnu-1.2.14.tgz#173abeead293d60b3002ef8714978040af0f47b3"
-  integrity sha512-SD9kY8M009x/7s57Z1dgUVlP5+uYBgKQK0Tkr1WIWngrtUJmRCW1RJFMY7QDla2khXhmg2i5Io7MUjcmZNZ/KQ==
+"@rollup/rollup-linux-arm-gnueabihf@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-linux-arm-gnueabihf/-/rollup-linux-arm-gnueabihf-4.64.6.tgz#8ac24d05030c97daa03ccc9a37635d1ae6f41ade"
+  integrity sha512-qWc6qbc+25ugG9vqPR9P422KJBbVfZ05mjcMggoq8tsfWP+eRfC+/tiDdIlRF5VL2pDVZWN9zAhWsmu7R1+7Dw==
 
-"@rolldown/binding-linux-arm64-musl@1.2.14":
-  version "1.2.14"
-  resolved "https://registry.npmmirror.com/@rolldown/binding-linux-arm64-musl/-/binding-linux-arm64-musl-1.2.14.tgz#8f3133a19e603296b19e5899e05ddcaa5e839d7b"
-  integrity sha512-BJ2CL19M6uuWesMgnqJzgxoI+N+eV7b0A9O9vLV42y+gitC41fNa8KElau1tHVzuLWX5GzEuxMPhAO0tQXQMkg==
+"@rollup/rollup-linux-arm-musleabihf@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-linux-arm-musleabihf/-/rollup-linux-arm-musleabihf-4.64.6.tgz#120a68000c22ade38bd06fbac4bc53b1da30960b"
+  integrity sha512-V4Nwkp8844X/Xnww3PI1LYS0YPei8XQEVG70R+5MPZGO7AhYoun4hCN7Svs4U3wbQLZbwiz+9xRFhUZZdRl8Ww==
 
-"@rolldown/binding-linux-ppc64-gnu@1.2.14":
-  version "1.2.14"
-  resolved "https://registry.npmmirror.com/@rolldown/binding-linux-ppc64-gnu/-/binding-linux-ppc64-gnu-1.2.14.tgz#c1625cd699e119a8f7b3ff98c56ac3e27fc7056d"
-  integrity sha512-4+Kl8daPV8NDHaD7mfCcc1pRM+Qg7ab8DyMm5FG5WoZgv4h2i3KFN1CybYBNbQqmuYm7ftJLvmMI1eHYJ22S/Q==
+"@rollup/rollup-linux-arm64-gnu@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-linux-arm64-gnu/-/rollup-linux-arm64-gnu-4.64.6.tgz#1a58c7461b3f392d66c885b6c13fea6b32ba3500"
+  integrity sha512-xb72A1aPaaIsp+a88VtRae/ovIEXislbUMyp7b9AQQU7ZkP2m/+ik6DW9TQcJyw5R8/RIailF9zExYwkjR++UA==
 
-"@rolldown/binding-linux-s390x-gnu@1.2.14":
-  version "1.2.14"
-  resolved "https://registry.npmmirror.com/@rolldown/binding-linux-s390x-gnu/-/binding-linux-s390x-gnu-1.2.14.tgz#b9e48c9f00289a2df6f8e1fad7448e6c643ad52d"
-  integrity sha512-V/h8ePq1fKDrmtFMz6xcCN3DKvuvMRrwwD1q0PkBeeo4DpK64biaKvqWGVxqCeYKqeRk7gE7/iKPxLCn08O97A==
+"@rollup/rollup-linux-arm64-musl@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-linux-arm64-musl/-/rollup-linux-arm64-musl-4.64.6.tgz#8bc6b92681df68fc082ddfaff06abea3af7b06a9"
+  integrity sha512-pbcs1BVBwC43hZkjhjlF8Rx8m5G0KnhLZs9Azy/gqccP6UsNSzJr0hKGIAVPqzAH1O/NdPxxC9GVGb4msQg/aw==
 
-"@rolldown/binding-linux-x64-gnu@1.2.14":
-  version "1.2.14"
-  resolved "https://registry.npmmirror.com/@rolldown/binding-linux-x64-gnu/-/binding-linux-x64-gnu-1.2.14.tgz#9326add90ba3219102c151e1274fa35eef17dc3b"
-  integrity sha512-WxalXzgrLVpKC93xfpaJ3gCXUWzeCr+FRCbDVD2mUAy4L6Vo3lNVz0epUEUpxPWJkLNYUwM4OSIikv36OJ9mLg==
+"@rollup/rollup-linux-loong64-gnu@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-linux-loong64-gnu/-/rollup-linux-loong64-gnu-4.64.6.tgz#12629fb327b435d30419ad9c9323f9e959d893a7"
+  integrity sha512-EKOC8os6Vsg487ZLKUqzLF99Jsmnq6tu7O7mAELakNpcA+8KadktFf/JYdRuHe/DzCUXmN38pUKu4XBcKlqGbQ==
 
-"@rolldown/binding-linux-x64-musl@1.2.14":
-  version "1.2.14"
-  resolved "https://registry.npmmirror.com/@rolldown/binding-linux-x64-musl/-/binding-linux-x64-musl-1.2.14.tgz#8e11f27cb56a92276fcabd6f7accbef7089160b3"
-  integrity sha512-3G3tnAmTpdk9jO3GQtyHXqeFD2SlecfTws/Y3M2mmj9nMBwwuLT4kur8sZKeu7ENUHSpVO3cIsm5A52LEWWwlg==
+"@rollup/rollup-linux-loong64-musl@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-linux-loong64-musl/-/rollup-linux-loong64-musl-4.64.6.tgz#5268fc842af1733666ae27d66c4202b1e381b05c"
+  integrity sha512-v/SQ68GnSlr/HyjB79sNXesGDwkOPu9JjbHfmWaymCiM+nZsQ9TstG1KfA4MuEvTr2d3PoY8PhFxj9bt0e32JA==
 
-"@rolldown/binding-openharmony-arm64@1.2.14":
-  version "1.2.14"
-  resolved "https://registry.npmmirror.com/@rolldown/binding-openharmony-arm64/-/binding-openharmony-arm64-1.2.14.tgz#784873879d9f655de52b5ce1085879a3471d0fd8"
-  integrity sha512-qyr5XiNGxm2ytx17vvtcJ9nXn6v1gENETi503bJx3OGwZ1tSonj7BosxbMa/xeAfSl5iS9X6KjEWYXLu6v1L7Q==
+"@rollup/rollup-linux-ppc64-gnu@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-linux-ppc64-gnu/-/rollup-linux-ppc64-gnu-4.64.6.tgz#7630c25098ca1296d78dc763c48c157da214954b"
+  integrity sha512-G3pmliMQ7r15zFFNwBlaT/xTdSLi4lfgI7CUrQueyKYheNVhrd8JrWCE6Ll8xf4AA1RZFqq+mNJYntiElsVOyA==
 
-"@rolldown/binding-win32-arm64-msvc@1.2.14":
-  version "1.2.14"
-  resolved "https://registry.npmmirror.com/@rolldown/binding-win32-arm64-msvc/-/binding-win32-arm64-msvc-1.2.14.tgz#6a656838c13a51defad46592ee613ec2c27ae49f"
-  integrity sha512-oA4o5o0S2yB199YyYXDzKUv1Z56Rc+mgOjwm7Z/vJ9Z8igiDPYvoOuDyo6g7AK/ZaF09nPhDKVnGBcYHO11GXA==
+"@rollup/rollup-linux-ppc64-musl@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-linux-ppc64-musl/-/rollup-linux-ppc64-musl-4.64.6.tgz#78a3cfaeca794a5b5fdf43e195d907ef88e729b4"
+  integrity sha512-XQTB/IPoB/wG6x/wu9uomAt8YH61IAr5iZTubMiad/lu88sotq2ocz9hJd556+Jz2kIkF7ZQZIsUuWE3OWqtcA==
 
-"@rolldown/binding-win32-x64-msvc@1.2.14":
-  version "1.2.14"
-  resolved "https://registry.npmmirror.com/@rolldown/binding-win32-x64-msvc/-/binding-win32-x64-msvc-1.2.14.tgz#f1a24048db1677c1d985a52c922e88c5dbe75e0d"
-  integrity sha512-9mE94bf2GZUaR/fUSXCMpBoWkctu421Mi0ORpm4zqfbkjKep7RxzPFa5etcGs5h+2KApoWBOA/hAJa/7saGgEQ==
+"@rollup/rollup-linux-riscv64-gnu@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-linux-riscv64-gnu/-/rollup-linux-riscv64-gnu-4.64.6.tgz#5906ee0123385101336707123823fc61f61fd7d5"
+  integrity sha512-O5mpokth6+ydMuwiGtY8fIjvOBfH7u6SzmDNmZ3k6GK5C6iEAC2q2ZN/T5L9jYILx0IcCT0KnfMDihQ5yQFSBw==
 
-"@rolldown/pluginutils@^1.0.0":
-  version "1.0.1"
-  resolved "https://registry.npmmirror.com/@rolldown/pluginutils/-/pluginutils-1.0.1.tgz#e3fcee093fbb5ce765e1ad088ff4de2889f6f9be"
-  integrity sha512-2j9bGt5Jh8hj+vPtgzPtl72j0yRxHAyumoo6TNfAjsLB04UtpSvPbPcDcBMxz7n+9CYB0c1GxQFxYRg2jimqGw==
+"@rollup/rollup-linux-riscv64-musl@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-linux-riscv64-musl/-/rollup-linux-riscv64-musl-4.64.6.tgz#9e68f5af474e95878137551a123dbd457a0a93d5"
+  integrity sha512-aIFxbAD9v3TvIaEDsKmukjcDg1JS4/tFXw8SHyQQgzOwzWCQ4cyDK7Ju1pQKqUXDFkEu/BZCFDCDATsKhQcB/Q==
+
+"@rollup/rollup-linux-s390x-gnu@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-linux-s390x-gnu/-/rollup-linux-s390x-gnu-4.64.6.tgz#ab2b58986cc1c19da69e36f3e65ede4a76431c03"
+  integrity sha512-fuNo1UwBc6BxnHDOxxguQL/InhheMN3RJcJMb0b4xP8r5Q3CNCrJbVg0eCIFuJ4e/zAfjR2gYbOfbzO/G7CIyw==
+
+"@rollup/rollup-linux-x64-gnu@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-linux-x64-gnu/-/rollup-linux-x64-gnu-4.64.6.tgz#382363a6162dd67cc07c16ddbb2ac3fc83377f73"
+  integrity sha512-05v6wFKDKJPZs9xlytVrrRu6IbRuoSvlH9xNwEOafXsKyjBFZPvAcZz2VIAB/M+lblYeKa9iOYC4RDVdfcAAaw==
+
+"@rollup/rollup-linux-x64-musl@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-linux-x64-musl/-/rollup-linux-x64-musl-4.64.6.tgz#734072e2913267b121709df9e490c52594450baa"
+  integrity sha512-wJXKcdMjvkc/FaavZXNP1yW4i0pfOmhZAIWRSLG2yJ0PB0TWi7dkLErhX0u0vptDcXKKO/m1Y/YTeuyvb2MXwg==
+
+"@rollup/rollup-openbsd-x64@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-openbsd-x64/-/rollup-openbsd-x64-4.64.6.tgz#f5b5cd7f572559e11d726499549c0553cf731d9b"
+  integrity sha512-cwg7/h0ThvJwy8CBkmACdiHAxRWpbsCmIsjOt+Zzx0hTnIcSUmKYEV03bGg+hD827OnwUsbKh1ZZDW754xWyBA==
+
+"@rollup/rollup-openharmony-arm64@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-openharmony-arm64/-/rollup-openharmony-arm64-4.64.6.tgz#de8501fb6593e5a8e76808594a53ca59dff501cd"
+  integrity sha512-T0RkYIJbdYXJEQFw+tMBO09KDFdgmNxkHsof3wWAABrvnx15Yh8RytmrgYy9+q9cBeBNZF66MMQZC+5nzEz6vg==
+
+"@rollup/rollup-win32-arm64-msvc@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-win32-arm64-msvc/-/rollup-win32-arm64-msvc-4.64.6.tgz#5a3c0d924a1fd7380b3d69f32f981f1528e5fb90"
+  integrity sha512-KlfpmF1AAIdAWxt8QQNClbpLFlAUfYOzqIuJ7IXEStMHpFRuH78RG6FjqPb3Rqhh0K89F5npvG+/i3Fjl6IveQ==
+
+"@rollup/rollup-win32-ia32-msvc@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-win32-ia32-msvc/-/rollup-win32-ia32-msvc-4.64.6.tgz#4e9080f9c0b25701ee8276ccca0c1a83293a2730"
+  integrity sha512-MrTLjd7Jlt9/ZavJZYG61KQv9Iy9bzbY+yXy73Xvwoa2uP66wvDShkyBr5Chz/yrE6lbD/zHMuTmKQVNQqBApg==
+
+"@rollup/rollup-win32-x64-gnu@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-win32-x64-gnu/-/rollup-win32-x64-gnu-4.64.6.tgz#005a2d3e7808814b4101ea5d858e8365926b8140"
+  integrity sha512-8fWDH1CkPI8GdBKAxzHDza7UmgficsKo2+MVbvUgOGhB0629w5sHMg3Qu5y7TZsrYKHHWpz8fla4KvoT7WsO3Q==
+
+"@rollup/rollup-win32-x64-msvc@4.64.6":
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.64.6.tgz#28210903891d003eccc5f769671787d92f54fb13"
+  integrity sha512-9/c9PWdr5GCIHkkxiHM1HjNBQMVdftP4O8QTcoUAaRza2FSqJ4axbf8QAnBuE6BIGQDl71SaRPeDdDYid5ecTw==
 
 "@sideway/address@^4.1.5":
   version "4.1.5"
@@ -2962,7 +3137,7 @@
   dependencies:
     "@types/estree" "*"
 
-"@types/estree@*", "@types/estree@^1.0.0", "@types/estree@^1.0.8":
+"@types/estree@*", "@types/estree@1.0.9", "@types/estree@^1.0.0", "@types/estree@^1.0.8":
   version "1.0.9"
   resolved "https://registry.npmmirror.com/@types/estree/-/estree-1.0.9.tgz#cf3f0e876d7bee15a93ab925b82bf570a3904a24"
   integrity sha512-GhdPgy1el4/ImP05X05Uw4cw2/M93BCUmnEvWZNStlCzEKME4Fkk+YpoA5OiHNQmoS7Cafb8Xa3Pya8m1Qrzeg==
@@ -4713,11 +4888,6 @@ destroy@1.2.0, destroy@~1.2.0:
   resolved "https://registry.npmmirror.com/destroy/-/destroy-1.2.0.tgz#4803735509ad8be552934c67df614f94e66fa015"
   integrity sha512-2sJGJTaXIIaR1w4iJSNoN0hnMY7Gpc/n8D4qSCJw8QqFWXf7cuAgnEHxBpweaVcPevC2l3KpjYCx3NypQQgaJg==
 
-detect-libc@^2.0.3:
-  version "2.1.2"
-  resolved "https://registry.npmmirror.com/detect-libc/-/detect-libc-2.1.2.tgz#689c5dcdc1900ef5583a4cb9f6d7b473742074ad"
-  integrity sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==
-
 detect-node@^2.0.4:
   version "2.1.0"
   resolved "https://registry.npmmirror.com/detect-node/-/detect-node-2.1.0.tgz#c9c70775a49c3d03bc2c06d9a73be550f978f8b1"
@@ -4981,6 +5151,38 @@ esast-util-from-js@^2.0.0:
     acorn "^8.0.0"
     esast-util-from-estree "^2.0.0"
     vfile-message "^4.0.0"
+
+"esbuild@^0.27.0 || ^0.28.0":
+  version "0.28.2"
+  resolved "https://registry.npmmirror.com/esbuild/-/esbuild-0.28.2.tgz#0f43bd1bad955b72d24e2261e3abe5957ccf0816"
+  integrity sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==
+  optionalDependencies:
+    "@esbuild/aix-ppc64" "0.28.2"
+    "@esbuild/android-arm" "0.28.2"
+    "@esbuild/android-arm64" "0.28.2"
+    "@esbuild/android-x64" "0.28.2"
+    "@esbuild/darwin-arm64" "0.28.2"
+    "@esbuild/darwin-x64" "0.28.2"
+    "@esbuild/freebsd-arm64" "0.28.2"
+    "@esbuild/freebsd-x64" "0.28.2"
+    "@esbuild/linux-arm" "0.28.2"
+    "@esbuild/linux-arm64" "0.28.2"
+    "@esbuild/linux-ia32" "0.28.2"
+    "@esbuild/linux-loong64" "0.28.2"
+    "@esbuild/linux-mips64el" "0.28.2"
+    "@esbuild/linux-ppc64" "0.28.2"
+    "@esbuild/linux-riscv64" "0.28.2"
+    "@esbuild/linux-s390x" "0.28.2"
+    "@esbuild/linux-x64" "0.28.2"
+    "@esbuild/netbsd-arm64" "0.28.2"
+    "@esbuild/netbsd-x64" "0.28.2"
+    "@esbuild/openbsd-arm64" "0.28.2"
+    "@esbuild/openbsd-x64" "0.28.2"
+    "@esbuild/openharmony-arm64" "0.28.2"
+    "@esbuild/sunos-x64" "0.28.2"
+    "@esbuild/win32-arm64" "0.28.2"
+    "@esbuild/win32-ia32" "0.28.2"
+    "@esbuild/win32-x64" "0.28.2"
 
 escalade@^3.1.1, escalade@^3.2.0:
   version "3.2.0"
@@ -6256,80 +6458,6 @@ leven@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npmmirror.com/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
   integrity sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==
-
-lightningcss-android-arm64@1.33.0:
-  version "1.33.0"
-  resolved "https://registry.npmmirror.com/lightningcss-android-arm64/-/lightningcss-android-arm64-1.33.0.tgz#9a6841f88ae50fc83502903892b41af41bc2b907"
-  integrity sha512-gEpRTalKdosp4Bb8qWtc2iOgE5SeIHlpS1up9bFq2wAyYhl1UdTObYiHe98zEM9SQvSoqQZ1IQD0JNpg3Ml5pg==
-
-lightningcss-darwin-arm64@1.33.0:
-  version "1.33.0"
-  resolved "https://registry.npmmirror.com/lightningcss-darwin-arm64/-/lightningcss-darwin-arm64-1.33.0.tgz#c0f2c31c0bfd19fa4dd3f18e957a1f1a152097d6"
-  integrity sha512-Sciaz8eenNTKn9b3t7+xr0ipTp9YxKQY4npwQ3mrRuL0BAVHBLyZxofhaKBAVtzmtRZ/zTyo0/to4B1uWG/Djg==
-
-lightningcss-darwin-x64@1.33.0:
-  version "1.33.0"
-  resolved "https://registry.npmmirror.com/lightningcss-darwin-x64/-/lightningcss-darwin-x64-1.33.0.tgz#cb0705965acb538c6683949ce6925fb3cdf7c361"
-  integrity sha512-Z5UPAxzrjlWNNyGy6i65cJzzvgJ5D3T6wMvs+gWpY9d7qRhANrxqAp6LhxIgZhWEw18RfJTGcRxjuLIBr+m8XQ==
-
-lightningcss-freebsd-x64@1.33.0:
-  version "1.33.0"
-  resolved "https://registry.npmmirror.com/lightningcss-freebsd-x64/-/lightningcss-freebsd-x64-1.33.0.tgz#763538828b26bab2680dadafcc84ee78b0eb502b"
-  integrity sha512-QQM/Ti/hQajJwCY+RiWuCZ9sdtI/XQk7nDK5vC8kkdwixezOlDgvDx7+RT+QjK6FcFT4MpsuoBnHIo/O3StRRg==
-
-lightningcss-linux-arm-gnueabihf@1.33.0:
-  version "1.33.0"
-  resolved "https://registry.npmmirror.com/lightningcss-linux-arm-gnueabihf/-/lightningcss-linux-arm-gnueabihf-1.33.0.tgz#6862e3176a331aedbdec1ed352b4d7d0dd0784de"
-  integrity sha512-N7FVBe6iS24MlM6R/4RBTxGhQheZGs7tiQ9U32UtF75NzP5Q7xWPRqLBCKxlRQRk3rY1jCIPLzx7WzOhuUIRLQ==
-
-lightningcss-linux-arm64-gnu@1.33.0:
-  version "1.33.0"
-  resolved "https://registry.npmmirror.com/lightningcss-linux-arm64-gnu/-/lightningcss-linux-arm64-gnu-1.33.0.tgz#c6a3a2ed15141daf6bdc2628930f8e39bdf473aa"
-  integrity sha512-j2v/itmy4HlNxlc6voKXYgBqNi0Ng2LShg4z7GufpEgs05P+2suBVyi9I6YHq5uoVFx9ETin3eCEhLVyXGQnKg==
-
-lightningcss-linux-arm64-musl@1.33.0:
-  version "1.33.0"
-  resolved "https://registry.npmmirror.com/lightningcss-linux-arm64-musl/-/lightningcss-linux-arm64-musl-1.33.0.tgz#7fa1334971fc82845f9827df6ef8a0b20914bac6"
-  integrity sha512-yiO5ROMuYQgXbC60yjZU5CYSFZGKXL0HFATXt9mHJn1+zW55oCtMI9NfcVhYLMFDL7gV7oBPon/EmMMGg2OvtQ==
-
-lightningcss-linux-x64-gnu@1.33.0:
-  version "1.33.0"
-  resolved "https://registry.npmmirror.com/lightningcss-linux-x64-gnu/-/lightningcss-linux-x64-gnu-1.33.0.tgz#8b927862ea8c2bbc6831a46509244b50d9936e55"
-  integrity sha512-ar+Ju7LmcN0Jo4FpL4hpFybwNG9/3A/Br5KW2n2jyODg3MEZXaDYADdemoNS+BDNfMgKvylJLj4S5tyRActuAg==
-
-lightningcss-linux-x64-musl@1.33.0:
-  version "1.33.0"
-  resolved "https://registry.npmmirror.com/lightningcss-linux-x64-musl/-/lightningcss-linux-x64-musl-1.33.0.tgz#0c525bb077dfd94404c059cfe42dad797e96aeaf"
-  integrity sha512-RYiYbkokw0trfKqqzfF55lginwEPrD3OJDfTuJzFs1MK6iFnDenaz1fqLLtX4ITG3OktJQXOeTaw1awrBAlZPw==
-
-lightningcss-win32-arm64-msvc@1.33.0:
-  version "1.33.0"
-  resolved "https://registry.npmmirror.com/lightningcss-win32-arm64-msvc/-/lightningcss-win32-arm64-msvc-1.33.0.tgz#850ee1103dac989cfab50e3ac22d1a69e394e63d"
-  integrity sha512-1K+MPfLSFVpphzpdbfkhlWk6wBrTObBzS2T6db10PNOZgR9GoVsAWzwNyuhUYYbTp23j+4RrncfujZ4uAzXvwA==
-
-lightningcss-win32-x64-msvc@1.33.0:
-  version "1.33.0"
-  resolved "https://registry.npmmirror.com/lightningcss-win32-x64-msvc/-/lightningcss-win32-x64-msvc-1.33.0.tgz#e343ae152eed3609dc6e11949d1a3bf39a1c946f"
-  integrity sha512-OlEICDx/Xl0FqSp4bry8zFnCvGpig3Gl4gCquvYwHuqJKEC1+n9NgDniFvqHGmMv1ZkqDJrDqKKSykTDX+ehuA==
-
-lightningcss@^1.33.0:
-  version "1.33.0"
-  resolved "https://registry.npmmirror.com/lightningcss/-/lightningcss-1.33.0.tgz#c08867d71a79385c6e190214fd72fef3e5f95f0b"
-  integrity sha512-WkUDrojuJs0xkgGf2udWxa3yGBRxPtxUkB79i6aCZLRgc7PM8fZe9TosfPDcvEpQZbuFASnHYmRLBLUbmLOIIA==
-  dependencies:
-    detect-libc "^2.0.3"
-  optionalDependencies:
-    lightningcss-android-arm64 "1.33.0"
-    lightningcss-darwin-arm64 "1.33.0"
-    lightningcss-darwin-x64 "1.33.0"
-    lightningcss-freebsd-x64 "1.33.0"
-    lightningcss-linux-arm-gnueabihf "1.33.0"
-    lightningcss-linux-arm64-gnu "1.33.0"
-    lightningcss-linux-arm64-musl "1.33.0"
-    lightningcss-linux-x64-gnu "1.33.0"
-    lightningcss-linux-x64-musl "1.33.0"
-    lightningcss-win32-arm64-msvc "1.33.0"
-    lightningcss-win32-x64-msvc "1.33.0"
 
 lilconfig@^3.1.1:
   version "3.1.3"
@@ -7633,7 +7761,7 @@ picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3, picomatch@^2.3.1:
   resolved "https://registry.npmmirror.com/picomatch/-/picomatch-2.3.2.tgz#5a942915e26b372dc0f0e6753149a16e6b1c5601"
   integrity sha512-V7+vQEJ06Z+c5tSye8S+nHUfI51xoXIXjHQ99cQtKUkQqqO1kO/KCJUfZXuB47h/YBlDhah2H3hdUGXn8ie0oA==
 
-picomatch@^4.0.4, picomatch@^4.0.7:
+picomatch@^4.0.3, picomatch@^4.0.4, picomatch@^4.0.7:
   version "4.0.7"
   resolved "https://registry.npmmirror.com/picomatch/-/picomatch-4.0.7.tgz#6313360034ccb36b3dc61ecbdff78121f90fe21f"
   integrity sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==
@@ -8212,7 +8340,7 @@ postcss-zindex@^6.0.2:
   resolved "https://registry.npmmirror.com/postcss-zindex/-/postcss-zindex-6.0.2.tgz#e498304b83a8b165755f53db40e2ea65a99b56e1"
   integrity sha512-5BxW9l1evPB/4ZIc+2GobEBoKC+h8gPGCMi+jxsYvd2x0mjq7wazk6DrP71pStqxE9Foxh5TVnonbWpFZzXaYg==
 
-postcss@^8.4.21, postcss@^8.4.24, postcss@^8.4.33, postcss@^8.5.29, postcss@^8.5.4:
+postcss@^8.4.21, postcss@^8.4.24, postcss@^8.4.33, postcss@^8.5.4, postcss@^8.5.6:
   version "8.5.30"
   resolved "https://registry.npmmirror.com/postcss/-/postcss-8.5.30.tgz#f76f192357d2b7026b651fd2c7baa60d05325a9e"
   integrity sha512-zkd+e9S1AQHhmaBKye9zlFHWjOwVgqXl1q3ECYy8561K7qxR2cREf/STLskulBFd78k6AOFeA+ff1TtEzk9bAA==
@@ -8801,29 +8929,40 @@ reusify@^1.0.4:
   resolved "https://registry.npmmirror.com/reusify/-/reusify-1.1.0.tgz#0fe13b9522e1473f51b558ee796e08f11f9b489f"
   integrity sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==
 
-rolldown@~1.2.12:
-  version "1.2.14"
-  resolved "https://registry.npmmirror.com/rolldown/-/rolldown-1.2.14.tgz#4005c51ae81e1d07b2e0d22f56d1f040f85aac96"
-  integrity sha512-eTBTTqMR6uHKLgcUqpJP8ntzDI6V4LYA8negAMBEI7gkgVvOdrx6VsvS2Ym+83KhOPdLCHWJu0w7UQFJZhHKNw==
+rollup@^4.43.0:
+  version "4.64.6"
+  resolved "https://registry.npmmirror.com/rollup/-/rollup-4.64.6.tgz#d26d33353d1d80b6c1dea6f769639a2a174c6d4f"
+  integrity sha512-fX1Vy+UNKdXn+xKDnu/HBXbHVr1AY8cSdQj9BU4kLv5aFCMqGpvrVbyUMmjN3DdzWhSAuTbcX8PCNEVaumthYA==
   dependencies:
-    "@oxc-project/types" "=0.154.0"
-    "@rolldown/pluginutils" "^1.0.0"
+    "@types/estree" "1.0.9"
   optionalDependencies:
-    "@rolldown/binding-android-arm-eabi" "1.2.14"
-    "@rolldown/binding-android-arm64" "1.2.14"
-    "@rolldown/binding-darwin-arm64" "1.2.14"
-    "@rolldown/binding-darwin-x64" "1.2.14"
-    "@rolldown/binding-freebsd-x64" "1.2.14"
-    "@rolldown/binding-linux-arm-gnueabihf" "1.2.14"
-    "@rolldown/binding-linux-arm64-gnu" "1.2.14"
-    "@rolldown/binding-linux-arm64-musl" "1.2.14"
-    "@rolldown/binding-linux-ppc64-gnu" "1.2.14"
-    "@rolldown/binding-linux-s390x-gnu" "1.2.14"
-    "@rolldown/binding-linux-x64-gnu" "1.2.14"
-    "@rolldown/binding-linux-x64-musl" "1.2.14"
-    "@rolldown/binding-openharmony-arm64" "1.2.14"
-    "@rolldown/binding-win32-arm64-msvc" "1.2.14"
-    "@rolldown/binding-win32-x64-msvc" "1.2.14"
+    "@napi-rs/lzma-linux-x64-gnu" "1.5.1"
+    "@rollup/rollup-android-arm-eabi" "4.64.6"
+    "@rollup/rollup-android-arm64" "4.64.6"
+    "@rollup/rollup-darwin-arm64" "4.64.6"
+    "@rollup/rollup-darwin-x64" "4.64.6"
+    "@rollup/rollup-freebsd-arm64" "4.64.6"
+    "@rollup/rollup-freebsd-x64" "4.64.6"
+    "@rollup/rollup-linux-arm-gnueabihf" "4.64.6"
+    "@rollup/rollup-linux-arm-musleabihf" "4.64.6"
+    "@rollup/rollup-linux-arm64-gnu" "4.64.6"
+    "@rollup/rollup-linux-arm64-musl" "4.64.6"
+    "@rollup/rollup-linux-loong64-gnu" "4.64.6"
+    "@rollup/rollup-linux-loong64-musl" "4.64.6"
+    "@rollup/rollup-linux-ppc64-gnu" "4.64.6"
+    "@rollup/rollup-linux-ppc64-musl" "4.64.6"
+    "@rollup/rollup-linux-riscv64-gnu" "4.64.6"
+    "@rollup/rollup-linux-riscv64-musl" "4.64.6"
+    "@rollup/rollup-linux-s390x-gnu" "4.64.6"
+    "@rollup/rollup-linux-x64-gnu" "4.64.6"
+    "@rollup/rollup-linux-x64-musl" "4.64.6"
+    "@rollup/rollup-openbsd-x64" "4.64.6"
+    "@rollup/rollup-openharmony-arm64" "4.64.6"
+    "@rollup/rollup-win32-arm64-msvc" "4.64.6"
+    "@rollup/rollup-win32-ia32-msvc" "4.64.6"
+    "@rollup/rollup-win32-x64-gnu" "4.64.6"
+    "@rollup/rollup-win32-x64-msvc" "4.64.6"
+    fsevents "~2.3.2"
 
 rtlcss@^4.1.0:
   version "4.3.0"
@@ -9452,7 +9591,7 @@ tinyexec@^1.3.1:
   resolved "https://registry.npmmirror.com/tinyexec/-/tinyexec-1.3.1.tgz#16a2e3c6e23fafce72640e678e651db36145b9c6"
   integrity sha512-GCvB3aoys96IuDFBMcTB46JOR6mdMtAToqwiW8JlWhsoh1mhHi/xn9ss/Dg7N555GiJyEt2qzoG/NHCwM6h1EA==
 
-tinyglobby@^0.2.17:
+tinyglobby@^0.2.15, tinyglobby@^0.2.17:
   version "0.2.17"
   resolved "https://registry.npmmirror.com/tinyglobby/-/tinyglobby-0.2.17.tgz#562a9a6c9eb2b3b123d39719f9af5bb44fcd7631"
   integrity sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==
@@ -9830,16 +9969,17 @@ vfile@^6.0.0, vfile@^6.0.1:
     "@types/unist" "^3.0.0"
     vfile-message "^4.0.0"
 
-vite@^8.3.4:
-  version "8.3.4"
-  resolved "https://registry.npmmirror.com/vite/-/vite-8.3.4.tgz#ba08678ba41ba53f41c251b1772946c27b1c874e"
-  integrity sha512-IftLE8phJhdNRIGNEV4JCCvfNScoZQVfcXaN8TQropWGJtOHcu+iAB9pHcuGvmEb/kddw0LBe/jS8ztdC6xdiQ==
+vite@^7.3.7:
+  version "7.3.7"
+  resolved "https://registry.npmmirror.com/vite/-/vite-7.3.7.tgz#017a80fdce051003a4aa290dddd0b159aa769282"
+  integrity sha512-AHEzTORMbi7/7aXp7w7KZ5+DCUdSeLsJz0grY8xHpc9DHdYb0vQu6DqJfm2tOw3gDExNgPgnJTXxM6syYFHaCA==
   dependencies:
-    lightningcss "^1.33.0"
-    picomatch "^4.0.7"
-    postcss "^8.5.29"
-    rolldown "~1.2.12"
-    tinyglobby "^0.2.17"
+    esbuild "^0.27.0 || ^0.28.0"
+    fdir "^6.5.0"
+    picomatch "^4.0.3"
+    postcss "^8.5.6"
+    rollup "^4.43.0"
+    tinyglobby "^0.2.15"
   optionalDependencies:
     fsevents "~2.3.3"
 
@@ -10132,6 +10272,11 @@ yaml@^1.10.0:
   version "1.10.3"
   resolved "https://registry.npmmirror.com/yaml/-/yaml-1.10.3.tgz#76e407ed95c42684fb8e14641e5de62fe65bbcb3"
   integrity sha512-vIYeF1u3CjlhAFekPPAk2h/Kv4T3mAkMox5OymRiJQB0spDP10LHvt+K7G9Ny6NuuMAb25/6n1qyUjAcGNf/AA==
+
+yaml@^2.4.2:
+  version "2.9.1"
+  resolved "https://registry.npmmirror.com/yaml/-/yaml-2.9.1.tgz#c16233fb31944e705cfefaff38795587f57588ce"
+  integrity sha512-3NxN8+78OdzbT7C/WjGsyfPAtJaN3FNDsWxv7Y7mcDsT/oOmgW8BpyQQFFBnvZE3j9Y2Sdz1ULFLezL7Eb2yFw==
 
 yocto-queue@^1.0.0:
   version "1.2.2"
