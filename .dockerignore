@@ -1,0 +1,16 @@
+.git
+.github
+node_modules
+build
+.docusaurus
+.cache-loader
+generated_scripts
+.test
+coverage
+*.log
+.env
+.env.*
+**/.env*
+.DS_Store
+.idea
+.vscode
