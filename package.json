@@ -39,8 +39,7 @@
     "uglify-js": "^3.19.3",
     "unified": "^11.0.5",
     "unist-util-modify-children": "^4.0.0",
-    "unist-util-visit-parents": "^6.0.2",
-    "webpack-dev-server": "^6.0.0"
+    "unist-util-visit-parents": "^6.0.2"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.10.2",
@@ -72,7 +71,6 @@
     "node": ">=16.14"
   },
   "resolutions": {
-    "@types/react": "18.3.26",
-    "webpack-dev-server": "^5.2.1"
+    "@types/react": "^19.3.0"
   }
 }
