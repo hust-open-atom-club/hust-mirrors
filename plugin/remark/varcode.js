@@ -27,7 +27,7 @@ const plugin = (_) => {
         }
 
         /** @type {string} */
-        const code = node.value;
+        const code = node.value.replace(/\r\n/g, '\n');
         const lang = node.lang;
         const blocks = code.split("---\n")
         let optionBlock, transformBlock, codeBlock;
