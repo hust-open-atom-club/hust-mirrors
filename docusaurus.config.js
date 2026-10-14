@@ -1,8 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const { themes } = require('prism-react-renderer');
 
 const mirrorConfig = require('./mirrors.config');
 
@@ -105,8 +104,8 @@ const config = {
         copyright: `华中科技大学开源镜像站由 华中科技大学网络中心 提供支持。`
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: themes.github,
+        darkTheme: themes.dracula,
         additionalLanguages: ["bash", "powershell", "batch", "toml", "ini"]
       },
     }),
