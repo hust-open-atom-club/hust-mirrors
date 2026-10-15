@@ -19,24 +19,36 @@ title: OCI 容器镜像仓库使用帮助
 | Open Source Dashboard 后端 | `latest` | `hust-open-atom-club/open-source-dashboard/backend` | `ghcr.io/hust-open-atom-club/open-source-dashboard/backend` |
 | Open Source Deadlines | `latest` | `hust-open-atom-club/open-source-deadlines` | `ghcr.io/hust-open-atom-club/open-source-deadlines` |
 | HUST Mirrors 前端 | `latest` | `hust-open-atom-club/hust-mirrors` | `ghcr.io/hust-open-atom-club/hust-mirrors` |
+| Robustone | `latest` | `hust-open-atom-club/robustone` | `ghcr.io/hust-open-atom-club/robustone` |
+| Alpine | `latest` | `alpine` | `docker.io/library/alpine` |
 | Alpine | `3.24` | `alpine` | `docker.io/library/alpine` |
+| Ubuntu | `latest` | `ubuntu` | `docker.io/library/ubuntu` |
 | Ubuntu | `26.04` | `ubuntu` | `docker.io/library/ubuntu` |
 | Ubuntu | `24.04` | `ubuntu` | `docker.io/library/ubuntu` |
 | Ubuntu | `22.04` | `ubuntu` | `docker.io/library/ubuntu` |
+| Node.JS | `latest` | `node` | `docker.io/library/node` |
+| Node.JS | `lts` | `node` | `docker.io/library/node` |
 | Node.JS | `26-bookworm-slim` | `node` | `docker.io/library/node` |
 | Node.JS | `24-bookworm-slim` | `node` | `docker.io/library/node` |
 | Node.JS | `22-bookworm-slim` | `node` | `docker.io/library/node` |
+| Bun | `latest` | `oven/bun` | `docker.io/oven/bun` |
 | Bun | `slim` | `oven/bun` | `docker.io/oven/bun` |
 | Golang | `latest` | `golang` | `docker.io/library/golang` |
+| Rust | `latest` | `rust` | `docker.io/library/rust` |
 | Rust | `slim` | `rust` | `docker.io/library/rust` |
+| Python | `latest` | `python` | `docker.io/library/python` |
 | Python | `slim` | `python` | `docker.io/library/python` |
 | Python | `3.15-slim` | `python` | `docker.io/library/python` |
 | Python | `3.14-slim` | `python` | `docker.io/library/python` |
 | Python | `3.13-slim` | `python` | `docker.io/library/python` |
+| PostgreSQL | `latest` | `postgres` | `docker.io/library/postgres` |
 | PostgreSQL | `18` | `postgres` | `docker.io/library/postgres` |
 | PostgreSQL | `17` | `postgres` | `docker.io/library/postgres` |
+| MongoDB | `latest` | `mongo` | `docker.io/library/mongo` |
 | MongoDB | `9` | `mongo` | `docker.io/library/mongo` |
 | MongoDB | `8` | `mongo` | `docker.io/library/mongo` |
+| Redis | `latest` | `redis` | `docker.io/library/redis` |
+| Redis | `alpine` | `redis` | `docker.io/library/redis` |
 | BusyBox | `latest` | `busybox` | `docker.io/library/busybox` |
 
 :::warning 注意事项
