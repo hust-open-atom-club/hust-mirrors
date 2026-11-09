@@ -56,5 +56,8 @@ jobs:
       - name: Check TypeScript
         run: yarn typecheck
 
+      - name: Check React Hook calls
+        run: yarn lint:hooks
+
       - name: Build website
         run: yarn build
