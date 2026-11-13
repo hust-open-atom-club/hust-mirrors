@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styles from './index.module.css'
 import Link from '@docusaurus/Link';
 import Translate, { translate } from '@docusaurus/Translate'
@@ -60,7 +60,7 @@ function tsToStr(ts: number) {
   return formattedDate;
 }
 
-function tsPeriodToStr(tsStart: number, tsEnd: number) {
+function tsPeriodToStr(tsStart: number, tsEnd: number, locale: string) {
   if (tsStart == 0) return "N/A";
 
   const seconds = tsEnd - tsStart;
@@ -81,7 +81,6 @@ function tsPeriodToStr(tsStart: number, tsEnd: number) {
 
   let unit;
 
-  const locale = useDocusaurusContext().i18n.currentLocale;
   if (locale.startsWith("zh")) unit = zhUnits;
   else unit = enUnits;
 
@@ -285,6 +284,7 @@ export default function Table({ items: srcItems, search, detail }: Props) {
 
   const alldocs = useDocMetas();
   const mirrorMeta = useMirrorMetas();
+  const { i18n: { currentLocale } } = useDocusaurusContext();
 
   let items = srcItems.concat( // combine force to shown meta data.
     mirrorMeta.filter(u => u.forceShown && srcItems.find(v => v.name == u.id) == undefined)
@@ -351,7 +351,7 @@ export default function Table({ items: srcItems, search, detail }: Props) {
               </div>
             </td>
             {detail && <td className={styles['date-short']}>
-              {tsPeriodToStr(u.last_started_ts, u.last_ended_ts)}
+              {tsPeriodToStr(u.last_started_ts, u.last_ended_ts, currentLocale)}
             </td>}
             {detail && <td className={styles['date']}>
               <MirrorTime ts={u.next_schedule_ts} />

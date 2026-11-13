@@ -30,34 +30,40 @@ type Props = {
   blockProps?: CBProps
 }
 
+type Selection = {
+  value: DefaultValue;
+  defaultValue: DefaultValue;
+  type: OptionType;
+}
+
+function getDefaultValue(option: Option): DefaultValue {
+  return option.default ?? (option.type === 'switch' ? false : option.items?.[0]?.value ?? '');
+}
+
 export default function CodeBlockWithVariables({ code, options, blockProps }: Props) {
-  const states: {
-    [key: string]: [any, React.Dispatch<any>]
-  } = {};
-
-  for (const option of options) {
-    let def: DefaultValue = "";
-    if (option.default !== undefined)
-      def = option.default;
-    else if (option.type == 'switch')
-      def = false;
-    else if (option.type == 'select') {
-      def = option.items?.[0]?.value ?? "";
-    }
-    states[option.key] = useState(def);
-  }
-
-  const vars: Variables = {};
-
+  const [selections, setSelections] = useState(() => new Map<string, Selection>());
   const ctx = useSharedContext();
 
-  for (const key in states) {
-    if (states.hasOwnProperty(key)) {
-      const element = states[key][0];
-      vars[key] = element;
+  const activeSelections = new Map<string, Selection>();
+  const controls = options.map(option => {
+    const defaultValue = getDefaultValue(option);
+    const selection = selections.get(option.key);
+    if (selection?.type === option.type && selection.defaultValue === defaultValue &&
+      (option.type === 'switch' || option.items?.some(item => item.value === selection.value))) {
+      activeSelections.set(option.key, selection);
     }
+    const value = activeSelections.get(option.key)?.value ?? defaultValue;
+    const onChange = (value: DefaultValue) => {
+      setSelections(previous => new Map(previous).set(option.key, { value, defaultValue, type: option.type }));
+    };
+    return { option, value, onChange };
+  });
+  // Discard stale choices so removed options cannot restore old selections.
+  if (activeSelections.size !== selections.size) {
+    setSelections(activeSelections);
   }
 
+  const vars: Variables = Object.fromEntries(controls.map(({ option, value }) => [option.key, value]));
   vars['_http'] = ctx.https ? "https" : "http";
   vars['_domain'] = ctx.domain;
 
@@ -65,11 +71,10 @@ export default function CodeBlockWithVariables({ code, options, blockProps }: Pr
     <div>
       {options && !!options.length && <div className={styles.panel}>
         {
-          options.map(u => {
-            if (u.type == 'switch')
-              return <Switch key={u.key} label={u.label} value={states[u.key][0]} onChange={states[u.key][1]}></Switch>
-            else if (u.type == 'select')
-              return <Select key={u.key} label={u.label} items={u.items!} value={states[u.key][0]} onChange={states[u.key][1]}></Select>
+          controls.map(({ option, value, onChange }) => {
+            if (option.type === 'switch')
+              return <Switch key={option.key} label={option.label} value={Boolean(value)} onChange={onChange} />;
+            return <Select key={option.key} label={option.label} items={option.items ?? []} value={String(value)} onChange={onChange} />;
           })
         }
       </div>}
