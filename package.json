@@ -10,6 +10,7 @@
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "test": "vitest run",
+    "lint:hooks": "biome lint --only=lint/correctness/useHookAtTopLevel src/components/CodeBlockWithVariables/index.tsx src/components/Table/index.tsx",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
@@ -42,6 +43,7 @@
     "unist-util-visit-parents": "^6.0.2"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.6.6",
     "@docusaurus/module-type-aliases": "^3.10.2",
     "@testing-library/dom": "^10.4.2",
     "@testing-library/jest-dom": "^7.0.1",
