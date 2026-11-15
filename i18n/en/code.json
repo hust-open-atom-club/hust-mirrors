@@ -375,8 +375,20 @@
   "mirror.index.cli": {
     "message": "Get CLI tool"
   },
+  "mirror.index.title": {
+    "message": "HUST Open Source Mirror",
+    "description": "The title of the homepage"
+  },
+  "mirror.index.description": {
+    "message": "HUST Open Source Mirror provides mirrors for Ubuntu, Debian, Fedora, Arch Linux and other popular Linux distributions and open-source software, with HTTP, HTTPS, RSYNC and command-line tool support.",
+    "description": "The description of the homepage"
+  },
   "mirror.release": {
     "message": "Get Release Software and ISO"
+  },
+  "mirror.release.description": {
+    "message": "Download operating system ISO images and common applications from HUST Open Source Mirror, with multiple releases, versions and architectures available.",
+    "description": "The description of the release download page"
   },
   "mirror.release.select": {
     "message": "Select..."
@@ -412,7 +424,11 @@
     "message": "Lastest news"
   },
   "mirror.server.status": {
-    "message": "Status"
+    "message": "Server Status"
+  },
+  "mirror.server.status.description": {
+    "message": "Check the synchronization status, last update time and size of each mirror on HUST Open Source Mirror.",
+    "description": "The description of the mirror syncing status page"
   },
   "mirror.release.browserDownload": {
     "message": "Browser Download"

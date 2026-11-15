@@ -62,8 +62,8 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      // Social card used for Open Graph / Twitter Card previews (1200x630)
+      image: 'img/social-card.png',
       navbar: {
         title: mirrorConfig.logoTitle,
         logo: {
