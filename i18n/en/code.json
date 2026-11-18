@@ -380,7 +380,7 @@
     "description": "The title of the homepage"
   },
   "mirror.index.description": {
-    "message": "HUST Open Source Mirror provides mirrors for Ubuntu, Debian, Fedora, Arch Linux and other popular Linux distributions and open-source software, with HTTP, HTTPS, RSYNC and command-line tool support.",
+    "message": "HUST Open Source Mirror provides mirrors for Ubuntu, Debian, Fedora, Arch Linux and other popular Linux distributions and open-source software, with HTTP, HTTPS and command-line tool support.",
     "description": "The description of the homepage"
   },
   "mirror.release": {
