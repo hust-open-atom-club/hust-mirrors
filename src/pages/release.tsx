@@ -103,6 +103,7 @@ export default function Home(): React.JSX.Element {
     const set = new Set(list);
     return Array.from(set);
   }
+
   const releaseItems = unique(releases.map(u => u.release)).sort().map(u => ({
     value: u,
     label: u
