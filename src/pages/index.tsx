@@ -94,6 +94,7 @@ export default function Home(): React.JSX.Element {
     }
     setLoading(false);
   }
+
   useEffect(() => {
     getItems();
   }, []);
