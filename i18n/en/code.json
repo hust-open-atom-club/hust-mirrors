@@ -192,7 +192,7 @@
   },
   "theme.CodeBlock.wordWrapToggle": {
     "message": "Toggle word wrap",
-    "description": "The title attribute for toggle word wrapping button of code block lines"
+    "description": "The title attribute for toggle word wrap button of code block lines"
   },
   "theme.DocSidebarItem.toggleCollapsedCategoryAriaLabel": {
     "message": "Toggle the collapsible sidebar category '{label}'",
@@ -446,6 +446,18 @@
   },
   "mirror.release.loading": {
     "message": "Loading releases..."
+  },
+  "mirror.request.loading": {
+    "message": "Loading..."
+  },
+  "mirror.request.failed": {
+    "message": "Failed to load. Please try again later."
+  },
+  "mirror.request.retry": {
+    "message": "Retry"
+  },
+  "mirror.request.empty": {
+    "message": "No data available."
   },
   "mirror.footer.desc0_0": {
     "message": "HUST Mirror is made possible due to suport from "
