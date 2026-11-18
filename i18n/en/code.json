@@ -192,7 +192,7 @@
   },
   "theme.CodeBlock.wordWrapToggle": {
     "message": "Toggle word wrap",
-    "description": "The title attribute for toggle word wrap button of code block lines"
+    "description": "The title attribute for toggle word wrapping button of code block lines"
   },
   "theme.DocSidebarItem.toggleCollapsedCategoryAriaLabel": {
     "message": "Toggle the collapsible sidebar category '{label}'",
