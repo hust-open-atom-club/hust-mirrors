@@ -9,6 +9,7 @@ import Tabs from '@theme/Tabs'
 import TabItem from '@theme/TabItem'
 import CodeBlock from '@theme/CodeBlock'
 import Select from '../components/Select/index';
+import RequestState from '../components/RequestState';
 import { useSharedContext } from '../utils/SharedContext';
 import type { ReleaseMeta } from '@site/meta.config';
 import { useLocation } from '@docusaurus/router';
@@ -31,7 +32,8 @@ function HomepageHeader() {
 export default function Home(): React.JSX.Element {
 
   const [releases, setReleases] = useState<ReleaseMeta[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [err, setErr] = useState(false);
 
   const { https, domain } = useSharedContext();
 
@@ -77,13 +79,18 @@ export default function Home(): React.JSX.Element {
 
   const updateReleases = async () => {
     setLoading(true);
+    setErr(false);
     try {
       const res = await fetch(`/releases.json`);
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+      }
       const data = await res.json();
       setReleases(data);
     }
     catch {
       console.error("Loading release metas failed.")
+      setErr(true);
     }
     setLoading(false);
   }
@@ -96,7 +103,6 @@ export default function Home(): React.JSX.Element {
     const set = new Set(list);
     return Array.from(set);
   }
-
   const releaseItems = unique(releases.map(u => u.release)).sort().map(u => ({
     value: u,
     label: u
@@ -132,9 +138,13 @@ export default function Home(): React.JSX.Element {
       description="OS release iso image downloads">
       <HomepageHeader />
       <div className={styles.container}>
-        {loading && <div>
-          <Translate id='mirror.release.loading'>正在加载发行版列表...</Translate>
-        </div>}
+        {loading || err || releases.length === 0 ?
+          <RequestState
+            loading={loading}
+            failed={err}
+            empty={releases.length === 0}
+            onRetry={updateReleases}
+          /> : null}
         <GlobalOptions />
         <Select labelTop label={
           translate({
