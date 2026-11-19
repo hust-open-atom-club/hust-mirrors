@@ -10,6 +10,7 @@ import SideBar from '../components/SideBar';
 import mirrorConfig from '@site/mirrors.config';
 import CliAnimation from '../components/CliAnimation'
 import SearchInput from '../components/SearchInput';
+import RequestState from '../components/RequestState';
 
 function HomepageHeader({
   searchValue, onSearchValueChange
@@ -72,15 +73,19 @@ function HomepageHeader({
 
 export default function Home(): React.JSX.Element {
   const { siteConfig } = useDocusaurusContext();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [items, setItems] = useState([]);
   const [err, setErr] = useState(false);
   const [search, setSearch] = useState("");
 
   const getItems = async () => {
     setLoading(true);
+    setErr(false);
     try {
       const resp = await fetch("/status.json");
+      if (!resp.ok) {
+        throw new Error(`HTTP ${resp.status}`);
+      }
       const data = await resp.json();
       setItems(data);
     }
@@ -100,10 +105,13 @@ export default function Home(): React.JSX.Element {
       <HomepageHeader searchValue={search} onSearchValueChange={setSearch} />
       <div className={styles['list-container']}>
         <div className={styles['table-container']}>
-          {loading ?
-            <div>
-              正在加载...
-            </div> :
+          {loading || err || items.length === 0 ?
+            <RequestState
+              loading={loading}
+              failed={err}
+              empty={items.length === 0}
+              onRetry={getItems}
+            /> :
             <Table search={search} items={items}></Table>
           }
         </div>

@@ -447,6 +447,18 @@
   "mirror.release.loading": {
     "message": "Loading releases..."
   },
+  "mirror.request.loading": {
+    "message": "Loading..."
+  },
+  "mirror.request.failed": {
+    "message": "Failed to load. Please try again later."
+  },
+  "mirror.request.retry": {
+    "message": "Retry"
+  },
+  "mirror.request.empty": {
+    "message": "No data available."
+  },
   "mirror.footer.desc0_0": {
     "message": "HUST Mirror is made possible due to suport from "
   },
