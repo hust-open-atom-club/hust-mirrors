@@ -136,7 +136,14 @@ export default function Home(): React.JSX.Element {
 
   return (
     <Layout
-      description="OS release iso image downloads">
+      title={translate({
+        id: 'mirror.release',
+        message: '系统镜像与应用软件下载'
+      })}
+      description={translate({
+        id: 'mirror.release.description',
+        message: '下载华中科技大学开源镜像站提供的操作系统安装镜像与常用应用软件，支持多种发行版、版本与架构。'
+      })}>
       <HomepageHeader />
       <div className={styles.container}>
         {loading || err || releases.length === 0 ?

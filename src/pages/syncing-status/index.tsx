@@ -41,7 +41,10 @@ export default function Home(): React.JSX.Element {
         })
       }
 
-      description="all mirror status on server">
+      description={translate({
+        id: 'mirror.server.status.description',
+        message: '查看华中科技大学开源镜像站各镜像源的同步状态、最近同步时间与数据大小。'
+      })}>
       <div>
         {loading || err || items.length === 0 ?
           <RequestState

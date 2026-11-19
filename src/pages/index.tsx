@@ -101,7 +101,14 @@ export default function Home(): React.JSX.Element {
 
   return (
     <Layout
-      description="Description will go into a meta tag in <head />">
+      title={translate({
+        id: 'mirror.index.title',
+        message: siteConfig.title
+      })}
+      description={translate({
+        id: 'mirror.index.description',
+        message: '华中科技大学开源镜像站提供 Ubuntu、Debian、Fedora、Arch Linux 等主流 Linux 发行版及开源软件镜像，支持 HTTP、HTTPS 与命令行工具。'
+      })}>
       <HomepageHeader searchValue={search} onSearchValueChange={setSearch} />
       <div className={styles['list-container']}>
         <div className={styles['table-container']}>
